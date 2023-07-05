@@ -1,5 +1,5 @@
 <template>
-<section class="body">
+<section class="page-container">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a class="flex m-2 items-center mb-6 text-3xl font-semibold text-gray-900 ">
             <img class="w-auto h-10 mr-2 " src="../assets/KMITL_PCC.png" alt="logo">
@@ -20,7 +20,7 @@
                         <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required="">
                     </div>
                     <div class="flex items-center justify-between">
-                        <div class="flex items-start">
+                        <div class="flex items-start mb-4">
                             <div class="flex items-center h-5">
                                 <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required="">
                             </div>
@@ -28,7 +28,7 @@
                                 <label for="remember" class="text-gray-600 ">Remember me</label>
                             </div>
                         </div>
-                        <a class="text-sm font-medium text-gray-600 hover:underline ">Forgot password?</a>
+                        <a class="text-sm font-medium text-gray-600 hover:underline mb-4">Forgot password?</a>
                     </div>
                     <router-link to="/"><button type="submit" class="w-full 
                     text-white 
@@ -61,10 +61,6 @@ export default {
 }
 </script>
 
-<style>
-.body {
-    background-image: url('/src/assets/1495685749-78978647.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+<style lang="scss" scoped>
+@import "@/style/main.scss";
 </style>

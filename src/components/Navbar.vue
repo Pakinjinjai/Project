@@ -68,7 +68,7 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="md:hidden bg-indigo-600" v-show="showMobileMenu">
+        <div class="md:hidden bg-gray-800" v-show="showMobileMenu">
             <a href="" class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100 ">Home</a>
             <a href="" class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100 ">About</a>
             <a href="" class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100 ">Setting</a>
