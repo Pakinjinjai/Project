@@ -1,7 +1,7 @@
 <template>
     <nav>
         <!-- Desktop menu -->
-        <div class="bg-gray-800">
+        <div class="font-sans bg-gray-800 ">
             <div class="max-w-7xl mx-auto">
                 <div class="flex justify-between">
                     <!-- menu -->
@@ -69,9 +69,9 @@
         </div>
         <!-- Mobile Menu -->
         <div class="md:hidden bg-gray-800" v-show="showMobileMenu">
-            <a href="" class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100 ">Home</a>
-            <a href="" class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100 ">About</a>
-            <a href="" class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100 ">Setting</a>
+            <router-link to="/home"><a class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100 ">Home</a></router-link>
+            <router-link to="/about"><a class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100 ">About</a></router-link>
+            <router-link to="/setting"><a class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100 ">Setting</a></router-link>
         </div>
     </nav>
 </template>
@@ -83,5 +83,6 @@ const showMobileMenu = ref(false);
 </script>
 
 <style>
+
 
 </style>

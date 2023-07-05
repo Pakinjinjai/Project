@@ -30,7 +30,7 @@
                         </div>
                         <a class="text-sm font-medium text-gray-600 hover:underline mb-4">Forgot password?</a>
                     </div>
-                    <router-link to="/"><button type="submit" class="w-full 
+                    <router-link to="/home"><button type="submit" class="w-full 
                     text-white 
                     bg-black 
                     hover:bg-indigo-950

@@ -1,21 +1,33 @@
+$web-default-font: "SF Pro",
+    "SF Pro Display",
+    "Helvetica Nueue",
+    "Noto Sans Thai",
+    "Roboto",
+    sans-serif;
+@font-face {
+    font-family: Calibri;
+    src: url(/public/font/Calibri-Regular.ttf);
+}
+$web-theme-color-primary: #FDFDFD;
+$web-theme-color-background: #F6F6F6;
+$web-theme-color-lightgrey: #F6F6F6;
+
+$web-font-color-black: #303030;
+$web-font-color-grey: #5B5B5B;
+$web-font-color-placeholder: #CECECE;
+$web-font-color-white: #FFFFFF;
+$web-font-color-blue: #140a4b;
+$web-font-color-red: #eb1851;
+
 .page-container {
     width: 1440px;
     position: relative;
     margin: 0 auto;
     transition: all 0.3s;
     
-    @media screen and (max-width: 1920px) {
+    @media screen and (max-width: 1920px),(max-width: 1600px),(max-width: 1440px) {
         width: 1280px;
     }
-
-    @media screen and (max-width: 1600px) {
-        width: 1280px;
-    }
-
-    @media screen and (max-width: 1440px) {
-        width: 1280px;
-    }
-
     @media screen and (max-width: 1280px) {
         width: 1024px;
     }
