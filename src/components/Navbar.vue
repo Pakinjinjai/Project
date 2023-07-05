@@ -14,7 +14,7 @@
                                 viewBox="0 0 24 24" 
                                 stroke-width="1.5" 
                                 stroke="currentColor" 
-                                class="w-6 h-6 text-indigo-200"
+                                class="w-6 h-6 text-indigo-200 hover:bg-sky-700 rounded-md"
                             >
                                 <path 
                                 stroke-linecap="round" 
@@ -29,20 +29,21 @@
                         <!-- menu -->
                         <div class="hidden md:flex items-center space-x-1">
                             <router-link to="/about">
-                                <a class="py-5 px-2 text-indigo-200">About</a>
+                                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg">About</a>
+
                             </router-link>
                             <router-link to="/contact">
-                                <a class="py-5 px-2 text-indigo-200">Contact</a>
+                                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg">Contact</a>
                             </router-link>
                             <router-link to="/setting">
-                                <a class="py-5 px-2 text-indigo-200">Setting</a>
+                                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg">Setting</a>
                             </router-link>
                         </div>
                     </div>
                     <!-- login -->
                     <div class=" hidden md:flex items-center space-x-1">
                         <router-link to="/singin">
-                                <a class="py-5 px-2 text-indigo-200">Sing in</a>
+                                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg">Sing in</a>
                         </router-link>
                     </div>
                     <!-- button show mobile menu -->
