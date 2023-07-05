@@ -2,7 +2,7 @@
 <section class="page-container">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a class="flex m-2 items-center mb-6 text-3xl font-semibold text-gray-900 ">
-            <img class="w-auto h-10 mr-2 " src="../assets/KMITL_PCC.png" alt="logo">
+            <img class="w-auto h-10 mr-2 " src="../assets/KMITL_PCC.png">
             | Sing in
         </a>
         <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">

@@ -1,14 +1,14 @@
 <template>
   <section class="pagr-container">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
-          <img class="w-auto h-10 mr-2" src="../assets/KMITL_PCC.png" alt="logo">
+      <a class="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
+          <img class="w-auto h-10 mr-2" src="../assets/KMITL_PCC.png" >
           | Sing up
       </a>
       <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
-                  Create and account
+                  Create account
               </h1>
               <form class="space-y-4 md:space-y-6" action="#">
                   <div>
@@ -33,21 +33,11 @@
                   </div>
                   <button 
                     type="submit" 
-                    class="w-full 
-                         text-white 
-                         bg-black 
-                           hover:bg-neutral-900
-                           focus:ring-4 
-                           focus:outline-none 
-                           focus:ring-primary-300 
-                           font-medium 
-                           rounded-lg
-                            text-sm 
-                            px-5 
-                            py-2.5 
-                            text-center">Create an account</button>
+                    class="w-full text-white bg-black hover:bg-indigo-950 focus:ring-4 focus:outline-none focus:ring-primary-300 
+                           font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create an account</button>
                   <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                      Already have an account? <a href="#" class="font-medium text-primary-600 hover:underline">Sing in here</a>
+                      Already have an account? 
+                      <router-link to="/singin"><a class="font-medium text-indigo-800 hover:underline">Sing in here</a></router-link>
                   </p>
               </form>
           </div>
