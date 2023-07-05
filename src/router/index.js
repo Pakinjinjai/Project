@@ -7,7 +7,7 @@ const routes = [
     component: () => import('../views/router-template.vue'),
     children : [
       {
-        path: 'home',
+        path: '/home',
         name: 'home',
         component: () => import('../views/HomeView.vue')
       },
