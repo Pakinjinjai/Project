@@ -1,12 +1,10 @@
 <template>
-    <div>
-      <div class="grid-container">
-        <div class="wrapper-container">
-          <img src="" alt="">
-        </div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+    <div class="grid-container">
+      <div class="wrapper">
+            <img src="../assets/images.png" width="138">
+      </div>
+      <div class="wrapper">
+            <img src="" width="138">
       </div>
     </div>
 </template>
@@ -33,16 +31,16 @@ export default {
   border: 1px solid black;
   text-align: center;
   font-size: 12px;
-    .wrapper {
-      overflow: hidden;
-      .wrapper img{
-        width: 100%; height: 100%;
-        transition: scale 400ms;
-        .wrapper:hover img{
-          scale: 120%;
-        }
-      }
-    }
   }
+}
+.wrapper{
+  width: 138px;
+  overflow: hidden;
+}
+.wrapper img {
+  transition: scale 400ms;
+}
+.wrapper:hover img {
+  scale: 120%;
 }
 </style>
