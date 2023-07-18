@@ -1,10 +1,11 @@
 <template>
     <div class="grid-container">
       <div class="wrapper">
-            <img src="../assets/images.png" width="138">
+            <img src="../assets/images.png">
+            <p class="p">000</p>
       </div>
       <div class="wrapper">
-            <img src="" width="138">
+            <img src="../assets/NIKE2.jpeg">1
       </div>
     </div>
 </template>
@@ -21,12 +22,12 @@ export default {
 .grid-container {
   display: grid;
   grid-template-columns: auto auto ;
-  gap: 15px;
+  grid-row: 15px;
   background-color: white;
   padding: 15px;
   margin-left: 20%;
   margin-right: 20%;
-  .wrapper-container {
+  div {
   background-color: white;
   border: 1px solid black;
   text-align: center;
@@ -34,13 +35,17 @@ export default {
   }
 }
 .wrapper{
-  width: 138px;
   overflow: hidden;
 }
 .wrapper img {
+  max-width: 10dvi;
+  height: auto;
   transition: scale 400ms;
 }
 .wrapper:hover img {
   scale: 120%;
+}
+.p {
+  display: contents;
 }
 </style>
