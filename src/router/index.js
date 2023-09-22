@@ -21,10 +21,15 @@ const routes = [
         name:'setting',
         component:()=>import('../views/SettingView.vue')
       },
+      // {
+      //   path:'/contact',
+      //   name:'contact',
+      //   component:()=>import('../views/ContactView.vue')
+      // },
       {
-        path:'/contact',
-        name:'contact',
-        component:()=>import('../views/ContactView.vue')
+        path:'/account',
+        name:'account',
+        component:()=>import('../views/Account.vue')
       },
     ]
   },

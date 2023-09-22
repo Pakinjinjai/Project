@@ -1,4 +1,30 @@
-<template>
+<template lang="">
+  <div class="bg-blue-600">
+    <div>
+      <input type="text" name="search" placeholder="Search.." class="text-right">
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  
+}
+</script>
+
+<style scope>
+  input[type=text] {
+  width: 130px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+  width: 100%;
+}
+</style>
+<!-- <template>
     <div class="grid-container">
       <div class="wrapper">
             <img src="../assets/images.png">
@@ -48,4 +74,4 @@ export default {
 .p {
   display: contents;
 }
-</style>
+</style> -->

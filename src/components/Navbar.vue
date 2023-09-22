@@ -23,14 +23,13 @@
                             />
                             </svg>
                             <router-link to="/home">
-                                <span class="text-2xl font-extrabold text-white">KKK</span>
+                                <span class="text-2xl font-extrabold text-white">Home</span>
                             </router-link>
                         </a>
                         <!-- menu -->
                         <div class="hidden md:flex items-center space-x-1">
                             <router-link to="/about">
                                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg">About</a>
-
                             </router-link>
                             <router-link to="/contact">
                                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg">Contact</a>
@@ -38,6 +37,10 @@
                             <router-link to="/setting">
                                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg">Setting</a>
                             </router-link>
+                            <router-link to="/account">
+                                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg">Account</a>
+                            </router-link>
+                            
                         </div>
                     </div>
                     <!-- login -->
