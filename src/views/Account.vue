@@ -32,7 +32,6 @@
           </div>
 
           <div class="col-50">
-            <h3>ID card</h3>
             <div class="icon-container">
               <i class="fa fa-cc-visa" style="color:navy;"></i>
               <i class="fa fa-cc-amex" style="color:blue;"></i>
