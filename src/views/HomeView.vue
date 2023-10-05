@@ -192,11 +192,6 @@
           เพื่อให้มีสุขภาพสมบูรณ์แข็งแรงเหมาะสมกับวัย
         </p>
       </div>
-      <!-- <div class="article">
-        <label>สวัสดีครับ</label>
-        <h1 class="heading">โรคที่เราสามารถพบได้บ่อยในผู้สูงอายุ</h1>
-        <p>อายุ31</p>
-      </div> -->
     </div>
   </div>
 </template>
@@ -229,9 +224,13 @@ export default {};
       height: auto;
       padding: 50px;
       .card_title {
+        margin-top: 25px;
         font-style: normal;
         font-size: x-large;
       }
+      .card_text{
+          margin-top: 25px;
+        }
   }
  }
 }
