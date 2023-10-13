@@ -110,6 +110,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "SingupView",
   data() {
@@ -132,7 +133,6 @@ export default {
         },
       })
         .then((res) => {
-          localStorage.setItem("accessToken", res.data.accessToken);
           this.$router.push("/signin");
           console.log(res.data);
         })

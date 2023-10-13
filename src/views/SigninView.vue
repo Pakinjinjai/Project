@@ -117,7 +117,7 @@ export default {
             <p class="text-sm font-light text-gray-600">
               Don’t have an account yet?
               <router-link to="/signup"
-                ><a href="#" class="font-medium text-indigo-800 hover:underline"
+                ><a class="font-medium text-indigo-800 hover:underline"
                   >Sign up</a
                 ></router-link
               >
