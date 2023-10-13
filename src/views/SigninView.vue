@@ -12,7 +12,7 @@ export default {
   },
 
   methods: {
-    signIn() {
+    SIGN_IN() {
         axios({
         method: "post",
         url: "http://localhost:3000/api/v1/users/login",
@@ -27,8 +27,7 @@ export default {
           console.log(res.data);
         })
         .catch((error) => {
-
-        
+            console.log(error);
         });
     }
   },
@@ -61,7 +60,8 @@ export default {
                 >Your email</label
               >
               <input
-                v-model=formData.email
+                v-model="formData.email"
+                v-on:keyup.enter="SIGN_IN()"
                 type="email"
                 name="email"
                 id="email"
@@ -77,7 +77,8 @@ export default {
                 >Password</label
               >
               <input
-                v-model=formData.password
+                v-model="formData.password"
+                v-on:keyup.enter="SIGN_IN()"
                 type="password"
                 name="password"
                 id="password"
@@ -108,14 +109,14 @@ export default {
               >
             </div>
             <button
-                @click="signIn"
+                v-on:click="SIGN_IN()"
                 class="w-full text-white bg-black hover:bg-indigo-950 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
                 Sign in
               </button>
             <p class="text-sm font-light text-gray-600">
               Don’t have an account yet?
-              <router-link to="/singup"
+              <router-link to="/signup"
                 ><a href="#" class="font-medium text-indigo-800 hover:underline"
                   >Sign up</a
                 ></router-link

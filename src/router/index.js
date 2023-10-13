@@ -34,14 +34,14 @@ const routes = [
     ]
   },
   {
-    path:'/singin',
-    name:'singin',
-    component:()=>import('../views/SinginView.vue'),
+    path:'/signin',
+    name:'signin',
+    component:()=>import('../views/SigninView.vue'),
   },
   {
-    path:'/singup',
-    name:'singup',
-    component:()=>import('../views/SingupView.vue')
+    path:'/signup',
+    name:'signup',
+    component:()=>import('../views/SignupView.vue')
   },
 ]
 
