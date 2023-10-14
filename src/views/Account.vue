@@ -9,8 +9,8 @@
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               ภาคิน จิ้นจ้าย
             </h1>
-            <h3 class="text-gray-600 font-lg text-semibold leading-6">
-              Owner at Her Company Inc.
+            <h3 class="text-gray-900 font-lg text-semibold leading-6">
+              ประวัติการแพ้ยา
             </h3>
             <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -131,17 +131,13 @@
             >
               <span clas="text-green-500">
                 <svg
-                  class="h-5"
                   xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  width="24"
+                  height="24"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    d="M12 3c2.131 0 4 1.73 4 3.702 0 2.05-1.714 4.941-4 8.561-2.286-3.62-4-6.511-4-8.561 0-1.972 1.869-3.702 4-3.702zm0-2c-3.148 0-6 2.553-6 5.702 0 3.148 2.602 6.907 6 12.298 3.398-5.391 6-9.15 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm8 6h-3.135c-.385.641-.798 1.309-1.232 2h3.131l.5 1h-4.264l-.344.544-.289.456h.558l.858 2h-7.488l.858-2h.479l-.289-.456-.343-.544h-2.042l-1.011-1h2.42c-.435-.691-.848-1.359-1.232-2h-3.135l-4 8h24l-4-8zm-12.794 6h-3.97l1.764-3.528 1.516 1.528h1.549l-.859 2zm8.808-2h3.75l1 2h-3.892l-.858-2z"
                   />
                 </svg>
               </span>
@@ -150,23 +146,35 @@
             <div class="text-gray-700">
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Province:</div>
-                  <div class="px-4 py-2">นครศรีธรรมราช</div>
+                  <div class="px-4 py-2 font-semibold">House No:</div>
+                  <div class="px-4 py-2">86/29</div>
+                </div>
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">Moo:</div>
+                  <div class="px-4 py-2">-</div>
+                </div>
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">Soi:</div>
+                  <div class="px-4 py-2">ทุ่งข่า11</div>
+                </div>
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">Road:</div>
+                  <div class="px-4 py-2">กะโรม</div>
+                </div>
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">Tambon:</div>
+                  <div class="px-4 py-2">โพธิ์เสด็จ</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">District:</div>
                   <div class="px-4 py-2">เมื่องนครศรีธรรมราช</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Subdistrict:</div>
-                  <div class="px-4 py-2">โพธิ์เสด็จ</div>
+                  <div class="px-4 py-2 font-semibold">Province:</div>
+                  <div class="px-4 py-2">นครศรีธรรมราช</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">House No:</div>
-                  <div class="px-4 py-2">86/29</div>
-                </div>
-                <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Zip code</div>
+                  <div class="px-4 py-2 font-semibold">Postal Code</div>
                   <div class="px-4 py-2">80000</div>
                 </div>
               </div>
@@ -185,21 +193,18 @@
                 >
                   <span clas="text-green-500">
                     <svg
-                      class="h-5"
+                      width="24"
+                      height="24"
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        d="M17.5 10c3.587 0 6.5 2.913 6.5 6.5s-2.913 6.5-6.5 6.5-6.5-2.913-6.5-6.5 2.913-6.5 6.5-6.5zm-7.802 9.864l-.363.635c-1.381 2.391-4.443 3.211-6.834 1.831-2.391-1.381-3.211-4.443-1.831-6.834l6.868-11.995c.925-1.602 2.606-2.499 4.333-2.501.85-.001 1.712.215 2.501.67 2.245 1.297 3.106 4.076 2.058 6.39-.979.125-1.906.416-2.753.844l.793-1.401c.828-1.434.336-3.272-1.099-4.1-1.434-.828-3.272-.336-4.1 1.099l-2.866 5.063 3.975 2.295c-.363.557-.663 1.16-.889 1.797l-4.086-2.359-3.002 5.199c-.828 1.434-.336 3.272 1.099 4.1 1.434.828 3.272.336 4.1-1.099l1.42-2.459c.063.998.298 1.949.676 2.825zm10.882-6.644l-4.381 7.589c.412.124.849.191 1.301.191 2.484 0 4.5-2.016 4.5-4.5 0-1.293-.546-2.459-1.42-3.28zm-1.725-1.012c-.428-.135-.883-.208-1.355-.208-2.484 0-4.5 2.016-4.5 4.5 0 1.313.563 2.495 1.461 3.318l4.394-7.61z"
                       />
                     </svg>
                   </span>
-                  <span class="tracking-wide">Experience</span>
+                  <span class="tracking-wide">รายการยาและปริมาณยาที่ทาน</span>
                 </div>
               </div>
               <div>
@@ -208,26 +213,18 @@
                 >
                   <span clas="text-green-500">
                     <svg
-                      class="h-5"
+                      width="24"
+                      height="24"
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
                     >
-                      <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
                       <path
-                        fill="#fff"
-                        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                      />
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                        d="M15.131 5s1.692 2.025 2.268 2.711c1.213 1.461 1.573 2.31 1.601 4.161v10.128c-.015 1.094-.859 1.961-1.925 1.999-3.368.043-6.736.043-10.104 0-1.073-.038-1.964-.917-1.971-1.999v-10.134c.009-2.04.587-2.921 1.948-4.508.591-.689 1.941-2.358 1.941-2.358h6.242zm1.869 15h-10v2h10v-2zm-4-7h-2v2h-2v2h2v2h2v-2h2.023l-.023-2h-2v-2zm1.245-6h-4.457c-.634.787-1.224 1.522-1.489 1.857-1.026 1.3-1.293 1.807-1.299 3.143h10c-.013-1.346-.184-1.757-1.137-3.008-.268-.353-.929-1.157-1.618-1.992zm1.755-3h-8v-3c0-.552.448-1 1-1h6c.552 0 1 .448 1 1v3z"
                       />
                     </svg>
                   </span>
-                  <span class="tracking-wide">Education</span>
+                  <span class="tracking-wide">โรคประจำตัว</span>
                 </div>
                 <div>ประวัติการแพ้ยา</div>
               </div>

@@ -96,7 +96,7 @@
             </button>
             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
               Already have an account?
-              <router-link to="/singin"
+              <router-link to="/signin"
                 ><a class="font-medium text-indigo-800 hover:underline"
                   >Sing in here</a
                 ></router-link
