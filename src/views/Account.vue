@@ -97,23 +97,23 @@
             <div class="text-gray-700">
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">First Name</div>
+                  <div class="px-4 py-2 font-semibold">First Name:</div>
                   <div class="px-4 py-2">ภาคิน</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Last Name</div>
+                  <div class="px-4 py-2 font-semibold">Last Name:</div>
                   <div class="px-4 py-2">จิ้นจ้าย</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Gender</div>
+                  <div class="px-4 py-2 font-semibold">Gender:</div>
                   <div class="px-4 py-2">ชาย</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Phone number</div>
+                  <div class="px-4 py-2 font-semibold">Phone number:</div>
                   <div class="px-4 py-2">0652358039</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Email.</div>
+                  <div class="px-4 py-2 font-semibold">Email:</div>
                   <div class="px-4 py-2">
                     <a class="text-blue-800" href="mailto:jane@example.com"
                       >63201161@kmitl.ac.th</a
@@ -121,7 +121,7 @@
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Birthday</div>
+                  <div class="px-4 py-2 font-semibold">Birthday:</div>
                   <div class="px-4 py-2">Feb 06, 1998</div>
                 </div>
               </div>
@@ -174,7 +174,7 @@
                   <div class="px-4 py-2">นครศรีธรรมราช</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Postal Code</div>
+                  <div class="px-4 py-2 font-semibold">Postal Code:</div>
                   <div class="px-4 py-2">80000</div>
                 </div>
               </div>
