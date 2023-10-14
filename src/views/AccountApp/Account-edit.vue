@@ -1,4 +1,18 @@
 <template>
+  <button
+    type="button"
+    class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+  >
+    Done
+  </button>
+  <router-link to="/account-info">
+    <button
+      type="button"
+      class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+    >
+      Cancel
+    </button>
+  </router-link>
   <div class="bg-gray-100">
     <div class="container mx-auto my-5 p-5">
       <div class="md:flex no-wrap md:-mx-2">
@@ -7,16 +21,27 @@
           <!-- Profile Card -->
           <div class="bg-white p-3 border-t-4 border-green-400">
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              ภาคิน จิ้นจ้าย
+              ID CARD
             </h1>
+            <input
+              type="email"
+              name="idCard"
+              id="idCard"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+              placeholder="ID card code"
+              required=""
+            />
             <h3 class="text-gray-900 font-lg text-semibold leading-6">
               ประวัติการแพ้ยา
             </h3>
-            <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur
-              non deserunt
-            </p>
+            <input
+              type="email"
+              name="idCard"
+              id="idCard"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+              placeholder="ID card code"
+              required=""
+            />
           </div>
           <!-- End of profile card -->
           <div class="my-4"></div>
@@ -98,11 +123,11 @@
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">First Name:</div>
-                  <div class="px-4 py-2">ภาคิน</div>
+                  <div class="px-4 py-2">{{ profileData.firstname }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Last Name:</div>
-                  <div class="px-4 py-2">จิ้นจ้าย</div>
+                  <div class="px-4 py-2">{{ profileData.lastname }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Gender:</div>
@@ -110,19 +135,17 @@
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Phone number:</div>
-                  <div class="px-4 py-2">0652358039</div>
+                  <div class="px-4 py-2">{{ profileData.phoneNo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Email:</div>
                   <div class="px-4 py-2">
-                    <a class="text-blue-800" href="mailto:jane@example.com"
-                      >63201161@kmitl.ac.th</a
-                    >
+                    <a>{{ profileData.mail }}</a>
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Birthday:</div>
-                  <div class="px-4 py-2">Feb 06, 1998</div>
+                  <div class="px-4 py-2">{{ profileData.birtdate }}</div>
                 </div>
               </div>
             </div>
@@ -147,35 +170,43 @@
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">House No:</div>
-                  <div class="px-4 py-2">86/29</div>
+                  <div class="px-4 py-2">{{ profileAddress.houseNo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Moo:</div>
-                  <div class="px-4 py-2">-</div>
+                  <div class="px-4 py-2">{{ profileAddress.moo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Soi:</div>
-                  <div class="px-4 py-2">ทุ่งข่า11</div>
+                  <div class="px-4 py-2">{{ profileAddress.soi }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Road:</div>
-                  <div class="px-4 py-2">กะโรม</div>
+                  <div class="px-4 py-2">{{ profileAddress.road }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Tambon:</div>
-                  <div class="px-4 py-2">โพธิ์เสด็จ</div>
+                  <div class="px-4 py-2">
+                    {{ profileAddress.subDistrict }}
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">District:</div>
-                  <div class="px-4 py-2">เมื่องนครศรีธรรมราช</div>
+                  <div class="px-4 py-2">
+                    {{ profileAddress.district }}
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Province:</div>
-                  <div class="px-4 py-2">นครศรีธรรมราช</div>
+                  <div class="px-4 py-2">
+                    {{ profileAddress.province }}
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Postal Code:</div>
-                  <div class="px-4 py-2">80000</div>
+                  <div class="px-4 py-2">
+                    {{ profileAddress.postalCode }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -206,6 +237,9 @@
                   </span>
                   <span class="tracking-wide">รายการยาและปริมาณยาที่ทาน</span>
                 </div>
+                <div>
+                  {{ profileData.noteMedicine }}
+                </div>
               </div>
               <div>
                 <div
@@ -226,7 +260,9 @@
                   </span>
                   <span class="tracking-wide">โรคประจำตัว</span>
                 </div>
-                <div>ประวัติการแพ้ยา</div>
+                <div class="list-inside space-y-2">
+                  {{ profileData.noteDisease }}
+                </div>
               </div>
             </div>
             <!-- End of Experience and education grid -->
@@ -244,21 +280,26 @@ export default {
   name: "SinginView",
   data() {
     return {
-      formData: {},
+      profileData: {},
+      profileAddress: {},
     };
   },
-
+  created() {
+    this.showInfo();
+  },
   methods: {
-    SIGN_IN() {
+    showInfo() {
       axios({
         method: "get",
         url: "http://localhost:3000/api/v1/profile",
         headers: {
-          Authorization: "Bearer " + JSON.parse(localStorage.getItem("token")),
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
       })
         .then((res) => {
-          console.log(res.data);
+          this.profileData = res.data.user;
+          this.profileAddress = res.data.user.address;
+          console.log(this.profileData.address);
         })
         .catch((error) => {
           console.log(error);

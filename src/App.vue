@@ -1,23 +1,25 @@
 <template>
   <div>
-    <router-view/>
-    <Footer/>
+    <router-view />
+    <Footer />
   </div>
-  </template>
+</template>
 
 <script>
-import Footer from '@/components/Bottombar.vue'
+import Footer from "@/components/Bottombar.vue";
 
 export default {
-  components: { 
+  components: {
     Footer,
-},
-
-}
+  },
+  created() {
+    this.$router.push("/home");
+  },
+};
 </script>
 
 <style>
-body{
+body {
   background-color: whitesmoke;
 }
 </style>

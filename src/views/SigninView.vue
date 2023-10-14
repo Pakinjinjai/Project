@@ -1,35 +1,46 @@
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "SinginView",
-  data(){
-    return{
-        formData: {
-            email: "",
-            password: "",
+  data() {
+    return {
+      formData: {
+        email: "",
+        password: "",
       },
     };
   },
 
+  created() {
+    const existToken = localStorage.getItem("accessToken");
+    if (existToken == null) {
+      this.$router.push("/signin");
+    } else {
+      this.$router.push("/home");
+    }
+  },
   methods: {
     SIGN_IN() {
-        axios({
+      axios({
         method: "post",
         url: "http://localhost:3000/api/v1/users/login",
         data: {
-            email: this.formData.email,
-            password : this.formData.password
-        }
-      })
-        .then((res) => {
-            localStorage.setItem("accessToken",res.data.accessToken);
-            this.$router.push("/home");
+          email: this.formData.email,
+          password: this.formData.password,
+        },
+      }).then((res) => {
+        if (res.status != 200) {
           console.log(res.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    }
+          console.log(res.status);
+          window.location.reload();
+        } else {
+          console.log(res.data);
+          console.log(res.status);
+          localStorage.setItem("accessToken", res.data.accessToken);
+          this.$router.push("/home");
+        }
+      });
+    },
   },
 };
 </script>
@@ -87,33 +98,13 @@ export default {
                 required=""
               />
             </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-start mb-4">
-                <div class="flex items-center h-5">
-                  <input
-                    id="remember"
-                    aria-describedby="remember"
-                    type="checkbox"
-                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                    required=""
-                  />
-                </div>
-                <div class="ml-3 text-sm">
-                  <label for="remember" class="text-gray-600"
-                    >Remember me</label
-                  >
-                </div>
-              </div>
-              <a class="text-sm font-medium text-gray-600 hover:underline mb-4"
-                >Forgot password?</a
-              >
-            </div>
+
             <button
-                v-on:click="SIGN_IN()"
-                class="w-full text-white bg-black hover:bg-indigo-950 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-              >
-                Sign in
-              </button>
+              v-on:click="SIGN_IN()"
+              class="w-full text-white bg-black hover:bg-indigo-950 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            >
+              Sign in
+            </button>
             <p class="text-sm font-light text-gray-600">
               Don’t have an account yet?
               <router-link to="/signup"

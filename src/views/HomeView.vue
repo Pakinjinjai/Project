@@ -228,10 +228,10 @@ export default {};
         font-style: normal;
         font-size: x-large;
       }
-      .card_text{
-          margin-top: 25px;
-        }
+      .card_text {
+        margin-top: 25px;
+      }
+    }
   }
- }
 }
 </style>

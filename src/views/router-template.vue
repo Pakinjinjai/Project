@@ -1,24 +1,21 @@
 <template>
-    <Navbar/>
-    <router-view></router-view>
-  </template> 
-  
-  <script>
-import Navbar from '@/components/Navbar.vue';
+  <Navbar />
+  <router-view></router-view>
+</template>
 
-  export default {
-    name: "RouterTemplate",
-    
-    components: {
-        Navbar
-    },
-    data() {
-      return {};
-    },
-    computed: {},
-    methods: {},
-  };
-  </script>
-  
-  <style lang="scss" scoped>
-  </style>
+<script>
+import Navbar from "@/components/Navbar.vue";
+
+export default {
+  name: "RouterTemplate",
+
+  components: {
+    Navbar,
+  },
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {},
+};
+</script>
