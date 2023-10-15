@@ -1,18 +1,4 @@
 <template>
-  <button
-    type="button"
-    class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-  >
-    Done
-  </button>
-  <router-link to="/account-info">
-    <button
-      type="button"
-      class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-    >
-      Cancel
-    </button>
-  </router-link>
   <div class="bg-gray-100">
     <div class="container mx-auto my-5 p-5">
       <div class="md:flex no-wrap md:-mx-2">
@@ -28,7 +14,7 @@
               name="idCard"
               id="idCard"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="ID card code"
+              placeholder="รหัสบัตรประจำตัวประชาชน"
               required=""
             />
             <h3 class="text-gray-900 font-lg text-semibold leading-6">
@@ -39,7 +25,7 @@
               name="idCard"
               id="idCard"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="ID card code"
+              placeholder="ประวัติการแพ้ยา"
               required=""
             />
           </div>
@@ -123,29 +109,92 @@
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">First Name:</div>
-                  <div class="px-4 py-2">{{ profileData.firstname }}</div>
+                  <div class="px-4 py-2">
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="First Name"
+                      required=""
+                    />
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Last Name:</div>
-                  <div class="px-4 py-2">{{ profileData.lastname }}</div>
+                  <div class="px-4 py-2">
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="Last Name"
+                      required=""
+                    />
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Gender:</div>
-                  <div class="px-4 py-2">ชาย</div>
+                  <div class="px-4 py-2 mt-2">
+                    <label class="inline-flex items-center">
+                      <input
+                        type="radio"
+                        class="form-radio"
+                        name="accountType"
+                        value="Male"
+                      />
+                      <span class="ml-2">Male</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6">
+                      <input
+                        type="radio"
+                        class="form-radio"
+                        name="accountType"
+                        value="Female"
+                      />
+                      <span class="ml-2">Female</span>
+                    </label>
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Phone number:</div>
-                  <div class="px-4 py-2">{{ profileData.phoneNo }}</div>
+                  <div class="px-4 py-2">
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="Phone number"
+                      required=""
+                    />
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Email:</div>
                   <div class="px-4 py-2">
-                    <a>{{ profileData.mail }}</a>
+                    <a
+                      ><input
+                        type="email"
+                        name="idCard"
+                        id="idCard"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                        placeholder="Email"
+                        required=""
+                    /></a>
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Birthday:</div>
-                  <div class="px-4 py-2">{{ profileData.birtdate }}</div>
+                  <div class="px-4 py-2">
+                    <input
+                      type="date"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      required=""
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -170,42 +219,106 @@
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">House No:</div>
-                  <div class="px-4 py-2">{{ profileAddress.houseNo }}</div>
+                  <div class="px-4 py-2">
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      required=""
+                    />
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Moo:</div>
-                  <div class="px-4 py-2">{{ profileAddress.moo }}</div>
+                  <div class="px-4 py-2">
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      required=""
+                    />
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Soi:</div>
-                  <div class="px-4 py-2">{{ profileAddress.soi }}</div>
+                  <div class="px-4 py-2">
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      required=""
+                    />
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Road:</div>
-                  <div class="px-4 py-2">{{ profileAddress.road }}</div>
+                  <div class="px-4 py-2">
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      required=""
+                    />
+                  </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Tambon:</div>
                   <div class="px-4 py-2">
-                    {{ profileAddress.subDistrict }}
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      required=""
+                    />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">District:</div>
                   <div class="px-4 py-2">
-                    {{ profileAddress.district }}
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      required=""
+                    />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Province:</div>
                   <div class="px-4 py-2">
-                    {{ profileAddress.province }}
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      required=""
+                    />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Postal Code:</div>
                   <div class="px-4 py-2">
-                    {{ profileAddress.postalCode }}
+                    <input
+                      type="email"
+                      name="idCard"
+                      id="idCard"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      required=""
+                    />
                   </div>
                 </div>
               </div>
@@ -238,7 +351,14 @@
                   <span class="tracking-wide">รายการยาและปริมาณยาที่ทาน</span>
                 </div>
                 <div>
-                  {{ profileData.noteMedicine }}
+                  <input
+                    type="email"
+                    name="idCard"
+                    id="idCard"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="รหัสบัตรประจำตัวประชาชน"
+                    required=""
+                  />
                 </div>
               </div>
               <div>
@@ -261,12 +381,33 @@
                   <span class="tracking-wide">โรคประจำตัว</span>
                 </div>
                 <div class="list-inside space-y-2">
-                  {{ profileData.noteDisease }}
+                  <input
+                    type="email"
+                    name="idCard"
+                    id="idCard"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="รหัสบัตรประจำตัวประชาชน"
+                    required=""
+                  />
                 </div>
               </div>
             </div>
             <!-- End of Experience and education grid -->
           </div>
+          <button
+            type="button"
+            class="ml-80 mt-7 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          >
+            Done
+          </button>
+          <router-link to="/account-info">
+            <button
+              type="button"
+              class="mt-7 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            >
+              Cancel
+            </button>
+          </router-link>
           <!-- End of profile tab -->
         </div>
       </div>

@@ -67,7 +67,7 @@
       </div>
     </div>
     <!-- Mobile Menu -->
-    <div class="md:hidden bg-gray-800" v-show="showMobileMenu">
+    <!-- <div class="md:hidden bg-gray-800" v-show="showMobileMenu">
       <router-link to="/home"
         ><a
           class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100"
@@ -86,7 +86,7 @@
           >Setting</a
         ></router-link
       >
-    </div>
+    </div> -->
   </nav>
 </template>
 
