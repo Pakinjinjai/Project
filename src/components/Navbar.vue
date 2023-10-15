@@ -24,9 +24,9 @@
                   >Contact</a
                 >
               </router-link>
-              <router-link to="/setting">
+              <router-link to="/service">
                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
-                  >Setting</a
+                  >Service</a
                 >
               </router-link>
               <router-link to="/account-info">

@@ -7,27 +7,27 @@
           <!-- Profile Card -->
           <div class="bg-white p-3 border-t-4 border-green-400">
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              ID CARD
+              Identification Number
             </h1>
             <input
               type="email"
               name="idCard"
               id="idCard"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-              placeholder="รหัสบัตรประจำตัวประชาชน"
+              placeholder="Identification Number"
               required=""
             />
             <h3 class="text-gray-900 font-lg text-semibold leading-6">
               ประวัติการแพ้ยา
             </h3>
-            <input
-              type="email"
-              name="idCard"
-              id="idCard"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
               placeholder="ประวัติการแพ้ยา"
-              required=""
-            />
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+            ></textarea>
           </div>
           <!-- End of profile card -->
           <div class="my-4"></div>
@@ -76,6 +76,22 @@
                 <a href="#" class="text-main-color">queue</a>
               </div>
             </div>
+          </div>
+          <div class="flex justify-center p-2">
+            <button
+              type="button"
+              class="mt-7 text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            >
+              Done
+            </button>
+            <router-link to="/account-info">
+              <button
+                type="button"
+                class="mt-7 focus:outline-none text-white bg-red-700 hover:bg-orange-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              >
+                Cancel
+              </button>
+            </router-link>
           </div>
           <!-- End of friends card -->
         </div>
@@ -225,7 +241,7 @@
                       name="idCard"
                       id="idCard"
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      placeholder="House no"
                       required=""
                     />
                   </div>
@@ -238,7 +254,7 @@
                       name="idCard"
                       id="idCard"
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      placeholder="Moo"
                       required=""
                     />
                   </div>
@@ -251,7 +267,7 @@
                       name="idCard"
                       id="idCard"
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      placeholder="Soi"
                       required=""
                     />
                   </div>
@@ -264,7 +280,7 @@
                       name="idCard"
                       id="idCard"
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      placeholder="Road"
                       required=""
                     />
                   </div>
@@ -277,7 +293,7 @@
                       name="idCard"
                       id="idCard"
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      placeholder="Tambon"
                       required=""
                     />
                   </div>
@@ -290,7 +306,7 @@
                       name="idCard"
                       id="idCard"
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      placeholder="District"
                       required=""
                     />
                   </div>
@@ -303,7 +319,7 @@
                       name="idCard"
                       id="idCard"
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      placeholder="Province"
                       required=""
                     />
                   </div>
@@ -316,7 +332,7 @@
                       name="idCard"
                       id="idCard"
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      placeholder="Postal code"
                       required=""
                     />
                   </div>
@@ -331,7 +347,7 @@
           <!-- Experience and education -->
           <div class="bg-white p-3 shadow-sm rounded-sm">
             <div class="grid grid-cols-2">
-              <div>
+              <div class="m-1">
                 <div
                   class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
                 >
@@ -351,17 +367,17 @@
                   <span class="tracking-wide">รายการยาและปริมาณยาที่ทาน</span>
                 </div>
                 <div>
-                  <input
-                    type="email"
-                    name="idCard"
-                    id="idCard"
+                  <textarea
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="10"
+                    placeholder="รายการยาและปริมาณยาที่ทาน"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="รหัสบัตรประจำตัวประชาชน"
-                    required=""
-                  />
+                  ></textarea>
                 </div>
               </div>
-              <div>
+              <div class="m-1">
                 <div
                   class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
                 >
@@ -381,33 +397,20 @@
                   <span class="tracking-wide">โรคประจำตัว</span>
                 </div>
                 <div class="list-inside space-y-2">
-                  <input
-                    type="email"
-                    name="idCard"
-                    id="idCard"
+                  <textarea
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="10"
+                    placeholder="โรคประจำตัว"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="รหัสบัตรประจำตัวประชาชน"
-                    required=""
-                  />
+                  ></textarea>
                 </div>
               </div>
             </div>
             <!-- End of Experience and education grid -->
           </div>
-          <button
-            type="button"
-            class="ml-80 mt-7 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-          >
-            Done
-          </button>
-          <router-link to="/account-info">
-            <button
-              type="button"
-              class="mt-7 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-            >
-              Cancel
-            </button>
-          </router-link>
+
           <!-- End of profile tab -->
         </div>
       </div>

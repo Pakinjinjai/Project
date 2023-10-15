@@ -213,7 +213,9 @@
                   </span>
                   <span class="tracking-wide">รายการยาและปริมาณยาที่ทาน</span>
                 </div>
-                <div>
+                <div
+                  class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                >
                   {{ profileData.noteMedicine }}
                 </div>
               </div>
@@ -236,7 +238,9 @@
                   </span>
                   <span class="tracking-wide">โรคประจำตัว</span>
                 </div>
-                <div class="list-inside space-y-2">
+                <div
+                  class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                >
                   {{ profileData.noteDisease }}
                 </div>
               </div>
