@@ -421,20 +421,39 @@
 <script>
 import axios from "axios";
 export default {
-  name: "SinginView",
+  name: "editAccount",
+  components: {},
+  props: {
+    editInfo: Object,
+  },
   data() {
     return {
-      profileData: {},
-      profileAddress: {},
+      formData: {
+        postalCode: "",
+        road: "",
+        soi: "",
+        moo: "",
+        houseNo: "",
+        province: "",
+        subDistrict: "",
+        idCard: "",
+        firstname: "",
+        lastname: "",
+        phoneNo: "",
+        mail: "",
+        noteDisease: "",
+        noteDrug: "",
+        noteMedicine: "",
+      },
     };
   },
   created() {
     this.showInfo();
   },
   methods: {
-    showInfo() {
+    editInfo() {
       axios({
-        method: "get",
+        method: "patch",
         url: "http://localhost:3000/api/v1/profile",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),

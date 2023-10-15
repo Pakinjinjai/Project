@@ -15,7 +15,7 @@
             <h3 class="text-gray-900 font-lg text-semibold leading-6">
               ประวัติการแพ้ยา
             </h3>
-            <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
+            <p>
               {{ profileData.noteDrug }}
             </p>
           </div>
@@ -66,6 +66,16 @@
                 <a href="#" class="text-main-color">queue</a>
               </div>
             </div>
+          </div>
+          <div class="flex justify-center">
+            <router-link to="/account-edit">
+              <button
+                type="button"
+                class="mt-4 focus:outline-none text-white bg-green-950 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              >
+                Edit
+              </button>
+            </router-link>
           </div>
           <!-- End of friends card -->
         </div>
@@ -247,14 +257,16 @@
             </div>
             <!-- End of Experience and education grid -->
           </div>
-          <router-link to="/account-edit">
-            <button
-              type="button"
-              class="ml-80 mt-7 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-            >
-              Edit
-            </button>
-          </router-link>
+          <!-- <div>
+            <router-link to="/account-edit">
+              <button
+                type="button"
+                class="ml-80 mt-7 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              >
+                Edit
+              </button>
+            </router-link>
+          </div> -->
           <!-- End of profile tab -->
         </div>
       </div>
