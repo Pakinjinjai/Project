@@ -37,12 +37,27 @@
             </div>
           </div>
           <!-- login -->
-          <div id="signIn" class="hidden md:flex items-center space-x-1">
+          <div
+            v-if="!token"
+            id="signIn"
+            class="hidden md:flex items-center space-x-1"
+          >
             <router-link to="/signin">
               <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                 >Sign in</a
               >
             </router-link>
+          </div>
+          <div
+            v-else
+            id="signOut"
+            class="hidden md:flex items-center space-x-1"
+          >
+            <a
+              @click="signOut()"
+              class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              >Sign Out</a
+            >
           </div>
           <!-- button show mobile menu -->
           <div class="md:hidden flex items-center">
@@ -97,19 +112,36 @@
 </style>
 
 <script>
-// import { ref } from "vue";
 export default {
   name: "Navbar",
-  created() {
-    const signInele = document.getElementById("signIn");
+  data() {
+    return {
+      token: localStorage.getItem("accessToken"),
+    };
+  },
+  methods: {
+    signOut() {
+      const token = localStorage.getItem("accessToken");
 
-    const existToken = localStorage.getItem("accessToken");
-    if (existToken) {
-      console.log(existToken);
-      console.log(signInele);
-      //   signInele.classList.add("signInhide");
-    }
+      if (token) {
+        localStorage.removeItem("accessToken");
+        this.token = null;
+
+        // อัปเดตการแสดงผลทันที
+        this.$nextTick(() => {
+          const signInElement = document.getElementById("signIn");
+          const signOutElement = document.getElementById("signOut");
+
+          if (signInElement) {
+            signInElement.style.display = "block";
+          }
+
+          if (signOutElement) {
+            signOutElement.style.display = "none";
+          }
+        });
+      }
+    },
   },
 };
-// const showMobileMenu = ref(false);
 </script>
