@@ -47,6 +47,17 @@
         choose
       </button>
     </article>
+    <div class="cardq">
+      <img src="@/assets/card.jpg" alt="card.jpg">
+      <div>
+        <h2>บัตรเเสดงคิวของท่าน</h2>
+        <h3>นาย สมชาย ใจกล้า</h3>
+        <p>
+          กรุณามาตามนัดหมาย
+        </p>
+        <button>summit</button>
+      </div>
+    </div>
   </body>
 </template>
 
@@ -59,18 +70,18 @@ export default {};
   box-sizing: border-box;
 }
 
-/* body {
+body {
   display: flex;
   align-items: center;
-  justify-content: row;
+  justify-content: center;
   flex-direction: column;
-  margin: 0px;
+  margin: 0;
   padding: 60px 0;
-  gap: 0px;
+  gap: 16px;
   color: #36393f;
   background: #ffecec;
   font-family: "poppins";
-} */
+}
 
 p, h2 { margin:0; }
 
@@ -78,12 +89,12 @@ p, h2 { margin:0; }
 .card {
   display: grid;
   place-items: center;
-  gap: 10px;
-  order:2;
-  width: 75%;
+  /* gap: 10px; */
+  width: 100%;
   margin: 0 auto;
   border-radius: 6px;
-  /* padding: 50px; */
+  padding: 16px;
+  border-color: red;
   background: #ffffff;
 }
 
@@ -107,7 +118,6 @@ p, h2 { margin:0; }
 
 .card.three {
   order: 3;
-  justify-content: flex-end; /* จัดตำแหน่งด้านขวา */
 }
 
 
@@ -148,9 +158,9 @@ ul li {
   padding: 6px 0;
 }
 
-ul li img {
+/* ul li img {
   width: 16px;
-}
+} */
 
 .card button {
   display: grid;
@@ -231,6 +241,66 @@ ul li img {
 
   .card.three {
     order: 3;
+  }
+}
+
+.cardq {
+  display: flex;
+  align-items: center;
+  width: 75vw;
+  max-width: 700px;
+  padding: 50px 30px 50px 20px;
+  background:#ffffff;
+  border-radius: 24px;
+}
+
+.cardq img {
+  max-width: 280px;
+  width: 28vw;
+  height: 300px;
+  object-fit: cover;
+  margin-left: -60px;
+  margin-right: 30px;
+  border-radius: inherit;
+  box-shadow: 0 60px 40px rbg(0 0 0 / 8%);
+}
+
+.cardq h3 { color: rgb(0 0 0 / 90%);}
+
+.cardq p { color : rgb(0 0 0 / 70%);}
+
+.cardq button {
+  display: grid;
+  place-items: center;
+  min-width: 200px;
+  border: 2px solid #d8021e;
+  border-radius: 6px;
+  padding: 14px 0;
+  background: transparent;
+  color: #0f71ff;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.cardq button:hover {
+  background: #e6000f; 
+  color: #ffffff; 
+}
+
+@media (width <= 740px) {
+  .cardq {
+    flex-direction: column;
+    text-align: center;
+    margin: 0 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%
+  }
+
+  .cardq img {
+    margin: -100px 0 30px 0;
+    width: 100%;
+    max-width: 1000px;
   }
 }
 </style>
