@@ -424,50 +424,11 @@ export default {
   name: "editAccount",
   components: {},
   props: {
-    editInfo: Object,
   },
   data() {
     return {
-      formData: {
-        postalCode: "",
-        road: "",
-        soi: "",
-        moo: "",
-        houseNo: "",
-        province: "",
-        subDistrict: "",
-        idCard: "",
-        firstname: "",
-        lastname: "",
-        phoneNo: "",
-        mail: "",
-        noteDisease: "",
-        noteDrug: "",
-        noteMedicine: "",
-      },
+      formData: {},
     };
-  },
-  created() {
-    this.showInfo();
-  },
-  methods: {
-    editInfo() {
-      axios({
-        method: "patch",
-        url: "http://localhost:3000/api/v1/profile",
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("accessToken"),
-        },
-      })
-        .then((res) => {
-          this.profileData = res.data.user;
-          this.profileAddress = res.data.user.address;
-          console.log(this.profileData.address);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
   },
 };
 </script>
