@@ -31,13 +31,13 @@ export default {
       }).then((res) => {
         if (res.status != 200) {
           console.log(res.data);
-          // console.log(res.status);
-          window.location.reload();
+          console.log(res.status);
         } else {
           console.log(res.data);
           console.log(res.status);
           localStorage.setItem("accessToken", res.data.accessToken);
           this.$router.push("/");
+          window.location.reload();
         }
       });
     },

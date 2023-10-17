@@ -37,79 +37,32 @@
             </div>
           </div>
           <!-- login -->
-          <div
-            v-if="!token"
-            id="signIn"
-            class="hidden md:flex items-center space-x-1"
-          >
+          <div v-if="!token" id="signIn" class="items-center md:flex space-x-1">
             <router-link to="/signin">
-              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              <a
+                id="signIn"
+                class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+                style="display: block; align-items: center; height: 100%"
                 >Sign in</a
               >
             </router-link>
           </div>
-          <div
-            v-else
-            id="signOut"
-            class="hidden md:flex items-center space-x-1"
-          >
+          <div v-if="token" id="signOut" class="items-center space-x-1">
             <a
-              @click="signOut()"
+              id="signOut"
+              v-on:click="signOut()"
               class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              style="display: flex; align-items: center; height: 100%"
               >Sign Out</a
             >
-          </div>
-          <!-- button show mobile menu -->
-          <div class="md:hidden flex items-center">
-            <button @click="showMobileMenu = !showMobileMenu" class="py-5 px-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6 text-indigo-200"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            </button>
           </div>
         </div>
       </div>
     </div>
-    <!-- Mobile Menu -->
-    <!-- <div class="md:hidden bg-gray-800" v-show="showMobileMenu">
-      <router-link to="/home"
-        ><a
-          class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100"
-          >Home</a
-        ></router-link
-      >
-      <router-link to="/about"
-        ><a
-          class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100"
-          >About</a
-        ></router-link
-      >
-      <router-link to="/setting"
-        ><a
-          class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100"
-          >Setting</a
-        ></router-link
-      >
-    </div> -->
   </nav>
 </template>
 
-<style lang="scss" scoped>
-.signInhide {
-  display: none;
-}
-</style>
+<style lang="scss" scoped></style>
 
 <script>
 export default {
@@ -120,27 +73,28 @@ export default {
     };
   },
   methods: {
-    signOut() {
+    hideShowEle() {
       const token = localStorage.getItem("accessToken");
+      // อัปเดตการแสดงผลทันที
+      this.$nextTick(() => {
+        const signInElement = document.getElementById("signIn");
+        const signOutElement = document.getElementById("signOut");
 
-      if (token) {
-        localStorage.removeItem("accessToken");
-        this.token = null;
+        if (token) {
+          signInElement.style.display = "none";
+          signOutElement.style.display = "block";
+        }
 
-        // อัปเดตการแสดงผลทันที
-        this.$nextTick(() => {
-          const signInElement = document.getElementById("signIn");
-          const signOutElement = document.getElementById("signOut");
-
-          if (signInElement) {
-            signInElement.style.display = "block";
-          }
-
-          if (signOutElement) {
-            signOutElement.style.display = "none";
-          }
-        });
-      }
+        if (!token) {
+          signOutElement.style.display = "none";
+          signInElement.style.display = "block";
+        }
+      });
+    },
+    signOut() {
+      localStorage.removeItem("accessToken");
+      window.location.reload();
+      this.token = null;
     },
   },
 };
