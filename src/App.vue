@@ -12,9 +12,6 @@ export default {
   components: {
     Footer,
   },
-  created() {
-    this.$router.push("/home");
-  },
 };
 </script>
 
