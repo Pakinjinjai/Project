@@ -47,10 +47,14 @@
               >
             </router-link>
           </div>
-          <div v-if="token" id="signOut" class="items-center space-x-1">
+          <div
+            v-if="token"
+            id="signOut"
+            class="items-center space-x-1"
+            v-on:click="signOut()"
+          >
             <a
               id="signOut"
-              v-on:click="signOut()"
               class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
               style="display: flex; align-items: center; height: 100%"
               >Sign Out</a
