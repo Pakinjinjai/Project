@@ -9,7 +9,7 @@
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               ID CARD
             </h1>
-            <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
+            <h1 class="text-gray-900 font-bold text-lg leading-8 my-1">
               {{ profileData.idCard }}
             </h1>
             <h3 class="text-gray-900 font-lg text-semibold leading-6">
@@ -58,11 +58,7 @@
                 <a href="#" class="text-main-color">queue</a>
               </div>
               <div class="text-center my-2">
-                <img
-                  class="h-16 w-16 rounded-full mx-auto"
-                  src="https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/f04b52da-12f2-449f-b90c-5e4d5e2b1469_361x361.png"
-                  alt=""
-                />
+                <img class="h-16 w-16 rounded-full mx-auto" src="" alt="" />
                 <a href="#" class="text-main-color">queue</a>
               </div>
             </div>
