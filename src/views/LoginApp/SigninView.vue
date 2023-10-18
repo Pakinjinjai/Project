@@ -10,7 +10,6 @@ export default {
       },
     };
   },
-
   created() {
     const existToken = localStorage.getItem("accessToken");
     if (existToken == null) {
@@ -20,26 +19,24 @@ export default {
     }
   },
   methods: {
-    SIGN_IN() {
-      axios({
+    async SIGN_IN() {
+      var res = await axios({
         method: "post",
         url: "http://localhost:3000/api/v1/users/login",
         data: {
           email: this.formData.email,
           password: this.formData.password,
         },
-      }).then((res) => {
-        if (res.status != 200) {
-          console.log(res.data);
-          console.log(res.status);
-        } else {
-          console.log(res.data);
-          console.log(res.status);
-          localStorage.setItem("accessToken", res.data.accessToken);
-          window.location.reload();
-          this.$router.push("/home");
-        }
       });
+      if (res.status != 200) {
+        console.log(res.data);
+        console.log(res.status);
+      } else {
+        console.log(res.data);
+        console.log(res.status);
+        localStorage.setItem("accessToken", res.data.accessToken);
+        window.location.reload();
+      }
     },
   },
 };
