@@ -12,6 +12,9 @@ export default {
   components: {
     Footer,
   },
+  mounted() {
+    this.$router.push("/home");
+  },
 };
 </script>
 
