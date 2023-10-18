@@ -40,8 +40,7 @@
               <div class="flex flex-wrap justify-center">
                 <div
                   class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center"
-                >
-                </div>
+                ></div>
                 <div
                   class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center"
                 ></div>
