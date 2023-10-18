@@ -38,7 +38,7 @@
               class="hidden md:flex items-center space-x-1"
               id="accountEle"
               v-on:click="goToAccountInfo()"
-              v-if="token"
+              v-if="token != null"
             >
               <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                 >Account</a
@@ -47,7 +47,7 @@
           </div>
           <!-- login -->
           <div
-            v-if="!token"
+            v-if="token == null"
             id="signIn"
             lass="items-center md:flex space-x-1"
             v-on:click="signIn()"
@@ -60,7 +60,7 @@
             >
           </div>
           <div
-            v-if="token"
+            v-if="token != null"
             id="signOut"
             class="items-center space-x-1"
             v-on:click="signOut()"
@@ -91,37 +91,22 @@ export default {
   name: "Navbar",
   data() {
     return {
-      token: localStorage.getItem("accessToken"),
+      token: null,
     };
+  },
+  created() {
+    this.checkAccessToken();
   },
   methods: {
     checkAccessToken() {
-      const token = localStorage.getItem("accessToken");
-      const accountElement = document.getElementById("accountEle");
+      this.token = localStorage.getItem("accessToken");
 
-      if (!token) {
-        accountElement.style.display = "none";
-      } else {
-        accountElement.style.display = "block";
-      }
-    },
-    hideShowEle() {
-      const token = localStorage.getItem("accessToken");
-      // อัปเดตการแสดงผลทันที
-      this.$nextTick(() => {
-        const signInElement = document.getElementById("signIn");
-        const signOutElement = document.getElementById("signOut");
-
-        if (token) {
-          signInElement.style.display = "none";
-          signOutElement.style.display = "block";
-        } else {
-          signOutElement.style.display = "none";
-          signInElement.style.display = "block";
-        }
-
-        this.checkAccessToken(); // เรียกใช้ฟังก์ชันเพื่อตรวจสอบ accessToken
-      });
+      // const accountElement = document.getElementById("accountEle");
+      // if (!this.token) {
+      //   accountElement.style.display = "none";
+      // } else {
+      //   accountElement.style.display = "block";
+      // }
     },
     signIn() {
       this.$router.push("/signin");
