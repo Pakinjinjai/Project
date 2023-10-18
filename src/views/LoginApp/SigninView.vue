@@ -16,7 +16,7 @@ export default {
     if (existToken == null) {
       this.$router.push("/signin");
     } else {
-      this.$router.push("/");
+      this.$router.push("/home");
     }
   },
   methods: {
@@ -36,8 +36,8 @@ export default {
           console.log(res.data);
           console.log(res.status);
           localStorage.setItem("accessToken", res.data.accessToken);
-          this.$router.push("/");
           window.location.reload();
+          this.$router.push("/home");
         }
       });
     },

@@ -1,5 +1,7 @@
 <template>
-  <div class="page-container">ดีครับน้อล</div>
+  <div class="page-container">
+    <div class="warpper">Contact Page</div>
+  </div>
 </template>
 
 <script>
@@ -9,8 +11,9 @@ export default {};
 <style lang="scss" scoped>
 @import "@/style/main.scss";
 .page-container {
+  display: grid;
   width: 1440px;
-  background-color: black;
+  background-color: bisque;
   position: relative;
   margin: 0 auto;
   transition: all 0.3s;

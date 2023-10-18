@@ -19,33 +19,45 @@
                   >About</a
                 >
               </router-link>
+            </div>
+            <div class="hidden md:flex items-center space-x-1">
               <router-link to="/contact">
                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                   >Contact</a
                 >
               </router-link>
+            </div>
+            <div class="hidden md:flex items-center space-x-1">
               <router-link to="/service">
                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                   >Service</a
                 >
               </router-link>
-              <router-link to="/account-info">
-                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
-                  >Account</a
-                >
-              </router-link>
+            </div>
+            <div
+              class="hidden md:flex items-center space-x-1"
+              id="accountEle"
+              v-on:click="goToAccountInfo()"
+              v-if="token"
+            >
+              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+                >Account</a
+              >
             </div>
           </div>
           <!-- login -->
-          <div v-if="!token" id="signIn" class="items-center md:flex space-x-1">
-            <router-link to="/signin">
-              <a
-                id="signIn"
-                class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
-                style="display: block; align-items: center; height: 100%"
-                >Sign in</a
-              >
-            </router-link>
+          <div
+            v-if="!token"
+            id="signIn"
+            lass="items-center md:flex space-x-1"
+            v-on:click="signIn()"
+          >
+            <a
+              id="signIn"
+              class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              style="display: block; align-items: center; height: 100%"
+              >Sign in</a
+            >
           </div>
           <div
             v-if="token"
@@ -66,7 +78,13 @@
   </nav>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#accountEle,
+#signOut,
+#signIn {
+  cursor: pointer;
+}
+</style>
 
 <script>
 export default {
@@ -77,6 +95,16 @@ export default {
     };
   },
   methods: {
+    checkAccessToken() {
+      const token = localStorage.getItem("accessToken");
+      const accountElement = document.getElementById("accountEle");
+
+      if (!token) {
+        accountElement.style.display = "none";
+      } else {
+        accountElement.style.display = "block";
+      }
+    },
     hideShowEle() {
       const token = localStorage.getItem("accessToken");
       // อัปเดตการแสดงผลทันที
@@ -87,18 +115,28 @@ export default {
         if (token) {
           signInElement.style.display = "none";
           signOutElement.style.display = "block";
-        }
-
-        if (!token) {
+        } else {
           signOutElement.style.display = "none";
           signInElement.style.display = "block";
         }
+
+        this.checkAccessToken(); // เรียกใช้ฟังก์ชันเพื่อตรวจสอบ accessToken
       });
+    },
+    signIn() {
+      this.$router.push("/signin");
     },
     signOut() {
       localStorage.removeItem("accessToken");
       window.location.reload();
       this.token = null;
+      this.checkAccessToken(); // เรียกใช้ฟังก์ชันเพื่อตรวจสอบ accessToken
+    },
+    goToAccountInfo() {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        this.$router.push("/account-info");
+      }
     },
   },
 };
