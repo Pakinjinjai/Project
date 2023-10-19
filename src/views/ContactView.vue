@@ -71,10 +71,11 @@
             <td class="px-6 py-4">Accessories</td>
             <td class="px-6 py-4">
               <div class="flex items-center">
-                <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
+                <div class="h-2.5 w-2.5 rounded-full bg-green-600 mr-2"></div>
+                <div class="h-2.5 w-2.5 rounded-full bg-red-700 mr-2"></div>
                 <div class="flex p-3">
-                  <div>Online</div>
-                  <div>Offline</div>
+                  <div class="text-green-600">Online</div>
+                  <div class="text-red-700">Offline</div>
                 </div>
               </div>
             </td>

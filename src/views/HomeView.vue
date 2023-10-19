@@ -197,7 +197,21 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+
+export default {
+  name: "homePage",
+  components: [],
+  props: [],
+  data() {
+    return {
+      profileData: {},
+    };
+  },
+  methods: {
+    
+  },
+};
 </script>
 
 <style lang="scss" scoped>
