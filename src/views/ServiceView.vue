@@ -1,9 +1,6 @@
 <template>
-  <div class="text-2xl text-center">Service Page</div>
-  <head>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+  <div id="app">
+    <div class="text-2xl text-center">Service Page</div>
     <div class="background"></div>
     <article class="card first">
       <h2>Service</h2>
@@ -47,6 +44,7 @@
         choose
       </button>
     </article>
+    <!-- แสดงบัตรคิว -->
     <div class="cardq">
       <img src="@/assets/card.jpg" alt="card.jpg">
       <div>
@@ -57,12 +55,39 @@
         </p>
         <button>summit</button>
       </div>
+      <!-- เเสดงหน้าหมอ -->
+      <div class="tab-button">
+        <button class="tab-button active-tab-button" @click="toggleTab(0)">eye</button>
+        <button class="tab-button" @click="toggleTab(1)">body</button>
+        <button class="tab-button" @click="toggleTab(2)">bone</button>
+      </div>
+      <div class="tab" :id="'tab' + (index + 1)" v-for="(index, tab) in tabs" :key="index">
+        <h2>{{ tab.title }}</h2>
+        <p>{{ tab.content }}</p>
+      </div>
     </div>
-  </body>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      tabs: [
+        { title: 'EYE Content', content: 'Lorem ipsum dolor sit amet.' },
+        { title: 'BODY Content', content: 'Lorem ipsum dolor sit amet.' },
+        { title: 'BONE Content', content: 'Lorem ipsum dolor sit amet.' },
+      ],
+    };
+  },
+  methods: {
+    toggleTab(tabIndex) {
+      this.tabs.forEach((tab, index) => {
+        tab.isActive = index === tabIndex;
+      });
+    },
+  },
+};
 </script>
 
 <style>
@@ -303,4 +328,35 @@ ul li {
     max-width: 1000px;
   }
 }
+/* css หน้าหทอ */
+.tab-buttons {
+  display: flex;
+}
+
+.tab-button {
+  background-color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  height: 40px;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab {
+  display: none;
+  width: 70%;
+  padding: 20px;
+  background-color: #ccc;
+}
+
+.active-tab-button {
+  background-color: #ccc;
+  transform: scaleY(1.1);
+  transform-origin: bottom;
+}
+
+
 </style>
