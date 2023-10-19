@@ -13,6 +13,7 @@ export default {};
 .page-container {
   display: grid;
   width: 1440px;
+  height: 100vh;
   background-color: bisque;
   position: relative;
   margin: 0 auto;
