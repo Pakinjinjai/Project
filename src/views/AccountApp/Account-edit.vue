@@ -1,3 +1,75 @@
+<script>
+import axios from "axios";
+import dayjs from "dayjs";
+export default {
+  name: "editAccount",
+  components: {},
+  props: {},
+  data() {
+    return {
+      formData: JSON.parse(this.$route.query.profileData),
+      birthdateUpgrade: "",
+    };
+  },
+  mounted() {
+    this.birthdateUpgrade = dayjs(this.formData.birtdate).format("YYYY-MM-DD");
+  },
+  methods: {
+    editAccount() {
+      console.log(this.formData);
+      if (this.formData.idCard != "") {
+        console.log("ใส่รหัสประจำตัวสำเร็จ");
+        if (this.formData.firstname != "") {
+          console.log("ใส่ชื่อจริงสำเร็จแล้ว");
+          if (this.formData.lastname != "") {
+            console.log("ใส่นามสกุลสำเร็จแล้ว");
+            if (this.formData.gender != "") {
+              console.log("ใส่เพศสำเร็จแล้ว");
+              if (this.formData.noteDrug != "") {
+                console.log("ใส่ประวัติแพ้ยาสำเร็จแล้ว");
+                if (this.formData.birtdate != "") {
+                  this.formData.birtdate = this.birthdateUpgrade;
+                  delete this.formData._id;
+                  axios({
+                    method: "patch",
+                    url: "http://localhost:3000/api/v1/profile",
+                    headers: {
+                      Authorization:
+                        "Bearer " + localStorage.getItem("accessToken"),
+                    },
+                    data: this.formData,
+                  })
+                    .then((res) => {
+                      this.$router.push("/account-info");
+                      console.log(res.data);
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    });
+                  console.log(this.formData);
+                } else {
+                  alert("กรุณาใส่วันเดือนปีเกิดของท่าน");
+                }
+              } else {
+                alert("ลืมกรอกประวัติการแพ้ยา");
+              }
+            } else {
+              alert("กรุณใส่เพศของท่าน");
+            }
+          } else {
+            alert("กรุณาใส่นามสกุลของท่าน");
+          }
+        } else {
+          alert("กรุณาใส่ชื่อจริงของท่าน");
+        }
+      } else {
+        alert("กรุณาใส่เลขประจำตัวประชาชนของท่าน");
+      }
+    },
+  },
+};
+</script>
+
 <template>
   <div class="bg-gray-100">
     <div class="container mx-auto my-5 p-5">
@@ -16,6 +88,7 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
               placeholder="Identification Number"
               required=""
+              v-model="formData.idCard"
             />
             <h3 class="text-gray-900 font-lg text-semibold leading-6">
               ประวัติการแพ้ยา
@@ -26,6 +99,7 @@
               cols="30"
               rows="10"
               placeholder="ประวัติการแพ้ยา"
+              v-model="formData.noteDrug"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
             ></textarea>
           </div>
@@ -80,9 +154,11 @@
           <div class="flex justify-center p-2">
             <button
               type="button"
+              id="saveAccount"
+              v-on:click="editAccount()"
               class="mt-7 text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
             >
-              Done
+              Save
             </button>
             <router-link to="/account-info">
               <button
@@ -133,6 +209,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="First Name"
                       required=""
+                      v-model="formData.firstname"
                     />
                   </div>
                 </div>
@@ -146,6 +223,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Last Name"
                       required=""
+                      v-model="formData.lastname"
                     />
                   </div>
                 </div>
@@ -157,7 +235,8 @@
                         type="radio"
                         class="form-radio"
                         name="accountType"
-                        value="Male"
+                        value="true"
+                        v-model="formData.gender"
                       />
                       <span class="ml-2">Male</span>
                     </label>
@@ -166,7 +245,8 @@
                         type="radio"
                         class="form-radio"
                         name="accountType"
-                        value="Female"
+                        value="false"
+                        v-model="formData.gender"
                       />
                       <span class="ml-2">Female</span>
                     </label>
@@ -182,6 +262,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Phone number"
                       required=""
+                      v-model="formData.phoneNo"
                     />
                   </div>
                 </div>
@@ -196,6 +277,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         placeholder="Email"
                         required=""
+                        v-model="formData.mail"
                     /></a>
                   </div>
                 </div>
@@ -204,11 +286,12 @@
                   <div class="px-4 py-2">
                     <input
                       type="date"
-                      name="idCard"
-                      id="idCard"
+                      name="Birthdate"
+                      id="Birthdate"
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสบัตรประจำตัวประชาชน"
+                      placeholder="Birthdate"
                       required=""
+                      v-model="birthdateUpgrade"
                     />
                   </div>
                 </div>
@@ -243,6 +326,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="House no"
                       required=""
+                      v-model="formData.address.houseNo"
                     />
                   </div>
                 </div>
@@ -256,6 +340,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Moo"
                       required=""
+                      v-model="formData.address.moo"
                     />
                   </div>
                 </div>
@@ -269,6 +354,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Soi"
                       required=""
+                      v-model="formData.address.soi"
                     />
                   </div>
                 </div>
@@ -282,6 +368,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Road"
                       required=""
+                      v-model="formData.address.road"
                     />
                   </div>
                 </div>
@@ -295,6 +382,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Tambon"
                       required=""
+                      v-model="formData.address.subDistrict"
                     />
                   </div>
                 </div>
@@ -308,6 +396,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="District"
                       required=""
+                      v-model="formData.address.district"
                     />
                   </div>
                 </div>
@@ -321,6 +410,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Province"
                       required=""
+                      v-model="formData.address.province"
                     />
                   </div>
                 </div>
@@ -334,6 +424,7 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Postal code"
                       required=""
+                      v-model="formData.address.postalCode"
                     />
                   </div>
                 </div>
@@ -373,6 +464,7 @@
                     cols="30"
                     rows="10"
                     placeholder="รายการยาและปริมาณยาที่ทาน"
+                    v-model="formData.noteMedicine"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   ></textarea>
                 </div>
@@ -399,6 +491,7 @@
                 <div class="list-inside space-y-2">
                   <textarea
                     name=""
+                    v-model="formData.noteDisease"
                     id=""
                     cols="30"
                     rows="10"
@@ -417,21 +510,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import axios from "axios";
-export default {
-  name: "editAccount",
-  components: {},
-  props: {
-  },
-  data() {
-    return {
-      formData: {},
-    };
-  },
-};
-</script>
 
 <style lang="scss">
 .account {

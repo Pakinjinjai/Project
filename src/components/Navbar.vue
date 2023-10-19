@@ -19,97 +19,110 @@
                   >About</a
                 >
               </router-link>
+            </div>
+            <div class="hidden md:flex items-center space-x-1">
               <router-link to="/contact">
                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                   >Contact</a
                 >
               </router-link>
+            </div>
+            <div class="hidden md:flex items-center space-x-1">
               <router-link to="/service">
                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                   >Service</a
                 >
               </router-link>
-              <router-link to="/account-info">
-                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
-                  >Account</a
-                >
-              </router-link>
+            </div>
+            <div
+              class="hidden md:flex items-center space-x-1"
+              id="accountEle"
+              v-on:click="goToAccountInfo()"
+              v-if="token != null"
+            >
+              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+                >Account</a
+              >
             </div>
           </div>
           <!-- login -->
-          <div id="signIn" class="hidden md:flex items-center space-x-1">
-            <router-link to="/signin">
-              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
-                >Sign in</a
-              >
-            </router-link>
+          <div
+            v-if="token == null"
+            id="signIn"
+            lass="items-center md:flex space-x-1"
+            v-on:click="signIn()"
+          >
+            <a
+              id="signIn"
+              class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              style="display: block; align-items: center; height: 100%"
+              >Sign in</a
+            >
           </div>
-          <!-- button show mobile menu -->
-          <div class="md:hidden flex items-center">
-            <button @click="showMobileMenu = !showMobileMenu" class="py-5 px-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6 text-indigo-200"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            </button>
+          <div
+            v-if="token != null"
+            id="signOut"
+            class="items-center space-x-1"
+            v-on:click="signOut()"
+          >
+            <a
+              id="signOut"
+              class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              style="display: flex; align-items: center; height: 100%"
+              >Sign Out</a
+            >
           </div>
         </div>
       </div>
     </div>
-    <!-- Mobile Menu -->
-    <!-- <div class="md:hidden bg-gray-800" v-show="showMobileMenu">
-      <router-link to="/home"
-        ><a
-          class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100"
-          >Home</a
-        ></router-link
-      >
-      <router-link to="/about"
-        ><a
-          class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100"
-          >About</a
-        ></router-link
-      >
-      <router-link to="/setting"
-        ><a
-          class="block py-2 px-4 hover:bg-indigo-700 hover:text-indigo-400 text-indigo-100"
-          >Setting</a
-        ></router-link
-      >
-    </div> -->
   </nav>
 </template>
 
 <style lang="scss" scoped>
-.signInhide {
-  display: none;
+#accountEle,
+#signOut,
+#signIn {
+  cursor: pointer;
 }
 </style>
 
 <script>
-// import { ref } from "vue";
 export default {
   name: "Navbar",
+  data() {
+    return {
+      token: null,
+    };
+  },
   created() {
-    const signInele = document.getElementById("signIn");
+    this.checkAccessToken();
+  },
+  methods: {
+    checkAccessToken() {
+      this.token = localStorage.getItem("accessToken");
 
-    const existToken = localStorage.getItem("accessToken");
-    if (existToken) {
-      console.log(existToken);
-      console.log(signInele);
-      //   signInele.classList.add("signInhide");
-    }
+      // const accountElement = document.getElementById("accountEle");
+      // if (!this.token) {
+      //   accountElement.style.display = "none";
+      // } else {
+      //   accountElement.style.display = "block";
+      // }
+    },
+    signIn() {
+      this.$router.push("/signin");
+    },
+    signOut() {
+      localStorage.removeItem("accessToken");
+      window.location.reload();
+      this.token = null;
+      this.checkAccessToken(); // เรียกใช้ฟังก์ชันเพื่อตรวจสอบ accessToken
+    },
+    goToAccountInfo() {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        this.$router.push("/account-info");
+      }
+    },
   },
 };
-// const showMobileMenu = ref(false);
 </script>

@@ -1,97 +1,49 @@
 <template>
-  <!-- <div class="grid"> -->
-  <div class="bg-[#435B66] text-center text-5xl flex flex-col items-center justify-center text-white"> Contact <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-</svg>
-
-    
+  <div class="page-container">
+    <div class="warpper">Contact Page</div>
   </div>
-  <div
-    class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 bg-[#435B66]"
-  >
-    <div class="text-2xl text-center">
-      <a href="">
-        <div
-          class="img-box1 w-1/2 h-4/5 absolute bottom-0 right-[1040px] inline-block"
-        >
-          <img class="back-img1" src="../assets/bg.png" alt="" />
-          <img class="people-img1" src="../assets/man.png" alt="" />
-        </div>
-      </a>
-      <a href="">
-        <div
-          class="img-box2 w-1/2 h-4/5 absolute bottom-0 left-[200px] inline-block"
-        >
-          <img class="back-img2" src="../assets/bg.png" alt="" />
-          <img class="people-img2" src="../assets/man.png" alt="" />
-        </div>
-      </a>
-      <a href="">
-        <div
-          class="img-box3 w-1/2 h-4/5 absolute bottom-0 left-[680px] inline-block"
-        >
-          <img class="back-img3" src="../assets/bg.png" alt="" />
-          <img class="people-img3" src="../assets/man.png" alt="" />
-        </div>
-      </a>
-    </div>
-  </div>
-<!-- </div> -->
 </template>
 
 <script>
 export default {};
 </script>
 
-<style>
-/* .contain {
-  background-color: blue;
-} */
-.img-box1 img {
-  height: 70%;
-  position: absolute;
-  left: 45%;
-  bottom: 0;
-  transform: translateY(10%);
-  transition: bottom 1s, left 1s;
+<style lang="scss" scoped>
+@import "@/style/main.scss";
+.page-container {
+  display: grid;
+  width: 1440px;
+  background-color: bisque;
+  position: relative;
+  margin: 0 auto;
+  transition: all 0.3s;
+
+  @media screen and (max-width: 1920px) {
+    width: 1280px;
+  }
+
+  @media screen and (max-width: 1600px) {
+    width: 1280px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 1280px;
+  }
+
+  @media screen and (max-width: 1280px) {
+    width: 1024px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 768px;
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 768px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 }
-.img-box2 img {
-  height: 70%;
-  position: absolute;
-  left: 45%;
-  bottom: 0;
-  transform: translateY(10%);
-  transition: bottom 1s, left 1s;
-}
-.img-box3 img {
-  height: 70%;
-  position: absolute;
-  left: 45%;
-  bottom: 0;
-  transform: translateY(10%);
-  transition: bottom 1s, left 1s;
-}
-.img-box1:hover .back-img1 {
-  bottom: 40px;
-}
-.img-box1:hover .people-img1 {
-  left: 54%;
-}
-.img-box2:hover .back-img2 {
-  bottom: 40px;
-}
-.img-box2:hover .people-img2 {
-  left: 54%;
-}
-.img-box3:hover .back-img3 {
-  bottom: 40px;
-}
-.img-box3:hover .people-img3 {
-  left: 54%;
-}
-/* .grid {
-  margin-bottom: 3rem;
-  display: grid; */
-  /* grid-template-columns: repeat(); */
-/* } */
 </style>

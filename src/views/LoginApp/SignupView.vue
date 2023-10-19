@@ -4,7 +4,7 @@
       class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
     >
       <a class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
-        <img class="w-auto h-10 mr-2" src="../assets/KMITL_PCC.png" />
+        <img class="w-auto h-10 mr-2" src="/KMITL_PCC.png" />
         | Sing up
       </a>
       <div
@@ -29,7 +29,7 @@
                 name="email"
                 id="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="name@gmail.com"
+                placeholder="e-mail"
                 required=""
               />
             </div>
@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "SingupView",
   data() {

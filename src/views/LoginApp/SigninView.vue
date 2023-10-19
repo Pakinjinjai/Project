@@ -10,7 +10,6 @@ export default {
       },
     };
   },
-
   created() {
     const existToken = localStorage.getItem("accessToken");
     if (existToken == null) {
@@ -20,26 +19,24 @@ export default {
     }
   },
   methods: {
-    SIGN_IN() {
-      axios({
+    async SIGN_IN() {
+      var res = await axios({
         method: "post",
         url: "http://localhost:3000/api/v1/users/login",
         data: {
           email: this.formData.email,
           password: this.formData.password,
         },
-      }).then((res) => {
-        if (res.status != 200) {
-          console.log(res.data);
-          console.log(res.status);
-          window.location.reload();
-        } else {
-          console.log(res.data);
-          console.log(res.status);
-          localStorage.setItem("accessToken", res.data.accessToken);
-          this.$router.push("/home");
-        }
       });
+      if (res.status != 200) {
+        console.log(res.data);
+        console.log(res.status);
+      } else {
+        console.log(res.data);
+        console.log(res.status);
+        localStorage.setItem("accessToken", res.data.accessToken);
+        window.location.reload();
+      }
     },
   },
 };
@@ -53,7 +50,7 @@ export default {
       <a
         class="flex m-2 items-center mb-6 text-3xl font-semibold text-gray-900"
       >
-        <img class="w-auto h-10 mr-2" src="../assets/KMITL_PCC.png" />
+        <img class="w-auto h-10 mr-2" src="/KMITL_PCC.png" />
         | Sing in
       </a>
       <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
@@ -77,7 +74,7 @@ export default {
                 name="email"
                 id="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="name@company.com"
+                placeholder="e-mail"
                 required=""
               />
             </div>
