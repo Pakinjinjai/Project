@@ -3,9 +3,11 @@
     <div class="container mx-auto my-5 p-5">
       <div class="md:flex no-wrap md:-mx-2">
         <!-- Left Side -->
-        <div class="w-full md:w-3/12 md:mx-2">
+        <div class="w-full md:w-3/12 md:mx-2 mb-4 md:mb-0">
           <!-- Profile Card -->
-          <div class="bg-white p-3 border-t-4 border-green-400 hover:shadow">
+          <div
+            class="bg-white p-3 border-t-4 border-green-400 hover:shadow mb-4 rounded-xl"
+          >
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               ID CARD
             </h1>
@@ -22,7 +24,7 @@
           <!-- End of profile card -->
           <div class="my-4"></div>
           <!-- Friends card -->
-          <div class="bg-white p-3 hover:shadow">
+          <div class="bg-white p-3 hover:shadow rounded-xl">
             <div
               class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8"
             >
@@ -63,7 +65,7 @@
               </div>
             </div>
           </div>
-          <div class="flex justify-center">
+          <div class="flex justify-center mt-4">
             <router-link
               :to="{
                 name: 'account-edit',
@@ -84,7 +86,7 @@
         <div class="w-full md:w-9/12 mx-2 h-64">
           <!-- Profile tab -->
           <!-- About Section -->
-          <div class="bg-white p-3 shadow-sm rounded-sm hover:shadow">
+          <div class="bg-white p-3 shadow-sm rounded-xl hover:shadow mb-4">
             <div
               class="flex items-center space-x-2 font-semibold text-gray-900 leading-8"
             >
@@ -211,7 +213,7 @@
           <div class="my-4"></div>
 
           <!-- Experience and education -->
-          <div class="bg-white p-3 shadow-sm rounded-sm hover:shadow">
+          <div class="bg-white p-3 shadow-sm rounded-xl hover:shadow">
             <div class="grid grid-cols-2">
               <div>
                 <div
@@ -266,16 +268,6 @@
             </div>
             <!-- End of Experience and education grid -->
           </div>
-          <!-- <div>
-            <router-link to="/account-edit">
-              <button
-                type="button"
-                class="ml-80 mt-7 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-              >
-                Edit
-              </button>
-            </router-link>
-          </div> -->
           <!-- End of profile tab -->
         </div>
       </div>
@@ -313,7 +305,8 @@ export default {
           this.birthDate = dayjs(this.profileData.birtdate).format(
             "YYYY-MM-DD"
           );
-          console.log(this.profileData.address);
+          console.log(this.profileData);
+          // console.log(this.profileData.address);
         })
         .catch((error) => {
           console.log(error);
