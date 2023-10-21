@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import dayjs from "dayjs";
+
 export default {
   name: "account-Edit",
   components: {},
@@ -89,7 +90,9 @@ export default {
           >
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               Identification Number
+              <i class="las la-asterisk" style="color: red"> </i>
             </h1>
+            <font-awesome-icon icon="triangle-exclamation" />
             <input
               type="email"
               name="idCard"
@@ -100,7 +103,7 @@ export default {
               v-model="formData.idCard"
             />
             <h3 class="text-gray-900 font-lg text-semibold leading-6">
-              ประวัติการแพ้ยา
+              ประวัติการแพ้ยา<i class="las la-asterisk" style="color: red"></i>
             </h3>
             <textarea
               name=""
@@ -205,7 +208,9 @@ export default {
             <div class="text-gray-700">
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">First Name:</div>
+                  <div class="px-4 py-2 font-semibold">
+                    First Name<i class="las la-asterisk" style="color: red"></i>
+                  </div>
                   <div class="px-4 py-2">
                     <input
                       type="email"
@@ -219,7 +224,9 @@ export default {
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Last Name:</div>
+                  <div class="px-4 py-2 font-semibold">
+                    Last Name<i class="las la-asterisk" style="color: red"></i>
+                  </div>
                   <div class="px-4 py-2">
                     <input
                       type="email"
@@ -233,7 +240,9 @@ export default {
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Gender:</div>
+                  <div class="px-4 py-2 font-semibold">
+                    Gender<i class="las la-asterisk" style="color: red"></i>
+                  </div>
                   <div class="px-4 py-2 mt-2">
                     <label class="inline-flex items-center">
                       <input
@@ -258,7 +267,12 @@ export default {
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Phone number:</div>
+                  <div class="px-4 py-2 font-semibold">
+                    Phone number<i
+                      class="las la-asterisk"
+                      style="color: red"
+                    ></i>
+                  </div>
                   <div class="px-4 py-2">
                     <input
                       type="email"
@@ -272,7 +286,9 @@ export default {
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Email:</div>
+                  <div class="px-4 py-2 font-semibold">
+                    Email<i class="las la-asterisk" style="color: red"></i>
+                  </div>
                   <div class="px-4 py-2">
                     <a
                       ><input
@@ -287,7 +303,12 @@ export default {
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Birthday:</div>
+                  <div class="px-4 py-2 font-semibold">
+                    <div>
+                      Birthdate
+                      <i class="las la-asterisk" style="color: red"></i>
+                    </div>
+                  </div>
                   <div class="px-4 py-2">
                     <input
                       type="date"
@@ -460,7 +481,9 @@ export default {
                       />
                     </svg>
                   </span>
-                  <span class="tracking-wide">รายการยาและปริมาณยาที่ทาน</span>
+                  <span class="tracking-wide"
+                    >รายการยาและปริมาณยาที่ทาน<i class="las la-asterisk"></i
+                  ></span>
                 </div>
                 <div>
                   <textarea
@@ -491,7 +514,9 @@ export default {
                       />
                     </svg>
                   </span>
-                  <span class="tracking-wide">โรคประจำตัว</span>
+                  <span class="tracking-wide"
+                    >โรคประจำตัว<i class="las la-asterisk"></i
+                  ></span>
                 </div>
                 <div class="list-inside space-y-2">
                   <textarea
