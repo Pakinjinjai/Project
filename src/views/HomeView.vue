@@ -223,12 +223,6 @@ export default {
             query: { profileData: JSON.stringify(res.data.user) },
           });
         }
-        // if (res.data.user.firstname == null) {
-        //   const done = confirm("ใส่ข้อมูลส่วนตัวครับน้อง");
-        //   if (done == true) {
-        //     this.$router.push("/account-edit");
-        //   }
-        // }
       } catch (error) {
         console.log(error);
       }
