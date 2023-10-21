@@ -5,7 +5,7 @@
         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
       >
         <tr>
-          <th scope="col" class="px-6 py-3">Name</th>
+          <th scope="col" class="px-6 py-3">Title</th>
           <th scope="col" class="px-6 py-3">Date</th>
           <th scope="col" class="px-6 py-3">Status</th>
           <th scope="col" class="px-6 py-3">Action</th>
@@ -25,8 +25,8 @@
               <div class="h-2.5 w-2.5 rounded-full bg-green-700 mr-2"></div>
               <div class="h-2.5 w-2.5 rounded-full bg-red-700 mr-2"></div>
               <div class="flex p-3">
-                <div class="text-green-700">Online</div>
-                <div class="text-red-700">Offline</div>
+                <div class="text-green-700">Successful</div>
+                <div class="text-red-700">Waiting</div>
               </div>
             </div>
           </td>
