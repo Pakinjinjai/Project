@@ -17,19 +17,26 @@ export default {
   methods: {
     editAccount() {
       console.log(this.formData);
-      if (this.formData.idCard != "") {
+      if (this.formData.idCard != "" && this.formData.idCard != null) {
         console.log("ใส่รหัสประจำตัวสำเร็จ");
-        if (this.formData.firstname != "") {
+        if (this.formData.firstname != "" && this.formData.firstname != null) {
           console.log("ใส่ชื่อจริงสำเร็จแล้ว");
-          if (this.formData.lastname != "") {
+          if (this.formData.lastname != "" && this.formData.lastname != null) {
             console.log("ใส่นามสกุลสำเร็จแล้ว");
-            if (this.formData.gender != "") {
+            if (this.formData.gender != "" && this.formData.gender != null) {
               console.log("ใส่เพศสำเร็จแล้ว");
-              if (this.formData.noteDrug != "") {
+              if (
+                this.formData.noteDrug != "" &&
+                this.formData.noteDrug != null
+              ) {
                 console.log("ใส่ประวัติแพ้ยาสำเร็จแล้ว");
-                if (this.formData.birtdate != "") {
+                if (
+                  this.birthdateUpgrade != "" &&
+                  this.birthdateUpgrade != "Invalid Date"
+                ) {
                   this.formData.birtdate = this.birthdateUpgrade;
                   delete this.formData._id;
+                  console.log(this.formData);
                   axios({
                     method: "patch",
                     url: "http://localhost:3000/api/v1/profile",
