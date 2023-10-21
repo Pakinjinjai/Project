@@ -201,15 +201,44 @@ import axios from "axios";
 
 export default {
   name: "homePage",
-  components: [],
-  props: [],
   data() {
     return {
       profileData: {},
     };
   },
   methods: {
-    
+    async getProfileData() {
+      const Token = localStorage.getItem("accessToken");
+      try {
+        const res = await axios.get("http://localhost:3000/api/v1/profile", {
+          headers: {
+            Authorization: `Bearer ${Token}`,
+          },
+        });
+        console.log(res.data);
+        if (res.data.user.firstname == null) {
+          alert("Go to account edit");
+          this.$router.push({
+            path: "account-edit",
+            query: { profileData: JSON.stringify(res.data.user) },
+          });
+        }
+        // if (res.data.user.firstname == null) {
+        //   const done = confirm("ใส่ข้อมูลส่วนตัวครับน้อง");
+        //   if (done == true) {
+        //     this.$router.push("/account-edit");
+        //   }
+        // }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  created() {
+    const Token = localStorage.getItem("accessToken");
+    if (Token) {
+      this.getProfileData();
+    }
   },
 };
 </script>
