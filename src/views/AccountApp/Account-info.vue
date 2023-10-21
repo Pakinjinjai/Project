@@ -279,7 +279,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 export default {
-  name: "SinginView",
+  name: "Account-Info",
   data() {
     return {
       profileData: {},

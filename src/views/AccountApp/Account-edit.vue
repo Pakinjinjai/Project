@@ -2,7 +2,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 export default {
-  name: "editAccount",
+  name: "account-Edit",
   components: {},
   props: {},
   data() {
@@ -173,9 +173,7 @@ export default {
         <div class="w-full md:w-9/12 mx-2 h-64">
           <!-- Profile tab -->
           <!-- About Section -->
-          <div
-            class="bg-white p-3 shadow-sm rounded-sm hover:shadow rounded-xl"
-          >
+          <div class="bg-white p-3 shadow-sm hover:shadow rounded-xl">
             <div
               class="flex items-center space-x-2 font-semibold text-gray-900 leading-8"
             >
@@ -436,9 +434,7 @@ export default {
           <div class="my-4"></div>
 
           <!-- Experience and education -->
-          <div
-            class="bg-white p-3 shadow-sm rounded-sm hover:shadow rounded-xl"
-          >
+          <div class="bg-white p-3 shadow-sm hover:shadow rounded-xl">
             <div class="grid grid-cols-2">
               <div class="m-1">
                 <div
