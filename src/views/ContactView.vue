@@ -1,12 +1,21 @@
 <template>
   <div class="page-container">
-    <div class="grid justify-center mt-2">
+    <div class="flex justify-center mt-2">
       <button
+        v-if="!showDoneButton"
         type="button"
         class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-        @click="toggleHealthComponents()"
+        @click="toggleHealthComponents"
       >
         Apply Health
+      </button>
+      <button
+        v-if="showDoneButton"
+        type="button"
+        class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
+        @click="toggleHealthComponents"
+      >
+        Done
       </button>
     </div>
     <Queue />
@@ -24,12 +33,14 @@ export default {
   components: { Queue, HealthEdit, HealthInfo },
   data() {
     return {
-      showHealthEdit: false, // เพิ่ม property นี้เพื่อเก็บสถานะการแสดง HealthEdit
+      showHealthEdit: false,
+      showDoneButton: false, // เพิ่ม property นี้เพื่อเก็บสถานะการแสดงปุ่ม Done
     };
   },
   methods: {
     toggleHealthComponents() {
-      this.showHealthEdit = !this.showHealthEdit; // สลับค่า showHealthEdit เมื่อปุ่มถูกคลิก
+      this.showHealthEdit = !this.showHealthEdit;
+      this.showDoneButton = !this.showDoneButton; // สลับค่า showDoneButton เมื่อปุ่มถูกคลิก
     },
   },
 };
