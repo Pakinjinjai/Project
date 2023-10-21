@@ -482,7 +482,10 @@ export default {
                     </svg>
                   </span>
                   <span class="tracking-wide"
-                    >รายการยาและปริมาณยาที่ทาน<i class="las la-asterisk"></i
+                    >รายการยาและปริมาณยาที่ทาน<i
+                      class="las la-asterisk"
+                      style="color: red"
+                    ></i
                   ></span>
                 </div>
                 <div>
@@ -515,7 +518,10 @@ export default {
                     </svg>
                   </span>
                   <span class="tracking-wide"
-                    >โรคประจำตัว<i class="las la-asterisk"></i
+                    >โรคประจำตัว<i
+                      class="las la-asterisk"
+                      style="color: red"
+                    ></i
                   ></span>
                 </div>
                 <div class="list-inside space-y-2">

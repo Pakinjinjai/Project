@@ -1,16 +1,37 @@
 <template>
   <div class="page-container">
+    <div class="grid justify-center mt-2">
+      <button
+        type="button"
+        class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
+        @click="toggleHealthComponents()"
+      >
+        Apply Health
+      </button>
+    </div>
     <Queue />
-    <Health />
+    <HealthEdit v-if="showHealthEdit" />
+    <HealthInfo v-if="!showHealthEdit" />
   </div>
 </template>
 
 <script>
 import Queue from "@/components/Queue.vue";
-import Health from "@/components/Health.vue";
+import HealthEdit from "@/views/HealthApp/Health-edit.vue";
+import HealthInfo from "@/views/HealthApp/Health-info.vue";
 
 export default {
-  components: { Queue, Health },
+  components: { Queue, HealthEdit, HealthInfo },
+  data() {
+    return {
+      showHealthEdit: false, // เพิ่ม property นี้เพื่อเก็บสถานะการแสดง HealthEdit
+    };
+  },
+  methods: {
+    toggleHealthComponents() {
+      this.showHealthEdit = !this.showHealthEdit; // สลับค่า showHealthEdit เมื่อปุ่มถูกคลิก
+    },
+  },
 };
 </script>
 
