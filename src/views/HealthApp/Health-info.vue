@@ -19,7 +19,7 @@ export default {
   <div class="container flex flex-col items-center gap-16 mx-auto mt-8">
     <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2">
       <div
-        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main"
+        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ความดันโลหิต</p>
         <span
@@ -29,7 +29,7 @@ export default {
         </span>
       </div>
       <div
-        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main"
+        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ปริมาณออกซิเจนในเลือด</p>
         <span
@@ -39,7 +39,7 @@ export default {
         </span>
       </div>
       <div
-        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main"
+        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ค่าอุณภูมิร่างกาย</p>
         <span
@@ -49,7 +49,7 @@ export default {
         </span>
       </div>
       <div
-        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main"
+        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">อัตราการเต้นของหัวใจ</p>
         <span
