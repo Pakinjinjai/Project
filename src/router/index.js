@@ -49,11 +49,6 @@ const routes = [
     name: "signup",
     component: () => import("../views/LoginApp/SignupView.vue"),
   },
-  // {
-  //   path: "/doc1",
-  //   name: "doc1",
-  //   component: () => import("../views/ServicePage/doc1.vue"),
-  // },
 ];
 
 const router = createRouter({
