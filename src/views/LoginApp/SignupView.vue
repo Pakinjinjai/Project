@@ -53,40 +53,19 @@
               <label
                 for="confirmpassword"
                 class="block mb-2 text-sm font-medium text-gray-900"
-                >Confirm password</label
+                >Confirm Password</label
               >
               <input
-                type="confirmpassword"
+                type="password"
                 name="confirmpassword"
+                v-model="formData.confirmPassword"
                 id="confirmpassword"
                 placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 required=""
               />
             </div>
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input
-                  id="terms"
-                  aria-describedby="terms"
-                  type="checkbox"
-                  class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                  required=""
-                />
-              </div>
-              <div class="ml-3 text-sm">
-                <label
-                  for="terms"
-                  class="font-light text-gray-500 dark:text-gray-300"
-                  >I accept the
-                  <a
-                    class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                    href="#"
-                    >Terms and Conditions</a
-                  ></label
-                >
-              </div>
-            </div>
+
             <button
               type="submit"
               v-on:click="SIGN_UP()"
@@ -118,12 +97,19 @@ export default {
       formData: {
         email: "",
         password: "",
+        confirmPassword: "",
       },
+      passwordsMatch: true,
     };
   },
 
   methods: {
     SIGN_UP() {
+      // ตรวจสอบว่ารหัสผ่านตรงกันหรือไม่
+      if (this.formData.password !== this.formData.confirmPassword) {
+        this.passwordsMatch = false; // ถ้าไม่ตรงกัน กำหนดให้ passwordsMatch เป็น false
+        return; // ไม่ทำการส่งข้อมูล
+      }
       axios({
         method: "post",
         url: "http://localhost:3000/api/v1/users/register",
