@@ -217,7 +217,7 @@ export default {
         });
         console.log(res.data);
         if (res.data.user.firstname == null) {
-          alert("Go to account edit");
+          alert("กรุณากรอกประวัติส่วนตัวให้ครับถ้วน");
           this.$router.push({
             path: "account-edit",
             query: { profileData: JSON.stringify(res.data.user) },
