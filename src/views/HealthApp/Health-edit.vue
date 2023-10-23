@@ -1,3 +1,44 @@
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      health: [],
+      showHealthEdit: false,
+      showDoneButton: false,
+    };
+  },
+  created() {
+    this.showInfo();
+  },
+  methods: {
+    showInfo() {
+      axios({
+        method: "get",
+        url: "http://localhost:3000/api/v1/healths",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+        data: this.health,
+      })
+        .then((res) => {
+          if (res.data.length > 0) {
+            this.health = res.data[0]; // ให้ health รับค่าจาก response
+          }
+          console.log(this.health);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    toggleHealthComponents() {
+      this.showHealthEdit = !this.showHealthEdit;
+      this.showDoneButton = !this.showDoneButton; // สลับค่า showDoneButton เมื่อปุ่มถูกคลิก
+    },
+  },
+};
+</script>
+
 <template>
   <div class="container flex flex-col items-center gap-16 mx-auto mt-8">
     <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2">
@@ -81,5 +122,22 @@
       </div>
     </div>
   </div>
+  <div class="flex justify-center mt-4">
+    <button
+      v-if="!showDoneButton"
+      type="button"
+      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
+      @click="toggleHealthComponents"
+    >
+      Apply Health
+    </button>
+    <button
+      v-if="showDoneButton"
+      type="button"
+      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
+      @click="toggleHealthComponents"
+    >
+      Done
+    </button>
+  </div>
 </template>
-<script></script>

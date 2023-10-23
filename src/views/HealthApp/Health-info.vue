@@ -1,16 +1,39 @@
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      health: [
-        {
-          bloodPressure: 120,
-          temperature: 37.5,
-          oxygen: 96,
-          heartRate: 88,
-        },
-      ],
+      health: [],
+      showHealthEdit: false,
+      showDoneButton: false,
     };
+  },
+  created() {
+    this.showInfo();
+  },
+  methods: {
+    showInfo() {
+      axios({
+        method: "get",
+        url: "http://localhost:3000/api/v1/healths",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      })
+        .then((res) => {
+          if (res.data.length > 0) {
+            this.health = res.data[0]; // ให้ health รับค่าจาก response
+          }
+          console.log(this.health);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    toggleHealthComponents() {
+      this.showHealthEdit = !this.showHealthEdit;
+      this.showDoneButton = !this.showDoneButton; // สลับค่า showDoneButton เมื่อปุ่มถูกคลิก
+    },
   },
 };
 </script>
@@ -24,7 +47,7 @@ export default {
         <p class="text-xl text-dark-grey-900">ความดันโลหิต</p>
         <span
           ><p class="text-base leading-7 text-dark-grey-600">
-            {{ health[0].bloodPressure }} mmHg
+            {{ health.bloodPressure }} mmHg
           </p>
         </span>
       </div>
@@ -34,7 +57,7 @@ export default {
         <p class="text-xl text-dark-grey-900">ปริมาณออกซิเจนในเลือด</p>
         <span
           ><p class="text-base leading-7 text-dark-grey-600">
-            {{ health[0].oxygen }} %
+            {{ health.oxygen }} %
           </p>
         </span>
       </div>
@@ -44,7 +67,7 @@ export default {
         <p class="text-xl text-dark-grey-900">ค่าอุณภูมิร่างกาย</p>
         <span
           ><p class="text-base leading-7 text-dark-grey-600">
-            {{ health[0].temperature }} °C
+            {{ health.temperature }} °C
           </p>
         </span>
       </div>
@@ -54,10 +77,28 @@ export default {
         <p class="text-xl text-dark-grey-900">อัตราการเต้นของหัวใจ</p>
         <span
           ><p class="text-base leading-7 text-dark-grey-600">
-            {{ health[0].heartRate }} bpm
+            {{ health.heartRate }} bpm
           </p>
         </span>
       </div>
     </div>
+  </div>
+  <div class="flex justify-center mt-4">
+    <button
+      v-if="!showDoneButton"
+      type="button"
+      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
+      @click="toggleHealthComponents"
+    >
+      Apply Health
+    </button>
+    <button
+      v-if="showDoneButton"
+      type="button"
+      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
+      @click="toggleHealthComponents"
+    >
+      Done
+    </button>
   </div>
 </template>

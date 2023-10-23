@@ -1,5 +1,7 @@
 <template>
   <div class="page-container">
+    <HealthEdit v-if="showHealthEdit" />
+    <HealthInfo v-if="!showHealthEdit" />
     <div class="flex justify-center mt-2">
       <button
         v-if="!showDoneButton"
@@ -18,9 +20,6 @@
         Done
       </button>
     </div>
-    <Queue />
-    <HealthEdit v-if="showHealthEdit" />
-    <HealthInfo v-if="!showHealthEdit" />
   </div>
 </template>
 
