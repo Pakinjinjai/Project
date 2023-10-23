@@ -20,7 +20,7 @@
                 >
               </router-link>
             </div>
-            <!-- <div
+             <div
               class="hidden md:flex items-center space-x-1"
               v-on:click="goToHealth()"
               v-if="token != null"
@@ -28,7 +28,7 @@
               <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                 >Health</a
               >
-            </div> -->
+            </div> 
             <div class="hidden md:flex items-center space-x-1">
               <router-link to="/service">
                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"

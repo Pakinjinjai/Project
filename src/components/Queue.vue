@@ -9,69 +9,110 @@
           <th scope="col" class="px-6 py-3">Action</th>
         </tr>
       </thead>
-      <tbody v-for="(item, index) in items" v-bind:key="index">
-        <tr class="bg-white border-b">
+      <tbody v-if="Queue.length > 0">
+        <tr
+          v-for="(item, index) in sortedQueue"
+          :key="item._id"
+          class="bg-white border-b"
+        >
           <th
             scope="row"
             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
           >
-            {{ item.title }}
+            {{ item.topic }}
           </th>
-          <td class="px-6 py-4">{{ item.dateQueue }}</td>
+          <td class="px-6 py-4">{{ formatDate(item.dateQueue) }}</td>
           <td class="px-6 py-4">
             <div class="flex items-center">
-              <div class="h-2.5 w-2.5 rounded-full bg-green-700 mr-2"></div>
-              <div class="h-2.5 w-2.5 rounded-full bg-red-700 mr-2"></div>
-              <div class="flex p-3">
-                <div class="text-green-700">Successful</div>
-                <div class="text-red-700">Waiting</div>
+              <div
+                class="h-2.5 w-2.5 rounded-full m-2"
+                :class="{'bg-green-700': item.status, 'bg-red-700': !item.status}"
+              ></div>
+              <div
+                :class="{'text-green-700': item.status, 'text-red-700': !item.status}"
+              >
+                {{ item.status ? 'Successful' : 'Waiting' }}
               </div>
             </div>
           </td>
           <td class="px-6 py-4">
-            <a
-              href="#"
-              class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 512 512"
-                style="margin-left: 20px"
-              >
-                <path
-                  d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-                />
-              </svg>
-            </a>
+            <button @click="toggleMessage(index)">Show Message</button>
           </td>
+        </tr>
+      </tbody>
+      <tbody v-else>
+        <tr>
+          <td colspan="4">No data available.</td>
         </tr>
       </tbody>
     </table>
   </div>
+  <div class="grid justify-center content-center h-40 shadow-md sm:rounded-lg mt-10 bg-white" v-show="showMessage">
+    <div class="">
+      <ul v-if="activeItem !== null">
+        <li>Note: {{ Queue[activeItem].note }}</li>
+      </ul>
+      <p v-else>No data available.</p>
+    </div>
+  </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      items: [
-        {
-          title: "นัดตรวจทางงเดินปอด",
-          dateQueue: "2023-10-19",
-          status: "true",
-        },
-        {
-          title: "นัดตรวจสอบสายตา",
-          dateQueue: "2023-10-20",
-          status: "true",
-        },
-        {
-          title: "นัดตรวจอาการจากครั้งที่แล้ว",
-          dateQueue: "2023-10-21",
-          status: "true",
-        },
-      ],
+      Queue: [], // Initialize Queue as an empty array
+      showMessage: false, // Initialize showMessage as false
+      activeItem: null, // Initialize activeItem as null
     };
+  },
+  computed: {
+    sortedQueue() {
+      // Sort the queue by status and then by dateQueue
+      return this.Queue.slice().sort((a, b) => {
+        if (a.status === b.status) {
+          return new Date(a.dateQueue) - new Date(b.dateQueue);
+        } else {
+          return a.status ? 1 : -1;
+        }
+      });
+    },
+  },
+  created() {
+    this.showInfo();
+  },
+  methods: {
+    showInfo() {
+      axios({
+        method: "get",
+        url: "http://localhost:3000/api/v1/queues/me",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      })
+        .then((res) => {
+          this.Queue = res.data; // Update the Queue data with the response data
+          console.log(this.Queue);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    formatDate(date) {
+      // Function to format the date (customize it as needed)
+      return new Date(date).toLocaleDateString();
+    },
+    toggleMessage(index) {
+      // Check if activeItem is the same as the clicked index
+      if (this.activeItem === index) {
+        this.showMessage = false; // Close the message if the same item is clicked again
+        this.activeItem = null;
+      } else {
+        this.activeItem = index; // Set the activeItem to the index of the clicked item
+        this.showMessage = true;
+      }
+    },
   },
 };
 </script>
