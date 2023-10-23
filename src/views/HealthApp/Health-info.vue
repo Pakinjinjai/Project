@@ -3,9 +3,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      health: [],
-      showHealthEdit: false,
-      showDoneButton: false,
+      health: {},
     };
   },
   created() {
@@ -30,10 +28,6 @@ export default {
           console.log(error);
         });
     },
-    toggleHealthComponents() {
-      this.showHealthEdit = !this.showHealthEdit;
-      this.showDoneButton = !this.showDoneButton; // สลับค่า showDoneButton เมื่อปุ่มถูกคลิก
-    },
   },
 };
 </script>
@@ -42,63 +36,49 @@ export default {
   <div class="container flex flex-col items-center gap-16 mx-auto mt-8">
     <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2">
       <div
+        v-if="Object.keys(health).length > 0"
         class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ความดันโลหิต</p>
         <span
           ><p class="text-base leading-7 text-dark-grey-600">
             {{ health.bloodPressure }} mmHg
-          </p>
-        </span>
+          </p></span
+        >
       </div>
       <div
+        v-if="Object.keys(health).length > 0"
         class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ปริมาณออกซิเจนในเลือด</p>
         <span
           ><p class="text-base leading-7 text-dark-grey-600">
             {{ health.oxygen }} %
-          </p>
-        </span>
+          </p></span
+        >
       </div>
       <div
+        v-if="Object.keys(health).length > 0"
         class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ค่าอุณภูมิร่างกาย</p>
         <span
           ><p class="text-base leading-7 text-dark-grey-600">
             {{ health.temperature }} °C
-          </p>
-        </span>
+          </p></span
+        >
       </div>
       <div
+        v-if="Object.keys(health).length > 0"
         class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">อัตราการเต้นของหัวใจ</p>
         <span
           ><p class="text-base leading-7 text-dark-grey-600">
             {{ health.heartRate }} bpm
-          </p>
-        </span>
+          </p></span
+        >
       </div>
     </div>
-  </div>
-  <div class="flex justify-center mt-4">
-    <button
-      v-if="!showDoneButton"
-      type="button"
-      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-      @click="toggleHealthComponents"
-    >
-      Apply Health
-    </button>
-    <button
-      v-if="showDoneButton"
-      type="button"
-      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-      @click="toggleHealthComponents"
-    >
-      Done
-    </button>
   </div>
 </template>

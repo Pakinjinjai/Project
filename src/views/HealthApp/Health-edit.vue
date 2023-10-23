@@ -1,39 +1,33 @@
 <script>
 import axios from "axios";
+
 export default {
+  name: "HealthEdit",
   data() {
     return {
-      health: [],
-      showHealthEdit: false,
-      showDoneButton: false,
+      health: {},
     };
   },
-  created() {
-    this.showInfo();
-  },
   methods: {
-    showInfo() {
-      axios({
-        method: "get",
+    editHealth() {
+      if (
+        !this.health.bloodPressure ||
+        !this.health.oxygen ||
+        !this.health.temperature ||
+        !this.health.heartRate
+      ) {
+        alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return Promise.reject("กรุณากรอกข้อมูลให้ครบถ้วน");
+      }
+
+      return axios({
+        method: "post",
         url: "http://localhost:3000/api/v1/healths",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
         data: this.health,
-      })
-        .then((res) => {
-          if (res.data.length > 0) {
-            this.health = res.data[0]; // ให้ health รับค่าจาก response
-          }
-          console.log(this.health);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    toggleHealthComponents() {
-      this.showHealthEdit = !this.showHealthEdit;
-      this.showDoneButton = !this.showDoneButton; // สลับค่า showDoneButton เมื่อปุ่มถูกคลิก
+      });
     },
   },
 };
@@ -47,97 +41,79 @@ export default {
       >
         <p class="text-xl text-dark-grey-900">ความดันโลหิต</p>
         <span
-          ><input
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 hover:shadow"
-            placeholder=""
-            required=""
-            id="bloodPressure"
-          />
+          ><p class="text-base leading-7 text-dark-grey-600 flex items-center">
+            <input
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2 hover:shadow ml-12 mr-2"
+              placeholder=""
+              required=""
+              id="bloodPressure"
+              v-model="health.bloodPressure"
+            />
+            mmHg
+          </p>
         </span>
-
-        <button
-          type="button"
-          class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-        >
-          Apply
-        </button>
       </div>
       <div
         class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ปริมาณออกซิเจนในเลือด</p>
-        <span
-          ><input
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 hover:shadow"
-            placeholder=""
-            required=""
-            id="oxygen"
-          />
+        <span>
+          <p class="text-base leading-7 text-dark-grey-600 flex items-center">
+            <input
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2 hover:shadow ml-12 mr-2"
+              placeholder=""
+              required=""
+              id="oxygen"
+              v-model="health.oxygen"
+            />
+            %
+          </p>
         </span>
-
-        <button
-          type="button"
-          class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-        >
-          Apply
-        </button>
       </div>
       <div
         class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ค่าอุณภูมิร่างกาย</p>
         <span
-          ><input
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 hover:shadow"
-            placeholder=""
-            required=""
-            id="temperature"
-          />
+          ><p class="text-base leading-7 text-dark-grey-600 flex items-center">
+            <input
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2 hover:shadow ml-7 mr-2"
+              placeholder=""
+              required=""
+              id="temperature"
+              v-model="health.temperature"
+            />
+            °C
+          </p>
         </span>
-        <button
-          type="button"
-          class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-        >
-          Apply
-        </button>
       </div>
       <div
         class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">อัตราการเต้นของหัวใจ</p>
         <span
-          ><input
-            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 hover:shadow"
-            placeholder=""
-            required=""
-            id="heartRate"
-          />
+          ><p class="text-base leading-7 text-dark-grey-600 flex items-center">
+            <input
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2 hover:shadow ml-12 mr-2"
+              placeholder=""
+              required=""
+              id="heartRate"
+              v-model="health.heartRate"
+            />
+            bpm
+          </p>
         </span>
-        <button
-          type="button"
-          class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-        >
-          Apply
-        </button>
       </div>
     </div>
   </div>
-  <div class="flex justify-center mt-4">
+  <!-- <div class="flex justify-center mt-2">
     <button
-      v-if="!showDoneButton"
       type="button"
+      id="Done"
+      v-on:click="gotoInfo()"
       class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-      @click="toggleHealthComponents"
-    >
-      Apply Health
-    </button>
-    <button
-      v-if="showDoneButton"
-      type="button"
-      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-      @click="toggleHealthComponents"
     >
       Done
     </button>
-  </div>
+  </div> -->
 </template>
