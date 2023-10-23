@@ -30,9 +30,9 @@
               >
             </div> 
             <div class="hidden md:flex items-center space-x-1">
-              <router-link to="/service">
+              <router-link to="/queue">
                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
-                  >Service</a
+                  >Queue</a
                 >
               </router-link>
             </div>

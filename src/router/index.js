@@ -17,8 +17,8 @@ const routes = [
         component: () => import("../views/AboutView.vue"),
       },
       {
-        path: "/service",
-        name: "service",
+        path: "/queue",
+        name: "queue",
         component: () => import("../views/QueueApp/QueueView.vue"),
       },
       {
