@@ -24,7 +24,7 @@ const routes = [
       {
         path: "/contact",
         name: "contact",
-        component: () => import("../views/HealthApp/ContactView.vue"),
+        component: () => import("../views/HealthApp/HealthView.vue"),
       },
       {
         path: "/account-info",
