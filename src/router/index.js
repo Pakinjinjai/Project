@@ -22,8 +22,8 @@ const routes = [
         component: () => import("../views/ServicePage.vue/ServiceView.vue"),
       },
       {
-        path: "/contact",
-        name: "contact",
+        path: "/health",
+        name: "health",
         component: () => import("../views/HealthApp/HealthView.vue"),
       },
       {

@@ -20,12 +20,14 @@
                 >
               </router-link>
             </div>
-            <!-- <div class="hidden md:flex items-center space-x-1">
-              <router-link to="/contact">
-                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
-                  >Health</a
-                >
-              </router-link>
+            <!-- <div
+              class="hidden md:flex items-center space-x-1"
+              v-on:click="goToHealth()"
+              v-if="token != null"
+            >
+              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+                >Health</a
+              >
             </div> -->
             <div class="hidden md:flex items-center space-x-1">
               <router-link to="/service">
@@ -121,6 +123,12 @@ export default {
       const token = localStorage.getItem("accessToken");
       if (token) {
         this.$router.push("/account-info");
+      }
+    },
+    goToHealth() {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        this.$router.push("/health");
       }
     },
   },
