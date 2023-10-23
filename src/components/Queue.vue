@@ -26,12 +26,18 @@
             <div class="flex items-center">
               <div
                 class="h-2.5 w-2.5 rounded-full m-2"
-                :class="{'bg-green-700': item.status, 'bg-red-700': !item.status}"
+                :class="{
+                  'bg-green-700': item.status,
+                  'bg-red-700': !item.status,
+                }"
               ></div>
               <div
-                :class="{'text-green-700': item.status, 'text-red-700': !item.status}"
+                :class="{
+                  'text-green-700': item.status,
+                  'text-red-700': !item.status,
+                }"
               >
-                {{ item.status ? 'Successful' : 'Waiting' }}
+                {{ item.status ? "Successful" : "Waiting" }}
               </div>
             </div>
           </td>
@@ -47,7 +53,10 @@
       </tbody>
     </table>
   </div>
-  <div class="grid justify-center content-center  h-40 shadow-md sm:rounded-lg mt-10 bg-white" v-show="showMessage">
+  <div
+    class="grid justify-center content-center h-40 shadow-md sm:rounded-lg mt-10 bg-white"
+    v-show="showMessage"
+  >
     <div class="">
       <ul v-if="activeItem !== null">
         <li>Note: {{ Queue[activeItem].note }}</li>
