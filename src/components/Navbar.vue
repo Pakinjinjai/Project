@@ -29,12 +29,18 @@
                 >Health</a
               >
             </div> 
-            <div class="hidden md:flex items-center space-x-1">
-              <router-link to="/queue">
-                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+            <div 
+            v-if="token != null"
+            v-on:click="goToQueue()"
+            
+            class="hidden md:flex items-center space-x-1">
+              
+                <a 
+                
+                class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                   >Queue</a
                 >
-              </router-link>
+              
             </div>
             <div
               class="hidden md:flex items-center space-x-1"
@@ -129,6 +135,12 @@ export default {
       const token = localStorage.getItem("accessToken");
       if (token) {
         this.$router.push("/health");
+      }
+    },
+    goToQueue() {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        this.$router.push("/queue");
       }
     },
   },
