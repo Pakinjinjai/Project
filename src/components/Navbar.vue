@@ -13,14 +13,14 @@
               </router-link>
             </a>
             <!-- menu -->
-            <div class="hidden md:flex items-center space-x-1">
+            <!-- <div class="hidden md:flex items-center space-x-1">
               <router-link to="/about">
                 <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                   >About</a
                 >
               </router-link>
-            </div>
-             <div
+            </div> -->
+            <div
               class="hidden md:flex items-center space-x-1"
               v-on:click="goToHealth()"
               v-if="token != null"
@@ -28,19 +28,15 @@
               <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
                 >Health</a
               >
-            </div> 
-            <div 
-            v-if="token != null"
-            v-on:click="goToQueue()"
-            
-            class="hidden md:flex items-center space-x-1">
-              
-                <a 
-                
-                class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
-                  >Queue</a
-                >
-              
+            </div>
+            <div
+              v-if="token != null"
+              v-on:click="goToQueue()"
+              class="hidden md:flex items-center space-x-1"
+            >
+              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+                >Queue</a
+              >
             </div>
             <div
               class="hidden md:flex items-center space-x-1"
