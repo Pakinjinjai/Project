@@ -52,16 +52,16 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div
-    class="grid justify-center content-center h-40 shadow-md sm:rounded-lg mt-10 bg-white"
-    v-show="showMessage"
-  >
-    <div class="">
-      <ul v-if="activeItem !== null">
-        <li>Note: {{ Queue[activeItem].note }}</li>
-      </ul>
-      <p v-else>No data available.</p>
+    <div
+      class="grid justify-center content-center h-40 shadow-md sm:rounded-lg mt-10 bg-white"
+      v-show="showMessage"
+    >
+      <div class="">
+        <ul v-if="activeItem !== null">
+          <li>Note: {{ sortedQueue[activeItem].note }}</li>
+        </ul>
+        <p v-else>No data available.</p>
+      </div>
     </div>
   </div>
 </template>

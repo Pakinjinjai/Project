@@ -32,19 +32,20 @@ export default {
           console.log(res.status);
           localStorage.setItem("accessToken", res.data.accessToken);
           this.checkToken();
-          window.location.reload();
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        window.location.reload();
       }
     },
     checkToken() {
       const existToken = localStorage.getItem("accessToken");
       console.log(existToken);
-      if (existToken == null || existToken == "") {
-        this.$router.push("/signin");
-      } else {
+      if (existToken) {
         this.$router.push("/home");
+      } else {
+        this.$router.push("/signin");
       }
     },
   },
