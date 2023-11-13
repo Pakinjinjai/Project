@@ -97,7 +97,7 @@
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Email:</div>
                   <div class="px-4 py-2">
-                    <a>{{ profileData.mail }}</a>
+                    <a>{{ profileData.email }}</a>
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
@@ -197,7 +197,7 @@
                 <div
                   class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 >
-                  {{ profileData.noteMedicine }}
+                  {{}}
                 </div>
               </div>
               <div>
@@ -222,7 +222,7 @@
                 <div
                   class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 >
-                  {{ profileData.noteDisease }}
+                  {{}}
                 </div>
               </div>
             </div>
@@ -243,7 +243,7 @@ export default {
   data() {
     return {
       profileData: {},
-      profileAddress: {},
+      // profileAddress: {},
       birthDate: "",
     };
   },
@@ -254,14 +254,14 @@ export default {
     showInfo() {
       axios({
         method: "get",
-        url: "http://localhost:3000/api/v1/profile",
+        url: "http://localhost:3000/api/v1/users/me",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
       })
         .then((res) => {
           this.profileData = res.data.user;
-          this.profileAddress = res.data.user.address;
+          // this.profileAddress = res.data.user.address;
           this.birthDate = dayjs(this.profileData.birtdate).format(
             "YYYY-MM-DD"
           );
