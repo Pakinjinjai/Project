@@ -106,7 +106,7 @@
                 </div>
               </div>
             </div>
-            <div
+            <!-- <div
               class="flex items-center space-x-2 font-semibold text-gray-900 leading-8"
             >
               <span clas="text-green-500">
@@ -166,7 +166,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <!-- End of about section -->
 
