@@ -53,12 +53,15 @@
       </tbody>
     </table>
     <div
-      class="grid justify-center content-center h-40 shadow-md sm:rounded-lg mt-10 bg-white"
+      class="grid justify-center content-center h-14 shadow-md sm:rounded-lg bg-white"
       v-show="showMessage"
     >
       <div class="">
         <ul v-if="activeItem !== null">
-          <li>Note: {{ sortedQueue[activeItem].note }}</li>
+          <li v-if="sortedQueue[activeItem].note !== null">
+            Advice : {{ sortedQueue[activeItem].note }}
+          </li>
+          <li v-else>ขณะนี้กำลังรอการตอบกลับจากคุณหมอ</li>
         </ul>
         <p v-else>No data available.</p>
       </div>
@@ -71,14 +74,14 @@ import axios from "axios";
 export default {
   data() {
     return {
-      Queue: [], // Initialize Queue as an empty array
-      showMessage: false, // Initialize showMessage as false
-      activeItem: null, // Initialize activeItem as null
+      Queue: [], // เตรียมใช้งานคิวเป็นอาร์เรย์ว่าง
+      showMessage: false, // เริ่มต้น showMessage เป็นเท็จ
+      activeItem: null, // เตรียมใช้งาน activeItem เป็น null
     };
   },
   computed: {
     sortedQueue() {
-      // Sort the queue by status and then by dateQueue
+      // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
       return this.Queue.slice().sort((a, b) => {
         if (a.status === b.status) {
           return new Date(a.dateQueue) - new Date(b.dateQueue);
@@ -93,32 +96,34 @@ export default {
   },
   methods: {
     showInfo() {
-      axios({
-        method: "get",
-        url: "http://localhost:3000/api/v1/queues/me",
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("accessToken"),
-        },
-      })
-        .then((res) => {
-          this.Queue = res.data; // Update the Queue data with the response data
-          console.log(this.Queue);
+      try {
+        axios({
+          method: "get",
+          url: "http://localhost:3000/api/v1/queues/me",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("accessToken"),
+          },
         })
-        .catch((error) => {
-          console.log(error);
-        });
+          .then((res) => {
+            this.Queue = res.data; // อัพเดตข้อมูลคิวด้วยข้อมูลการตอบกลับ
+            console.log(this.Queue);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {}
     },
     formatDate(date) {
-      // Function to format the date (customize it as needed)
+      // ฟังก์ชั่นจัดรูปแบบวันที่ (ปรับแต่งได้ตามต้องการ)
       return new Date(date).toLocaleDateString();
     },
     toggleMessage(index) {
-      // Check if activeItem is the same as the clicked index
+      // ตรวจสอบว่า activeItem เหมือนกับดัชนีที่ถูกคลิกหรือไม่
       if (this.activeItem === index) {
-        this.showMessage = false; // Close the message if the same item is clicked again
+        this.showMessage = false; // ปิดข้อความหากมีการคลิกรายการเดียวกันอีกครั้ง
         this.activeItem = null;
       } else {
-        this.activeItem = index; // Set the activeItem to the index of the clicked item
+        this.activeItem = index; // ตั้งค่า activeItem เป็นดัชนีของรายการที่ถูกคลิก
         this.showMessage = true;
       }
     },
