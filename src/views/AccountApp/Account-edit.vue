@@ -40,7 +40,7 @@ export default {
                   console.log(this.formData);
                   axios({
                     method: "patch",
-                    url: "http://localhost:3000/api/v1/profile",
+                    url: "http://localhost:3000/api/v1/users/update",
                     headers: {
                       Authorization:
                         "Bearer " + localStorage.getItem("accessToken"),
@@ -257,7 +257,7 @@ export default {
                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         placeholder="Email"
                         required=""
-                        v-model="formData.mail"
+                        v-model="formData.email"
                     /></a>
                   </div>
                 </div>
