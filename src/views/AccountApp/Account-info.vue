@@ -106,7 +106,7 @@
                 </div>
               </div>
             </div>
-            <!-- <div
+            <div
               class="flex items-center space-x-2 font-semibold text-gray-900 leading-8"
             >
               <span clas="text-green-500">
@@ -166,7 +166,7 @@
                   </div>
                 </div>
               </div>
-            </div> -->
+            </div>
           </div>
           <!-- End of about section -->
 
@@ -243,7 +243,7 @@ export default {
   data() {
     return {
       profileData: {},
-      // profileAddress: {},
+      profileAddress: {},
       birthDate: "",
     };
   },
@@ -261,12 +261,12 @@ export default {
       })
         .then((res) => {
           this.profileData = res.data.user;
-          // this.profileAddress = res.data.user.address;
+          this.profileAddress = res.data.user.address;
           this.birthDate = dayjs(this.profileData.birtdate).format(
             "YYYY-MM-DD"
           );
           console.log(this.profileData);
-          // console.log(this.profileData.address);
+          console.log(this.profileData.address);
         })
         .catch((error) => {
           console.log(error);
