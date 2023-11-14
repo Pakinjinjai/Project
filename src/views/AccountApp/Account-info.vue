@@ -265,8 +265,8 @@ export default {
           this.birthDate = dayjs(this.profileData.birtdate).format(
             "YYYY-MM-DD"
           );
-          console.log(this.profileData);
-          console.log(this.profileData.address);
+          // console.log(this.profileData);
+          // console.log(this.profileData.address);
         })
         .catch((error) => {
           console.log(error);
