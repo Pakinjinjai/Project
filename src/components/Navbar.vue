@@ -21,6 +21,7 @@
               </router-link>
             </div> -->
             <div
+              id="Health"
               class="hidden md:flex items-center space-x-1"
               v-on:click="goToHealth()"
               v-if="token != null"
@@ -30,6 +31,7 @@
               >
             </div>
             <div
+              id="Queue"
               v-if="token != null"
               v-on:click="goToQueue()"
               class="hidden md:flex items-center space-x-1"
@@ -84,6 +86,8 @@
 
 <style lang="scss" scoped>
 #accountEle,
+#Queue,
+#Health,
 #signOut,
 #signIn {
   cursor: pointer;
