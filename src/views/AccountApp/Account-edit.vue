@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     editAccount() {
-      console.log(this.formData);
+      // console.log(this.formData);
       if (this.formData.idCard != "" && this.formData.idCard != null) {
         console.log("ใส่รหัสประจำตัวสำเร็จ");
         if (this.formData.firstname != "" && this.formData.firstname != null) {
@@ -37,7 +37,7 @@ export default {
                 ) {
                   this.formData.birtdate = this.birthdateUpgrade;
                   delete this.formData._id;
-                  console.log(this.formData);
+                  // console.log(this.formData);
                   axios({
                     method: "patch",
                     url: "http://localhost:3000/api/v1/users/update",
@@ -49,12 +49,12 @@ export default {
                   })
                     .then((res) => {
                       this.$router.push("/account-info");
-                      console.log(res.data);
+                      // console.log(res.data);
                     })
                     .catch((error) => {
                       console.log(error);
                     });
-                  console.log(this.formData);
+                  // console.log(this.formData);
                 } else {
                   alert("กรุณาใส่วันเดือนปีเกิดของท่าน");
                 }
