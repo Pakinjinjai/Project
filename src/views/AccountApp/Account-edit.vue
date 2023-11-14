@@ -35,7 +35,7 @@ export default {
                   this.birthdateUpgrade != "" &&
                   this.birthdateUpgrade != "Invalid Date"
                 ) {
-                  this.formData.birtdate = this.birthdateUpgrade;
+                  this.formData.birthdate = this.birthdateUpgrade;
                   delete this.formData._id;
                   // console.log(this.formData);
                   axios({
