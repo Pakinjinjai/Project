@@ -262,7 +262,7 @@ export default {
         .then((res) => {
           this.profileData = res.data.user;
           this.profileAddress = res.data.user.address;
-          this.birthDate = dayjs(this.profileData.birtdate).format(
+          this.birthDate = dayjs(this.profileData.birthdate).format(
             "YYYY-MM-DD"
           );
           // console.log(this.profileData);
