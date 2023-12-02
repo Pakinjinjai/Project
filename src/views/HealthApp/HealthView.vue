@@ -36,7 +36,7 @@
 <script>
 import HealthEdit from "@/views/HealthApp/Health-edit.vue";
 import HealthInfo from "@/views/HealthApp/Health-info.vue";
-import mqtt from "mqtt";
+// import mqtt from "mqtt";
 
 export default {
   components: { HealthEdit, HealthInfo },
@@ -44,7 +44,7 @@ export default {
     return {
       showHealthEdit: false,
       showDoneButton: false,
-      mqttData: "No data yet",
+      // mqttData: "No data yet",
     };
   },
   methods: {
@@ -64,15 +64,15 @@ export default {
       this.toggleHealthComponents();
     },
   },
-  mounted() {
-    const client = mqtt.connect("mqtt://broker.example.com:8080");
+  // mounted() {
+  //   const client = mqtt.connect("ws://localhost:8883");
 
-    client.subscribe("/health");
+  //   client.subscribe("pulseSenser");
 
-    client.on("message", (topic, message) => {
-      this.mqttData = message.toString();
-      console.log(message.toString());
-    });
-  },
+  //   client.on("message", (topic, message) => {
+  //     this.mqttData = message.toString();
+  //     console.log(message.toString());
+  //   });
+  // },
 };
 </script>

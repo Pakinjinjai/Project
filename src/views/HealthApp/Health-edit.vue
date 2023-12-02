@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import mqtt from "mqtt";
 
 export default {
   name: "HealthEdit",
@@ -29,6 +30,16 @@ export default {
         data: this.health,
       });
     },
+  },
+  mounted() {
+    const client = mqtt.connect("ws://localhost:8883");
+
+    client.subscribe("pulseSenser");
+
+    client.on("message", (topic, message) => {
+      this.health.heartRate = message.toString();
+      console.log(message.toString());
+    });
   },
 };
 </script>
