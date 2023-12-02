@@ -65,9 +65,9 @@ export default {
     },
   },
   mounted() {
-    const client = mqtt.connect("ws://localhost:8883");
+    const client = mqtt.connect("mqtt://broker.example.com:8080");
 
-    client.subscribe("pulseSenser");
+    client.subscribe("/health");
 
     client.on("message", (topic, message) => {
       this.mqttData = message.toString();
