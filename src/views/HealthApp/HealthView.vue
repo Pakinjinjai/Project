@@ -36,7 +36,6 @@
 <script>
 import HealthEdit from "@/views/HealthApp/Health-edit.vue";
 import HealthInfo from "@/views/HealthApp/Health-info.vue";
-import mqtt from "mqtt";
 
 export default {
   components: { HealthEdit, HealthInfo },
@@ -44,7 +43,6 @@ export default {
     return {
       showHealthEdit: false,
       showDoneButton: false,
-      mqttData: "No data yet",
     };
   },
   methods: {
@@ -63,16 +61,6 @@ export default {
     cancelEdit() {
       this.toggleHealthComponents();
     },
-  },
-  mounted() {
-    const client = mqtt.connect("mqtt://broker.example.com:8080");
-
-    client.subscribe("/health");
-
-    client.on("message", (topic, message) => {
-      this.mqttData = message.toString();
-      console.log(message.toString());
-    });
   },
 };
 </script>
