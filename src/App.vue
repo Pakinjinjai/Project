@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-blue-100">
+  <div class="F0FFFF bg-[#F0FFFF]">
     <router-view />
     <Footer />
   </div>
@@ -21,6 +21,6 @@ export default {
 
 <style>
 body {
-  background-color: whitesmoke;
+  background-color: #F0FFFF;
 }
 </style>
