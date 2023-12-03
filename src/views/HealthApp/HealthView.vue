@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-blue-100">
-    <div class="page-container bg-blue-100">
-      <HealthEdit ref="healthEdit" v-if="showHealthEdit" />
-      <HealthInfo v-else />
+ <div class="">
+  <div class="page-container ">
+    <HealthEdit ref="healthEdit" v-if="showHealthEdit" />
+    <HealthInfo v-else />
 
       <div class="flex justify-center mt-2">
         <button
