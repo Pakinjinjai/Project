@@ -1,5 +1,5 @@
 <template>
-  <div class="F0FFFF bg-[#F0FFFF]">
+  <div>
     <router-view />
     <Footer />
   </div>
@@ -7,7 +7,6 @@
 
 <script>
 import Footer from "@/components/Bottombar.vue";
-
 
 export default {
   components: {
@@ -21,6 +20,6 @@ export default {
 
 <style>
 body {
-  background-color: #F0FFFF;
+  background-color: #f0ffff;
 }
 </style>
