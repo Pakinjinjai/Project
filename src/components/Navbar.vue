@@ -1,7 +1,7 @@
 <template>
   <nav>
     <!-- Desktop menu -->
-    <div class="font-sans bg-gray-800">
+    <div class="font-sans bg-teal-500">
       <div class="max-w-7xl mx-auto">
         <div class="flex justify-between">
           <!-- menu -->
@@ -9,7 +9,10 @@
             <!-- logo -->
             <a href="" class="flex items-center space-x-2 py-5 px-2">
               <router-link to="/home">
-                <span class="text-2xl font-extrabold text-white">Home</span>
+                <span
+                  class="text-4xl font-extrabold text-white transition duration-0 hover:duration-150"
+                  >P</span
+                >
               </router-link>
             </a>
             <!-- menu -->
@@ -26,7 +29,8 @@
               v-on:click="goToHealth()"
               v-if="token != null"
             >
-              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              <a
+                class="hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Health</a
               >
             </div>
@@ -36,7 +40,8 @@
               v-on:click="goToQueue()"
               class="hidden md:flex items-center space-x-1"
             >
-              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              <a
+                class="hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Queue</a
               >
             </div>
@@ -46,7 +51,8 @@
               v-on:click="goToAccountInfo()"
               v-if="token != null"
             >
-              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              <a
+                class="hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Account</a
               >
             </div>
@@ -60,7 +66,7 @@
           >
             <a
               id="signIn"
-              class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              class="hover:bg-sky-700 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: block; align-items: center; height: 100%"
               >Sign in</a
             >
@@ -73,10 +79,24 @@
           >
             <a
               id="signOut"
-              class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              class=" text-red-600 hover:bg-red-300 hover:text-red active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg "
               style="display: flex; align-items: center; height: 100%"
-              >Sign Out</a
-            >
+              >Sign Out
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </div>

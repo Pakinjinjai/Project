@@ -1,13 +1,17 @@
 <template>
-  <div class="page-container"></div>
+  <div class="page-container">
+    
+    <!-- <Map /> -->
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+// import Map from "@/components/Map.vue";
 
 export default {
   name: "homePage",
-  components: {},
+  // components: {Map},
   data() {
     return {
       profileData: {},
