@@ -79,14 +79,14 @@ export default {
 </script>
 
 <template>
-  <div class="bg-gray-100">
-    <div class="container mx-auto my-5 p-5">
-      <div class="md:flex no-wrap md:-mx-2">
+  <div class="min-h-screen bg-blue-100">
+    <div class="container mx-auto p-8">
+      <div class="md:flex no-wrap md:-mx-8">
         <!-- Left Side -->
         <div class="w-full md:w-3/12 md:mx-2">
           <!-- Profile Card -->
           <div
-            class="bg-white p-3 border-t-4 border-green-400 hover:shadow rounded-xl"
+            class="bg-yellow-50 p-4 border-t-4  hover:shadow rounded-xl"
           >
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               Identification Number
@@ -97,7 +97,7 @@ export default {
               type="email"
               name="idCard"
               id="idCard"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+              class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
               placeholder="Identification Number"
               required=""
               v-model="formData.idCard"
@@ -112,7 +112,7 @@ export default {
               rows="10"
               placeholder="ประวัติการแพ้ยา"
               v-model="formData.noteDrug"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+              class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
             ></textarea>
           </div>
           <!-- End of profile card -->
@@ -142,7 +142,7 @@ export default {
         <div class="w-full md:w-9/12 mx-2 h-64">
           <!-- Profile tab -->
           <!-- About Section -->
-          <div class="bg-white p-3 shadow-sm hover:shadow rounded-xl">
+          <div class="bg-yellow-50 p-4 shadow-sm hover:shadow rounded-xl">
             <div
               class="flex items-center space-x-2 font-semibold text-gray-900 leading-8"
             >
@@ -175,7 +175,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="First Name"
                       required=""
                       v-model="formData.firstname"
@@ -191,18 +191,18 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Last Name"
                       required=""
                       v-model="formData.lastname"
                     />
                   </div>
                 </div>
-                <div class="grid grid-cols-2">
+                <div class="flex flex-cols-2">
                   <div class="px-4 py-2 font-semibold">
                     Gender<i class="las la-asterisk" style="color: red"></i>
                   </div>
-                  <div class="px-4 py-2 mt-2">
+                  <div class="flex justify-center">
                     <label class="inline-flex items-center">
                       <input
                         type="radio"
@@ -237,7 +237,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Phone number"
                       required=""
                       v-model="formData.phoneNo"
@@ -254,7 +254,7 @@ export default {
                         type="email"
                         name="idCard"
                         id="idCard"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                        class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         placeholder="Email"
                         required=""
                         v-model="formData.email"
@@ -273,7 +273,7 @@ export default {
                       type="date"
                       name="Birthdate"
                       id="Birthdate"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Birthdate"
                       required=""
                       v-model="birthdateUpgrade"
@@ -308,7 +308,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="House no"
                       required=""
                       v-model="formData.address.houseNo"
@@ -322,7 +322,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Moo"
                       required=""
                       v-model="formData.address.moo"
@@ -336,7 +336,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Soi"
                       required=""
                       v-model="formData.address.soi"
@@ -350,7 +350,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Road"
                       required=""
                       v-model="formData.address.road"
@@ -364,7 +364,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Tambon"
                       required=""
                       v-model="formData.address.subDistrict"
@@ -378,7 +378,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="District"
                       required=""
                       v-model="formData.address.district"
@@ -392,7 +392,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Province"
                       required=""
                       v-model="formData.address.province"
@@ -406,22 +406,24 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Postal code"
                       required=""
                       v-model="formData.address.postalCode"
                     />
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>
           <!-- End of about section -->
 
-          <div class="my-4"></div>
+          
 
           <!-- Experience and education -->
-          <div class="bg-white p-3 shadow-sm hover:shadow rounded-xl">
+          <div class="bg-blue-100 p-8">
+          <div class="bg-yellow-50 p-4  shadow-sm hover:shadow rounded-b-xl ">
             <div class="grid grid-cols-2">
               <div class="m-1">
                 <div
@@ -455,7 +457,7 @@ export default {
                     rows="10"
                     placeholder="รายการยาและปริมาณยาที่ทาน"
                     v-model="formData.noteMedicine"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   ></textarea>
                 </div>
               </div>
@@ -463,7 +465,7 @@ export default {
                 <div
                   class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
                 >
-                  <span clas="text-green-500">
+                  <span class="text-green-500">
                     <svg
                       width="24"
                       height="24"
@@ -491,13 +493,14 @@ export default {
                     cols="30"
                     rows="10"
                     placeholder="โรคประจำตัว"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   ></textarea>
                 </div>
               </div>
             </div>
             <!-- End of Experience and education grid -->
           </div>
+        </div>
 
           <!-- End of profile tab -->
         </div>

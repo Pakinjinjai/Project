@@ -1,7 +1,7 @@
 <template>
   <nav>
     <!-- Desktop menu -->
-    <div class="font-sans bg-gray-800">
+    <div class="font-sans bg-teal-500">
       <div class="max-w-7xl mx-auto">
         <div class="flex justify-between">
           <!-- menu -->
@@ -9,7 +9,7 @@
             <!-- logo -->
             <a href="" class="flex items-center space-x-2 py-5 px-2">
               <router-link to="/home">
-                <span class="text-2xl font-extrabold text-white">Home</span>
+                <span class="text-4xl font-extrabold text-white">P</span>
               </router-link>
             </a>
             <!-- menu -->
@@ -26,7 +26,7 @@
               v-on:click="goToHealth()"
               v-if="token != null"
             >
-              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              <a class="hover:bg-sky-700 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Health</a
               >
             </div>
@@ -36,7 +36,7 @@
               v-on:click="goToQueue()"
               class="hidden md:flex items-center space-x-1"
             >
-              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              <a class="hover:bg-sky-700 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Queue</a
               >
             </div>
@@ -46,7 +46,7 @@
               v-on:click="goToAccountInfo()"
               v-if="token != null"
             >
-              <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              <a class="hover:bg-sky-700 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Account</a
               >
             </div>
@@ -60,7 +60,7 @@
           >
             <a
               id="signIn"
-              class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              class="hover:bg-sky-700 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: block; align-items: center; height: 100%"
               >Sign in</a
             >
@@ -73,7 +73,7 @@
           >
             <a
               id="signOut"
-              class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
+              class="hover:bg-sky-700 py-5 px-2 text-orange-700 rounded-lg"
               style="display: flex; align-items: center; height: 100%"
               >Sign Out</a
             >

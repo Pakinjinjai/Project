@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100">
+  <div class="min-h-screen bg-blue-100">
     <div class="container mx-auto my-5 p-5">
       <div class="md:flex no-wrap md:-mx-2">
         <!-- Left Side -->

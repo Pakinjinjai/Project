@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div class="page-container min-h-screen bg-blue-100">
     <div class="mt-16">
       <Queue />
     </div>
