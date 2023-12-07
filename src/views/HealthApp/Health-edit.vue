@@ -34,7 +34,11 @@ export default {
   mounted() {
     const client = mqtt.connect("ws://localhost:8883");
 
-    client.subscribe("pulseSenser");
+    
+    client.on("connect", (topic, message) => {
+      client.subscribe("pulseSenser");
+      console.log("MQTT Connected");
+    });
 
     client.on("message", (topic, message) => {
       this.health.heartRate = message.toString();
