@@ -56,6 +56,16 @@
                 >Account</a
               >
             </div>
+            <div
+              class="hidden md:flex items-center space-x-1 "
+              id="accountEle"
+              v-on="goToName()"
+              v-if="token != null"
+            >
+              <div class="px-4 py-2" >
+                {{ profileName }}
+              </div>
+            </div>
           </div>
           <!-- login -->
           <div
@@ -79,7 +89,7 @@
           >
             <a
               id="signOut"
-              class=" text-red-600 hover:bg-red-300 hover:text-red active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg "
+              class="text-red-600 hover:bg-red-300 hover:text-red active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: flex; align-items: center; height: 100%"
               >Sign Out
               <svg
@@ -115,11 +125,13 @@
 </style>
 
 <script>
+import axios from "axios";
 export default {
   name: "Navbar",
   data() {
     return {
       token: null,
+      profileName: {},
     };
   },
   created() {
@@ -162,6 +174,21 @@ export default {
       if (token) {
         this.$router.push("/queue");
       }
+    },
+    goToName() {
+      axios
+        .get("http://localhost:3000/api/v1/users/me", {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("accessToken"),
+          },
+        })
+        .then((res) => {
+          this.profileName = res.data.user.firstname;
+          console.log(this.profileName);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
