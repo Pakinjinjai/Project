@@ -5,8 +5,11 @@ $web-default-font: "SF Pro",
     "Roboto",
     sans-serif;
 @font-face {
-    font-family: Calibri;
-    src: url(/public/font/Calibri-Regular.ttf);
+    font-family: MyFont;
+    src: url(/public/font/NotoSansThai-VariableFont_wdth\,wght.ttf),
+    url(/public/font/RobotoSlab-VariableFont_wght.ttf);
+    font-weight: normal;
+  font-style: normal;
 }
 $web-theme-color-primary: #FDFDFD;
 $web-theme-color-background: #F6F6F6;

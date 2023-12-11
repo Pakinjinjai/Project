@@ -1,9 +1,9 @@
 <template>
   <nav>
     <!-- Desktop menu -->
-    <div class="font-sans bg-[#00CDAC]">
+    <div class="font-sans bg-[#5FBDFF]">
       <div class="max-w-7xl mx-auto">
-        <div class="flex justify-between">
+        <div class="flex">
           <!-- menu -->
           <div class="flex space-x-4">
             <!-- logo -->
@@ -56,9 +56,10 @@
                 >Account</a
               >
             </div>
-            <div
-              class="hidden md:flex items-center space-x-1 "
-              id="accountEle"
+          </div>
+          <div
+              class="md:flex items-center"
+              id="Name"
               v-on="goToName()"
               v-if="token != null"
             >
@@ -66,7 +67,6 @@
                 {{ profileName }}
               </div>
             </div>
-          </div>
           <!-- login -->
           <div
             v-if="token == null"
@@ -84,7 +84,7 @@
           <div
             v-if="token != null"
             id="signOut"
-            class="items-center space-x-1"
+            class="ml-auto items-center space-x-1"
             v-on:click="signOut()"
           >
             <a
@@ -121,6 +121,12 @@
 #signOut,
 #signIn {
   cursor: pointer;
+}
+
+#Name {
+  display: flex;
+  justify-content: flex-end; /* ทำให้อยู่ตรงกลางแถว */
+  align-items: center; /* ทำให้อยู่ตรงกลางคอลัมน์ */
 }
 </style>
 
