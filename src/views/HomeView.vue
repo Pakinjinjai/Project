@@ -1,18 +1,19 @@
 <template>
   <div class="page-container">
     <LandingPage />
-    <!-- <Map /> -->
+    <Map />
   </div>
 </template>
 
 <script>
+import Map from "@/components/Map.vue"
 import LandingPage from "@/components/LandingPage.vue";
 import axios from "axios";
 // import Map from "@/components/Map.vue";
 
 export default {
   name: "homePage",
-  components: {LandingPage},
+  components: {LandingPage , Map},
   data() {
     return {
       profileData: {},
