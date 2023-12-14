@@ -30,7 +30,7 @@
               v-if="token != null"
             >
               <a
-                class="hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+                class="font-bold hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Health</a
               >
             </div>
@@ -41,7 +41,7 @@
               class="hidden md:flex items-center space-x-1"
             >
               <a
-                class="hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+                class="font-bold hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Queue</a
               >
             </div>
@@ -52,7 +52,7 @@
               v-if="token != null"
             >
               <a
-                class="hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+                class="font-bold hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Account</a
               >
             </div>
@@ -114,7 +114,7 @@
   </nav>
 </template>
 
-<style lang="scss" scoped>
+<style >
 #accountEle,
 #Queue,
 #Health,

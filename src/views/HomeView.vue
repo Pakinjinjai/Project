@@ -9,7 +9,6 @@
 import Map from "@/components/Map.vue"
 import LandingPage from "@/components/LandingPage.vue";
 import axios from "axios";
-// import Map from "@/components/Map.vue";
 
 export default {
   name: "homePage",
@@ -22,7 +21,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style >
 @import "@/style/main.scss";
 .page-container {
   width: 1440px;

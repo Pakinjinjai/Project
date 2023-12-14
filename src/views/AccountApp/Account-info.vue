@@ -6,7 +6,7 @@
         <div class="w-full md:w-3/12 md:mx-2 mb-4 md:mb-0">
           <!-- Profile Card -->
           <div
-            class="bg-white p-3 border-t-4 border-green-400 hover:shadow mb-4 rounded-xl"
+            class="bg-white p-3 border-t-4 border-blue-400 hover:shadow mb-4 rounded-xl"
           >
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               ID CARD

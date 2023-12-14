@@ -37,7 +37,7 @@ export default {
     <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2">
       <div
         v-if="Object.keys(health).length > 0"
-        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
+        class="flex flex-col items-center gap-3 px-8 py-10 bg-[#e89980] rounded-3xl hover:shadow shadow-main mt-4"
       >
         <p class="text-xl text-dark-grey-900">ความดันโลหิต</p>
         <span
@@ -48,7 +48,7 @@ export default {
       </div>
       <div
         v-if="Object.keys(health).length > 0"
-        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
+        class="flex flex-col items-center gap-3 px-8 py-10 bg-[#7fcdb8] mt-4 rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ปริมาณออกซิเจนในเลือด</p>
         <span
@@ -59,7 +59,7 @@ export default {
       </div>
       <div
         v-if="Object.keys(health).length > 0"
-        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
+        class="flex flex-col items-center gap-3 px-8 py-10 bg-[#90b0ba] mt-4 rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">ค่าอุณภูมิร่างกาย</p>
         <span
@@ -70,7 +70,7 @@ export default {
       </div>
       <div
         v-if="Object.keys(health).length > 0"
-        class="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl hover:shadow shadow-main"
+        class="flex flex-col items-center gap-3 px-8 py-10 bg-[#e5cb95] mt-4 rounded-3xl hover:shadow shadow-main"
       >
         <p class="text-xl text-dark-grey-900">อัตราการเต้นของหัวใจ</p>
         <span

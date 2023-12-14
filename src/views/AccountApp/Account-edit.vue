@@ -79,14 +79,14 @@ export default {
 </script>
 
 <template>
-  <div class="min-h-screen bg-blue-100">
+  <div class="min-h-screen">
     <div class="container mx-auto p-8">
       <div class="md:flex no-wrap md:-mx-8">
         <!-- Left Side -->
         <div class="w-full md:w-3/12 md:mx-2">
           <!-- Profile Card -->
           <div
-            class="bg-yellow-50 p-4 border-t-4  hover:shadow rounded-xl"
+            class="bg-white p-4 border-t-4  hover:shadow rounded-xl"
           >
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               Identification Number
@@ -102,7 +102,7 @@ export default {
               required=""
               v-model="formData.idCard"
             />
-            <h3 class="text-gray-900 font-lg text-semibold leading-6">
+            <h3 class="text-gray-900 ">
               ประวัติการแพ้ยา<i class="las la-asterisk" style="color: red"></i>
             </h3>
             <textarea
@@ -142,7 +142,7 @@ export default {
         <div class="w-full md:w-9/12 mx-2 h-64">
           <!-- Profile tab -->
           <!-- About Section -->
-          <div class="bg-yellow-50 p-4 shadow-sm hover:shadow rounded-xl">
+          <div class="bg-white p-4 shadow-sm hover:shadow rounded-xl">
             <div
               class="flex items-center space-x-2 font-semibold text-gray-900 leading-8"
             >
@@ -422,8 +422,8 @@ export default {
           
 
           <!-- Experience and education -->
-          <div class="bg-blue-100 p-8">
-          <div class="bg-yellow-50 p-4  shadow-sm hover:shadow rounded-b-xl ">
+          <div class="bg-white p-3 shadow-sm rounded-xl hover:shadow mt-4">
+          <div class="bg-white p-4  shadow-sm hover:shadow rounded-xl ">
             <div class="grid grid-cols-2">
               <div class="m-1">
                 <div
@@ -510,6 +510,11 @@ export default {
 </template>
 
 <style lang="scss">
+.las.la-asterisk {
+    font-size: 0.8em; /* หรือขนาดที่คุณต้องการ */
+    vertical-align: middle; /* ถ้าคุณต้องการให้ตำแหน่งสูงเท่ากันกับข้อความ */
+  } 
+
 .account {
   display: grid;
   max-width: 960px;
