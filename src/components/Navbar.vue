@@ -6,31 +6,13 @@
         <div class="flex">
           <!-- menu -->
           <div class="flex space-x-4">
-            <!-- logo -->
-            <!-- <a href="" class="flex items-center space-x-2 py-5 px-2">
-              <router-link to="/home">
-                <span
-                  class="text-4xl font-extrabold text-white transition duration-0 hover:duration-150"
-                  >P</span
-                >
-              </router-link>
-            </a> -->
-            <!-- menu -->
-            <!-- <div class="hidden md:flex items-center space-x-1">
-              <router-link to="/about">
-                <a class="hover:bg-sky-700 py-5 px-2 text-indigo-200 rounded-lg"
-                  >About</a
-                >
-              </router-link>
-            </div> -->
-            
-              <a
-                v-on:click="goToHome()"
-                class="cursor-pointer font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
-              >
-                Home
-              </a>
-            
+            <a
+              v-on:click="goToHome()"
+              class="cursor-pointer font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
+            >
+              Home
+            </a>
+
             <div
               id="Health"
               class="hidden md:flex items-center space-x-1"
@@ -49,7 +31,7 @@
               class="hidden md:flex items-center space-x-1"
             >
               <a
-                class="font-bold hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+                class="font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
                 >Queue</a
               >
             </div>
@@ -60,30 +42,21 @@
               v-if="token != null"
             >
               <a
-                class="font-bold hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+                class="font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
                 >Account</a
               >
-              <a
-                class="font-bold hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+            </div>
+            <a
+                class="font-bold hover:text-white py-5 px-2 text-white rounded-lg"
                 id="Name"
-                v-on="goToName()"
                 v-if="token != null"
               >
-                Mr.{{ profileName.firstname }}
+                {{ profileName.gender ? "Mr" : "Mrs" }}.{{
+                  profileName.firstname
+                }}
               </a>
-            </div>
           </div>
-          <!-- <div
-              class="md:flex items-center"
-              id="Name"
-              v-on="goToName()"
-              v-if="token != null"
-            >
-              <div class="px-4 py-2" >
-                {{ profileName }}
-              </div>
-            </div> -->
-          <!-- login -->
+          
           <div
             v-if="token == null"
             id="signIn"
@@ -147,7 +120,6 @@
 </style>
 
 <script>
-
 import axios from "axios";
 export default {
   name: "Navbar",
@@ -159,6 +131,7 @@ export default {
   },
   created() {
     this.checkAccessToken();
+    this.getData();
   },
   methods: {
     checkAccessToken() {
@@ -198,7 +171,7 @@ export default {
         this.$router.push("/queue");
       }
     },
-    goToName() {
+    getData() {
       axios
         .get("http://localhost:3000/api/v1/users/me", {
           headers: {
@@ -213,10 +186,9 @@ export default {
           console.log(error);
         });
     },
-    goToHome(){
-      this.$router.push("/home")
+    goToHome() {
+      this.$router.push("/home");
     },
-    
   },
 };
 </script>
