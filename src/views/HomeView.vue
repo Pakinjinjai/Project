@@ -1,14 +1,14 @@
 <template>
   <div class="page-container">
     <LandingPage />
-    <Map />
+    <Map/>
   </div>
 </template>
 
 <script>
 import Map from "@/components/Map.vue"
 import LandingPage from "@/components/LandingPage.vue";
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "homePage",

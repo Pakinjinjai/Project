@@ -1,20 +1,20 @@
 <template>
   <nav>
     <!-- Desktop menu -->
-    <div class="font-sans bg-[#5FBDFF]">
+    <div class="font-sans bg-[#140A4B]">
       <div class="max-w-7xl mx-auto">
         <div class="flex">
           <!-- menu -->
           <div class="flex space-x-4">
             <!-- logo -->
-            <a href="" class="flex items-center space-x-2 py-5 px-2">
+            <!-- <a href="" class="flex items-center space-x-2 py-5 px-2">
               <router-link to="/home">
                 <span
                   class="text-4xl font-extrabold text-white transition duration-0 hover:duration-150"
                   >P</span
                 >
               </router-link>
-            </a>
+            </a> -->
             <!-- menu -->
             <!-- <div class="hidden md:flex items-center space-x-1">
               <router-link to="/about">
@@ -23,6 +23,14 @@
                 >
               </router-link>
             </div> -->
+            
+              <a
+                v-on:click="goToHome()"
+                class="cursor-pointer font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
+              >
+                Home
+              </a>
+            
             <div
               id="Health"
               class="hidden md:flex items-center space-x-1"
@@ -30,7 +38,7 @@
               v-if="token != null"
             >
               <a
-                class="font-bold hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+                class="font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
                 >Health</a
               >
             </div>
@@ -55,9 +63,17 @@
                 class="font-bold hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
                 >Account</a
               >
+              <a
+                class="font-bold hover:bg-sky-600 hover:text-black active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+                id="Name"
+                v-on="goToName()"
+                v-if="token != null"
+              >
+                Mr.{{ profileName.firstname }}
+              </a>
             </div>
           </div>
-          <div
+          <!-- <div
               class="md:flex items-center"
               id="Name"
               v-on="goToName()"
@@ -66,7 +82,7 @@
               <div class="px-4 py-2" >
                 {{ profileName }}
               </div>
-            </div>
+            </div> -->
           <!-- login -->
           <div
             v-if="token == null"
@@ -89,7 +105,7 @@
           >
             <a
               id="signOut"
-              class="text-red-600 hover:bg-red-300 hover:text-red active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+              class="text-red-600 hover:text-red active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: flex; align-items: center; height: 100%"
               >Sign Out
               <svg
@@ -114,7 +130,7 @@
   </nav>
 </template>
 
-<style >
+<style>
 #accountEle,
 #Queue,
 #Health,
@@ -131,6 +147,7 @@
 </style>
 
 <script>
+
 import axios from "axios";
 export default {
   name: "Navbar",
@@ -189,13 +206,17 @@ export default {
           },
         })
         .then((res) => {
-          this.profileName = res.data.user.firstname;
+          this.profileName = res.data.user;
           console.log(this.profileName);
         })
         .catch((error) => {
           console.log(error);
         });
     },
+    goToHome(){
+      this.$router.push("/home")
+    },
+    
   },
 };
 </script>
