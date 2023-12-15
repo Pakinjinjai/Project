@@ -1,7 +1,7 @@
 <template>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
     <table class="w-full text-sm text-left text-gray-500">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+      <thead class="text-xs text-[#FDFDFD] uppercase bg-[#140A4B]">
         <tr>
           <th scope="col" class="px-6 py-3">Title</th>
           <th scope="col" class="px-6 py-3">Date</th>
@@ -13,7 +13,11 @@
         <tr
           v-for="(item, index) in sortedQueue"
           :key="item._id"
-          class="bg-white border-b"
+          :class="{
+      'bg-white': index % 2 === 0,
+      'bg-[#F6F6F6]': index % 2 !== 0
+    }"
+    class="border-b"
         >
           <th
             scope="row"

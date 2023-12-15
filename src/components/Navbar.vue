@@ -8,7 +8,7 @@
           <div class="flex space-x-4">
             <a
               v-on:click="goToHome()"
-              class="cursor-pointer font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
+              class="cursor-pointer font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
             >
               Home
             </a>
@@ -20,7 +20,7 @@
               v-if="token != null"
             >
               <a
-                class="font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
+                class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
                 >Health</a
               >
             </div>
@@ -31,7 +31,7 @@
               class="hidden md:flex items-center space-x-1"
             >
               <a
-                class="font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
+                class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
                 >Queue</a
               >
             </div>
@@ -42,12 +42,12 @@
               v-if="token != null"
             >
               <a
-                class="font-bold hover:text-white active:text-white focus:text-white transition-transform active:scale-110 py-5 px-2 text-white rounded-lg"
+                class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
                 >Account</a
               >
             </div>
             <a
-                class="font-bold hover:text-white py-5 px-2 text-white rounded-lg"
+                class="font-bold hover:text-[#FDFDFD] py-5 px-2 text-[#FDFDFD] rounded-lg"
                 id="Name"
                 v-if="token != null"
               >
@@ -65,7 +65,7 @@
           >
             <a
               id="signIn"
-              class="hover:bg-sky-700 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+              class="text-[#EB1851] font-medium hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: block; align-items: center; height: 100%"
               >Sign in</a
             >
@@ -78,7 +78,7 @@
           >
             <a
               id="signOut"
-              class="text-red-600 hover:text-red active:text-black focus:text-black transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+              class="text-[#EB1851] font-medium  hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: flex; align-items: center; height: 100%"
               >Sign Out
               <svg
