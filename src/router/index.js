@@ -50,9 +50,16 @@ const routes = [
     component: () => import("../views/LoginApp/SignupView.vue"),
   },
   {
-    path: "/dashboard",
-    name: "dashboard",
-    component: () => import("../views/AdminDashboardApp/Dashboard.vue"),
+    path: "/",
+    name: "",
+    component: () => import("../views/AdminDashboardApp/router-template.vue"),
+    children:[
+      {
+        path: "/dashboard",
+        name: "dashboard",
+        component: () => import("../views/AdminDashboardApp/Dashboard.vue"),
+      }
+    ]
   },
 ];
 

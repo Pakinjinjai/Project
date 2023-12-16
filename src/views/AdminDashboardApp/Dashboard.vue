@@ -1,39 +1,68 @@
 <template>
-  <div>
-    <h1>Dashboard</h1>
-  </div>
-  <!--Start Warpper-->
-  <div class="h-screen flex flex-row flex-wrap">
-    <!--Start Sidebar-->
-    <div
-      id="Sidebar"
-      class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster"
-    >
-      <!--Sidebar content-->
-      <div class="flex flex-col">
-        <!--Sidebar toggle-->
-        <div class="text-right hidden md:block mb-4">
-          <button id="sideBarHideBtn">
-            <i class="fad fa-times-circle"></i>
-          </button>
-        </div>
-        <!--End toggle sidebar-->
-        <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">HOME</p>
+    <div class="grid grid-cols-3  gap-5 md:grid-cols-3 lg:grid-cols-3 mx-40">
+      <div class="flex flex-col bg-white rounded-3xl border-solid border border-[#303030] hover:shadow text-center">
+        <p class="text-dark-grey-900">จำนวนผู้ใช้งาน</p>
+        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
+        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
+       
+      </div>
+      <div class="flex flex-col bg-white rounded-3xl border-solid border border-[#303030] hover:shadow  text-center">
+        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
+        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
+        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
+      </div>
+      <div class="flex flex-col bg-white rounded-3xl border-solid border border-[#303030] hover:shadow  text-center">
+        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
+        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
+        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
       </div>
     </div>
-  </div>
 </template>
 
-<style></style>
+<style>
+.page-container {
+  width: 1440px;
+  position: relative;
+  margin: 0 auto;
+  transition: all 0.3s;
+
+  @media screen and (max-width: 1920px) {
+    width: 1280px;
+  }
+
+  @media screen and (max-width: 1600px) {
+    width: 1280px;
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 1280px;
+  }
+
+  @media screen and (max-width: 1280px) {
+    width: 1024px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 768px;
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 768px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+</style>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
 export default {
   name: "Dashboard",
   data() {
     return {};
   },
-  components: { Navbar },
+  components: {},
   methods: {},
 };
 </script>
