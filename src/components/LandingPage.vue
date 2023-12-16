@@ -126,7 +126,7 @@
     </div>
   </div>
 </section>
-			<h1 class="text-center mt-12">Medical personnel</h1>
+			<h1 class="text-center mt-12 mb-12">Medical personnel</h1>
 			<div class="flex flex-wrap -mx-4">
 				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
 					<section class="box special p-4">
