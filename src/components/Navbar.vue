@@ -69,7 +69,7 @@
           >
             <a
               id="signIn"
-              class="text-[#EB1851] space-x-1 font-medium hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+              class="text-[#36a343] space-x-1 font-medium hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: block; align-items: center; height: 100%"
               >เข้าสู่ระบบ</a
             >
