@@ -10,29 +10,29 @@
               v-on:click="goToHome()"
               class="cursor-pointer font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
             >
-              Home
+              หน้าหลัก
             </a>
 
             <div
               id="User"
               class="hidden md:flex items-center space-x-1"
-              v-on:click=""
+              v-on:click="goToUser()"
               v-if="token != null"
             >
               <a
                 class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-                >User</a
+                >ข้อมูลผู้ใช้งาน</a
               >
             </div>
             <div
               id="Report"
               v-if="token != null"
-              v-on:click=""
+              v-on:click="goToQueue()"
               class="hidden md:flex items-center space-x-1"
             >
               <a
                 class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-                >Report</a
+                >การนัดคิวและแจ้งคำแนะนำ</a
               >
             </div>
             <div
@@ -43,7 +43,7 @@
             >
               <a
                 class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-                >User health</a
+                >สุขภาพของผู้ป่วย</a
               >
             </div>
             <a
@@ -51,7 +51,7 @@
                 id="Name"
                 v-if="token != null"
               >
-                Admin : {{
+                สวัสดี : {{
                   profileName.firstname
                 }}
               </a>
@@ -166,6 +166,18 @@ export default {
     },
     goToHome() {
       this.$router.push("/home");
+    },
+    goToUser() {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        this.$router.push("/dashboard/users");
+      }
+    },
+    goToQueue() {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        this.$router.push("/dashboard/queue");
+      }
     },
   },
 };

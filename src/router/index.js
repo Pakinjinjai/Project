@@ -58,7 +58,17 @@ const routes = [
         path: "/dashboard",
         name: "dashboard",
         component: () => import("../views/AdminDashboardApp/Dashboard.vue"),
-      }
+      },
+      {
+        path:"/dashboard/users",
+        name: "User",
+        component:() => import("../views/AdminDashboardApp/UserDashboard.vue"),
+      },
+      {
+        path:"/dashboard/queue",
+        name: "Queue",
+        component:() => import("../views/AdminDashboardApp/QueueDashboard.vue"),
+      },
     ]
   },
 ];

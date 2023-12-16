@@ -1,22 +1,20 @@
+<script>
+import Header from "@/components/HeaderDashboard.vue";
+export default {
+  name: "Dashboard",
+  data() {
+    return {};
+  },
+  components: { Header },
+  methods: {},
+};
+</script>
+
 <template>
-    <div class="grid grid-cols-3  gap-5 md:grid-cols-3 lg:grid-cols-3 mx-40">
-      <div class="flex flex-col bg-white rounded-3xl border-solid border border-[#303030] hover:shadow text-center">
-        <p class="text-dark-grey-900">จำนวนผู้ใช้งาน</p>
-        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
-        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
-       
-      </div>
-      <div class="flex flex-col bg-white rounded-3xl border-solid border border-[#303030] hover:shadow  text-center">
-        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
-        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
-        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
-      </div>
-      <div class="flex flex-col bg-white rounded-3xl border-solid border border-[#303030] hover:shadow  text-center">
-        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
-        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
-        <p class=" text-dark-grey-900">จำนวนผู้ใช้งาน</p>
-      </div>
-    </div>
+  <div class="page-container">
+    <Header />
+    
+  </div>
 </template>
 
 <style>
@@ -55,14 +53,3 @@
   }
 }
 </style>
-
-<script>
-export default {
-  name: "Dashboard",
-  data() {
-    return {};
-  },
-  components: {},
-  methods: {},
-};
-</script>

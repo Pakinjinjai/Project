@@ -6,15 +6,32 @@
         <div class="flex">
           <!-- menu -->
           <div class="flex space-x-4">
-            <a
-              v-on:click="goToHome()"
-              class="flex  cursor-pointer font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-            ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mx-auto mr-2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-</svg>
-
-            หน้าหลัก
-            </a>
+            <div
+              class="hidden md:flex items-center space-x-1 cursor-pointer hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] text-[#FDFDFD]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-8 h-8 mx-auto "
+                v-on:click="goToHome()"              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                />
+              </svg>
+            </div>
+            <div class="hidden md:flex items-center space-x-1">
+              <a
+                v-on:click="goToHome()"
+                class="flex cursor-pointer font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
+              >
+                หน้าหลัก
+              </a>
+            </div>
 
             <div
               id="Health"
@@ -49,45 +66,56 @@
                 >ประวัติส่วนตัว</a
               >
             </div>
-            <a
-                class="font-bold hover:text-[#FDFDFD] py-5 px-2 text-[#FDFDFD] rounded-lg"
-                id="Name"
-                v-if="token != null"
+            <div
+              class="hidden md:flex items-center space-x-1"
+              id="accountEle"
+              v-on:click="goToDashboard()"
+              v-if="profileName.role == 9001"
+            >
+              <a
+                class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
+                >จัดการระบบ</a
               >
-                {{ profileName.gender ? "Mr" : "Mrs" }}.{{
-                  profileName.firstname
-                }}
-              </a>
+            </div>
+            <a
+              class="font-bold hover:text-[#FDFDFD] py-5 px-2 text-[#FDFDFD] rounded-lg"
+              id="Name"
+              v-if="token != null"
+            >
+              {{ profileName.gender ? "Mr" : "Mrs" }}.{{
+                profileName.firstname
+              }}
+            </a>
           </div>
           <!-- singin-singup -->
           <div class="flex ml-auto">
-          <div
-            v-if="token == null"
-            id="signIn"
-            class="md:flex space-x-1"
-            v-on:click="signIn()"
-          >
-            <a
+            <div
+              v-if="token == null"
               id="signIn"
-              class="text-[#36a343] space-x-1 font-medium hover:text-[#36a343c2] active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
-              style="display: block; align-items: center; height: 100%"
-              >เข้าสู่ระบบ</a
+              class="md:flex space-x-1"
+              v-on:click="signIn()"
             >
-          </div>
-          <div
-            v-if="token == null"
-            id="signIn"
-            class="items-center md:flex space-x-1"
-            v-on:click="signUp()"
-          >
-            <a
-              id="signUp"
-              class="text-[#EB1851] space-x-1 font-medium hover:text-[#eb1850c2] active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
-              style="display: block; align-items: center; height: 100%"
-              >สมัครสมาชิก</a
+              <a
+                id="signIn"
+                class="text-[#36a343] space-x-1 font-medium hover:text-[#36a343c2] active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+                style="display: block; align-items: center; height: 100%"
+                >เข้าสู่ระบบ</a
+              >
+            </div>
+            <div
+              v-if="token == null"
+              id="signIn"
+              class="items-center md:flex space-x-1"
+              v-on:click="signUp()"
             >
+              <a
+                id="signUp"
+                class="text-[#EB1851] space-x-1 font-medium hover:text-[#eb1850c2] active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+                style="display: block; align-items: center; height: 100%"
+                >สมัครสมาชิก</a
+              >
+            </div>
           </div>
-        </div>
           <div
             v-if="token != null"
             id="signOut"
@@ -96,7 +124,7 @@
           >
             <a
               id="signOut"
-              class="text-[#EB1851] font-medium  hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+              class="text-[#EB1851] font-medium hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: flex; align-items: center; height: 100%"
               >ออกจากระบบ
               <svg
@@ -154,13 +182,6 @@ export default {
   methods: {
     checkAccessToken() {
       this.token = localStorage.getItem("accessToken");
-
-      // const accountElement = document.getElementById("accountEle");
-      // if (!this.token) {
-      //   accountElement.style.display = "none";
-      // } else {
-      //   accountElement.style.display = "block";
-      // }
     },
     signIn() {
       this.$router.push("/signin");
@@ -178,6 +199,12 @@ export default {
       const token = localStorage.getItem("accessToken");
       if (token) {
         this.$router.push("/account-info");
+      }
+    },
+    goToDashboard() {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        this.$router.push("/dashboard");
       }
     },
     goToHealth() {
