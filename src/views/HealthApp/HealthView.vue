@@ -8,10 +8,10 @@
         <button
           v-if="!showDoneButton"
           type="button"
-          class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
+          class="text-white bg-[#140A4B] border border-gray-300 focus:outline-none hover:bg-[#140a4bbc] focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
           @click="toggleHealthComponents"
         >
-          Apply Health
+        เพิ่มข้อมูลสุขภาพ
         </button>
 
         <button

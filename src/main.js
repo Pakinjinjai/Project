@@ -18,7 +18,7 @@ library.add(faUserSecret);
 /* add icons Line Awesome to the library */
 import "line-awesome/dist/line-awesome/css/line-awesome.min.css";
 
-import './style/main.scss'
+// import './style/main.scss'
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)

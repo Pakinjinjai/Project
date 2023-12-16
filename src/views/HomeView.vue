@@ -1,7 +1,6 @@
 <template>
   <div class="page-container">
     <LandingPage />
-    <Map/>
   </div>
 </template>
 

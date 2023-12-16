@@ -117,6 +117,11 @@
 					</section>
 				</div>
 			</section>
+			<div class="bg-black m-4 w-auto h-auto">
+				<div class="">
+					<Map />
+				</div>
+			</div>
 
 			<div class="flex flex-wrap -mx-4">
 				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
@@ -210,13 +215,17 @@
 					</section>
 				</div>
 			</div>
+			
 		</section>
 	</div>
 </template>
 
 <script>
+import Map from "@/components/Map.vue"
 export default {
-	setup() { },
+	name: "LandingPage",
+	components: { Map },
+
 };
 </script>
 
@@ -231,17 +240,6 @@ export default {
 	padding: 3em;
 }
 
-.box> :last-child {
-	margin-bottom: 0;
-}
-
-.box.alt {
-	background: none !important;
-	border-radius: 0 !important;
-	box-shadow: none !important;
-	margin: 0 0 2em 0;
-	padding: 0 !important;
-}
 
 .box.features .features-row {
 	border-top: solid 2px #e5e5e5;
@@ -415,152 +413,17 @@ export default {
 	color: #ffffff;
 }
 
-/* Button */
-
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-.button {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	-ms-appearance: none;
-	appearance: none;
-	-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	background-color: #666;
-	border-radius: 6px;
-	border: 0;
-	color: #ffffff;
-	cursor: pointer;
-	display: inline-block;
-	font-weight: 400;
-	height: 3em;
-	line-height: 3em;
-	padding: 0 2em;
-	text-align: center;
-	text-decoration: none;
-	white-space: nowrap;
+/* @media(prefers-color-scheme: light) {
+	.page-container {
+	background-color: #ffffff;
+    color: #333333;
+}
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover,
-.button:hover {
-	background-color: #737373;
-}
-
-input[type="submit"]:active,
-input[type="reset"]:active,
-input[type="button"]:active,
-.button:active {
-	background-color: #595959;
-}
-
-input[type="submit"].icon,
-input[type="reset"].icon,
-input[type="button"].icon,
-.button.icon {
-	padding-left: 1.35em;
-}
-
-input[type="submit"].icon:before,
-input[type="reset"].icon:before,
-input[type="button"].icon:before,
-.button.icon:before {
-	margin-right: 0.5em;
-}
-
-input[type="submit"].fit,
-input[type="reset"].fit,
-input[type="button"].fit,
-.button.fit {
-	width: 100%;
-}
-
-input[type="submit"].small,
-input[type="reset"].small,
-input[type="button"].small,
-.button.small {
-	font-size: 0.8em;
-	height: 2.7em;
-	line-height: 2.7em;
-}
-
-input[type="submit"].large,
-input[type="reset"].large,
-input[type="button"].large,
-.button.large {
-	font-size: 1.25em;
-	height: 2.7em;
-	line-height: 2.7em;
-}
-
-input[type="submit"].alt,
-input[type="reset"].alt,
-input[type="button"].alt,
-.button.alt {
-	background-color: transparent;
-	box-shadow: inset 0 0 0 2px #e5e5e5;
-	color: #777;
-}
-
-input[type="submit"].alt:hover,
-input[type="reset"].alt:hover,
-input[type="button"].alt:hover,
-.button.alt:hover {
-	background-color: #f8f8f8;
-}
-
-input[type="submit"].alt:active,
-input[type="reset"].alt:active,
-input[type="button"].alt:active,
-.button.alt:active {
-	background-color: #f0f0f0;
-}
-
-input[type="submit"].alt.icon:before,
-input[type="reset"].alt.icon:before,
-input[type="button"].alt.icon:before,
-.button.alt.icon:before {
-	color: #999;
-}
-
-input[type="submit"].primary,
-input[type="reset"].primary,
-input[type="button"].primary,
-.button.primary {
-	background-color: #e89980;
-	color: #ffffff !important;
-}
-
-input[type="submit"].primary:hover,
-input[type="reset"].primary:hover,
-input[type="button"].primary:hover,
-.button.primary:hover {
-	background-color: #ecaa96;
-}
-
-input[type="submit"].primary:active,
-input[type="reset"].primary:active,
-input[type="button"].primary:active,
-.button.primary:active {
-	background-color: #e4886a;
-}
-
-input[type="submit"].disabled,
-input[type="submit"]:disabled,
-input[type="reset"].disabled,
-input[type="reset"]:disabled,
-input[type="button"].disabled,
-input[type="button"]:disabled,
-.button.disabled,
-.button:disabled {
-	background-color: #777 !important;
-	box-shadow: inset 0 -0.15em 0 0 rgba(0, 0, 0, 0.15);
-	color: #f5f5f5 !important;
-	cursor: default;
-	opacity: 0.25;
-}
+@media(prefers-color-scheme: dark) {
+	.page-container {
+    background-color: #333333;
+    color: #ffffff;
+  }
+} */
 </style>

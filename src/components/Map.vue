@@ -19,9 +19,9 @@ export default {
         });
 
         // เพิ่ม Marker ที่จุดที่กำหนด
-        const marker = new mapboxgl.Marker()
-            .setLngLat([99.374790, 10.723764]) // ตำแหน่ง (ลองจิจูด, ลองจิจูด)
-            .addTo(map);
+        // const marker = new mapboxgl.Marker()
+        //     .setLngLat([99.374790, 10.723764]) // ตำแหน่ง (ลองจิจูด, ลองจิจูด)
+        //     .addTo(map);
     }
 };
 </script>

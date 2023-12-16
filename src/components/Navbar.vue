@@ -8,9 +8,12 @@
           <div class="flex space-x-4">
             <a
               v-on:click="goToHome()"
-              class="cursor-pointer font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-            >
-              Home
+              class="flex  cursor-pointer font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
+            ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mx-auto mr-2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+</svg>
+
+            หน้าหลัก
             </a>
 
             <div
@@ -21,7 +24,7 @@
             >
               <a
                 class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-                >Health</a
+                >ตรวจวัดสุขภาพ</a
               >
             </div>
             <div
@@ -32,7 +35,7 @@
             >
               <a
                 class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-                >Queue</a
+                >คิวส่วนตัว</a
               >
             </div>
             <div
@@ -43,7 +46,7 @@
             >
               <a
                 class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-                >Account</a
+                >ประวัติส่วนตัว</a
               >
             </div>
             <a
@@ -56,20 +59,35 @@
                 }}
               </a>
           </div>
-          
+          <!-- singin-singup -->
+          <div class="flex ml-auto">
           <div
             v-if="token == null"
             id="signIn"
-            lass="items-center md:flex space-x-1"
+            class="md:flex space-x-1"
             v-on:click="signIn()"
           >
             <a
               id="signIn"
-              class="text-[#EB1851] font-medium hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+              class="text-[#EB1851] space-x-1 font-medium hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: block; align-items: center; height: 100%"
-              >Sign in</a
+              >เข้าสู่ระบบ</a
             >
           </div>
+          <div
+            v-if="token == null"
+            id="signIn"
+            class="items-center md:flex space-x-1"
+            v-on:click="signUp()"
+          >
+            <a
+              id="signUp"
+              class="text-[#EB1851] space-x-1 font-medium hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
+              style="display: block; align-items: center; height: 100%"
+              >สมัครสมาชิก</a
+            >
+          </div>
+        </div>
           <div
             v-if="token != null"
             id="signOut"
@@ -80,7 +98,7 @@
               id="signOut"
               class="text-[#EB1851] font-medium  hover:text-red-600 active:text-[#303030] focus:text-[#303030] transition-transform active:scale-110 py-5 px-2 color: rgb(0 0 0) rounded-lg"
               style="display: flex; align-items: center; height: 100%"
-              >Sign Out
+              >ออกจากระบบ
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -146,6 +164,9 @@ export default {
     },
     signIn() {
       this.$router.push("/signin");
+    },
+    signUp() {
+      this.$router.push("/signup");
     },
     signOut() {
       localStorage.removeItem("accessToken");
