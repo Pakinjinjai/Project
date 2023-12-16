@@ -6,20 +6,24 @@
         <div class="w-full md:w-3/12 md:mx-2 mb-4 md:mb-0">
           <!-- Profile Card -->
           <div
-            class="bg-white p-3 border-t-4 border-blue-400 hover:shadow mb-4 rounded-xl"
+            class="bg-white p-3 border-4 hover:shadow mb-4 rounded-xl"
           >
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              ID CARD
+              รหัสบัตรประชาชน
             </h1>
-            <h1 class="text-gray-900 font-bold text-lg leading-8 my-1">
+            <!-- <div  class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md"> -->
+            <p class="text-gray-900  text-lg leading-8 my-1">
               {{ profileData.idCard }}
-            </h1>
-            <h3 class="text-gray-900 font-lg text-semibold leading-6">
+            </p>
+          <!-- </div> -->
+            <h3 class="text-gray-900 font-bold text-xl leading-8 my-1">
               ประวัติการแพ้ยา
             </h3>
+            <div class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center">
             <p>
               {{ profileData.noteDrug }}
             </p>
+          </div>
           </div>
           <!-- End of profile card -->
           <div class="my-4"></div>
@@ -34,9 +38,9 @@
             >
               <button
                 type="button"
-                class="mt-4 focus:outline-none text-black bg-yellow-100 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                class="mt-4 focus:outline-none text-white bg-[#140A4B] hover:bg-[#140a4bc5] focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-green-700 dark:focus:ring-green-800"
               >
-                Edit
+              แก้ไขโปรไฟล์
               </button>
             </router-link>
           </div>
@@ -56,20 +60,20 @@
 </svg>
 
               </span>
-              <span class="tracking-wide">About</span>
+              <span class="tracking-wide">ข้อมูลส่วนตัว</span>
             </div>
             <div class="text-gray-700">
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">First Name:</div>
+                  <div class="px-4 py-2 font-semibold">ชื่อจริง :</div>
                   <div class="px-4 py-2">{{ profileData.firstname }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Last Name:</div>
+                  <div class="px-4 py-2 font-semibold">นามสกุล :</div>
                   <div class="px-4 py-2">{{ profileData.lastname }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Gender:</div>
+                  <div class="px-4 py-2 font-semibold">เพศ :</div>
                   <div class="px-4 py-2">
                     {{
                       profileData.gender == null
@@ -81,17 +85,17 @@
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Phone number:</div>
+                  <div class="px-4 py-2 font-semibold">เบอร์โทรติดต่อ : </div>
                   <div class="px-4 py-2">{{ profileData.phoneNo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Email:</div>
+                  <div class="px-4 py-2 font-semibold">อีเมล์ :</div>
                   <div class="px-4 py-2">
                     <a>{{ profileData.email }}</a>
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Birthday:</div>
+                  <div class="px-4 py-2 font-semibold">วันเกิด : </div>
                   <div class="px-4 py-2">{{ birthDate }}</div>
                 </div>
               </div>
@@ -111,46 +115,46 @@
                   />
                 </svg>
               </span>
-              <span class="tracking-wide">Address</span>
+              <span class="tracking-wide">ที่อยู่ส่วนบุคคล </span>
             </div>
             <div class="text-gray-700">
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">House No:</div>
+                  <div class="px-4 py-2 font-semibold">บ้านเลขที่ : </div>
                   <div class="px-4 py-2">{{ profileAddress.houseNo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Moo:</div>
+                  <div class="px-4 py-2 font-semibold">หมู่ : </div>
                   <div class="px-4 py-2">{{ profileAddress.moo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Soi:</div>
+                  <div class="px-4 py-2 font-semibold">ซอย : </div>
                   <div class="px-4 py-2">{{ profileAddress.soi }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Road:</div>
+                  <div class="px-4 py-2 font-semibold">ถนน : </div>
                   <div class="px-4 py-2">{{ profileAddress.road }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Tambon:</div>
+                  <div class="px-4 py-2 font-semibold">ตำบล : </div>
                   <div class="px-4 py-2">
                     {{ profileAddress.subDistrict }}
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">District:</div>
+                  <div class="px-4 py-2 font-semibold">อำเภอ : </div>
                   <div class="px-4 py-2">
                     {{ profileAddress.district }}
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Province:</div>
+                  <div class="px-4 py-2 font-semibold">จังหวัด : </div>
                   <div class="px-4 py-2">
                     {{ profileAddress.province }}
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Postal Code:</div>
+                  <div class="px-4 py-2 font-semibold">รหัสไปรษณีย์ :</div>
                   <div class="px-4 py-2">
                     {{ profileAddress.postalCode }}
                   </div>
@@ -184,11 +188,13 @@
                   </span>
                   <span class="tracking-wide">รายการยาและปริมาณยาที่ทาน</span>
                 </div>
+                <div class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center mr-2">
                 <div
                   class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 >
                   {{ profileData.noteMedicine }}
                 </div>
+              </div>
               </div>
               <div>
                 <div
@@ -209,11 +215,13 @@
                   </span>
                   <span class="tracking-wide">โรคประจำตัว</span>
                 </div>
+                <div class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center mr-2">
                 <div
                   class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 >
                   {{ profileData.noteDisease }}
                 </div>
+              </div>
               </div>
             </div>
             <!-- End of Experience and education grid -->

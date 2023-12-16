@@ -89,7 +89,7 @@ export default {
             class="bg-white p-4 border-t-4  hover:shadow rounded-xl"
           >
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              Identification Number
+              รหัสบัตรประชาชน
               <i class="las la-asterisk" style="color: red"> </i>
             </h1>
             <font-awesome-icon icon="triangle-exclamation" />
@@ -123,16 +123,16 @@ export default {
               type="button"
               id="saveAccount"
               v-on:click="editAccount()"
-              class="mt-7 text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+              class="mt-7 text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-xl text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
             >
-              Save
+              บันทึก
             </button>
             <router-link to="/account-info">
               <button
                 type="button"
-                class="mt-7 focus:outline-none text-white bg-red-700 hover:bg-orange-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                class="mt-7 focus:outline-none text-white bg-red-700 hover:bg-orange-600 focus:ring-4 focus:ring-green-300 font-medium rounded-xl text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-green-700 dark:focus:ring-green-800"
               >
-                Cancel
+                ยกเลิก
               </button>
             </router-link>
           </div>

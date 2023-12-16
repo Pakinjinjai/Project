@@ -1,12 +1,12 @@
 <template>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
     <table class="w-full text-sm text-left text-gray-500">
-      <thead class="text-xs text-[#FDFDFD] uppercase bg-[#140A4B]">
+      <thead class="text-xl text-[#FDFDFD] uppercase bg-[#140A4B]">
         <tr>
-          <th scope="col" class="px-6 py-3">Title</th>
-          <th scope="col" class="px-6 py-3">Date</th>
-          <th scope="col" class="px-6 py-3">Status</th>
-          <th scope="col" class="px-6 py-3">Action</th>
+          <th scope="col" class="px-6 py-3">หัวข้อ</th>
+          <th scope="col" class="px-6 py-3">วันที่นัดหมาย</th>
+          <th scope="col" class="px-6 py-3">สถานะการตรวจสอบ</th>
+          <th scope="col" class="px-6 py-3">คำแนะนำ</th>
         </tr>
       </thead>
       <tbody v-if="Queue.length > 0">
@@ -41,7 +41,7 @@
                   'text-red-700': !item.status,
                 }"
               >
-                {{ item.status ? "Successful" : "Waiting" }}
+                {{ item.status ? "ได้รับการตรวจสอบแล้ว" : "กำลังรอการตรวสอบ" }}
               </div>
             </div>
           </td>
@@ -67,7 +67,7 @@
       d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
     ></path>
   </svg>
-  Note
+  คำแนะนำ
 </button>
           </td>
         </tr>
