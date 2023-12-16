@@ -117,12 +117,16 @@
 					</section>
 				</div>
 			</section>
-			<div class="bg-black m-4 w-auto h-auto">
-				<div class="">
-					<Map />
-				</div>
-			</div>
-
+			<section class="box special features bg-gray-100 p-8 text-center">
+				<h1>Map</h1>
+  <div class="container mx-auto">
+    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158855.29383004492!2d-74.00661053217218!3d40.71277628275473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259f1b6e64843%3A0xa77ec56c5e6e1102!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s" 
+              class="w-4/5 mx-auto" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+			<h1 class="text-center mt-12">Medical personnel</h1>
 			<div class="flex flex-wrap -mx-4">
 				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
 					<section class="box special p-4">
