@@ -119,107 +119,93 @@
 			</section>
 			<section class="box special features bg-gray-100 p-8 text-center">
 				<h1>Map</h1>
-  <div class="container mx-auto">
-    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158855.29383004492!2d-74.00661053217218!3d40.71277628275473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259f1b6e64843%3A0xa77ec56c5e6e1102!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s" 
-              class="w-4/5 mx-auto" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </div>
-</section>
+				<div class="container mx-auto">
+					<div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158855.29383004492!2d-74.00661053217218!3d40.71277628275473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259f1b6e64843%3A0xa77ec56c5e6e1102!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s"
+							class="w-4/5 mx-auto" allowfullscreen="" loading="lazy"></iframe>
+					</div>
+				</div>
+			</section>
 			<h1 class="text-center mt-12 mb-12">Medical personnel</h1>
-			<div class="flex flex-wrap -mx-4">
-				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-					<section class="box special p-4">
-						<span class="image featured w-full block mb-4"><img src="../assets/pugun.jpeg"
-								alt="../assets/doctorwo.jpeg" /></span>
-						<h3 class="text-lg font-semibold mb-2">นาย ศตพรรษ จำปา</h3>
-						<p class="text-sm text-gray-600 mb-4">
-							Integer volutpat ante et accumsan commophasellus sed aliquam
-							feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan
-							dolore magna aliquam veroeros.
-						</p>
-						<ul class="actions special">
-							<li><a href="#" class="button alt">Learn More</a></li>
-						</ul>
-					</section>
-				</div>
-				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-					<section class="box special p-4">
-						<span class="image featured w-full block mb-4"><img src="../assets/pugun.jpeg"
-								alt="../assets/doctorwo.jpeg" /></span>
-						<h3 class="text-lg font-semibold mb-2">นาย ศตพรรษ จำปา</h3>
-						<p class="text-sm text-gray-600 mb-4">
-							Integer volutpat ante et accumsan commophasellus sed aliquam
-							feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan
-							dolore magna aliquam veroeros.
-						</p>
-						<ul class="actions special">
-							<li><a href="#" class="button alt">Learn More</a></li>
-						</ul>
-					</section>
-				</div>
-				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-					<section class="box special p-4">
-						<span class="image featured w-full block mb-4"><img src="../assets/pugun.jpeg"
-								alt="../assets/doctorwo.jpeg" /></span>
-						<h3 class="text-lg font-semibold mb-2">นาย ศตพรรษ จำปา</h3>
-						<p class="text-sm text-gray-600 mb-4">
-							Integer volutpat ante et accumsan commophasellus sed aliquam
-							feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan
-							dolore magna aliquam veroeros.
-						</p>
-						<ul class="actions special">
-							<li><a href="#" class="button alt">Learn More</a></li>
-						</ul>
-					</section>
-				</div>
-				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-					<section class="box special p-4">
-						<span class="image featured w-full block mb-4"><img src="../assets/pugun.jpeg"
-								alt="../assets/doctorwo.jpeg" /></span>
-						<h3 class="text-lg font-semibold mb-2">นาย ศตพรรษ จำปา</h3>
-						<p class="text-sm text-gray-600 mb-4">
-							Integer volutpat ante et accumsan commophasellus sed aliquam
-							feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan
-							dolore magna aliquam veroeros.
-						</p>
-						<ul class="actions special">
-							<li><a href="#" class="button alt">Learn More</a></li>
-						</ul>
-					</section>
-				</div>
-				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-					<section class="box special p-4">
-						<span class="image featured w-full block mb-4"><img src="../assets/pugun.jpeg"
-								alt="../assets/doctorwo.jpeg" /></span>
-						<h3 class="text-lg font-semibold mb-2">นาย ศตพรรษ จำปา</h3>
-						<p class="text-sm text-gray-600 mb-4">
-							Integer volutpat ante et accumsan commophasellus sed aliquam
-							feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan
-							dolore magna aliquam veroeros.
-						</p>
-						<ul class="actions special">
-							<li><a href="#" class="button alt">Learn More</a></li>
-						</ul>
-					</section>
-				</div>
-				<div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-					<section class="box special p-4">
-						<span class="image featured w-full block mb-4"><img src="../assets/pugun.jpeg"
-								alt="../assets/doctorwo.jpeg" /></span>
-						<h3 class="text-lg font-semibold mb-2">นาย ศตพรรษ จำปา</h3>
-						<p class="text-sm text-gray-600 mb-4">
-							Integer volutpat ante et accumsan commophasellus sed aliquam
-							feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan
-							dolore magna aliquam veroeros.
-						</p>
-						<ul class="actions special">
-							<li><a href="#" class="button alt">Learn More</a></li>
-						</ul>
-					</section>
-				</div>
-			</div>
-			
+			<ul class="cards">
+				<li>
+					<a href="" class="card">
+						<img src="../assets/pugun.jpeg" class="card__image" alt="" />
+						<div class="card__overlay">
+							<div class="card__header">
+								<svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+									<path />
+								</svg>
+								<img class="card__thumb" src="../assets/doctorwo.jpeg" alt="" />
+								<div class="card__header-text">
+									<h3 class="card__title">Satapat Jumpa</h3>
+									<span class="card__status">ความดันโลหิต</span>
+								</div>
+							</div>
+							<p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Asperiores, blanditiis?</p>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="" class="card">
+						<img src="../assets/pugun.jpeg" class="card__image" alt="" />
+						<div class="card__overlay">
+							<div class="card__header">
+								<svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+									<path />
+								</svg>
+								<img class="card__thumb" src="../assets/doctorwo.jpeg" alt="" />
+								<div class="card__header-text">
+									<h3 class="card__title">Satapat Jumpa</h3>
+									<span class="card__status">ปริมาณออกซิเจนในเลือด</span>
+								</div>
+							</div>
+							<p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Asperiores, blanditiis?</p>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="" class="card">
+						<img src="../assets/pugun.jpeg" class="card__image" alt="" />
+						<div class="card__overlay">
+							<div class="card__header">
+								<svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+									<path />
+								</svg>
+								<img class="card__thumb" src="../assets/doctorwo.jpeg" alt="" />
+								<div class="card__header-text">
+									<h3 class="card__title">Satapat Jumpa</h3>
+									<span class="card__status">ค่าอุณหภูมิร่างกาย</span>
+								</div>
+							</div>
+							<p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Asperiores, blanditiis?</p>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="" class="card">
+						<img src="../assets/pugun.jpeg" class="card__image" alt="" />
+						<div class="card__overlay">
+							<div class="card__header">
+								<svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+									<path />
+								</svg>
+								<img class="card__thumb" src="../assets/doctorwo.jpeg" alt="" />
+								<div class="card__header-text">
+									<h3 class="card__title">Satapat Jumpa</h3>
+									<span class="card__status">อัตรการเต้นของหัวใจ</span>
+								</div>
+							</div>
+							<p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Asperiores, blanditiis?</p>
+						</div>
+					</a>
+				</li>
+			</ul>
 		</section>
 	</div>
 </template>
@@ -236,6 +222,114 @@ export default {
 
 
 <style>
+:root {
+	--surface-color: #fff;
+	--curve: 40;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 2rem;
+	margin: 4rem 5vw;
+	padding: 0;
+	list-style-type: none;
+}
+
+.card {
+	position: relative;
+	display: block;
+	height: 100%;
+	border-radius: calc(var(--curve) * 1px);
+	overflow: hidden;
+	text-decoration: none;
+}
+
+.card__image {
+	width: 100%;
+	height: auto;
+}
+
+.card__overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	border-radius: calc(var(--curve) * 1px);
+	background-color: var(--surface-color);
+	transform: translateY(100%);
+	transition: .2s ease-in-out;
+}
+
+.card:hover .card__overlay {
+	transform: translateY(0);
+}
+
+.card__header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 2em;
+	padding: 2em;
+	border-radius: calc(var(--curve) * 1px) 0 0 0;
+	background-color: var(--surface-color);
+	transform: translateY(-100%);
+	transition: .2s ease-in-out;
+}
+
+.card__arc {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	bottom: 100%;
+	right: 0;
+	z-index: 1;
+}
+
+.card__arc path {
+	fill: var(--surface-color);
+	d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}
+
+.card:hover .card__header {
+	transform: translateY(0);
+}
+
+.card__thumb {
+	flex-shrink: 0;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.card__title {
+	font-size: 1em;
+	margin: 0 0 .3em;
+	color: #6A515E;
+}
+
+
+.card__status {
+	font-size: .8em;
+	color: #D7BDCA;
+}
+
+.card__description {
+	padding: 0 2em 2em;
+	margin: 0;
+	color: #D7BDCA;
+	font-family: "MockFlowFont";
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+
 .box {
 	background: #fff;
 	border-radius: 6px;
@@ -429,5 +523,4 @@ export default {
     background-color: #333333;
     color: #ffffff;
   }
-} */
-</style>
+} */</style>
