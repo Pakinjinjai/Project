@@ -12,7 +12,17 @@
             >
               หน้าหลัก
             </a>
-
+            <div
+              id="User"
+              class="hidden md:flex items-center space-x-1"
+              v-on:click="goToResults()"
+              v-if="token != null"
+            >
+              <a
+                class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
+                >ภาพรวม</a
+              >
+            </div>
             <div
               id="User"
               class="hidden md:flex items-center space-x-1"
@@ -177,6 +187,12 @@ export default {
       const token = localStorage.getItem("accessToken");
       if (token) {
         this.$router.push("/dashboard/queue");
+      }
+    },
+    goToResults() {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        this.$router.push("/dashboard");
       }
     },
   },
