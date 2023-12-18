@@ -128,7 +128,7 @@
 				</div>
 			</section>
 			<h1 class="text-center mt-12 mb-12">Medical personnel</h1>
-			<ul class="cards">
+			<ul class="cards ">
 				<li>
 					<a href="" class="card">
 						<img src="../assets/pugun.jpeg" class="card__image" alt="" />
@@ -186,25 +186,6 @@
 						</div>
 					</a>
 				</li>
-				<li>
-					<a href="" class="card">
-						<img src="../assets/pugun.jpeg" class="card__image" alt="" />
-						<div class="card__overlay">
-							<div class="card__header">
-								<svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-									<path />
-								</svg>
-								<img class="card__thumb" src="../assets/doctorwo.jpeg" alt="" />
-								<div class="card__header-text">
-									<h3 class="card__title">Satapat Jumpa</h3>
-									<span class="card__status">อัตรการเต้นของหัวใจ</span>
-								</div>
-							</div>
-							<p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Asperiores, blanditiis?</p>
-						</div>
-					</a>
-				</li>
 			</ul>
 		</section>
 	</div>
@@ -222,6 +203,7 @@ export default {
 
 
 <style>
+
 :root {
 	--surface-color: #fff;
 	--curve: 40;
@@ -232,9 +214,9 @@ export default {
 }
 
 .cards {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 2rem;
+	display: flex;
+	/* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+	gap: 1rem;
 	margin: 4rem 5vw;
 	padding: 0;
 	list-style-type: none;
