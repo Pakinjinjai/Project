@@ -121,9 +121,10 @@
 				<h1>Map</h1>
 				<div class="container mx-auto">
 					<div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158855.29383004492!2d-74.00661053217218!3d40.71277628275473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259f1b6e64843%3A0xa77ec56c5e6e1102!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s"
-							class="w-4/5 mx-auto" allowfullscreen="" loading="lazy"></iframe>
+						<iframe id="map"
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.133720290308!2d99.3726696759775!3d10.724168060153614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30ff458dae5cc463%3A0x6cf4c3f8871aa234!2sKing%20Mongkut&#39;s%20Institute%20of%20Technology%20Ladkrabang%20Prince%20of%20Chumphon%20Campus!5e0!3m2!1sen!2sth!4v1702866468326!5m2!1sen!2sth"
+							width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"></iframe>
 					</div>
 				</div>
 			</section>
@@ -192,18 +193,41 @@
 </template>
 
 <script>
-import Map from "@/components/Map.vue"
 export default {
-	name: "LandingPage",
-	components: { Map },
+	name: "Map",
+	data() {
+		return {
+			markerLat: 10.724168060153614,
+			markerLng: 99.3726696759775,
+			markerTitle: "Marker Title",
+		};
+	},
+	mounted() {
+		this.initMap();
+	},
+	methods: {
+		addMarker(map, lat, lng, title) {
+			var marker = new google.maps.Marker({
+				position: { lat: lat, lng: lng },
+				map: map,
+				title: title,
+			});
+		},
+		initMap() {
+			var map = new google.maps.Map(document.getElementById("map"), {
+				center: { lat: this.markerLat, lng: this.markerLng },
+				zoom: 15,
+			});
 
+			this.addMarker(map, this.markerLat, this.markerLng, this.markerTitle);
+		},
+	},
 };
 </script>
 
 
 
 <style>
-
 :root {
 	--surface-color: #fff;
 	--curve: 40;
