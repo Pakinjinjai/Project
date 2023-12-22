@@ -227,7 +227,7 @@ export default {
 	display: flex;
 	/* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
 	gap: 1rem;
-	margin: 4rem 5vw;
+	/* margin: 4rem 5vw; */
 	padding: 0;
 	list-style-type: none;
 }
