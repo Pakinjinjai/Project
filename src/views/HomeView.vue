@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Map from "@/components/Map.vue"
+// import Map from "@/components/Map.vue"
 import LandingPage from "@/components/LandingPage.vue";
 // import axios from "axios";
 

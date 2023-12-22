@@ -203,24 +203,10 @@ export default {
 		};
 	},
 	mounted() {
-		this.initMap();
+		// this.initMap();
 	},
 	methods: {
-		addMarker(map, lat, lng, title) {
-			var marker = new google.maps.Marker({
-				position: { lat: lat, lng: lng },
-				map: map,
-				title: title,
-			});
-		},
-		initMap() {
-			var map = new google.maps.Map(document.getElementById("map"), {
-				center: { lat: this.markerLat, lng: this.markerLng },
-				zoom: 15,
-			});
-
-			this.addMarker(map, this.markerLat, this.markerLng, this.markerTitle);
-		},
+		
 	},
 };
 </script>
