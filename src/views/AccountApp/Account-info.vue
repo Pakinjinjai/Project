@@ -17,13 +17,10 @@
             <h3 class="text-gray-900 font-bold text-xl leading-8 my-1">
               ประวัติการแพ้ยา
             </h3>
-            <div
-              class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center"
-            >
-              <p>
-                {{ profileData.noteDrug }}
-              </p>
-            </div>
+
+            <p>
+              {{ profileData.noteDrug }}
+            </p>
           </div>
           <!-- End of profile card -->
           <div class="my-4"></div>
@@ -198,14 +195,11 @@
                   </span>
                   <span class="tracking-wide">โรคประจำตัว</span>
                 </div>
+
                 <div
-                  class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center mr-2"
+                  class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 >
-                  <div
-                    class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  >
-                    {{ profileData.noteDisease }}
-                  </div>
+                  {{ profileData.noteDisease }}
                 </div>
               </div>
             </div>
