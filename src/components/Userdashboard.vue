@@ -88,10 +88,10 @@ export default {
                 <td class="px-4 py-3">$2999</td>
                 <td class="px-4 py-3 flex items-center justify-end">
                   <button
-                  @click="showModal()"
-          id="updateProductButton"
-          class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-          type="button"
+                    @click="showModal()"
+                    id="updateProductButton"
+                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+                    type="button"
                   >
                     <svg
                       class="w-5 h-5"
@@ -107,11 +107,11 @@ export default {
                   </button>
                   <!-- Main modal -->
                   <div
-                  id="updateProductModal"
-          tabindex="-1"
-          aria-hidden="true"
-          :class="{ 'hidden': !isModalVisible, 'flex': isModalVisible }"
-          class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-50"
+                    id="updateProductModal"
+                    tabindex="-1"
+                    aria-hidden="true"
+                    :class="{ hidden: !isModalVisible, flex: isModalVisible }"
+                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-50"
                   >
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                       <!-- Modal content -->
@@ -128,9 +128,9 @@ export default {
                             Update Product
                           </h3>
                           <button
-                          @click="isModalVisible = false"
-                  type="button"
-                  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                            @click="isModalVisible = false"
+                            type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                           >
                             <svg
                               aria-hidden="true"
@@ -229,10 +229,12 @@ Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boo
                               >
                             </div>
                           </div>
-                          <div class="flex items-center space-x-4">
+                          <div
+                            class="flex items-center content-center space-x-4"
+                          >
                             <button
                               type="button"
-                              class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                              class="text-[#140A4B] inline-flex items-center hover:text-white border border-[#140A4B] hover:bg-[#140A4B] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                             >
                               <svg
                                 class="mr-1 -ml-1 w-5 h-5"
@@ -282,7 +284,6 @@ Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boo
 </template>
 
 <style>
-
 /* เพิ่มสไตล์เพื่อแสดงหน้า Modal */
 #updateProductModal.hidden {
   display: none;
