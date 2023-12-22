@@ -1,17 +1,12 @@
 <template>
   <div>
     <router-view />
-    
   </div>
 </template>
 
 <script>
-
-
 export default {
-  components: {
-    
-  },
+  components: {},
   mounted() {
     this.$router.push("/home");
   },
