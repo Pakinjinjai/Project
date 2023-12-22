@@ -5,25 +5,25 @@
         <!-- Left Side -->
         <div class="w-full md:w-3/12 md:mx-2 mb-4 md:mb-0">
           <!-- Profile Card -->
-          <div
-            class="bg-white p-3 border-4 hover:shadow mb-4 rounded-xl"
-          >
+          <div class="bg-white p-3 hover:shadow mb-4 rounded-xl">
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               รหัสบัตรประชาชน
             </h1>
             <!-- <div  class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md"> -->
-            <p class="text-gray-900  text-lg leading-8 my-1">
+            <p class="text-gray-900 text-lg leading-8 my-1">
               {{ profileData.idCard }}
             </p>
-          <!-- </div> -->
+            <!-- </div> -->
             <h3 class="text-gray-900 font-bold text-xl leading-8 my-1">
               ประวัติการแพ้ยา
             </h3>
-            <div class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center">
-            <p>
-              {{ profileData.noteDrug }}
-            </p>
-          </div>
+            <div
+              class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center"
+            >
+              <p>
+                {{ profileData.noteDrug }}
+              </p>
+            </div>
           </div>
           <!-- End of profile card -->
           <div class="my-4"></div>
@@ -40,7 +40,7 @@
                 type="button"
                 class="mt-4 focus:outline-none text-white bg-[#140A4B] hover:bg-[#140a4bc5] focus:ring-4 focus:ring-[#140a4bc5] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-[#140a4bc5] dark:focus:ring-[#140a4bc5]"
               >
-              แก้ไขโปรไฟล์
+                แก้ไขโปรไฟล์
               </button>
             </router-link>
           </div>
@@ -55,10 +55,20 @@
               class="flex items-center space-x-2 font-semibold text-gray-900 leading-8"
             >
               <span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-</svg>
-
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
               </span>
               <span class="tracking-wide">ข้อมูลส่วนตัว</span>
             </div>
@@ -85,7 +95,7 @@
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">เบอร์โทรติดต่อ : </div>
+                  <div class="px-4 py-2 font-semibold">เบอร์โทรติดต่อ :</div>
                   <div class="px-4 py-2">{{ profileData.phoneNo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
@@ -95,7 +105,7 @@
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">วันเกิด : </div>
+                  <div class="px-4 py-2 font-semibold">วันเกิด :</div>
                   <div class="px-4 py-2">{{ birthDate }}</div>
                 </div>
               </div>
@@ -120,35 +130,35 @@
             <div class="text-gray-700">
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">บ้านเลขที่ : </div>
+                  <div class="px-4 py-2 font-semibold">บ้านเลขที่ :</div>
                   <div class="px-4 py-2">{{ profileAddress.houseNo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">หมู่ : </div>
+                  <div class="px-4 py-2 font-semibold">หมู่ :</div>
                   <div class="px-4 py-2">{{ profileAddress.moo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">ซอย : </div>
+                  <div class="px-4 py-2 font-semibold">ซอย :</div>
                   <div class="px-4 py-2">{{ profileAddress.soi }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">ถนน : </div>
+                  <div class="px-4 py-2 font-semibold">ถนน :</div>
                   <div class="px-4 py-2">{{ profileAddress.road }}</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">ตำบล : </div>
+                  <div class="px-4 py-2 font-semibold">ตำบล :</div>
                   <div class="px-4 py-2">
                     {{ profileAddress.subDistrict }}
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">อำเภอ : </div>
+                  <div class="px-4 py-2 font-semibold">อำเภอ :</div>
                   <div class="px-4 py-2">
                     {{ profileAddress.district }}
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">จังหวัด : </div>
+                  <div class="px-4 py-2 font-semibold">จังหวัด :</div>
                   <div class="px-4 py-2">
                     {{ profileAddress.province }}
                   </div>
@@ -168,34 +178,7 @@
 
           <!-- Experience and education -->
           <div class="bg-white p-3 shadow-sm rounded-xl hover:shadow">
-            <div class="grid grid-cols-2">
-              <div>
-                <div
-                  class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
-                >
-                  <span clas="text-green-500">
-                    <svg
-                      width="24"
-                      height="24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                    >
-                      <path
-                        d="M17.5 10c3.587 0 6.5 2.913 6.5 6.5s-2.913 6.5-6.5 6.5-6.5-2.913-6.5-6.5 2.913-6.5 6.5-6.5zm-7.802 9.864l-.363.635c-1.381 2.391-4.443 3.211-6.834 1.831-2.391-1.381-3.211-4.443-1.831-6.834l6.868-11.995c.925-1.602 2.606-2.499 4.333-2.501.85-.001 1.712.215 2.501.67 2.245 1.297 3.106 4.076 2.058 6.39-.979.125-1.906.416-2.753.844l.793-1.401c.828-1.434.336-3.272-1.099-4.1-1.434-.828-3.272-.336-4.1 1.099l-2.866 5.063 3.975 2.295c-.363.557-.663 1.16-.889 1.797l-4.086-2.359-3.002 5.199c-.828 1.434-.336 3.272 1.099 4.1 1.434.828 3.272.336 4.1-1.099l1.42-2.459c.063.998.298 1.949.676 2.825zm10.882-6.644l-4.381 7.589c.412.124.849.191 1.301.191 2.484 0 4.5-2.016 4.5-4.5 0-1.293-.546-2.459-1.42-3.28zm-1.725-1.012c-.428-.135-.883-.208-1.355-.208-2.484 0-4.5 2.016-4.5 4.5 0 1.313.563 2.495 1.461 3.318l4.394-7.61z"
-                      />
-                    </svg>
-                  </span>
-                  <span class="tracking-wide">รายการยาและปริมาณยาที่ทาน</span>
-                </div>
-                <div class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center mr-2">
-                <div
-                  class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                >
-                  {{ profileData.noteMedicine }}
-                </div>
-              </div>
-              </div>
+            <div class="grid grid-cols-1">
               <div>
                 <div
                   class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
@@ -215,13 +198,15 @@
                   </span>
                   <span class="tracking-wide">โรคประจำตัว</span>
                 </div>
-                <div class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center mr-2">
                 <div
-                  class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md text-center mr-2"
                 >
-                  {{ profileData.noteDisease }}
+                  <div
+                    class="sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  >
+                    {{ profileData.noteDisease }}
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
             <!-- End of Experience and education grid -->
