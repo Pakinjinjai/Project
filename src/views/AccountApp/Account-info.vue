@@ -9,16 +9,9 @@
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               Hospital Number
             </h1>
-            <!-- <div  class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md"> -->
             <p class="text-gray-900 text-lg leading-8 my-1">
               {{ profileData._id }}
             </p>
-            <!-- </div> -->
-            <!-- <h3 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              ประวัติการแพ้ยา
-            </h3> -->
-
-            
           </div>
           <!-- End of profile card -->
           <div class="my-4"></div>
