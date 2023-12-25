@@ -514,5 +514,6 @@ export default {
 	.page-container {
     background-color: #333333;
     color: #ffffff;
-  }
+}
+
 } */</style>

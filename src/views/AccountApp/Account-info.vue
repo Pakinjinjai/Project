@@ -7,20 +7,18 @@
           <!-- Profile Card -->
           <div class="bg-white p-3 hover:shadow mb-4 rounded-xl">
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              รหัสบัตรประชาชน
+              Hospital Number
             </h1>
             <!-- <div  class="bg-[#D9D9D9] border-2 border-gray-300 p-4 rounded-lg shadow-md"> -->
             <p class="text-gray-900 text-lg leading-8 my-1">
-              {{ profileData.idCard }}
+              {{ profileData._id }}
             </p>
             <!-- </div> -->
-            <h3 class="text-gray-900 font-bold text-xl leading-8 my-1">
+            <!-- <h3 class="text-gray-900 font-bold text-xl leading-8 my-1">
               ประวัติการแพ้ยา
-            </h3>
+            </h3> -->
 
-            <p>
-              {{ profileData.noteDrug }}
-            </p>
+            
           </div>
           <!-- End of profile card -->
           <div class="my-4"></div>
@@ -78,6 +76,10 @@
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">นามสกุล :</div>
                   <div class="px-4 py-2">{{ profileData.lastname }}</div>
+                </div>
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">รหัสบัตรประชาชน :</div>
+                  <div class="px-4 py-2">{{ profileData.idCard  }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">เพศ :</div>

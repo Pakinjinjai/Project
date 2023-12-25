@@ -86,11 +86,11 @@ export default {
         <div class="w-full md:w-3/12 md:mx-2">
           <!-- Profile Card -->
           <div
-            class="bg-white p-4 border-t-4  hover:shadow rounded-xl"
+            class="bg-white p-3 hover:shadow mb-4 rounded-xl"
           >
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              รหัสบัตรประชาชน
-              <i class="las la-asterisk" style="color: red"> </i>
+              Hospital Number
+              <!-- <i class="las la-asterisk" style="color: red"> </i> -->
             </h1>
             <font-awesome-icon icon="triangle-exclamation" />
             <input
