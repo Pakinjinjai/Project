@@ -10,21 +10,18 @@ export default {
     return {
       formData: JSON.parse(this.$route.query.profileData),
       birthdateUpgrade: "",
-      profileData: {},
     };
   },
-  created() {
-    this.showInfo();
+  created(){
+    this.editAccount;
+    console.log(this.formData);
   },
   mounted() {
     this.birthdateUpgrade = dayjs(this.formData.birtdate).format("YYYY-MM-DD");
   },
-  created() {
-    this. editAccount();
-  },
   methods: {
     editAccount() {
-      // console.log(this.formData);
+      console.log(this.formData);
       if (this.formData.idCard != "" && this.formData.idCard != null) {
         console.log("ใส่รหัสประจำตัวสำเร็จ");
         if (this.formData.firstname != "" && this.formData.firstname != null) {
@@ -43,8 +40,7 @@ export default {
                   this.birthdateUpgrade != "Invalid Date"
                 ) {
                   this.formData.birthdate = this.birthdateUpgrade;
-                  delete this.formData._id;
-                  // console.log(this.formData);
+                  console.log(this.formData);
                   axios({
                     method: "patch",
                     url: "http://localhost:3000/api/v1/users/update",
@@ -60,7 +56,7 @@ export default {
                       this.birthDate = dayjs(this.profileData.birthdate).format(
             "YYYY-MM-DD"
           );
-                      // console.log(res.data);
+                      console.log(res.data);
                     })
                     .catch((error) => {
                       console.log(error);
@@ -83,26 +79,26 @@ export default {
         alert("กรุณาใส่เลขประจำตัวประชาชนของท่าน");
       }
     },
-    showInfo() {
-      axios({
-        method: "get",
-        url: "http://localhost:3000/api/v1/users/me",
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("accessToken"),
-        },
-      })
-        .then((res) => {
-          this.profileData = res.data.user;
-          this.birthDate = dayjs(this.profileData.birthdate).format(
-            "YYYY-MM-DD"
-          );
-          console.log(this.profileData);
-          // console.log(this.profileData.address);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+    // showInfo() {
+    //   axios({
+    //     method: "get",
+    //     url: "http://localhost:3000/api/v1/users/me",
+    //     headers: {
+    //       Authorization: "Bearer " + localStorage.getItem("accessToken"),
+    //     },
+    //   })
+    //     .then((res) => {
+    //       this.profileData = res.data.user;
+    //       this.birthDate = dayjs(this.profileData.birthdate).format(
+    //         "YYYY-MM-DD"
+    //       );
+    //       console.log(this.profileData);
+    //       // console.log(this.profileData.address);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // },
 
   },
 };
@@ -110,7 +106,7 @@ export default {
 
 <template>
   <div class="min-h-screen">
-    <div class="container mx-auto my-5 p-5">
+    <div class="container mx-auto my-5 p-5 ">
       <div class="md:flex no-wrap md:-mx-2">
         <!-- Left Side -->
         <div class="w-full md:w-3/12 md:mx-2">
@@ -120,7 +116,7 @@ export default {
               Hospital Number
             </h1>
             <p class="text-gray-900 text-lg leading-8 my-1">
-              {{ profileData._id }}
+               {{ formData._id }} 
             </p>
           </div>
           <!-- End of profile card -->
@@ -173,7 +169,7 @@ export default {
               <span class="tracking-wide">About</span>
             </div>
             <div class="text-gray-700">
-              <div class="grid md:grid-cols-2 text-sm">
+              <div class="grid md:grid-cols-2 text-lg">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">
                     ชื่อจริง : <i class="las la-asterisk" style="color: red"></i>
@@ -183,7 +179,7 @@ export default {
                       type="text"
                       name="firstname"
                       id="firstname"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="ชื่อจริง"
                       required=""
                       v-model="formData.firstname"
@@ -199,7 +195,7 @@ export default {
                       type="text"
                       name="lastname"
                       id="lastname"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="นามสกุล"
                       required=""
                       v-model="formData.lastname"
@@ -215,7 +211,7 @@ export default {
                       type="email"
                       name="idCard"
                       id="idCard"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder=" รหัสบัตรประชาชน "
                       required=""
                       v-model="formData.idCard"
@@ -226,7 +222,7 @@ export default {
                   <div class="px-4 py-2 font-semibold">
                     เพศ :<i class="las la-asterisk" style="color: red"></i>
                   </div>
-                  <div class="flex justify-center">
+                  <div class="flex justify-center mb-4 ml-auto mr-12">
                     <label class="inline-flex items-center">
                       <input
                         type="radio"
@@ -261,7 +257,7 @@ export default {
                       type="phone"
                       name="Phone"
                       id="Phone"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="เบอร์โทรติดต่อ"
                       required=""
                       v-model="formData.phoneNo"
@@ -278,7 +274,7 @@ export default {
                         type="email"
                         name="email"
                         id="email"
-                        class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                        class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         placeholder=" อีเมล์ "
                         required=""
                         v-model="formData.email"
@@ -297,7 +293,7 @@ export default {
                       type="date"
                       name="Birthdate"
                       id="Birthdate"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="วันเกิด"
                       required=""
                       v-model="birthdateUpgrade"
@@ -324,7 +320,7 @@ export default {
               <span class="tracking-wide">ที่อยู่ส่วนบุคคล</span>
             </div>
             <div class="text-gray-700">
-              <div class="grid md:grid-cols-2 text-sm">
+              <div class="grid md:grid-cols-2 text-lg">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">บ้านเลขที่ : </div>
                   <div class="px-4 py-2">
@@ -332,7 +328,7 @@ export default {
                       type="text"
                       name="บ้านเลขที่"
                       id="บ้านเลขที่"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="บ้านเลขที่"
                       required=""
                       v-model="formData.address.houseNo"
@@ -346,7 +342,7 @@ export default {
                       type="text"
                       name="mooo"
                       id="moo"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="หมู่ : "
                       required=""
                       v-model="formData.address.moo"
@@ -360,7 +356,7 @@ export default {
                       type="text"
                       name="soi"
                       id="soi"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="ซอย"
                       required=""
                       v-model="formData.address.soi"
@@ -374,7 +370,7 @@ export default {
                       type="text"
                       name="road"
                       id="road"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="ถนน "
                       required=""
                       v-model="formData.address.road"
@@ -388,7 +384,7 @@ export default {
                       type="text"
                       name="Tambon"
                       id="Tambon"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="ตำบล  "
                       required=""
                       v-model="formData.address.subDistrict"
@@ -402,7 +398,7 @@ export default {
                       type="text"
                       name="district"
                       id="dixtrict"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="อำเภอ"
                       required=""
                       v-model="formData.address.district"
@@ -416,7 +412,7 @@ export default {
                       type="text"
                       name="Province"
                       id="Province"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="จังหวัด"
                       required=""
                       v-model="formData.address.province"
@@ -430,7 +426,7 @@ export default {
                       type="text"
                       name="Postal code"
                       id="Postal code"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="รหัสไปรษณีย์"
                       required=""
                       v-model="formData.address.postalCode"
@@ -454,21 +450,9 @@ export default {
                 <div
                   class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
                 >
-                  <span class="text-green-500">
-                    <svg
-                      width="24"
-                      height="24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                    >
-                      <path
-                        d="M15.131 5s1.692 2.025 2.268 2.711c1.213 1.461 1.573 2.31 1.601 4.161v10.128c-.015 1.094-.859 1.961-1.925 1.999-3.368.043-6.736.043-10.104 0-1.073-.038-1.964-.917-1.971-1.999v-10.134c.009-2.04.587-2.921 1.948-4.508.591-.689 1.941-2.358 1.941-2.358h6.242zm1.869 15h-10v2h10v-2zm-4-7h-2v2h-2v2h2v2h2v-2h2.023l-.023-2h-2v-2zm1.245-6h-4.457c-.634.787-1.224 1.522-1.489 1.857-1.026 1.3-1.293 1.807-1.299 3.143h10c-.013-1.346-.184-1.757-1.137-3.008-.268-.353-.929-1.157-1.618-1.992zm1.755-3h-8v-3c0-.552.448-1 1-1h6c.552 0 1 .448 1 1v3z"
-                      />
-                    </svg>
-                  </span>
+                 
                   <span class="tracking-wide"
-                    >โรคประจำตัวฃ</span>
+                    >โรคประจำตัว</span>
                 </div>
                 <div class="list-inside space-y-2">
                   <textarea
@@ -478,7 +462,7 @@ export default {
                     cols="30"
                     rows="10"
                     placeholder="โรคประจำตัว"
-                    class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   ></textarea>
                 </div>
               </div>

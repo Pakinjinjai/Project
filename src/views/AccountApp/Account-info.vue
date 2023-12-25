@@ -9,7 +9,7 @@
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
               Hospital Number
             </h1>
-            <p class="text-gray-900 text-lg leading-8 my-1">
+            <p class="text-gray-900 text-lg leading-8 my-1 ">
               {{ profileData._id }}
             </p>
           </div>
@@ -58,12 +58,12 @@
                   />
                 </svg>
               </span>
-              <span class="tracking-wide">ข้อมูลส่วนตัว</span>
+              <span class="tracking-wide text-xl">ข้อมูลส่วนตัว</span>
             </div>
             <div class="text-gray-700">
-              <div class="grid md:grid-cols-2 text-sm">
+              <div class="grid md:grid-cols-2 text-lg">
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">ชื่อจริง :</div>
+                  <div class="px-4 py-2 font-semibold ">ชื่อจริง :</div>
                   <div class="px-4 py-2">{{ profileData.firstname }}</div>
                 </div>
                 <div class="grid grid-cols-2">
@@ -117,10 +117,10 @@
                   />
                 </svg>
               </span>
-              <span class="tracking-wide">ที่อยู่ส่วนบุคคล </span>
+              <span class="tracking-wide text-xl">ที่อยู่ส่วนบุคคล </span>
             </div>
             <div class="text-gray-700">
-              <div class="grid md:grid-cols-2 text-sm">
+              <div class="grid md:grid-cols-2 text-lg">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">บ้านเลขที่ :</div>
                   <div class="px-4 py-2">{{ profileAddress.houseNo }}</div>
@@ -188,7 +188,7 @@
                       />
                     </svg>
                   </span>
-                  <span class="tracking-wide">โรคประจำตัว</span>
+                  <span class="tracking-wide text-xl">โรคประจำตัว</span>
                 </div>
 
                 <div
