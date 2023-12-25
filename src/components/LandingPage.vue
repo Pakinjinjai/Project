@@ -1,7 +1,7 @@
 <template>
 	<div class="page-container">
 		<section id="main" class="container">
-			<section class="grid justify-center box special">
+			<section class="grid justify-center box special ">
 				<header class="major">
 					<h2>
 						โรงพยาบาล
