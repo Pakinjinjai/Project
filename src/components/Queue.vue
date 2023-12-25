@@ -1,11 +1,12 @@
 <template>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
-    <table class="w-full text-sm text-left text-gray-500">
+    <table class="w-full text-lg text-left text-gray-500">
       <thead class="text-xl text-[#FDFDFD] uppercase bg-[#140A4B]">
         <tr>
           <th scope="col" class="px-6 py-3">หัวข้อ</th>
           <th scope="col" class="px-6 py-3">วันที่นัดหมาย</th>
           <th scope="col" class="px-6 py-3">สถานะการตรวจสอบ</th>
+          <th scope="col" class="px-6 py-3">วันที่เข้าตรวจ</th>
           <th scope="col" class="px-6 py-3">คำแนะนำ</th>
         </tr>
       </thead>
@@ -45,6 +46,7 @@
               </div>
             </div>
           </td>
+          <td class="px-6 py-4">{{ formatDate(item.updatedAt) }}</td>
           <td class="px-6 py-4">
             <button 
             :class="{'text-green-500': item.note,'text-red-500': !item.note }"
