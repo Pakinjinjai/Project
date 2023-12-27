@@ -71,13 +71,11 @@ export default {
                 <th scope="col" class="px-4 py-3">เพศ</th>
                 <th scope="col" class="px-4 py-3">เบอร์โทรศัพท์</th>
                 <th scope="col" class="px-4 py-3">ตำแหน่ง</th>
-                <th scope="col" class="px-4 py-3">
-                  <span class="sr-only">Actions</span>
-                </th>
+                <th scope="col" class="px-4 py-3">จัดการ</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b text-center text-[#303030]">
+              <tr class="border-b text-center  text-[#303030]">
                 <th
                   scope="row"
                   class="px-4 py-3 font-medium  whitespace-nowrap dark:text-white"
@@ -90,30 +88,36 @@ export default {
                 <td class="px-4 py-3">ชาย</td>
                 <td class="px-4 py-3">0652358039</td>
                 <td class="px-4 py-3">แอดมิน</td>
-                <td class="px-4 py-3 flex items-center justify-end">
+                <td class="px-4 py-3 flex items-center text-[#303030] justify-center">
                   <button
                     @click="showModal()"
                     id="updateProductButton"
-                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button"
                   >
-                    <svg
-                      class="w-5 h-5"
-                      aria-hidden="true"
-                      fill="currentColor"
-                      viewbox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
-                      />
-                    </svg>
+                  <svg class="w-[16px] h-[16px] text-[#303030] " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+  </svg>
+                  </button>
+                  <button class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none "
+                    type="button">
+                    <svg class="w-[16px] h-[16px] text-[#303030] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+    <path d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z"/>
+  </svg>
+
+                  </button>
+                  <button class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none "
+                    type="button">
+                    <svg class="w-[16px] h-[16px] text-[#303030] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.109 17H1v-2a4 4 0 0 1 4-4h.87M10 4.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm7.95 2.55a2 2 0 0 1 0 2.829l-6.364 6.364-3.536.707.707-3.536 6.364-6.364a2 2 0 0 1 2.829 0Z"/>
+  </svg>
+
                   </button>
                   <!-- Main modal -->
                   <div
                     id="updateProductModal"
                     tabindex="-1"
-                    aria-hidden="true"
+                    
                     :class="{ hidden: !isModalVisible, flex: isModalVisible }"
                     class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-50"
                   >
