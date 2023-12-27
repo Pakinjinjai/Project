@@ -47,7 +47,7 @@
                 8,282
               </h4>
               <div class="text-gray-500">
-                New Users
+                Users
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
                 200,521
               </h4>
               <div class="text-gray-500">
-                Total Orders
+                Report
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@
                 215,542
               </h4>
               <div class="text-gray-500">
-                Available Products
+                Success
               </div>
             </div>
           </div>

@@ -160,7 +160,7 @@
                   <span class="tracking-wide text-[#303030] text-xl">โรคประจำตัว</span>
                 </div>
 
-                <div class="text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                <div class="text-lg text-[#303030] rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
                   {{ profileData.noteDisease || 'ไม่มีโรคประจำตัว' }}
                 </div>
               </div>
