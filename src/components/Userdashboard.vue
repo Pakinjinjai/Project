@@ -71,7 +71,7 @@ export default {
                 <td class="px-4 py-3 flex  text-[#303030] justify-center ">
                   <!-- info_Btn -->
                   <button @click="showinfoModal()" 
-                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
+                    class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
                     <svg class="w-[16px] h-[16px] text-[#303030] " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                       fill="none" viewBox="0 0 20 20">
@@ -81,7 +81,7 @@ export default {
                   </button>
                   <!-- edit_Btn -->
                   <button @click="showModal()"
-                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none "
+                    class="inline-flex items-center p-0.5 text-lg font-bold text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
                     <svg class="w-[16px] h-[16px] text-[#303030] dark:text-white" aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
@@ -91,7 +91,7 @@ export default {
                   </button>
                   <!-- delete_Btn -->
                   <button
-                    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
+                    class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
                     <svg 
                     class="w-[16px] h-[16px] text-[#303030]" 
@@ -130,75 +130,57 @@ export default {
                         <form action="#">
                           <div class="grid gap-4 mb-4 sm:grid-cols-2">
                             <!-- _id -->
-                            <div>
+                            <div class="grid">
                               <label for="_id"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">ไอดี</label>
-                              <input type="text" name="_id" id="_id" value=""
-                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="ไอดี" />
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">HN1703572305</p>
                             </div>
                             <!-- idCard -->
                             <div>
                               <label for="idCard"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">รหัสบัตรประชาชน</label>
-                              <input type="text" name="idCard" id="idCard" value=""
-                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="รหัสบัตรประชาชน" />
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
+                                <p class="text-left p-2.5 bg-gray-50 border rounded-lg">1809901075727</p>
                             </div>
                             <!-- email -->
                             <div>
                               <label for="email"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">อีเมล</label>
-                              <input type="email" name="email" id="email" value=""
-                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="อีเมล" />
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">อีเมล</label>
+                                <p class="text-left p-2.5 bg-gray-50 border rounded-lg">Admin01@gmail.com</p>
                             </div>
                             <!-- firstname -->
                             <div>
                               <label for="firstname"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">ชื่อจริง</label>
-                              <input type="text" name="firstname" id="firstname" value=""
-                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="ชื่อจริง" />
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
+                                <p class="text-left p-2.5 bg-gray-50 border rounded-lg">ภาคิน</p>
                             </div>
                             <!-- lastname -->
                             <div>
                               <label for="lastname"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">นามสกุล</label>
-                              <input type="text" name="lastname" id="lastname" value=""
-                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="นามสกุล" />
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
+                                <p class="text-left p-2.5 bg-gray-50 border rounded-lg">จิ้นจ้าย</p>
                             </div>
                             <!-- phoneNO -->
                             <div>
                               <label for="phoneNO"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">เบอร์โทรศัพท์</label>
-                              <input type="text" name="phoneNO" id="phoneNO" value=""
-                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="เบอร์โทรศัพท์" />
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">เบอร์โทรศัพท์</label>
+                                <p class="text-left p-2.5 bg-gray-50 border rounded-lg">0652358039</p>
                             </div>
                             <!-- gender -->
                             <div>
                               <label for="gender"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">เพศ</label>
-                              <input type="text" name="gender" id="gender" value=""
-                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="เพศ" />
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">เพศ</label>
+                                <p class="text-left p-2.5 bg-gray-50 border rounded-lg">ชาย</p>
                             </div>
                             <!-- birthdate -->
                             <div>
                               <label for="birthdate"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">วัน/เดือน/ปี เกิด</label>
-                              <input type="date" name="birthdate" id="birthdate" value=""
-                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="วัน/เดือน/ปี เกิด" />
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">วัน/เดือน/ปี เกิด</label>
+                                <p class="text-left p-2.5 bg-gray-50 border rounded-lg">28-12-2001</p>
                             </div>
                             <div class="sm:col-span-2">
                               <label for="description"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">โรคประจำตัว</label>
-                              <textarea id="description" rows="5"
-                                class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
-                                placeholder="Write a description..."></textarea>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">โรคประจำตัว</label>
+                                <p class="text-left text-[#303030] rounded-lg bg-gray-50 border block w-full p-2.5">ไม่มีโรคประจำตัว</p>
                             </div>
                           </div>
                           
@@ -235,7 +217,7 @@ export default {
                             <!-- _id -->
                             <div>
                               <label for="_id"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">ไอดี</label>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
                               <input type="text" name="_id" id="_id" value=""
                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="ไอดี" />
@@ -243,7 +225,7 @@ export default {
                             <!-- idCard -->
                             <div>
                               <label for="idCard"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">รหัสบัตรประชาชน</label>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
                               <input type="text" name="idCard" id="idCard" value=""
                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="รหัสบัตรประชาชน" />
@@ -251,7 +233,7 @@ export default {
                             <!-- email -->
                             <div>
                               <label for="email"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">อีเมล</label>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">อีเมล</label>
                               <input type="email" name="email" id="email" value=""
                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="อีเมล" />
@@ -259,7 +241,7 @@ export default {
                             <!-- firstname -->
                             <div>
                               <label for="firstname"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">ชื่อจริง</label>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
                               <input type="text" name="firstname" id="firstname" value=""
                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="ชื่อจริง" />
@@ -267,7 +249,7 @@ export default {
                             <!-- lastname -->
                             <div>
                               <label for="lastname"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">นามสกุล</label>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
                               <input type="text" name="lastname" id="lastname" value=""
                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="นามสกุล" />
@@ -275,7 +257,7 @@ export default {
                             <!-- phoneNO -->
                             <div>
                               <label for="phoneNO"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">เบอร์โทรศัพท์</label>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">เบอร์โทรศัพท์</label>
                               <input type="text" name="phoneNO" id="phoneNO" value=""
                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="เบอร์โทรศัพท์" />
@@ -283,7 +265,7 @@ export default {
                             <!-- gender -->
                             <div>
                               <label for="gender"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">เพศ</label>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">เพศ</label>
                               <input type="text" name="gender" id="gender" value=""
                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="เพศ" />
@@ -291,14 +273,14 @@ export default {
                             <!-- birthdate -->
                             <div>
                               <label for="birthdate"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">วัน/เดือน/ปี เกิด</label>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">วัน/เดือน/ปี เกิด</label>
                               <input type="date" name="birthdate" id="birthdate" value=""
                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="วัน/เดือน/ปี เกิด" />
                             </div>
                             <div class="sm:col-span-2">
                               <label for="description"
-                                class="block mb-2 text-sm font-medium text-[#303030] text-left">โรคประจำตัว</label>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">โรคประจำตัว</label>
                               <textarea id="description" rows="5"
                                 class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
                                 placeholder="Write a description..."></textarea>
