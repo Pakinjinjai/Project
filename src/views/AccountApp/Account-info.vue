@@ -35,7 +35,7 @@
           <!-- Profile tab -->
           <!-- About Section -->
           <div class="bg-white p-3 shadow-sm rounded-xl hover:shadow mb-4">
-            <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+            <div class="flex items-center space-x-2 font-semibold text-[#303030] leading-8">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6">
@@ -157,7 +157,7 @@
                         d="M15.131 5s1.692 2.025 2.268 2.711c1.213 1.461 1.573 2.31 1.601 4.161v10.128c-.015 1.094-.859 1.961-1.925 1.999-3.368.043-6.736.043-10.104 0-1.073-.038-1.964-.917-1.971-1.999v-10.134c.009-2.04.587-2.921 1.948-4.508.591-.689 1.941-2.358 1.941-2.358h6.242zm1.869 15h-10v2h10v-2zm-4-7h-2v2h-2v2h2v2h2v-2h2.023l-.023-2h-2v-2zm1.245-6h-4.457c-.634.787-1.224 1.522-1.489 1.857-1.026 1.3-1.293 1.807-1.299 3.143h10c-.013-1.346-.184-1.757-1.137-3.008-.268-.353-.929-1.157-1.618-1.992zm1.755-3h-8v-3c0-.552.448-1 1-1h6c.552 0 1 .448 1 1v3z" />
                     </svg>
                   </span>
-                  <span class="tracking-wide text-xl">โรคประจำตัว</span>
+                  <span class="tracking-wide text-[#303030] text-xl">โรคประจำตัว</span>
                 </div>
 
                 <div class="text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
@@ -215,4 +215,6 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>

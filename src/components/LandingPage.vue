@@ -1,4 +1,5 @@
 <template>
+	<div class="mt-4"><warn /></div>
 	<div class="page-container">
 		<section id="main" class="container">
 			<section class="grid justify-center box special ">
@@ -119,9 +120,9 @@
 				<div class="container mx-auto">
 					<div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
 						<iframe id="map"
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.133720290308!2d99.3726696759775!3d10.724168060153614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30ff458dae5cc463%3A0x6cf4c3f8871aa234!2sKing%20Mongkut&#39;s%20Institute%20of%20Technology%20Ladkrabang%20Prince%20of%20Chumphon%20Campus!5e0!3m2!1sen!2sth!4v1702866468326!5m2!1sen!2sth"
-							width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-							referrerpolicy="no-referrer-when-downgrade"></iframe>
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.133720290308!2d99.3726696759775!3d10.724168060153614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30ff458dae5cc463%3A0x6cf4c3f8871aa234!2sKing%20Mongkut&#39;s%20Institute%20of%20Technology%20Ladkrabang%20Prince%20of%20Chumphon%20Campus!5e0!3m2!1sen!2sth!4v1702866468326!5m2!1sen!2sth&markers=13.724168,99.372669|13.720000,99.370000|13.730000,99.380000"
+  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 					</div>
 				</div>
 			</section>
@@ -190,13 +191,14 @@
 </template>
 
 <script>
+
+import warn from  "./warn";
+
 export default {
-	name: "Map",
+	components: {warn},
 	data() {
 		return {
-			markerLat: 10.724168060153614,
-			markerLng: 99.3726696759775,
-			markerTitle: "Marker Title",
+			
 		};
 	},
 	mounted() {

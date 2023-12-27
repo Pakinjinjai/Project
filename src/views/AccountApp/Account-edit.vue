@@ -12,7 +12,7 @@ export default {
       birthdateUpgrade: "",
     };
   },
-  created(){
+  created() {
     this.editAccount;
     console.log(this.formData);
   },
@@ -30,10 +30,7 @@ export default {
             console.log("ใส่นามสกุลสำเร็จแล้ว");
             if (this.formData.gender != "" && this.formData.gender != null) {
               console.log("ใส่เพศสำเร็จแล้ว");
-              if (
-                this.formData.noteDrug != "" &&
-                this.formData.noteDrug != null
-              ) {
+              {
                 console.log("ใส่ประวัติแพ้ยาสำเร็จแล้ว");
                 if (
                   this.birthdateUpgrade != "" &&
@@ -54,8 +51,8 @@ export default {
                       this.$router.push("/account-info");
                       this.profileData = res.data.user;
                       this.birthDate = dayjs(this.profileData.birthdate).format(
-            "YYYY-MM-DD"
-          );
+                        "YYYY-MM-DD"
+                      );
                       console.log(res.data);
                     })
                     .catch((error) => {
@@ -65,7 +62,7 @@ export default {
                 } else {
                   alert("กรุณาใส่วันเดือนปีเกิดของท่าน");
                 }
-              } 
+              }
             } else {
               alert("กรุณใส่เพศของท่าน");
             }
@@ -79,27 +76,6 @@ export default {
         alert("กรุณาใส่เลขประจำตัวประชาชนของท่าน");
       }
     },
-    // showInfo() {
-    //   axios({
-    //     method: "get",
-    //     url: "http://localhost:3000/api/v1/users/me",
-    //     headers: {
-    //       Authorization: "Bearer " + localStorage.getItem("accessToken"),
-    //     },
-    //   })
-    //     .then((res) => {
-    //       this.profileData = res.data.user;
-    //       this.birthDate = dayjs(this.profileData.birthdate).format(
-    //         "YYYY-MM-DD"
-    //       );
-    //       console.log(this.profileData);
-    //       // console.log(this.profileData.address);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // },
-
   },
 };
 </script>
@@ -116,26 +92,20 @@ export default {
               Hospital Number
             </h1>
             <p class="text-gray-900 text-lg leading-8 my-1">
-               {{ formData._id }} 
+              {{ formData._id }}
             </p>
           </div>
           <!-- End of profile card -->
           <div class="my-4"></div>
           <!-- Friends card -->
           <div class="flex justify-center p-2">
-            <button
-              type="button"
-              id="saveAccount"
-              v-on:click="editAccount()"
-              class="mt-4 focus:outline-none text-white bg-[#140A4B] hover:bg-[#140a4bc5] focus:ring-4 focus:ring-[#140a4bc5] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-[#140a4bc5] dark:focus:ring-[#140a4bc5]"
-            >
+            <button type="button" id="saveAccount" v-on:click="editAccount()"
+              class="mt-4 focus:outline-none text-white bg-[#140A4B] hover:bg-[#140a4bc5] focus:ring-4 focus:ring-[#140a4bc5] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-[#140a4bc5] dark:focus:ring-[#140a4bc5]">
               บันทึก
             </button>
             <router-link to="/account-info">
-              <button
-                type="button"
-                class="mt-4 focus:outline-none text-white bg-[#EB1851] hover:bg-[#140a4bc5] focus:ring-4 focus:ring-[#140a4bc5] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-[#140a4bc5] dark:focus:ring-[#140a4bc5]"
-              >
+              <button type="button"
+                class="mt-4 focus:outline-none text-white bg-[#EB1851] hover:bg-[#eb1850c2] focus:ring-4 focus:ring-[#140a4bc5] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-orange-700 dark:hover:bg-[#140a4bc5] dark:focus:ring-[#140a4bc5]">
                 ยกเลิก
               </button>
             </router-link>
@@ -147,23 +117,11 @@ export default {
           <!-- Profile tab -->
           <!-- About Section -->
           <div class="bg-white p-4 shadow-sm hover:shadow rounded-xl">
-            <div
-              class="flex items-center space-x-2 font-semibold text-gray-900 leading-8"
-            >
+            <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
               <span clas="text-green-500">
-                <svg
-                  class="h-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
+                <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </span>
               <span class="tracking-wide">About</span>
@@ -175,15 +133,9 @@ export default {
                     ชื่อจริง : <i class="las la-asterisk" style="color: red"></i>
                   </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="firstname"
-                      id="firstname"
-                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="ชื่อจริง"
-                      required=""
-                      v-model="formData.firstname"
-                    />
+                    <input type="text" name="firstname" id="firstname"
+                      class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full px-2 py-2 text-center"
+                      placeholder="ชื่อจริง" required="" v-model="formData.firstname" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
@@ -191,15 +143,9 @@ export default {
                     นามสกุล :<i class="las la-asterisk" style="color: red"></i>
                   </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="lastname"
-                      id="lastname"
+                    <input type="text" name="lastname" id="lastname"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="นามสกุล"
-                      required=""
-                      v-model="formData.lastname"
-                    />
+                      placeholder="นามสกุล" required="" v-model="formData.lastname" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
@@ -207,15 +153,9 @@ export default {
                     รหัสบัตรประชาชน :<i class="las la-asterisk" style="color: red"></i>
                   </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="email"
-                      name="idCard"
-                      id="idCard"
+                    <input type="email" name="idCard" id="idCard"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder=" รหัสบัตรประชาชน "
-                      required=""
-                      v-model="formData.idCard"
-                    />
+                      placeholder=" รหัสบัตรประชาชน " required="" v-model="formData.idCard" />
                   </div>
                 </div>
                 <div class="flex flex-cols-2">
@@ -224,44 +164,23 @@ export default {
                   </div>
                   <div class="flex justify-center mb-4 ml-auto mr-12">
                     <label class="inline-flex items-center">
-                      <input
-                        type="radio"
-                        class="form-radio"
-                        name="accountType"
-                        value="true"
-                        v-model="formData.gender"
-                      />
+                      <input type="radio" class="form-radio" name="accountType" value="true" v-model="formData.gender" />
                       <span class="ml-2">ชาย</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                      <input
-                        type="radio"
-                        class="form-radio"
-                        name="accountType"
-                        value="false"
-                        v-model="formData.gender"
-                      />
+                      <input type="radio" class="form-radio" name="accountType" value="false" v-model="formData.gender" />
                       <span class="ml-2">หญิง</span>
                     </label>
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">
-                    เบอร์โทรติดต่อ : <i
-                      class="las la-asterisk"
-                      style="color: red"
-                    ></i>
+                    เบอร์โทรติดต่อ : <i class="las la-asterisk" style="color: red"></i>
                   </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="phone"
-                      name="Phone"
-                      id="Phone"
+                    <input type="phone" name="Phone" id="Phone"
                       class="bg-gray-100 border border-gray-300 text-gray-900 sm:text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="เบอร์โทรติดต่อ"
-                      required=""
-                      v-model="formData.phoneNo"
-                    />
+                      placeholder="เบอร์โทรติดต่อ" required="" v-model="formData.phoneNo" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
@@ -269,52 +188,31 @@ export default {
                     อีเมล์ : <i class="las la-asterisk" style="color: red"></i>
                   </div>
                   <div class="px-4 py-2">
-                    <a
-                      ><input
-                        type="email"
-                        name="email"
-                        id="email"
+                    <a><input type="email" name="email" id="email"
                         class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                        placeholder=" อีเมล์ "
-                        required=""
-                        v-model="formData.email"
-                    /></a>
+                        placeholder=" อีเมล์ " required="" v-model="formData.email" /></a>
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">
                     <div>
-                      วันเกิด : 
+                      วันเกิด :
                       <i class="las la-asterisk" style="color: red"></i>
                     </div>
                   </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="date"
-                      name="Birthdate"
-                      id="Birthdate"
+                    <input type="date" name="Birthdate" id="Birthdate"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="วันเกิด"
-                      required=""
-                      v-model="birthdateUpgrade"
-                    />
+                      placeholder="วันเกิด" required="" v-model="birthdateUpgrade" />
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="flex items-center space-x-2 font-semibold text-gray-900 leading-8"
-            >
+            <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
               <span clas="text-green-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path
-                    d="M12 3c2.131 0 4 1.73 4 3.702 0 2.05-1.714 4.941-4 8.561-2.286-3.62-4-6.511-4-8.561 0-1.972 1.869-3.702 4-3.702zm0-2c-3.148 0-6 2.553-6 5.702 0 3.148 2.602 6.907 6 12.298 3.398-5.391 6-9.15 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm8 6h-3.135c-.385.641-.798 1.309-1.232 2h3.131l.5 1h-4.264l-.344.544-.289.456h.558l.858 2h-7.488l.858-2h.479l-.289-.456-.343-.544h-2.042l-1.011-1h2.42c-.435-.691-.848-1.359-1.232-2h-3.135l-4 8h24l-4-8zm-12.794 6h-3.97l1.764-3.528 1.516 1.528h1.549l-.859 2zm8.808-2h3.75l1 2h-3.892l-.858-2z"
-                  />
+                    d="M12 3c2.131 0 4 1.73 4 3.702 0 2.05-1.714 4.941-4 8.561-2.286-3.62-4-6.511-4-8.561 0-1.972 1.869-3.702 4-3.702zm0-2c-3.148 0-6 2.553-6 5.702 0 3.148 2.602 6.907 6 12.298 3.398-5.391 6-9.15 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm8 6h-3.135c-.385.641-.798 1.309-1.232 2h3.131l.5 1h-4.264l-.344.544-.289.456h.558l.858 2h-7.488l.858-2h.479l-.289-.456-.343-.544h-2.042l-1.011-1h2.42c-.435-.691-.848-1.359-1.232-2h-3.135l-4 8h24l-4-8zm-12.794 6h-3.97l1.764-3.528 1.516 1.528h1.549l-.859 2zm8.808-2h3.75l1 2h-3.892l-.858-2z" />
                 </svg>
               </span>
               <span class="tracking-wide">ที่อยู่ส่วนบุคคล</span>
@@ -324,152 +222,93 @@ export default {
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">บ้านเลขที่ : </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="บ้านเลขที่"
-                      id="บ้านเลขที่"
+                    <input type="text" name="บ้านเลขที่" id="บ้านเลขที่"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="บ้านเลขที่"
-                      required=""
-                      v-model="formData.address.houseNo"
-                    />
+                      placeholder="บ้านเลขที่" required="" v-model="formData.address.houseNo" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">หมู่ : </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="mooo"
-                      id="moo"
+                    <input type="text" name="mooo" id="moo"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="หมู่ : "
-                      required=""
-                      v-model="formData.address.moo"
-                    />
+                      placeholder="หมู่ : " required="" v-model="formData.address.moo" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">ซอย : </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="soi"
-                      id="soi"
+                    <input type="text" name="soi" id="soi"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="ซอย"
-                      required=""
-                      v-model="formData.address.soi"
-                    />
+                      placeholder="ซอย" required="" v-model="formData.address.soi" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">ถนน : </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="road"
-                      id="road"
+                    <input type="text" name="road" id="road"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="ถนน "
-                      required=""
-                      v-model="formData.address.road"
-                    />
+                      placeholder="ถนน " required="" v-model="formData.address.road" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">ตำบล : </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="Tambon"
-                      id="Tambon"
+                    <input type="text" name="Tambon" id="Tambon"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="ตำบล  "
-                      required=""
-                      v-model="formData.address.subDistrict"
-                    />
+                      placeholder="ตำบล  " required="" v-model="formData.address.subDistrict" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">อำเภอ : </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="district"
-                      id="dixtrict"
+                    <input type="text" name="district" id="dixtrict"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="อำเภอ"
-                      required=""
-                      v-model="formData.address.district"
-                    />
+                      placeholder="อำเภอ" required="" v-model="formData.address.district" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">จังหวัด : </div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="Province"
-                      id="Province"
+                    <input type="text" name="Province" id="Province"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="จังหวัด"
-                      required=""
-                      v-model="formData.address.province"
-                    />
+                      placeholder="จังหวัด" required="" v-model="formData.address.province" />
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">รหัสไปรษณีย์ :</div>
                   <div class="px-4 py-2">
-                    <input
-                      type="text"
-                      name="Postal code"
-                      id="Postal code"
+                    <input type="text" name="Postal code" id="Postal code"
                       class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="รหัสไปรษณีย์"
-                      required=""
-                      v-model="formData.address.postalCode"
-                    />
+                      placeholder="รหัสไปรษณีย์" required="" v-model="formData.address.postalCode" />
                   </div>
                 </div>
-                
+
               </div>
             </div>
           </div>
           <!-- End of about section -->
 
-          
+
 
           <!-- Experience and education -->
           <div class="bg-white p-3 shadow-sm rounded-xl hover:shadow mt-4">
-          <div class="bg-white p-4  shadow-sm hover:shadow rounded-xl ">
-            <div class="">
-             
-              <div class="m-1">
-                <div
-                  class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
-                >
-                 
-                  <span class="tracking-wide"
-                    >โรคประจำตัว</span>
-                </div>
-                <div class="list-inside space-y-2">
-                  <textarea
-                    name=""
-                    v-model="formData.noteDisease"
-                    id=""
-                    cols="30"
-                    rows="10"
-                    placeholder="โรคประจำตัว"
-                    class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  ></textarea>
-                </div>
+
+
+            <div class="m-1">
+              <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+
+                <span class="tracking-wide">โรคประจำตัว</span>
+              </div>
+              <div class="list-inside space-y-2">
+                <textarea name="" v-model="formData.noteDisease" id="" cols="30" rows="10" placeholder="โรคประจำตัว"
+                  class=" bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block h-40 w-full	"></textarea>
               </div>
             </div>
+
             <!-- End of Experience and education grid -->
+
           </div>
-        </div>
 
           <!-- End of profile tab -->
         </div>
@@ -480,9 +319,11 @@ export default {
 
 <style lang="scss">
 .las.la-asterisk {
-    font-size: 0.8em; /* หรือขนาดที่คุณต้องการ */
-    vertical-align: middle; /* ถ้าคุณต้องการให้ตำแหน่งสูงเท่ากันกับข้อความ */
-  } 
+  font-size: 0.8em;
+  /* หรือขนาดที่คุณต้องการ */
+  vertical-align: middle;
+  /* ถ้าคุณต้องการให้ตำแหน่งสูงเท่ากันกับข้อความ */
+}
 
 .account {
   display: grid;
@@ -492,6 +333,7 @@ export default {
   background-color: #64ccc5;
   height: 50vh;
   width: 100vh;
+
   .account-text {
     margin-top: 15px;
     margin-left: 15px;
@@ -499,10 +341,12 @@ export default {
     height: 50px;
     width: 200px;
     border-radius: 16px;
+
     // text-align: center;
     .account-edit {
       margin-top: 25px;
     }
+
     h1 {
       color: white;
     }

@@ -11,7 +11,7 @@ import LandingPage from "@/components/LandingPage.vue";
 
 export default {
   name: "homePage",
-  components: {LandingPage , Map},
+  components: {LandingPage},
   data() {
     return {
       profileData: {},
