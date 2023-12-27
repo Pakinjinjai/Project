@@ -22,7 +22,7 @@ export default {
         class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"
       >
         <div
-          class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4"
+          class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-3 "
         >
           <div class="w-full md:w-1/2">
             <form class="flex items-center">
@@ -61,31 +61,35 @@ export default {
             class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
           >
             <thead
-              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+              class="text-xs text-[#FDFDFD] uppercase bg-[#140A4B] "
             >
-              <tr>
-                <th scope="col" class="px-4 py-3">เพศ</th>
-                <th scope="col" class="px-4 py-3">ชื่อ</th>
+              <tr class="text-center">
+                <th scope="col" class="px-4 py-3">ไอดี</th>
                 <th scope="col" class="px-4 py-3">รหัสบัตรประชาชน</th>
+                <th scope="col" class="px-4 py-3">ชื่อ</th>
+                <th scope="col" class="px-4 py-3">นามสกุล</th>
+                <th scope="col" class="px-4 py-3">เพศ</th>
+                <th scope="col" class="px-4 py-3">เบอร์โทรศัพท์</th>
                 <th scope="col" class="px-4 py-3">ตำแหน่ง</th>
-                <th scope="col" class="px-4 py-3">Price</th>
                 <th scope="col" class="px-4 py-3">
                   <span class="sr-only">Actions</span>
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b dark:border-gray-700">
+              <tr class="border-b text-center text-[#303030]">
                 <th
                   scope="row"
-                  class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  class="px-4 py-3 font-medium  whitespace-nowrap dark:text-white"
                 >
-                  Aac 27&#34;
+                &#34HN1703572305&#34;
                 </th>
-                <td class="px-4 py-3">PC</td>
-                <td class="px-4 py-3">Apple</td>
-                <td class="px-4 py-3">300</td>
-                <td class="px-4 py-3">$2999</td>
+                <td class="px-4 py-3">1809901075727</td>
+                <td class="px-4 py-3">ภาคิน</td>
+                <td class="px-4 py-3">จิ้นจ้าย</td>
+                <td class="px-4 py-3">ชาย</td>
+                <td class="px-4 py-3">0652358039</td>
+                <td class="px-4 py-3">แอดมิน</td>
                 <td class="px-4 py-3 flex items-center justify-end">
                   <button
                     @click="showModal()"
