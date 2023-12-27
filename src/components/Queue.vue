@@ -10,7 +10,7 @@
           <th scope="col" class="px-6 py-3">คำแนะนำ</th>
         </tr>
       </thead>
-      
+
       <tbody v-if="Queue.length > 0">
         <tr v-for="(item, index) in sortedQueue" :key="item._id" :class="{
           'bg-white': index % 2 === 0,
@@ -35,28 +35,33 @@
             </div>
           </td>
 
-          <td class="px-6 py-4">{{ formatDate(item.updatedAt) }}</td>
+          <td v-if="item.note" class="px-6 pl-auto ">{{ formatDate(item.updatedAt) }}</td>
+          <td v-else class="px-6 pl-auto ">ยังไม่ตรวจ</td>
 
           <td class="px-6 py-4">
-  <div v-if="item.note" class="flex text-green-500">
-    <button :class="{ 'text-green-500': item.note, 'text-red-500': !item.note }" class="flex "
-              @click="toggleMessage(index)">
-    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="note-btnSVG">
+            
+            <div v-if="item.note" class="flex text-green-500">
+              <button :class="{ 'text-green-500': item.note }" class="flex "
+                @click="toggleMessage(index)">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="note-btnSVG">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25">
+                  </path>
+                </svg>
+                คำแนะนำ
+              </button>
+            </div>
+
+            <div v-else class="flex text-red-500">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25">
-                </path>
+                  d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
               </svg>
-    คำแนะนำ
-    </button>
-  </div>
-  <div v-else class="flex text-red-500">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
-    </svg>
-   
-  </div>
-</td>
+
+            </div>
+          </td>
 
         </tr>
       </tbody>
