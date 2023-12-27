@@ -1,17 +1,20 @@
 <template>
   <div class="page-container">
+    <div class="mt-4"><warn /></div>
     <LandingPage />
   </div>
 </template>
 
 <script>
+import warn from  "../components/warn.vue";
+
 // import Map from "@/components/Map.vue"
 import LandingPage from "@/components/LandingPage.vue";
 // import axios from "axios";
 
 export default {
   name: "homePage",
-  components: {LandingPage},
+  components: {LandingPage,warn},
   data() {
     return {
       profileData: {},
