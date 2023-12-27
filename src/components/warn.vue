@@ -62,7 +62,23 @@ export default {
                         this.formData.province === null ||
                         this.formData.road === null ||
                         this.formData.soi === null ||
-                        this.formData.subDistrict === null
+                        this.formData.subDistrict === null ||
+                        this.formData.district === null ||
+                        this.formData.houseNo === null ||
+                        this.formData.postalCode === null ||
+                        this.formData.moo === null ||
+                        this.formData.province === null ||
+                        this.formData.road === null ||
+                        this.formData.soi === null ||
+                        this.formData.subDistrict === null ||
+                        this.formData.district === "" ||
+                        this.formData.houseNo === "" ||
+                        this.formData.postalCode === "" ||
+                        this.formData.moo === "" ||
+                        this.formData.province === "" ||
+                        this.formData.road === "" ||
+                        this.formData.soi === "" ||
+                        this.formData.subDistrict === ""
                     ) {
                         this.showDiv = true;
                     } else {
@@ -70,7 +86,7 @@ export default {
                     }
                 })
                 .catch((error) => {
-                    console.error( error);
+                    console.error(error);
                 });
         },
         goToAccount() {

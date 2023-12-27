@@ -35,8 +35,8 @@
             </div>
           </td>
 
-          <td v-if="item.note" class="px-6 pl-auto ">{{ formatDate(item.updatedAt) }}</td>
-          <td v-else class="px-6 pl-auto ">ยังไม่ตรวจ</td>
+          <td v-if="item.note" class="px-6 ">{{ formatDate(item.updatedAt) }}</td>
+          <td v-else class="px-6  ">ยังไม่ตรวจ</td>
 
           <td class="px-6 py-4">
             
