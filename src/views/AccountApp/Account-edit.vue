@@ -30,10 +30,7 @@ export default {
             console.log("ใส่นามสกุลสำเร็จแล้ว");
             if (this.formData.gender != "" && this.formData.gender != null) {
               console.log("ใส่เพศสำเร็จแล้ว");
-              if (
-                this.formData.noteDrug != "" &&
-                this.formData.noteDrug != null
-              ) {
+               {
                 console.log("ใส่ประวัติแพ้ยาสำเร็จแล้ว");
                 if (
                   this.birthdateUpgrade != "" &&
@@ -448,13 +445,13 @@ export default {
              
               <div class="m-1">
                 <div
-                  class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"
+                  class="flex items-center space-x-2 font-semibold text-[#303030] leading-8 mb-3"
                 >
                  
                   <span class="tracking-wide"
                     >โรคประจำตัว</span>
                 </div>
-                <div class="list-inside space-y-2">
+                <div class="list-inside space-y-2 text-[#303030]">
                   <textarea
                     name=""
                     v-model="formData.noteDisease"
@@ -462,7 +459,7 @@ export default {
                     cols="30"
                     rows="10"
                     placeholder="โรคประจำตัว"
-                    class="bg-gray-100 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    class="bg-gray-100 border border-gray-300 text-[#303030] text-lg rounded-lg focus:ring-[#303030] focus:border-[#303030] block w-full p-2.5"
                   ></textarea>
                 </div>
               </div>
