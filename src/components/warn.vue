@@ -17,44 +17,32 @@ export default {
     data() {
         return {
             showDiv: false,
-            profileAddress: {},
+            profileData: {},
         };
-    },
-    methods: {
-        check() {
-            fetchData("http://localhost:3000/api/v1/users/update")
-                .then((res) => {
-                    this.profileAddress = res.data.user.address;
-                    console.log(this.profileAddress);
-
-                    if (this.profileAddress === null) {
-                        this.showDiv = true;
-                    } else {
-                        this.showDiv = false;
-                    }
-                })
-                .catch((error) => {
-                    console.error("staus", error);
-                });
-        },
-
-        goToAccount() {
-            this.$router.push("/account-info");
-        },
     },
     mounted() {
         this.check();
     },
+    methods: {
+        check(){
+            axios({
+                method:"get",
+                url:"http://localhost:3000/api/v1/users/me",
+                headers: {
+                      Authorization:
+                        "Bearer " + localStorage.getItem("accessToken"),
+                },
+                data: this.formData,
+            })
+            .then((res) => {
+                this.formData = res.data
+                console.log(this.formData);
+            })
+        },
+        goToAccount() {
+            this.$router.push("/account-info");
+        },
+    }
 };
-
-// Function to simulate asynchronous data fetching
-function fetchData() {
-    return new Promise((resolve) => {
-        // Simulating an API call
-        setTimeout(() => {
-            resolve({ data: { user: { address: { houseNo: null } } } });
-        }, 1000); // Simulating a delay of 1 second
-    });
-}
 </script>
   
