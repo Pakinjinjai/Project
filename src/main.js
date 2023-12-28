@@ -15,6 +15,9 @@ import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 /* add icons to the library */
 library.add(faUserSecret);
 
+/* add css vueleaflets to the library */
+import "leaflet/dist/leaflet.css";
+
 /* add icons Line Awesome to the library */
 import "line-awesome/dist/line-awesome/css/line-awesome.min.css";
 

@@ -27,7 +27,9 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "@vue-leaflet/vue-leaflet": "^0.10.1",
     "autoprefixer": "^10.4.14",
+    "leaflet": "^1.9.4",
     "mqtt": "^5.3.1",
     "node-sass": "^9.0.0",
     "postcss": "^8.4.24",
