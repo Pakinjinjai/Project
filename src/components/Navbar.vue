@@ -35,65 +35,32 @@
                 class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg">ประวัติส่วนตัว</a>
             </div>
             <div class="relative inline-block">
-    <button
-      type="button"
-      class="flex cursor-pointer font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-      @click="toggleDropdown"
-    >
-      จัดการระบบ
-    </button>
-    <div
-      v-show="isDropdownOpen"
-      class="absolute z-50 bg-gray-800 text-[#FDFDFD] rounded-lg shadow-lg mt-2"
-      @click="closeDropdown"
-    >
-    <div
-              class="hidden md:flex items-center space-x-1"
-              id="accountEle"
-              v-on:click="goToDashboard()"
-              v-if="profileName.role == 9001"
-            >
-              <a
-              class="text-base block py-2 px-auto ml-2 hover:bg-gray-700"
-                >ภาพรวม</a
-              >
+              <button type="button"
+                class="flex cursor-pointer font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
+                @click="toggleDropdown">
+                จัดการระบบ
+              </button>
+              <div v-show="isDropdownOpen" class="absolute z-50 bg-gray-800 text-[#FDFDFD] rounded-lg shadow-lg mt-2"
+                @click="closeDropdown">
+                <div class="hidden md:flex items-center space-x-1" id="accountEle" v-on:click="goToDashboard()"
+                  v-if="profileName.role == 9001">
+                  <a class="text-base block py-2 px-auto ml-2 hover:bg-gray-700">ภาพรวม</a>
+                </div>
+                <div id="User" class="hidden md:flex items-center space-x-1" v-on:click="goToUser()"
+                  v-if="profileName.role == 9001">
+                  <a class="text-base block py-2 px-auto ml-2 hover:bg-gray-700">ข้อมูลผู้ใช้งาน</a>
+                </div>
+                <div id="Report" v-if="profileName.role == 9001" v-on:click="goToADQueue()"
+                  class="hidden md:flex items-center space-x-1">
+                  <a class="text-base block py-2 px-auto ml-2 hover:bg-gray-700">การนัดคิวและแจ้งคำแนะนำ</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-1" id="accountEle" v-on:click=""
+                  v-if="profileName.role == 9001">
+                  <a class="text-base block py-2 px-auto ml-2 hover:bg-gray-700">สุขภาพของผู้ป่วย</a>
+                </div>
+
+              </div>
             </div>
-            <div
-              id="User"
-              class="hidden md:flex items-center space-x-1"
-              v-on:click="goToUser()"
-              v-if="profileName.role == 9001"
-            >
-              <a
-                class="text-base block py-2 px-auto ml-2 hover:bg-gray-700"
-                >ข้อมูลผู้ใช้งาน</a
-              >
-            </div>
-            <div
-              id="Report"
-              v-if="profileName.role == 9001"
-              v-on:click="goToQueue()"
-              class="hidden md:flex items-center space-x-1"
-            >
-              <a
-                class="text-base block py-2 px-auto ml-2 hover:bg-gray-700"
-                >การนัดคิวและแจ้งคำแนะนำ</a
-              >
-            </div>
-            <div
-              class="hidden md:flex items-center space-x-1"
-              id="accountEle"
-              v-on:click=""
-              v-if="profileName.role == 9001"
-            >
-              <a
-                class="text-base block py-2 px-auto ml-2 hover:bg-gray-700"
-                >สุขภาพของผู้ป่วย</a
-              >
-            </div>
-    
-    </div>
-  </div>
             <a class="font-bold hover:text-[#FDFDFD] py-5 px-2 text-[#FDFDFD] rounded-lg" id="Name" v-if="token != null">
               {{ profileName.gender ? "สวัสดีค่ะ" : "สวัสดีครับ" }}คุณ
               {{ profileName.firstname }}
@@ -232,7 +199,7 @@ export default {
         this.$router.push("/dashboard/users");
       }
     },
-    goToQueue() {
+    goToADQueue() {
       const token = localStorage.getItem("accessToken");
       if (token) {
         this.$router.push("/dashboard/queue");
