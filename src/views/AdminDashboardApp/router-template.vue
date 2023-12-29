@@ -1,16 +1,16 @@
 <template>
-  <NavbarAdmin/>
+  <Navbar />
   <router-view></router-view>
 </template>
 
 <script>
-import NavbarAdmin from '@/components/NavbarAdmin.vue';
+import Navbar from "@/components/Navbar.vue";
 
 export default {
   name: "RouterTemplate",
 
   components: {
-    NavbarAdmin
+    Navbar,
   },
   data() {
     return {};

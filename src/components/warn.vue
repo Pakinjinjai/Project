@@ -17,17 +17,7 @@ export default {
     data() {
         return {
             showDiv: false,
-            profileData: {},
-            formData: {
-                district: null,
-                houseNo: null,
-                postalCode: null,
-                moo: null,
-                province: null,
-                road: null,
-                soi: null,
-                subDistrict: null,
-            },
+            formData: {},
         };
     },
     mounted() {
