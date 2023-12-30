@@ -47,19 +47,19 @@
                 @click="closeDropdown">
                 <div class="hidden md:flex items-center space-x-1" id="accountEle" v-on:click="goToDashboard()"
                   v-if="profileName.role == 9001">
-                  <a class="text-base block py-2 px-auto ml-2 hover:bg-gray-700">1: ภาพรวม</a>
+                  <a class="text-base block py-2 px-auto ml-2 hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">1: ภาพรวม</a>
                 </div>
                 <div id="User" class="hidden md:flex items-center space-x-1" v-on:click="goToUser()"
                   v-if="profileName.role == 9001">
-                  <a class="text-base block py-2 px-auto ml-2 hover:bg-gray-700">2: ข้อมูลผู้ใช้งาน</a>
+                  <a class="text-base block py-2 px-auto ml-2  hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">2: ข้อมูลผู้ใช้งาน</a>
                 </div>
                 <div id="Report" v-if="profileName.role == 9001" v-on:click="goToADQueue()"
                   class="hidden md:flex items-center space-x-1">
-                  <a class="text-base block py-2 px-auto ml-2 hover:bg-gray-700">3: การนัดคิวและแจ้งคำแนะนำ</a>
+                  <a class="text-base block py-2 px-auto ml-2  hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">3: การนัดคิวและแจ้งคำแนะนำ</a>
                 </div>
                 <div class="hidden md:flex items-center space-x-1" id="accountEle" v-on:click=""
                   v-if="profileName.role == 9001">
-                  <a class="text-base block py-2 px-auto ml-2 hover:bg-gray-700">4: สุขภาพของผู้ป่วย</a>
+                  <a class="text-base block py-2 px-auto ml-2  hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">4: สุขภาพของผู้ป่วย</a>
                 </div>
               </div>
             </div>
@@ -202,9 +202,9 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     closeDropdown(event) {
-     
+
       if (!this.$el.contains(event.target)) {
-       
+
         this.isDropdownOpen = false;
       }
     },
