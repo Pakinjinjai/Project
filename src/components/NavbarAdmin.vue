@@ -48,7 +48,7 @@
             <div
               class="hidden md:flex items-center space-x-1"
               id="accountEle"
-              v-on:click=""
+              
               v-if="token != null"
             >
               <a

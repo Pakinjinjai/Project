@@ -120,8 +120,10 @@
 					</div>
 				</div>
 			</section>
+
 			<h1 class="text-center mt-12 mb-12">Medical personnel</h1>
 			<ul class="cards ">
+				
 				<li>
 					<a href="" class="card">
 						<img src="../assets/pugun.jpeg" class="card__image" alt="" />

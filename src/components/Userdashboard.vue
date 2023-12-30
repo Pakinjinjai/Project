@@ -12,7 +12,7 @@ export default {
     };
   },
   mounted() {
-  
+
     // this.getAllUsers();
   },
   methods: {
@@ -29,9 +29,9 @@ export default {
     //   try {
 
     //   }
-     
+
     // }
-   
+
   },
 };
 </script>
