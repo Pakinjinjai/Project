@@ -40,7 +40,7 @@
             <div class="relative inline-block">
               <button type="button"
                 class="flex cursor-pointer font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg"
-                @click="toggleDropdown">
+                @click="toggleDropdown" v-if="profileName.role == 9001">
                 จัดการระบบ
               </button>
               <div v-show="isDropdownOpen" class="absolute z-50 bg-gray-800 text-[#FDFDFD] rounded-lg shadow-lg "

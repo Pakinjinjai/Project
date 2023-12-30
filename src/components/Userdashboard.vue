@@ -1,23 +1,37 @@
 <script>
+// import axios from 'axios';
+
 export default {
-  name: "user-component",
+  name: 'user-component',
   data() {
     return {
+      // users: [],
       isModalVisible: false,
       infoModel: false,
       AddressModel: false,
     };
   },
+  mounted() {
+    // เรียกใช้งานฟังก์ชั่นเพื่อดึงข้อมูล
+    this.getAllUsers();
+  },
   methods: {
     showModal() {
-      this.isModalVisible = true; // เมื่อคลิกที่ปุ่ม "Update" ก็ให้แสดง Modal
+      this.isModalVisible = true;
     },
     showinfoModal() {
       this.infoModel = true;
     },
     AddressModal() {
       this.AddressModel = true;
-    }
+    },
+    // getAllUser() {
+    //   try {
+
+    //   }
+     
+    // }
+   
   },
 };
 </script>
@@ -138,7 +152,7 @@ export default {
                             <span class="sr-only">Close modal</span>
                           </button>
                         </div>
-                        <!-- Modal body -->
+                        <!-- user info -->
                         <form action="#">
                           <div class="grid gap-4 mb-4 sm:grid-cols-2 ">
                             <!-- _id -->
@@ -398,5 +412,6 @@ export default {
     </div>
   </section>
 </template>
+
 
 <style></style>

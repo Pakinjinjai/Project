@@ -31,7 +31,6 @@ export default {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("accessToken"),
                 },
-                data: this.formData,
             })
                 .then((res) => {
                     this.formData.district = res.data.user.address.district;
@@ -42,7 +41,7 @@ export default {
                     this.formData.road = res.data.user.address.road;
                     this.formData.soi = res.data.user.address.soi;
                     this.formData.subDistrict = res.data.user.address.subDistrict;
-                    console.log(this.formData);
+                    // console.log(this.formData);
 
                     if (
                         this.formData.district === null ||
