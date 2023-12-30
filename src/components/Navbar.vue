@@ -35,7 +35,7 @@
                 class="font-bold hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110 py-5 px-2 text-[#FDFDFD] rounded-lg">ประวัติส่วนตัว</a>
             </div>
 
-            <!-- dropdow -->
+            <!-- dropdown -->
 
             <div class="relative inline-block ">
               <button type="button"
@@ -132,6 +132,14 @@ export default {
     this.checkAccessToken();
     this.getData();
   },
+  mounted() {
+    // Add a global click event listener
+    document.addEventListener("click", this.closeDropdown);
+  },
+  beforeDestroy() {
+    // Remove the global click event listener when the component is destroyed
+    document.removeEventListener("click", this.closeDropdown);
+  },
   methods: {
     checkAccessToken() {
       this.token = localStorage.getItem("accessToken");
@@ -193,8 +201,12 @@ export default {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
-    closeDropdown() {
-      this.isDropdownOpen = false;
+    closeDropdown(event) {
+     
+      if (!this.$el.contains(event.target)) {
+       
+        this.isDropdownOpen = false;
+      }
     },
     goToUser() {
       const token = localStorage.getItem("accessToken");

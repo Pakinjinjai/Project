@@ -12,7 +12,7 @@ export default {
     };
   },
   mounted() {
-    // เรียกใช้งานฟังก์ชั่นเพื่อดึงข้อมูล
+  
     // this.getAllUsers();
   },
   methods: {
