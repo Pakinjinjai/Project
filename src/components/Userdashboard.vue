@@ -1,20 +1,29 @@
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 export default {
   name: 'user-component',
   data() {
     return {
-      // users: [],
       isModalVisible: false,
       infoModel: false,
       AddressModel: false,
     };
   },
   mounted() {
+    axios.get('http://localhost:3000/api/v1/users/getallusers')
+    .then(response => {
+        const data = response.data;
+        for (let i = 0; i < data.length; i++) {
+            console.log(data[i]);
+           
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+},
 
-    // this.getAllUsers();
-  },
   methods: {
     showModal() {
       this.isModalVisible = true;
@@ -415,3 +424,4 @@ export default {
 
 
 <style></style>
+
