@@ -43,7 +43,7 @@
                 @click="toggleDropdown">
                 จัดการระบบ
               </button>
-              <div v-show="isDropdownOpen" class="absolute z-50 bg-gray-800 text-[#FDFDFD] rounded-lg shadow-lg mt-2"
+              <div v-show="isDropdownOpen" class="absolute z-50 bg-gray-800 text-[#FDFDFD] rounded-lg shadow-lg "
                 @click="closeDropdown">
                 <div class="hidden md:flex items-center space-x-1" id="accountEle" v-on:click="goToDashboard()"
                   v-if="profileName.role == 9001">
