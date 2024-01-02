@@ -1,17 +1,18 @@
 <script>
+import QueueDashboard from "@/components/QueueDashboard.vue";
 
 export default {
   name: "Queue-dashboard",
   data() {
     return {};
   },
-  components: {  },
+  components: { QueueDashboard },
   methods: {},
 };
 </script>
 
 <template>
-    <div class="page-container">
-        หน้าแสดงผลคิว
-    </div>
+  <div class="page-container">
+    <QueueDashboard />
+  </div>
 </template>
