@@ -112,11 +112,12 @@ export default {
                   <button @click="AddressModal()"
                     class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
-                    <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                      <path
-                        d="M8 0a7.992 7.992 0 0 0-6.583 12.535 1 1 0 0 0 .12.183l.12.146c.112.145.227.285.326.4l5.245 6.374a1 1 0 0 0 1.545-.003l5.092-6.205c.206-.222.4-.455.578-.7l.127-.155a.934.934 0 0 0 .122-.192A8.001 8.001 0 0 0 8 0Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
-                    </svg>
+                    <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 21">
+    <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+      <path d="M8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+      <path d="M13.8 12.938h-.01a7 7 0 1 0-11.465.144h-.016l.141.17c.1.128.2.252.3.372L8 20l5.13-6.248c.193-.209.373-.429.54-.66l.13-.154Z"/>
+    </g>
+  </svg>
                   </button>
                   <!-- edit_Btn -->
                   <button @click="showModal()"
