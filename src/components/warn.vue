@@ -74,6 +74,7 @@ export default {
                         this.showDiv = false;
                     }
                 })
+
                 .catch((error) => {
                     console.error(error);
                 });
