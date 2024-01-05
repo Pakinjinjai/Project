@@ -5,6 +5,7 @@ export default {
     name: "user-component",
     data() {
         return {
+            Queue: [],
             AddModel: false,
             infoModel: false,
             infotrueModel: false,
@@ -12,6 +13,28 @@ export default {
             trueQueueModel: false,
         };
     },
+    computed: {
+    sortedQueue() {
+      // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
+      return this.Queue.slice().sort((a, b) => {
+        if (a.status === b.status) {
+          return new Date(a.dataQueue) - new Date(b.dataQueue);
+        } else {
+          return a.status ? 1 : -1;
+        }
+      });
+    },
+  },
+  mounted() {
+    axios.get('http://localhost:3000/api/v1/users/getallusers')
+    .then(response => {
+        this.Queue = response.data;
+        console.log(this.Queue);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+},
     methods: {
         AddModal() {
             this.AddModel = true;
@@ -79,14 +102,17 @@ export default {
                             </tr>
                         </thead>
                         <!-- body -->
-                        <tbody>
-                            <tr class="border-b text-center  text-[#303030]">
+                        <tbody v-if="Queue.length > 0">
+                            <tr v-for="(item, index) in sortedQueue" :key="item._id" :class="{
+          'bg-white': index % 2 === 0,
+          'bg-[#F6F6F6]': index % 2 !== 0
+        }" class="border-b text-center  text-[#303030]">
                                 <th scope="row" class="px-4 py-3 font-medium  whitespace-nowrap ">
-                                    &#34HN1703572305&#34;
+                                    {{ item._id }}
                                 </th>
-                                <td class="px-4 py-3">1809901075727</td>
-                                <td class="px-4 py-3">ภาคิน</td>
-                                <td class="px-4 py-3">จิ้นจ้าย</td>
+                                <td class="px-4 py-3">{{ (item.idCard) }}</td>
+                                <td class="px-4 py-3">{{ (item.firstname) }}</td>
+                                <td class="px-4 py-3">{{ (item.lastname) }}</td>
                                 <td class="px-4 py-3 flex  text-[#303030] justify-center ">
                                     <!-- info_Btn -->
                                     <button @click="showinfoModal()"
