@@ -5,26 +5,39 @@ export default {
   name: 'user-component',
   data() {
     return {
+      Address: [],
       isModalVisible: false,
       infoModel: false,
       AddressModel: false,
     };
   },
+  computed: {
+    sortedAddress() {
+      // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
+      return this.Address.slice().sort((a, b) => {
+        if (a.status === b.status) {
+          return new Date(a.dataAddress) - new Date(b.dataAddress);
+        } else {
+          return a.status ? 1 : -1;
+        }
+      });
+    },
+  },
   mounted() {
     axios.get('http://localhost:3000/api/v1/users/getallusers')
     .then(response => {
-        const data = response.data;
-        for (let i = 0; i < data.length; i++) {
-            console.log(data[i]);
-           
-        }
+        this.Address = response.data;
+        console.log(this.Address);
     })
     .catch(error => {
-        console.error('Error fetching data:', error);
+        console.error(error);
     });
 },
 
   methods: {
+    formatDate(date) {
+      return new Date(date).toLocaleDateString();
+    },
     showModal() {
       this.isModalVisible = true;
     },
@@ -81,20 +94,25 @@ export default {
                 <th scope="col" class="px-4 py-3">นามสกุล</th>
                 <th scope="col" class="px-4 py-3">เพศ</th>
                 <th scope="col" class="px-4 py-3">เบอร์โทรศัพท์</th>
+                <th scope="col" class="px-4 py-3">สถานะ</th>
                 <th scope="col" class="px-4 py-3">จัดการ</th>
               </tr>
             </thead>
             <!-- body -->
-            <tbody>
-              <tr class="border-b text-center  text-[#303030]">
+            <tbody v-if="Address.length > 0">
+              <tr v-for="(item, index) in sortedAddress" :key="item._id" :class="{
+          'bg-white': index % 2 === 0,
+          'bg-[#F6F6F6]': index % 2 !== 0
+        }" class="border-b text-center  text-[#303030]">
                 <th scope="row" class="px-4 py-3 font-medium  whitespace-nowrap dark:text-white">
-                  &#34HN1703572305&#34;
+                  {{ item._id }}
                 </th>
-                <td class="px-4 py-3">1809901075727</td>
-                <td class="px-4 py-3">ภาคิน</td>
-                <td class="px-4 py-3">จิ้นจ้าย</td>
-                <td class="px-4 py-3">ชาย</td>
-                <td class="px-4 py-3">0652358039</td>
+                <td class="px-4 py-3">{{ (item.idCard) }}</td>
+                <td class="px-4 py-3">{{ (item.firstname) }}</td>
+                <td class="px-4 py-3">{{ (item.lastname) }}</td>
+                <td class="px-4 py-3">{{ item.gender ? 'ชาย' : 'หญิง' }}</td>
+                <td class="px-4 py-3">{{ (item.phoneNo) }}</td>
+                <td class="px-4 py-3">{{ item.role === 9001 ? 'Admin' : (item.role === 2001 ? 'User' : 'Unknown Role') }}</td>
                 <td class="px-4 py-3 flex  text-[#303030] justify-center ">
                   <!-- info_Btn -->
                   <button @click="showinfoModal()"
