@@ -45,21 +45,17 @@
               </button>
               <div v-show="isDropdownOpen" class="absolute z-50 bg-[#140A4B] text-[#FDFDFD] rounded-b-lg shadow-lg "
                 @click="closeDropdown">
-                <button class="hidden md:flex items-center space-x-1" id="accountEle" v-on:click="goToDashboard()"
+                <button class="hidden md:flex items-center space-x-1 text-center" id="accountEle" v-on:click="goToDashboard()"
                   v-if="profileName.role == 9001">
-                  <a class="text-base block py-2 px-auto ml-2 mr-2 hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">1: ภาพรวม</a>
+                  <a class="text-base block py-2 px-auto ml-2 mr-2 hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">ภาพรวม</a>
                 </button>
-                <button id="User" class="hidden md:flex items-center space-x-1" v-on:click="goToUser()"
+                <button id="User" class="hidden md:flex items-center space-x-1 text-center" v-on:click="goToUser()"
                   v-if="profileName.role == 9001">
-                  <a class="text-base block py-2 px-auto ml-2 mr-2 hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">2: ข้อมูลผู้ใช้งาน</a>
+                  <a class="text-base block py-2 px-auto ml-2 mr-2 hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">ข้อมูลผู้ใช้งาน</a>
                 </button>
                 <button id="Report" v-if="profileName.role == 9001" v-on:click="goToADQueue()"
-                  class="hidden md:flex items-center space-x-1">
-                  <a class="text-base block py-2 px-auto ml-2 mr-2 hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">3: การนัดคิวและแจ้งคำแนะนำ</a>
-                </button>
-                <button class="hidden md:flex items-center space-x-1" id="accountEle" 
-                  v-if="profileName.role == 9001">
-                  <a class="text-base block py-2 px-auto ml-2 mr-2 hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">4: สุขภาพของผู้ป่วย</a>
+                  class="hidden md:flex items-center space-x-1 text-center">
+                  <a class="text-base block py-2 px-auto ml-2 mr-2 hover:text-[#FDFDFD] active:text-[#FDFDFD] focus:text-[#FDFDFD] transition-transform active:scale-110">การนัดคิวและแจ้งคำแนะนำ</a>
                 </button>
               </div>
             </div>
