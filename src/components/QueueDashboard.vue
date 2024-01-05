@@ -183,9 +183,15 @@ export default {
                                                                     <button @click="UpdateModal()"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
                                                                         type="button">
-                                                                        <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279"/>
-  </svg>
+                                                                        <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white"
+                                                                            aria-hidden="true"
+                                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                            viewBox="0 0 21 21">
+                                                                            <path stroke="currentColor"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" stroke-width="1"
+                                                                                d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
+                                                                        </svg>
                                                                     </button>
                                                                     <!-- delete_Btn -->
                                                                     <button
@@ -445,7 +451,7 @@ export default {
                                     <!-- Main modal Layout Queue info true -->
                                     <div id="infoUserModal" tabindex="-1" aria-hidden="true"
                                         :class="{ hidden: !infotrueModel, flex: infotrueModel }"
-                                        class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-50 ">
+                                        class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full ">
                                         <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                                             <!-- Modal content -->
                                             <div class=" p-4 bg-white rounded-lg shadow  sm:p-5">
@@ -730,7 +736,6 @@ export default {
                 </div>
             </div>
         </div>
-    </section>
-</template>
+</section></template>
 
 <style></style>
