@@ -183,13 +183,9 @@ export default {
                                                                     <button @click="UpdateModal()"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
                                                                         type="button">
-                                                                        <svg class="w-[16px] h-[16px] text-gray-800 "
-                                                                            aria-hidden="true"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            fill="currentColor" viewBox="0 0 20 20">
-                                                                            <path
-                                                                                d="m13.835 7.578-.005.007-7.137 7.137 2.139 2.138 7.143-7.142-2.14-2.14Zm-10.696 3.59 2.139 2.14 7.138-7.137.007-.005-2.141-2.141-7.143 7.143Zm1.433 4.261L2 12.852.051 18.684a1 1 0 0 0 1.265 1.264L7.147 18l-2.575-2.571Zm14.249-14.25a4.03 4.03 0 0 0-5.693 0L11.7 2.611 17.389 8.3l1.432-1.432a4.029 4.029 0 0 0 0-5.689Z" />
-                                                                        </svg>
+                                                                        <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279"/>
+  </svg>
                                                                     </button>
                                                                     <!-- delete_Btn -->
                                                                     <button
@@ -357,8 +353,8 @@ export default {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                                                                                        <!-- Main modal Layout Queue trueQueueModel -->
-                                                                                                                                        <div id="trueQueueModel" tabindex="-1"
+                                                                    <!-- Main modal Layout Queue trueQueueModel -->
+                                                                    <div id="trueQueueModel" tabindex="-1"
                                                                         aria-hidden="true"
                                                                         :class="{ hidden: !trueQueueModel, flex: trueQueueModel }"
                                                                         class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-50">
@@ -694,14 +690,14 @@ export default {
                                                         </div>
                                                         <!-- updatedAt -->
                                                         <!-- <div>
-                                                                                            <label for="updatedAt"
-                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
-                                                                                            <input type="date"
-                                                                                                name="updatedAt"
-                                                                                                id="updatedAt" value=""
-                                                                                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                                                                                placeholder="วัน/เดือน/ปี เกิด" />
-                                                                                        </div> -->
+                                                        <label for="updatedAt"
+                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
+                                                            <input type="date"
+                                                                name="updatedAt"
+                                                                id="updatedAt" value=""
+                                                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                                                                placeholder="วัน/เดือน/ปี เกิด" />
+                                                        </div> -->
                                                         <div class="sm:col-span-2">
                                                             <label for="description"
                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
