@@ -38,7 +38,10 @@ export default {
 };
 </script>
 <template>
-    <section class="mt-5 p-3 sm:p-5">
+    <section class="p-3 sm:p-5">
+        <h3 class="text-2xl text-center font-semibold text-[#140A4B] mb-4">
+      ข้อมูลคิวของแต่ละรายบุคคล
+    </h3>
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
             <!-- Start coding here -->
             <div class="bg-white  relative shadow-md sm:rounded-lg overflow-hidden">

@@ -59,8 +59,11 @@ export default {
 </script>
 
 <template>
-  <section class="mt-5 p-3 sm:p-5">
+  <section class="p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+      <h3 class="text-2xl text-center font-semibold text-[#140A4B] mb-4">
+      ข้อมูลผู้ใช้งานทั้งหมด
+    </h3>
       <!-- Start coding here -->
       <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
         <!-- search -->
@@ -85,6 +88,7 @@ export default {
           </div>
         </div>
         <div class="overflow-x-auto">
+          
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-[#FDFDFD] uppercase bg-[#140A4B] ">
               <tr class="text-center">
