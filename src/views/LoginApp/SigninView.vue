@@ -127,6 +127,6 @@ export default {
   </section>
 </template>
 
-<style lang="scss" scoped>
-@import "@/style/main.scss";
+<style>
+
 </style>

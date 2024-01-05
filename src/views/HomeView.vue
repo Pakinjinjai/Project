@@ -1,17 +1,20 @@
 <template>
   <div class="page-container">
-    
-    <!-- <Map /> -->
+    <div class="mt-4"><warn /></div>
+    <LandingPage />
   </div>
 </template>
 
 <script>
-import axios from "axios";
-// import Map from "@/components/Map.vue";
+import warn from  "../components/warn.vue";
+
+// import Map from "@/components/Map.vue"
+import LandingPage from "@/components/LandingPage.vue";
+// import axios from "axios";
 
 export default {
   name: "homePage",
-  // components: {Map},
+  components: {LandingPage,warn},
   data() {
     return {
       profileData: {},
@@ -20,7 +23,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style >
 @import "@/style/main.scss";
 .page-container {
   width: 1440px;

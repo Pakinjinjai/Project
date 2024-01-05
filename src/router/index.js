@@ -50,9 +50,26 @@ const routes = [
     component: () => import("../views/LoginApp/SignupView.vue"),
   },
   {
-    path: "/dashboard",
-    name: "dashboard",
-    component: () => import("../views/AdminDashboardApp/Dashboard.vue"),
+    path: "/",
+    name: "",
+    component: () => import("../views/AdminDashboardApp/router-template.vue"),
+    children:[
+      {
+        path: "/dashboard",
+        name: "dashboard",
+        component: () => import("../views/AdminDashboardApp/Dashboard.vue"),
+      },
+      {
+        path:"/dashboard/users",
+        name: "User",
+        component:() => import("../views/AdminDashboardApp/UserDashboard.vue"),
+      },
+      {
+        path:"/dashboard/queue",
+        name: "Queue",
+        component:() => import("../views/AdminDashboardApp/QueueDashboard.vue"),
+      },
+    ]
   },
 ];
 
