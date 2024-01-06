@@ -174,56 +174,53 @@ export default {
                         </div>
                         <!-- user info -->
                         <form action="#">
-                          <div v-if="user.length > 0" class="grid gap-4 mb-4 sm:grid-cols-2 ">
+                          <div  class="grid gap-4 mb-4 sm:grid-cols-2 ">
                             <!-- _id -->
-                            <div v-for="(item, index) in sorteduser" :key="item._id" :class="{
-          'bg-white': index % 2 === 0,
-          'bg-[#F6F6F6]': index % 2 !== 0
-        }">
+                            <div >
                               <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ item.id }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ item._id }}</p>
                             </div>
                             <!-- idCard -->
                             <div>
                               <label for="idCard"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">1809901075727</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ (item.idCard) }}</p>
                             </div>
                             <!-- email -->
                             <div>
                               <label for="email"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อีเมล</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">Admin01@gmail.com</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ item.email }}</p>
                             </div>
                             <!-- firstname -->
                             <div>
                               <label for="firstname"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">ภาคิน</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ (item.firstname) }}</p>
                             </div>
                             <!-- lastname -->
                             <div>
                               <label for="lastname"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">จิ้นจ้าย</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ (item.lastname) }}</p>
                             </div>
                             <!-- phoneNO -->
                             <div>
                               <label for="phoneNO"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">เบอร์โทรศัพท์</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">0652358039</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ (item.phoneNo) }}</p>
                             </div>
                             <!-- gender -->
                             <div>
                               <label for="gender"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">เพศ</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">ชาย</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ item.gender ? 'ชาย' : 'หญิง' }}</p>
                             </div>
                             <!-- birthdate -->
                             <div>
                               <label for="birthdate"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วัน/เดือน/ปี เกิด</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">28-12-2001</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ formatDate(item.birthdate)}}</p>
                             </div>
                           </div>
                           <!-- description -->
