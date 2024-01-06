@@ -26,8 +26,8 @@ export default {
   },
   mounted() {
     axios.get('http://localhost:3000/api/v1/users/getallusers')
-    .then(response => {
-        this.user = response.data;
+    .then(res => {
+        this.user = res.data;
         console.log(this.user);
     })
     .catch(error => {
@@ -51,13 +51,6 @@ export default {
     HealthModal() {
       this.HealthModel = true;
     },
-    // getAllUser() {
-    //   try {
-
-    //   }
-
-    // }
-
   },
 };
 </script>
