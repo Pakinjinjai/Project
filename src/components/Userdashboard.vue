@@ -9,6 +9,7 @@ export default {
       isModalVisible: false,
       infoModel: false,
       AddressModel: false,
+      HealthModel: false,
     };
   },
   computed: {
@@ -47,6 +48,9 @@ export default {
     AddressModal() {
       this.AddressModel = true;
     },
+    HealthModal() {
+      this.HealthModel = true;
+    },
     // getAllUser() {
     //   try {
 
@@ -65,7 +69,7 @@ export default {
       ข้อมูลผู้ใช้งานทั้งหมด
     </h3>
       <!-- Start coding here -->
-      <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+      <div class="bg-white  relative shadow-md sm:rounded-lg overflow-hidden">
         <!-- search -->
         <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-3 ">
           <div class="w-full md:w-1/2">
@@ -73,7 +77,7 @@ export default {
               <label for="simple-search" class="sr-only">Search</label>
               <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="currentColor"
                     viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                       d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
@@ -89,7 +93,7 @@ export default {
         </div>
         <div class="overflow-x-auto">
           
-          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <table class="w-full text-sm text-left text-gray-500 ">
             <thead class="text-xs text-[#FDFDFD] uppercase bg-[#140A4B] ">
               <tr class="text-center">
                 <th scope="col" class="px-4 py-3">ไอดี</th>
@@ -98,7 +102,6 @@ export default {
                 <th scope="col" class="px-4 py-3">นามสกุล</th>
                 <th scope="col" class="px-4 py-3">เพศ</th>
                 <th scope="col" class="px-4 py-3">เบอร์โทรศัพท์</th>
-                <th scope="col" class="px-4 py-3">สถานะ</th>
                 <th scope="col" class="px-4 py-3">จัดการ</th>
               </tr>
             </thead>
@@ -108,7 +111,7 @@ export default {
           'bg-white': index % 2 === 0,
           'bg-[#F6F6F6]': index % 2 !== 0
         }" class="border-b text-center  text-[#303030]">
-                <th scope="row" class="px-4 py-3 font-medium  whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-4 py-3 font-medium  whitespace-nowrap ">
                   {{ item._id }}
                 </th>
                 <td class="px-4 py-3">{{ (item.idCard) }}</td>
@@ -116,7 +119,7 @@ export default {
                 <td class="px-4 py-3">{{ (item.lastname) }}</td>
                 <td class="px-4 py-3">{{ item.gender ? 'ชาย' : 'หญิง' }}</td>
                 <td class="px-4 py-3">{{ (item.phoneNo) }}</td>
-                <td class="px-4 py-3">{{ item.role === 9001 ? 'Admin' : (item.role === 2001 ? 'User' : 'Unknown Role') }}</td>
+
                 <td class="px-4 py-3 flex  text-[#303030] justify-center ">
                   <!-- info_Btn -->
                   <button @click="showinfoModal()"
@@ -132,14 +135,22 @@ export default {
                   <button @click="AddressModal()"
                     class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
-                    <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 21">
+                    <svg class="w-[16px] h-[16px] text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 21">
     <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
       <path d="M8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
       <path d="M13.8 12.938h-.01a7 7 0 1 0-11.465.144h-.016l.141.17c.1.128.2.252.3.372L8 20l5.13-6.248c.193-.209.373-.429.54-.66l.13-.154Z"/>
     </g>
   </svg>
                   </button>
-                  <!-- delete_Btn -->
+                  <!-- HealthInfo -->
+                  <button @click="HealthModal()"
+                    class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
+                    type="button">
+                    <svg class="w-[16px] h-[16px] text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
+  </svg>
+                  </button>
+                    <!-- delete_Btn -->
                   <button
                     class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
@@ -152,7 +163,7 @@ export default {
                   <!-- Main modal Layout info -->
                   <div id="infoUserModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !infoModel, flex: infoModel }"
-                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-75 ">
+                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/30  ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                       <!-- Modal content -->
                       <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
@@ -237,7 +248,7 @@ export default {
                   <!-- Main modal Layout info Address -->
                   <div id="infoUserModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !AddressModel, flex: AddressModel }"
-                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-50 ">
+                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/30 ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                       <!-- Modal content -->
                       <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
@@ -247,6 +258,82 @@ export default {
                             Address User
                           </h3>
                           <button @click="AddressModel = false" type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-[#303030] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                          </button>
+                        </div>
+                        <!-- Modal body -->
+                        <form action="#">
+                          <div class="grid gap-4 mb-4 sm:grid-cols-2 ">
+                            <!-- houseNo -->
+                            <div>
+                              <label for="houseNo"
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">บ้านเลขที่</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">86/29</p>
+                            </div>
+                            <!-- soi -->
+                            <div>
+                              <label for="soi" class="block mb-2 text-lg font-bold text-[#303030] text-left">ซอย</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">ทุ่งข่า11</p>
+                            </div>
+                            <!-- road -->
+                            <div>
+                              <label for="road" class="block mb-2 text-lg font-bold text-[#303030] text-left">ถนน</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">กะโรม</p>
+                            </div>
+                            <!-- moo -->
+                            <div>
+                              <label for="moo" class="block mb-2 text-lg font-bold text-[#303030] text-left">หมู่</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">-</p>
+                            </div>
+                            <!-- subDistrict -->
+                            <div>
+                              <label for="subDistrict"
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ตำบล</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">โพธิ์เสด็จ</p>
+                            </div>
+                            <!-- district -->
+                            <div>
+                              <label for="district"
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">อำเภอ</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">เมืองนครศรีธรรมราช</p>
+                            </div>
+                            <!-- province -->
+                            <div>
+                              <label for="province"
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">จังหวัด</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">นครศรีธรรมราช</p>
+                            </div>
+                            <!-- postalCode -->
+                            <div>
+                              <label for="postalCode"
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสไปรษณีย์</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">80000</p>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Main modal Layout info Health -->
+                  <div id="infoHealthModal" tabindex="-1" aria-hidden="true"
+                    :class="{ hidden: !HealthModel, flex: HealthModel }"
+                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/30 ">
+                    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                      <!-- Modal content -->
+                      <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
+                        <!-- Modal header -->
+                        <div class="flex justify-between items-center  rounded-t border-b sm:mb-5 ">
+                          <h3 class="text-lg font-semibold text-[#303030] ">
+                            Address User
+                          </h3>
+                          <button @click="HealthModel = false" type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-[#303030] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                               xmlns="http://www.w3.org/2000/svg">
