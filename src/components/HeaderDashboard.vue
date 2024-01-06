@@ -17,7 +17,7 @@
 
             <div class="mx-5">
               <h4 class="text-2xl font-semibold text-gray-700">
-                8,282
+                {{ user.length }}
               </h4>
               <div class="text-gray-500">
                 Users
@@ -38,10 +38,10 @@
 
             <div class="mx-5">
               <h4 class="text-2xl font-semibold text-gray-700">
-                200,521
+                
               </h4>
               <div class="text-gray-500">
-                Report
+                admin
               </div>
             </div>
           </div>
@@ -72,8 +72,24 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name:"header-component",
+    data() {
+    return {
+      user: [],
+    };
+  },
+    mounted() {
+    axios.get('http://localhost:3000/api/v1/users/getallusers')
+    .then(response => {
+        this.user = response.data;
+        console.log(this.user);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+},
     
 }
 </script>

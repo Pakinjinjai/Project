@@ -5,18 +5,18 @@ export default {
   name: 'user-component',
   data() {
     return {
-      Address: [],
+      user: [],
       isModalVisible: false,
       infoModel: false,
       AddressModel: false,
     };
   },
   computed: {
-    sortedAddress() {
+    sorteduser() {
       // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
-      return this.Address.slice().sort((a, b) => {
+      return this.user.slice().sort((a, b) => {
         if (a.status === b.status) {
-          return new Date(a.dataAddress) - new Date(b.dataAddress);
+          return new Date(a.datauser) - new Date(b.datauser);
         } else {
           return a.status ? 1 : -1;
         }
@@ -26,8 +26,8 @@ export default {
   mounted() {
     axios.get('http://localhost:3000/api/v1/users/getallusers')
     .then(response => {
-        this.Address = response.data;
-        console.log(this.Address);
+        this.user = response.data;
+        console.log(this.user);
     })
     .catch(error => {
         console.error(error);
@@ -103,8 +103,8 @@ export default {
               </tr>
             </thead>
             <!-- body -->
-            <tbody v-if="Address.length > 0">
-              <tr v-for="(item, index) in sortedAddress" :key="item._id" :class="{
+            <tbody v-if="user.length > 0">
+              <tr v-for="(item, index) in sorteduser" :key="item._id" :class="{
           'bg-white': index % 2 === 0,
           'bg-[#F6F6F6]': index % 2 !== 0
         }" class="border-b text-center  text-[#303030]">
@@ -152,7 +152,7 @@ export default {
                   <!-- Main modal Layout info -->
                   <div id="infoUserModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !infoModel, flex: infoModel }"
-                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-50 ">
+                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-75 ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                       <!-- Modal content -->
                       <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
@@ -174,11 +174,14 @@ export default {
                         </div>
                         <!-- user info -->
                         <form action="#">
-                          <div class="grid gap-4 mb-4 sm:grid-cols-2 ">
+                          <div v-if="user.length > 0" class="grid gap-4 mb-4 sm:grid-cols-2 ">
                             <!-- _id -->
-                            <div>
+                            <div v-for="(item, index) in sorteduser" :key="item._id" :class="{
+          'bg-white': index % 2 === 0,
+          'bg-[#F6F6F6]': index % 2 !== 0
+        }">
                               <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">HN1703572305</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ item.id }}</p>
                             </div>
                             <!-- idCard -->
                             <div>

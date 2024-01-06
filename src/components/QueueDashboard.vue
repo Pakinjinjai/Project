@@ -1,11 +1,14 @@
 <script>
+import Queueinfo from "./QueueDashboardinfo.vue"
 import axios from "axios";
 
 export default {
     name: "user-component",
+    components: {Queueinfo},
     data() {
         return {
             Queue: [],
+            Queueinfo: [],
             AddModel: false,
             infoModel: false,
             infotrueModel: false,
@@ -14,28 +17,38 @@ export default {
         };
     },
     computed: {
-    sortedQueue() {
-      // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
-      return this.Queue.slice().sort((a, b) => {
-        if (a.status === b.status) {
-          return new Date(a.dataQueue) - new Date(b.dataQueue);
-        } else {
-          return a.status ? 1 : -1;
-        }
-      });
+        sortedQueue() {
+            // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
+            return this.Queue.slice().sort((a, b) => {
+                if (a.status === b.status) {
+                    return new Date(a.dataQueue) - new Date(b.dataQueue);
+                } else {
+                    return a.status ? 1 : -1;
+                }
+            });
+        },
     },
-  },
-  mounted() {
-    axios.get('http://localhost:3000/api/v1/users/getallusers')
-    .then(response => {
-        this.Queue = response.data;
-        console.log(this.Queue);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-},
+    mounted() {
+        axios.get('http://localhost:3000/api/v1/users/getallusers')
+            .then(response => {
+                this.Queue = response.data;
+                console.log(this.Queue);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        // axios.get('http://localhost:3000/api/v1/queues/me')
+        //     .then(response => {
+        //         this.Queueinfo = response.data;
+        //         console.log(this.Queueinfo);
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
+            
+    },
     methods: {
+       
         AddModal() {
             this.AddModel = true;
         },
@@ -63,8 +76,8 @@ export default {
 <template>
     <section class="p-3 sm:p-5">
         <h3 class="text-2xl text-center font-semibold text-[#140A4B] mb-4">
-      ข้อมูลคิวของแต่ละรายบุคคล
-    </h3>
+            ข้อมูลคิวของแต่ละรายบุคคล
+        </h3>
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
             <!-- Start coding here -->
             <div class="bg-white  relative shadow-md sm:rounded-lg overflow-hidden">
@@ -104,9 +117,9 @@ export default {
                         <!-- body -->
                         <tbody v-if="Queue.length > 0">
                             <tr v-for="(item, index) in sortedQueue" :key="item._id" :class="{
-          'bg-white': index % 2 === 0,
-          'bg-[#F6F6F6]': index % 2 !== 0
-        }" class="border-b text-center  text-[#303030]">
+                                'bg-white': index % 2 === 0,
+                                'bg-[#F6F6F6]': index % 2 !== 0
+                            }" class="border-b text-center  text-[#303030]">
                                 <th scope="row" class="px-4 py-3 font-medium  whitespace-nowrap ">
                                     {{ item._id }}
                                 </th>
@@ -474,7 +487,9 @@ export default {
                                                         </tbody>
                                                     </table>
                                                 </div>
+
                                             </div>
+
                                         </div>
                                     </div>
                                     <!-- Main modal Layout Queue info true -->
@@ -765,6 +780,7 @@ export default {
                 </div>
             </div>
         </div>
-</section></template>
+    </section>
+</template>
 
 <style></style>

@@ -38,7 +38,7 @@ export default {
       <div 
       v-if="Object.keys(health).length > 0" class="boxs flex flex-col items-center gap-1 px-8 py-10 bg-[#ffffff] rounded-3xl hover:shadow shadow-main mt-4 border-2 border-[#D9D9D9]">
   <div class="flex  text-xl text-[#303030]  space-x-4 ">ความดันโลหิต
-    <svg style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 50 50" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" width="64" height="45" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_1"><polygon points="36.942,29.648 30.051,2.081 20.09,37.941 14.175,12.312 10.279,24 1,24 1,26 11.721,26 13.825,19.688    19.91,46.059 29.949,9.919 37.058,38.352 39.802,26 49,26 49,24 38.198,24  "/></g></svg>
+    
   </div>
   <span>
     <p class="text-lg">
