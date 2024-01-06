@@ -1,10 +1,9 @@
 <script>
-import Queueinfo from "./QueueDashboardinfo.vue"
 import axios from "axios";
 
 export default {
     name: "user-component",
-    components: {Queueinfo},
+   
     data() {
         return {
             Queue: [],
@@ -27,28 +26,58 @@ export default {
                 }
             });
         },
+        sortedQueueinfo() {
+            // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
+            return this.Queueinfo.slice().sort((a, b) => {
+                if (a.status === b.status) {
+                    return new Date(a.dataQueueinfo) - new Date(b.dataQueueinfo);
+                } else {
+                    return a.status ? 1 : -1;
+                }
+            });
+        },
     },
-    mounted() {
-        axios.get('http://localhost:3000/api/v1/users/getallusers')
-            .then(response => {
-                this.Queue = response.data;
-                console.log(this.Queue);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        axios.get('http://localhost:3000/api/v1/queues/me')
-            .then(response => {
-                this.Queueinfo = response.data;
-                console.log(this.Queueinfo);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-            
+    created() {
+        this.getAlluser();
+        this.getAllqueue();
     },
     methods: {
-       
+        getAlluser() {
+            try {
+                axios({
+                    method: "get",
+                    url: "http://localhost:3000/api/v1/users/getallusers",
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+                    },
+                })
+                    .then((res) => {
+                        this.Queue = res.data;
+                        console.log(this.Queue);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            } catch (error) { }
+        },
+        getAllqueue() {
+            try {
+                axios({
+                    method: "get",
+                    url: "http://localhost:3000/api/v1/queues",
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+                    },
+                })
+                    .then((res) => {
+                        this.Queueinfo = res.data;
+                        console.log(this.Queueinfo);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            } catch (error) { }
+        },
         AddModal() {
             this.AddModel = true;
         },
@@ -70,6 +99,9 @@ export default {
         addQueue_Btn() {
             this.AddModel = false;
         },
+        formatDate(date) {
+      return new Date(date).toLocaleDateString();
+    },
     },
 };
 </script>
@@ -197,15 +229,19 @@ export default {
                                                             </tr>
                                                         </thead>
                                                         <!-- body -->
-                                                        <tbody>
-                                                            <tr class="border-b text-center  text-[#303030]">
+                                                        <tbody v-if="Queueinfo.length > 0">
+                                                            <tr v-for="(item, index) in sortedQueueinfo" :key="item._id"
+                                                                :class="{
+                                                                    'bg-white': index % 2 === 0,
+                                                                    'bg-[#F6F6F6]': index % 2 !== 0
+                                                                }" class="border-b text-center  text-[#303030]">
                                                                 <th scope="row"
                                                                     class="px-4 py-3 font-medium  whitespace-nowrap ">
-                                                                    &#34xxxxx&#34;
+                                                                    {{ item.topic }}
                                                                 </th>
-                                                                <td class="px-4 py-3">xx-xx-xx</td>
-                                                                <td class="px-4 py-3">xx-xx-xx</td>
-                                                                <td class="px-4 py-3">false</td>
+                                                                <td class="px-4 py-3">{{formatDate(item.dateQueue) }}</td>
+                                                                <td class="px-4 py-3">{{formatDate(item.updatedAt) }}</td>
+                                                                <td class="px-4 py-3">{{ item.status ? 'ตรวจเเล้ว' : 'ไม่ตรวจเเล้ว' }}</td>
                                                                 <td class="px-4 py-3 flex  text-[#303030] justify-center ">
                                                                     <!-- Queueinfo_Btn -->
                                                                     <button @click="trueQueueModal()"
