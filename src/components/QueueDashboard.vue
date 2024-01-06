@@ -6,6 +6,7 @@ export default {
    
     data() {
         return {
+            searchQuery: "",
             Queue: [],
             Queueinfo: [],
             AddModel: false,
@@ -15,6 +16,7 @@ export default {
             trueQueueModel: false,
         };
     },
+    
     computed: {
         sortedQueue() {
             // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
@@ -41,7 +43,32 @@ export default {
         this.getAlluser();
         this.getAllqueue();
     },
+    watch: {
+    // ใช้ watch เพื่อตรวจสอบเมื่อค่าของ searchQuery เปลี่ยนแล้ว
+    searchQuery(newVal, oldVal) {
+      // สามารถเรียก API ของคุณที่นี่ โดยใส่คำค้นหาใน parameter Search
+      this.fetchDataFromApi(newVal);
+    },
+  },
     methods: {
+        async fetchDataFromApi(searchQuery) {
+      try {
+        axios({
+                    method: "get",
+                    url: "http://localhost:3000/api/v1/users/?Search=",
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+                    },
+                })
+        const response = await axios.get(`http://localhost:3000/api/v1/users/?Search=${searchQuery}`);
+        
+        // ทำสิ่งที่คุณต้องการกับข้อมูลที่ได้จาก API นี้
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+
         getAlluser() {
             try {
                 axios({
@@ -89,6 +116,8 @@ export default {
         },
         trueInfoModal() {
             this.infotrueModel = true;
+            this.infoModel = false;
+            
         },
         UpdateModal() {
             this.UpdateModel = true;
@@ -118,7 +147,7 @@ export default {
                     class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-3 ">
                     <div class="w-full md:w-1/2">
                         <form class="flex items-center">
-                            <label for="simple-search" class="sr-only">Search</label>
+                            <label for="searchInput" class="sr-only">Search</label>
                             <div class="relative w-full">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="currentColor"
@@ -128,15 +157,15 @@ export default {
                                             clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <input type="text" id="simple-search"
+                                <input type="text" id="searchInput" v-model="searchQuery"
                                     class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
-                                    placeholder="Search" required="" />
+                                    placeholder="คำค้นหา..." required="" />
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left text-gray-500 ">
+                    <table id="dataTable" class="w-full text-sm text-left text-gray-500 ">
                         <thead class="text-xs text-[#FDFDFD] uppercase bg-[#140A4B] ">
                             <tr class="text-center">
                                 <th scope="col" class="px-4 py-3">ไอดี</th>
