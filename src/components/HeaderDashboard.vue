@@ -17,7 +17,7 @@
 
             <div class="mx-5">
               <h4 class="text-2xl font-semibold text-gray-700">
-                {{ user.length }}
+                {{ user.length}}
               </h4>
               <div class="text-gray-500">
                 Users
@@ -38,7 +38,7 @@
 
             <div class="mx-5">
               <h4 class="text-2xl font-semibold text-gray-700">
-                
+                3434
               </h4>
               <div class="text-gray-500">
                 admin

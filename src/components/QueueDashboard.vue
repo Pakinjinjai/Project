@@ -37,14 +37,14 @@ export default {
             .catch(error => {
                 console.error(error);
             });
-        // axios.get('http://localhost:3000/api/v1/queues/me')
-        //     .then(response => {
-        //         this.Queueinfo = response.data;
-        //         console.log(this.Queueinfo);
-        //     })
-        //     .catch(error => {
-        //         console.error(error);
-        //     });
+        axios.get('http://localhost:3000/api/v1/queues/me')
+            .then(response => {
+                this.Queueinfo = response.data;
+                console.log(this.Queueinfo);
+            })
+            .catch(error => {
+                console.error(error);
+            });
             
     },
     methods: {
