@@ -5,17 +5,18 @@ export default {
   name: 'user-component',
   data() {
     return {
-      user: [],
+      users: [],
       isModalVisible: false,
       infoModel: false,
       AddressModel: false,
       HealthModel: false,
+      selectedUser: {},
     };
   },
   computed: {
     sorteduser() {
       // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
-      return this.user.slice().sort((a, b) => {
+      return this.users.slice().sort((a, b) => {
         if (a.status === b.status) {
           return new Date(a.datauser) - new Date(b.datauser);
         } else {
@@ -24,25 +25,31 @@ export default {
       });
     },
   },
-  mounted() {
-    axios.get('http://localhost:3000/api/v1/users/getallusers')
-    .then(res => {
-        this.user = res.data;
-        console.log(this.user);
+  created(){
+    this.getAllUser();
+  },
+  methods: {
+    getAllUser(){
+      axios({
+        method:"get",
+        url:"http://localhost:3000/api/v1/users/getallusers"
+      })
+      .then(res => {
+        this.users = res.data;
+        console.log(this.users);
     })
     .catch(error => {
         console.error(error);
     });
-},
-
-  methods: {
+    },
     formatDate(date) {
       return new Date(date).toLocaleDateString();
     },
     showModal() {
       this.isModalVisible = true;
     },
-    showinfoModal() {
+    showinfoModal(user) {
+      this.selectedUser = user;
       this.infoModel = true;
     },
     AddressModal() {
@@ -99,7 +106,7 @@ export default {
               </tr>
             </thead>
             <!-- body -->
-            <tbody v-if="user.length > 0">
+            <tbody v-if="users.length > 0">
               <tr v-for="(item, index) in sorteduser" :key="item._id" :class="{
           'bg-white': index % 2 === 0,
           'bg-[#F6F6F6]': index % 2 !== 0
@@ -112,10 +119,9 @@ export default {
                 <td class="px-4 py-3">{{ (item.lastname) }}</td>
                 <td class="px-4 py-3">{{ item.gender ? 'ชาย' : 'หญิง' }}</td>
                 <td class="px-4 py-3">{{ (item.phoneNo) }}</td>
-
                 <td class="px-4 py-3 flex  text-[#303030] justify-center ">
                   <!-- info_Btn -->
-                  <button @click="showinfoModal()"
+                  <button @click="showinfoModal(item)"
                     class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
                     <svg class="w-[16px] h-[16px] text-[#303030] " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -182,49 +188,49 @@ export default {
                             <!-- _id -->
                             <div >
                               <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ item._id }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser._id }}</p>
                             </div>
                             <!-- idCard -->
                             <div>
                               <label for="idCard"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ (item.idCard) }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser.idCard }}</p>
                             </div>
                             <!-- email -->
                             <div>
                               <label for="email"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อีเมล</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ item.email }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser.email }}</p>
                             </div>
                             <!-- firstname -->
                             <div>
                               <label for="firstname"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ (item.firstname) }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser.firstname }}</p>
                             </div>
                             <!-- lastname -->
                             <div>
                               <label for="lastname"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ (item.lastname) }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser.lastname }}</p>
                             </div>
                             <!-- phoneNO -->
                             <div>
                               <label for="phoneNO"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">เบอร์โทรศัพท์</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ (item.phoneNo) }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser.phoneNo }}</p>
                             </div>
                             <!-- gender -->
                             <div>
                               <label for="gender"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">เพศ</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ item.gender ? 'ชาย' : 'หญิง' }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser.gender ? 'ชาย' : 'หญิง' }}</p>
                             </div>
                             <!-- birthdate -->
                             <div>
                               <label for="birthdate"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วัน/เดือน/ปี เกิด</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ formatDate(item.birthdate)}}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ formatDate(selectedUser.birthdate)}}</p>
                             </div>
                           </div>
                           <!-- description -->
@@ -232,7 +238,7 @@ export default {
                             <label for="description"
                               class="block mb-2 text-lg font-bold text-[#303030] text-left">โรคประจำตัว</label>
                             <p class="text-left text-[#303030] rounded-lg bg-gray-50 border block w-full p-2.5">
-                              ไม่มีโรคประจำตัว</p>
+                              {{selectedUser.noteDisease}}</p>
                           </div>
                         </form>
                       </div>
