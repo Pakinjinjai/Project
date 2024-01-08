@@ -402,7 +402,7 @@ export default {
                               <label for="houseNo"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ความดันโลหิต</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedHealth == null ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" :
+                                {{ selectedHealth == null ? "ยังไม่มีการจัดเก็บค่าสุขภาพจากผู้ใช้งาน" :
                                   selectedHealth.bloodPressure }}
                               </p>
                             </div>
@@ -411,7 +411,7 @@ export default {
                               <label for="soi"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อัตราการเต้นของหัวใจ</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" : selectedHealth.heartRate }}
+                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพจากผู้ใช้งาน" : selectedHealth.heartRate }}
                               </p>
                             </div>
                             <!-- road -->
@@ -419,7 +419,7 @@ export default {
                               <label for="road"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ออกซิเจนในเลือด</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" : selectedHealth.oxygen }}
+                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพจากผู้ใช้งาน" : selectedHealth.oxygen }}
                               </p>
                             </div>
                             <!-- moo -->
@@ -427,7 +427,7 @@ export default {
                               <label for="moo"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อุณหภูมิร่างกาย</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" :
+                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพจากผู้ใช้งาน" :
                                   selectedHealth.temperature }}
                               </p>
                             </div>
