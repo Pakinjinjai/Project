@@ -12,12 +12,12 @@ export default {
       HealthModel: false,
       selectedUser: {},
       selectedAddress: {},
+      selectedHealth: {},
       searchQuery: "",
     };
   },
   computed: {
     sorteduser() {
-      // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
       return this.users.slice().sort((a, b) => {
         if (a.status === b.status) {
           return new Date(a.datauser) - new Date(b.datauser);
@@ -31,9 +31,7 @@ export default {
     this.getAllUser();
   },
   watch: {
-    // ใช้ watch เพื่อตรวจสอบเมื่อค่าของ searchQuery เปลี่ยนแล้ว
     searchQuery(newVal, oldVal) {
-      // สามารถเรียก API ของคุณที่นี่ โดยใส่คำค้นหาใน parameter Search
       this.fetchDataFromApi(newVal);
     },
   },
@@ -49,8 +47,7 @@ export default {
         })
         const res = await axios.get(`http://localhost:3000/api/v1/users/?Search=${searchQuery}`);
         this.users = res.data.Search
-        // ทำสิ่งที่คุณต้องการกับข้อมูลที่ได้จาก API นี้
-        console.log(res.data);
+        // console.log(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -82,7 +79,9 @@ export default {
       this.selectedAddress = user.address;
       this.AddressModel = true;
     },
-    HealthModal() {
+    HealthModal(user) {
+      this.selectedHealth = user.health;
+      console.log(this.selectedHealth);
       this.HealthModel = true;
     },
   },
@@ -171,7 +170,7 @@ export default {
                     </svg>
                   </button>
                   <!-- HealthInfo -->
-                  <button @click="HealthModal()"
+                  <button @click="HealthModal(item)"
                     class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
                     <svg class="w-[16px] h-[16px] text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -392,47 +391,37 @@ export default {
                             <!-- houseNo -->
                             <div>
                               <label for="houseNo"
-                                class="block mb-2 text-lg font-bold text-[#303030] text-left">บ้านเลขที่</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">86/29</p>
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ความดันโลหิต</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedHealth == null ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" :
+                                  selectedHealth.bloodPressure }}
+                              </p>
                             </div>
                             <!-- soi -->
                             <div>
-                              <label for="soi" class="block mb-2 text-lg font-bold text-[#303030] text-left">ซอย</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">ทุ่งข่า11</p>
+                              <label for="soi"
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">อัตราการเต้นของหัวใจ</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" : selectedHealth.heartRate
+                                }}
+                              </p>
                             </div>
                             <!-- road -->
                             <div>
-                              <label for="road" class="block mb-2 text-lg font-bold text-[#303030] text-left">ถนน</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">กะโรม</p>
+                              <label for="road"
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ออกซิเจนในเลือด</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" : selectedHealth.oxygen }}
+                              </p>
                             </div>
                             <!-- moo -->
                             <div>
-                              <label for="moo" class="block mb-2 text-lg font-bold text-[#303030] text-left">หมู่</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">-</p>
-                            </div>
-                            <!-- subDistrict -->
-                            <div>
-                              <label for="subDistrict"
-                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ตำบล</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">โพธิ์เสด็จ</p>
-                            </div>
-                            <!-- district -->
-                            <div>
-                              <label for="district"
-                                class="block mb-2 text-lg font-bold text-[#303030] text-left">อำเภอ</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">เมืองนครศรีธรรมราช</p>
-                            </div>
-                            <!-- province -->
-                            <div>
-                              <label for="province"
-                                class="block mb-2 text-lg font-bold text-[#303030] text-left">จังหวัด</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">นครศรีธรรมราช</p>
-                            </div>
-                            <!-- postalCode -->
-                            <div>
-                              <label for="postalCode"
-                                class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสไปรษณีย์</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">80000</p>
+                              <label for="moo"
+                                class="block mb-2 text-lg font-bold text-[#303030] text-left">อุณหภูมิร่างกาย</label>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" :
+                                  selectedHealth.temperature }}
+                              </p>
                             </div>
                           </div>
                         </form>
