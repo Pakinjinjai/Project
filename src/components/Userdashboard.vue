@@ -271,7 +271,7 @@ export default {
                             <label for="description"
                               class="block mb-2 text-lg font-bold text-[#303030] text-left">โรคประจำตัว</label>
                             <p class="text-left text-[#303030] rounded-lg bg-gray-50 border block w-full p-2.5">
-                              {{ selectedUser.noteDisease ?? "ไม่มีการกรอกข้อมูล" }}</p>
+                              {{ selectedUser.noteDisease ?? "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
                           </div>
                         </form>
                       </div>
@@ -308,33 +308,33 @@ export default {
                               <label for="houseNo"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">บ้านเลขที่</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.houseNo ??
-                                "ไม่มีการกรอกข้อมูล" }}
+                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}
                               </p>
                             </div>
                             <!-- soi -->
                             <div>
                               <label for="soi" class="block mb-2 text-lg font-bold text-[#303030] text-left">ซอย</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.soi ??
-                                "ไม่มีการกรอกข้อมูล" }}</p>
+                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
                             </div>
                             <!-- road -->
                             <div>
                               <label for="road" class="block mb-2 text-lg font-bold text-[#303030] text-left">ถนน</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.road ??
-                                "ไม่มีการกรอกข้อมูล" }}</p>
+                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
                             </div>
                             <!-- moo -->
                             <div>
                               <label for="moo" class="block mb-2 text-lg font-bold text-[#303030] text-left">หมู่</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.moo ??
-                                "ไม่มีการกรอกข้อมูล" }}</p>
+                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
                             </div>
                             <!-- subDistrict -->
                             <div>
                               <label for="subDistrict"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ตำบล</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.subDistrict ??
-                                "ไม่มีการกรอกข้อมูล" }}
+                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}
                               </p>
                             </div>
                             <!-- district -->
@@ -342,21 +342,21 @@ export default {
                               <label for="district"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อำเภอ</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.district ??
-                                "ไม่มีการกรอกข้อมูล" }}</p>
+                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
                             </div>
                             <!-- province -->
                             <div>
                               <label for="province"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">จังหวัด</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.province ??
-                                "ไม่มีการกรอกข้อมูล" }}</p>
+                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
                             </div>
                             <!-- postalCode -->
                             <div>
                               <label for="postalCode"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสไปรษณีย์</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.postalCode ??
-                                "ไม่มีการกรอกข้อมูล" }}</p>
+                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
                             </div>
                           </div>
                         </form>
