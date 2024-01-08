@@ -38,32 +38,34 @@ export default {
   methods: {
     async fetchDataFromApi(searchQuery) {
       try {
-        axios({
-          method: "get",
-          url: "http://localhost:3000/api/v1/users/?Search=",
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("accessToken"),
-          },
-        })
         const res = await axios.get(`http://localhost:3000/api/v1/users/?Search=${searchQuery}`);
-        this.users = res.data.Search
-        // console.log(res.data);
+        this.users = res.data.Search;
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     },
-    getAllUser() {
-      axios({
-        method: "get",
-        url: "http://localhost:3000/api/v1/users/getallusers"
-      })
-        .then(res => {
-          this.users = (res.data);
-          console.log(this.users);
-        })
-        .catch(error => {
-          console.error(error);
+    async delUser(_id) {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const res = await axios.delete(`http://localhost:3000/api/v1/users/${_id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         });
+        this.getAllUser();
+        console.log("User deleted successfully:", res);
+      } catch (error) {
+        console.error("Error deleting user:", error);
+      }
+    },
+    async getAllUser() {
+      try {
+        const res = await axios.get("http://localhost:3000/api/v1/users/getallusers");
+        this.users = res.data;
+        // console.log(this.users);
+      } catch (error) {
+        console.error("Error fetching all users:", error);
+      }
     },
     formatDate(date) {
       return new Date(date).toLocaleDateString();
@@ -82,12 +84,12 @@ export default {
     HealthModal(user) {
       this.selectedUser = user;
       this.selectedHealth = user.health;
-      console.log(this.selectedHealth);
       this.HealthModel = true;
     },
   },
 };
 </script>
+
 
 <template>
   <section class="p-3 sm:p-5">
@@ -181,7 +183,7 @@ export default {
                     </svg>
                   </button>
                   <!-- delete_Btn -->
-                  <button
+                  <button @click="delUser(item._id)"
                     class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
                     <svg class="w-[16px] h-[16px] text-[#303030]" aria-hidden="true" style="color: #EB1851;"
@@ -309,28 +311,32 @@ export default {
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">บ้านเลขที่</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
                                 <!-- {{ selectedAddress.houseNo ?? "ไม่มีการบันทึกจากผู้ใช้งาน" }}  -->
-                                {{ selectedAddress.houseNo == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.houseNo }}
+                                {{ selectedAddress.houseNo == undefined ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" :
+                                  selectedAddress.houseNo }}
                               </p>
                             </div>
                             <!-- soi -->
                             <div>
                               <label for="soi" class="block mb-2 text-lg font-bold text-[#303030] text-left">ซอย</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedAddress.soi == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.soi }}
+                                {{ selectedAddress.soi == undefined ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.soi
+                                }}
                               </p>
                             </div>
                             <!-- road -->
                             <div>
                               <label for="road" class="block mb-2 text-lg font-bold text-[#303030] text-left">ถนน</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedAddress.road == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.road }}
+                                {{ selectedAddress.road == undefined ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" :
+                                  selectedAddress.road }}
                               </p>
                             </div>
                             <!-- moo -->
                             <div>
                               <label for="moo" class="block mb-2 text-lg font-bold text-[#303030] text-left">หมู่</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedAddress.moo == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.moo }}
+                                {{ selectedAddress.moo == undefined ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.moo
+                                }}
                               </p>
                             </div>
                             <!-- subDistrict -->
@@ -338,7 +344,8 @@ export default {
                               <label for="subDistrict"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ตำบล</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedAddress.subDistrict == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.subDistrict }}
+                                {{ selectedAddress.subDistrict == undefined ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" :
+                                  selectedAddress.subDistrict }}
                               </p>
                             </div>
                             <!-- district -->
@@ -346,7 +353,8 @@ export default {
                               <label for="district"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อำเภอ</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedAddress.district == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.district }}
+                                {{ selectedAddress.district == undefined ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" :
+                                  selectedAddress.district }}
                               </p>
                             </div>
                             <!-- province -->
@@ -354,7 +362,8 @@ export default {
                               <label for="province"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">จังหวัด</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedAddress.province == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.province }}
+                                {{ selectedAddress.province == undefined ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" :
+                                  selectedAddress.province }}
 
                               </p>
                             </div>
@@ -363,7 +372,8 @@ export default {
                               <label for="postalCode"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสไปรษณีย์</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedAddress.postalCode == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.postalCode }}
+                                {{ selectedAddress.postalCode == undefined ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" :
+                                  selectedAddress.postalCode }}
                               </p>
                             </div>
                           </div>
@@ -411,7 +421,8 @@ export default {
                               <label for="soi"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อัตราการเต้นของหัวใจ</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพจากผู้ใช้งาน" : selectedHealth.heartRate }}
+                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพจากผู้ใช้งาน" :
+                                  selectedHealth.heartRate }}
                               </p>
                             </div>
                             <!-- road -->
@@ -419,7 +430,8 @@ export default {
                               <label for="road"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ออกซิเจนในเลือด</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพจากผู้ใช้งาน" : selectedHealth.oxygen }}
+                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพจากผู้ใช้งาน" :
+                                  selectedHealth.oxygen }}
                               </p>
                             </div>
                             <!-- moo -->
