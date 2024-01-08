@@ -80,6 +80,7 @@ export default {
       this.AddressModel = true;
     },
     HealthModal(user) {
+      this.selectedUser = user;
       this.selectedHealth = user.health;
       console.log(this.selectedHealth);
       this.HealthModel = true;
@@ -199,7 +200,7 @@ export default {
                         <!-- Modal header -->
                         <div class="flex justify-between items-center  rounded-t border-b sm:mb-5 ">
                           <h3 class="text-lg font-semibold text-[#303030] ">
-                            User Info
+                            ข้อมูลทั่วไป
                           </h3>
                           <button @click="infoModel = false" type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-[#303030] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
@@ -286,7 +287,7 @@ export default {
                         <!-- Modal header -->
                         <div class="flex justify-between items-center  rounded-t border-b sm:mb-5 ">
                           <h3 class="text-lg font-semibold text-[#303030] ">
-                            Address User
+                            ที่อยู่
                           </h3>
                           <button @click="AddressModel = false" type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-[#303030] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
@@ -372,7 +373,7 @@ export default {
                         <!-- Modal header -->
                         <div class="flex justify-between items-center  rounded-t border-b sm:mb-5 ">
                           <h3 class="text-lg font-semibold text-[#303030] ">
-                            Address User
+                            สุขภาพล่าสุดของคุณ {{ selectedUser.firstname }}
                           </h3>
                           <button @click="HealthModel = false" type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-[#303030] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
