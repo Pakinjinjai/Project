@@ -307,56 +307,64 @@ export default {
                             <div>
                               <label for="houseNo"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">บ้านเลขที่</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.houseNo ??
-                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                <!-- {{ selectedAddress.houseNo ?? "ไม่มีการบันทึกจากผู้ใช้งาน" }}  -->
+                                {{ selectedAddress.houseNo == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.houseNo }}
                               </p>
                             </div>
                             <!-- soi -->
                             <div>
                               <label for="soi" class="block mb-2 text-lg font-bold text-[#303030] text-left">ซอย</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.soi ??
-                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedAddress.soi == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.soi }}
+                              </p>
                             </div>
                             <!-- road -->
                             <div>
                               <label for="road" class="block mb-2 text-lg font-bold text-[#303030] text-left">ถนน</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.road ??
-                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedAddress.road == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.road }}
+                              </p>
                             </div>
                             <!-- moo -->
                             <div>
                               <label for="moo" class="block mb-2 text-lg font-bold text-[#303030] text-left">หมู่</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.moo ??
-                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedAddress.moo == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.moo }}
+                              </p>
                             </div>
                             <!-- subDistrict -->
                             <div>
                               <label for="subDistrict"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ตำบล</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.subDistrict ??
-                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedAddress.subDistrict == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.subDistrict }}
                               </p>
                             </div>
                             <!-- district -->
                             <div>
                               <label for="district"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อำเภอ</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.district ??
-                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedAddress.district == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.district }}
+                              </p>
                             </div>
                             <!-- province -->
                             <div>
                               <label for="province"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">จังหวัด</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.province ??
-                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedAddress.province == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.province }}
+
+                              </p>
                             </div>
                             <!-- postalCode -->
                             <div>
                               <label for="postalCode"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสไปรษณีย์</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.postalCode ??
-                                "ไม่มีการบันทึกจากผู้ใช้งาน" }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                {{ selectedAddress.postalCode == undefined  ? "ผู้ใช้งานไม่ได้บันทึกที่อยู่" : selectedAddress.postalCode }}
+                              </p>
                             </div>
                           </div>
                         </form>
@@ -403,8 +411,7 @@ export default {
                               <label for="soi"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อัตราการเต้นของหัวใจ</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" : selectedHealth.heartRate
-                                }}
+                                {{ selectedHealth == undefined ? "ยังไม่มีการจัดเก็บค่าสุขภาพ" : selectedHealth.heartRate }}
                               </p>
                             </div>
                             <!-- road -->
