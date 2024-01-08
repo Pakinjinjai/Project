@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="container" v-if="showDiv">
-            <section class="box special features bg-gray-100 p-8 text-center">
+            <section class="box special features bg-gray-100 p-8 text-center text-[#303030]">
                 <div>
                     กรุณากรอกประวัติส่วนตัวให้ครบถ้วน
-                    <button type="button" class="text-[#EB1851]" v-on:click="goToAccount()">Click Me!</button>
+                    <button type="button" class="text-[#140A4B]" v-on:click="goToAccount()">ประวัติส่วนตัว</button>
                 </div>
             </section>
         </div>
