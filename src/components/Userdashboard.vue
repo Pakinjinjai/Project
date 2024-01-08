@@ -11,6 +11,8 @@ export default {
       AddressModel: false,
       HealthModel: false,
       selectedUser: {},
+      selectedAddress: {},
+      searchQuery: "",
     };
   },
   computed: {
@@ -25,22 +27,46 @@ export default {
       });
     },
   },
-  created(){
+  created() {
     this.getAllUser();
   },
+  watch: {
+    // ใช้ watch เพื่อตรวจสอบเมื่อค่าของ searchQuery เปลี่ยนแล้ว
+    searchQuery(newVal, oldVal) {
+      // สามารถเรียก API ของคุณที่นี่ โดยใส่คำค้นหาใน parameter Search
+      this.fetchDataFromApi(newVal);
+    },
+  },
   methods: {
-    getAllUser(){
+    async fetchDataFromApi(searchQuery) {
+      try {
+        axios({
+          method: "get",
+          url: "http://localhost:3000/api/v1/users/?Search=",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("accessToken"),
+          },
+        })
+        const res = await axios.get(`http://localhost:3000/api/v1/users/?Search=${searchQuery}`);
+        this.users = res.data.Search
+        // ทำสิ่งที่คุณต้องการกับข้อมูลที่ได้จาก API นี้
+        console.log(res.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+    getAllUser() {
       axios({
-        method:"get",
-        url:"http://localhost:3000/api/v1/users/getallusers"
+        method: "get",
+        url: "http://localhost:3000/api/v1/users/getallusers"
       })
-      .then(res => {
-        this.users = res.data;
-        console.log(this.users);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+        .then(res => {
+          this.users = (res.data);
+          console.log(this.users);
+        })
+        .catch(error => {
+          console.error(error);
+        });
     },
     formatDate(date) {
       return new Date(date).toLocaleDateString();
@@ -52,7 +78,8 @@ export default {
       this.selectedUser = user;
       this.infoModel = true;
     },
-    AddressModal() {
+    AddressModal(user) {
+      this.selectedAddress = user.address;
       this.AddressModel = true;
     },
     HealthModal() {
@@ -66,8 +93,8 @@ export default {
   <section class="p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
       <h3 class="text-2xl text-center font-semibold text-[#140A4B] mb-4">
-      ข้อมูลผู้ใช้งานทั้งหมด
-    </h3>
+        ข้อมูลผู้ใช้งานทั้งหมด
+      </h3>
       <!-- Start coding here -->
       <div class="bg-white  relative shadow-md sm:rounded-lg overflow-hidden">
         <!-- search -->
@@ -77,22 +104,22 @@ export default {
               <label for="simple-search" class="sr-only">Search</label>
               <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="currentColor"
-                    viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 " fill="currentColor" viewbox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                       d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                       clip-rule="evenodd" />
                   </svg>
                 </div>
-                <input type="text" id="simple-search"
+                <input type="text" id="simple-search" v-model="searchQuery"
                   class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
-                  placeholder="Search" required="" />
+                  placeholder="คำค้นหา" required="" />
               </div>
             </form>
           </div>
         </div>
         <div class="overflow-x-auto">
-          
+
           <table class="w-full text-sm text-left text-gray-500 ">
             <thead class="text-xs text-[#FDFDFD] uppercase bg-[#140A4B] ">
               <tr class="text-center">
@@ -108,9 +135,9 @@ export default {
             <!-- body -->
             <tbody v-if="users.length > 0">
               <tr v-for="(item, index) in sorteduser" :key="item._id" :class="{
-          'bg-white': index % 2 === 0,
-          'bg-[#F6F6F6]': index % 2 !== 0
-        }" class="border-b text-center  text-[#303030]">
+                'bg-white': index % 2 === 0,
+                'bg-[#F6F6F6]': index % 2 !== 0
+              }" class="border-b text-center  text-[#303030]">
                 <th scope="row" class="px-4 py-3 font-medium  whitespace-nowrap ">
                   {{ item._id }}
                 </th>
@@ -131,25 +158,29 @@ export default {
                     </svg>
                   </button>
                   <!-- infoAddressUser -->
-                  <button @click="AddressModal()"
+                  <button @click="AddressModal(item)"
                     class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
-                    <svg class="w-[16px] h-[16px] text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 21">
-    <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
-      <path d="M8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-      <path d="M13.8 12.938h-.01a7 7 0 1 0-11.465.144h-.016l.141.17c.1.128.2.252.3.372L8 20l5.13-6.248c.193-.209.373-.429.54-.66l.13-.154Z"/>
-    </g>
-  </svg>
+                    <svg class="w-[16px] h-[16px] text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                      fill="none" viewBox="0 0 17 21">
+                      <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+                        <path d="M8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                        <path
+                          d="M13.8 12.938h-.01a7 7 0 1 0-11.465.144h-.016l.141.17c.1.128.2.252.3.372L8 20l5.13-6.248c.193-.209.373-.429.54-.66l.13-.154Z" />
+                      </g>
+                    </svg>
                   </button>
                   <!-- HealthInfo -->
                   <button @click="HealthModal()"
                     class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
-                    <svg class="w-[16px] h-[16px] text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 19">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
-  </svg>
+                    <svg class="w-[16px] h-[16px] text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                      fill="none" viewBox="0 0 21 19">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                        d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z" />
+                    </svg>
                   </button>
-                    <!-- delete_Btn -->
+                  <!-- delete_Btn -->
                   <button
                     class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
                     type="button">
@@ -184,9 +215,9 @@ export default {
                         </div>
                         <!-- user info -->
                         <form action="#">
-                          <div  class="grid gap-4 mb-4 sm:grid-cols-2 ">
+                          <div class="grid gap-4 mb-4 sm:grid-cols-2 ">
                             <!-- _id -->
-                            <div >
+                            <div>
                               <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser._id }}</p>
                             </div>
@@ -224,13 +255,15 @@ export default {
                             <div>
                               <label for="gender"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">เพศ</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser.gender ? 'ชาย' : 'หญิง' }}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser.gender ? 'ชาย' :
+                                'หญิง' }}</p>
                             </div>
                             <!-- birthdate -->
                             <div>
                               <label for="birthdate"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วัน/เดือน/ปี เกิด</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ formatDate(selectedUser.birthdate)}}</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{
+                                formatDate(selectedUser.birthdate) }}</p>
                             </div>
                           </div>
                           <!-- description -->
@@ -238,7 +271,7 @@ export default {
                             <label for="description"
                               class="block mb-2 text-lg font-bold text-[#303030] text-left">โรคประจำตัว</label>
                             <p class="text-left text-[#303030] rounded-lg bg-gray-50 border block w-full p-2.5">
-                              {{selectedUser.noteDisease}}</p>
+                              {{ selectedUser.noteDisease ?? "ไม่มีการกรอกข้อมูล" }}</p>
                           </div>
                         </form>
                       </div>
@@ -274,46 +307,56 @@ export default {
                             <div>
                               <label for="houseNo"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">บ้านเลขที่</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">86/29</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.houseNo ??
+                                "ไม่มีการกรอกข้อมูล" }}
+                              </p>
                             </div>
                             <!-- soi -->
                             <div>
                               <label for="soi" class="block mb-2 text-lg font-bold text-[#303030] text-left">ซอย</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">ทุ่งข่า11</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.soi ??
+                                "ไม่มีการกรอกข้อมูล" }}</p>
                             </div>
                             <!-- road -->
                             <div>
                               <label for="road" class="block mb-2 text-lg font-bold text-[#303030] text-left">ถนน</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">กะโรม</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.road ??
+                                "ไม่มีการกรอกข้อมูล" }}</p>
                             </div>
                             <!-- moo -->
                             <div>
                               <label for="moo" class="block mb-2 text-lg font-bold text-[#303030] text-left">หมู่</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">-</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.moo ??
+                                "ไม่มีการกรอกข้อมูล" }}</p>
                             </div>
                             <!-- subDistrict -->
                             <div>
                               <label for="subDistrict"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ตำบล</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">โพธิ์เสด็จ</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.subDistrict ??
+                                "ไม่มีการกรอกข้อมูล" }}
+                              </p>
                             </div>
                             <!-- district -->
                             <div>
                               <label for="district"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">อำเภอ</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">เมืองนครศรีธรรมราช</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.district ??
+                                "ไม่มีการกรอกข้อมูล" }}</p>
                             </div>
                             <!-- province -->
                             <div>
                               <label for="province"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">จังหวัด</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">นครศรีธรรมราช</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.province ??
+                                "ไม่มีการกรอกข้อมูล" }}</p>
                             </div>
                             <!-- postalCode -->
                             <div>
                               <label for="postalCode"
                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสไปรษณีย์</label>
-                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">80000</p>
+                              <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedAddress.postalCode ??
+                                "ไม่มีการกรอกข้อมูล" }}</p>
                             </div>
                           </div>
                         </form>
