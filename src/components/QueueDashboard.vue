@@ -6,6 +6,12 @@ export default {
    
     data() {
         return {
+            SelectedaddQueue: [],
+            SelectedUpdateQueue: [],
+            SelecttrueInfo: [],
+            SelecttrueQueue: [],
+            SelectAddModal: [],
+            SelectAddModal: [],
             SelectedItem: [],
             searchQuery: "",
             Queue: [],
@@ -20,7 +26,6 @@ export default {
     
     computed: {
         sortedQueue() {
-            // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
             return this.Queue.slice().sort((a, b) => {
                 if (a.status === b.status) {
                     return new Date(a.dataQueue) - new Date(b.dataQueue);
@@ -45,9 +50,8 @@ export default {
         this.getAllqueue();
     },
     watch: {
-    // ใช้ watch เพื่อตรวจสอบเมื่อค่าของ searchQuery เปลี่ยนแล้ว
+    
     searchQuery(newVal, oldVal) {
-      // สามารถเรียก API ของคุณที่นี่ โดยใส่คำค้นหาใน parameter Search
       this.fetchDataFromApi(newVal);
     },
   },
@@ -63,8 +67,8 @@ export default {
                 })
         const response = await axios.get(`http://localhost:3000/api/v1/users/?Search=${searchQuery}`);
         
-        // ทำสิ่งที่คุณต้องการกับข้อมูลที่ได้จาก API นี้
-        console.log(response.data);
+        this.Queue = res.data.Search;
+        console.log(this.QueueSearch);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -99,35 +103,41 @@ export default {
                 })
                     .then((res) => {
                         this.Queueinfo = res.data;
-                        console.log(this.Queueinfo);
+                        // console.log(this.Queueinfo);
                     })
                     .catch((error) => {
                         console.log(error);
                     });
             } catch (error) { }
         },
-        AddModal() {
+        AddModal(Queue) {
+            this.SelectAddModal = Queue;
             this.AddModel = true;
         },
-        showinfoModal() {
+        showinfoModal(Queue) {
+            this.SelectQueue = Queue;
             this.infoModel = true;
         },
-        trueQueueModal() {
+        trueQueueModal(Queue) {
+            this.SelecttrueQueue = Queue;
             this.trueQueueModel = true;
         },
-        trueInfoModal() {
+        trueInfoModal(Queue) {
+            this.SelecttrueInfo = Queue;
             this.infotrueModel = true;
             this.infoModel = false;
             
         },
-        UpdateModal(item) {
-            this.SelectedItem = item;
+        UpdateModal(Queue) {
+            this.SelectedItem = Queue;
             this.UpdateModel = true;
         },
-        UpdateQueue_Btn() {
+        UpdateQueue_Btn(Queue) {
+            this.SelectedUpdateQueue = Queue;
             this.UpdateModel = false;
         },
-        addQueue_Btn() {
+        addQueue_Btn(Queue) {
+            this.SelectedaddQueue = Queue;
             this.AddModel = false;
         },
         formatDate(date) {
@@ -191,7 +201,7 @@ export default {
                                 <td class="px-4 py-3">{{ (item.lastname) }}</td>
                                 <td class="px-4 py-3 flex  text-[#303030] justify-center ">
                                     <!-- info_Btn -->
-                                    <button @click="showinfoModal()"
+                                    <button @click="showinfoModal(item)"
                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#303030] hover:text-gray-800 rounded-lg focus:outline-none "
                                         type="button">
                                         <svg class="w-[16px] h-[16px] text-[#303030] " aria-hidden="true"
@@ -201,7 +211,7 @@ export default {
                                         </svg>
                                     </button>
                                     <!-- edit_Btn -->
-                                    <button @click="AddModal()"
+                                    <button @click="AddModal(item)"
                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none "
                                         type="button">
                                         <svg class="w-[16px] h-[16px] text-gray-800 " aria-hidden="true"
@@ -223,7 +233,7 @@ export default {
                                                         <h3 class="text-lg text-center font-semibold text-[#303030]">
                                                             รายการคิว
                                                         </h3>
-                                                        <button @click="trueInfoModal()" type="button"
+                                                        <button @click="trueInfoModal(item)" type="button"
                                                             class="text-[#198B0A] mb-2 inline-flex items-center hover:text-white border border-[#198B0A] hover:bg-[#198B0A] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                             <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor"
                                                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -445,7 +455,7 @@ export default {
                                                                                     </div>
                                                                                     <div
                                                                                         class="flex items-center content-center space-x-4">
-                                                                                        <button @click="UpdateQueue_Btn()"
+                                                                                        <button @click="UpdateQueue_Btn(item)"
                                                                                             type="button"
                                                                                             class="text-[#140A4B] inline-flex items-center hover:text-white border border-[#140A4B] hover:bg-[#140A4B] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                                                             <svg class="mr-1 -ml-1 w-5 h-5"
@@ -615,7 +625,7 @@ export default {
                                                                 <td class="px-4 py-3">true</td>
                                                                 <td class="px-4 py-3 flex  text-[#303030] justify-center ">
                                                                     <!-- Queueinfo_Btn -->
-                                                                    <button @click="trueQueueModal()"
+                                                                    <button @click="trueQueueModal(item)"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
                                                                         type="button">
                                                                         <svg class="w-[16px] h-[16px] text-[#303030] "
@@ -820,7 +830,7 @@ export default {
                                                         </div>
                                                     </div>
                                                     <div class="flex items-center content-center space-x-4">
-                                                        <button @click="addQueue_Btn()" type="button"
+                                                        <button @click="addQueue_Btn(item)" type="button"
                                                             class="text-[#140A4B] inline-flex items-center hover:text-white border border-[#140A4B] hover:bg-[#140A4B] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                             <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor"
                                                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
