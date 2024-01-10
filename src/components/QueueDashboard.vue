@@ -6,6 +6,7 @@ export default {
    
     data() {
         return {
+            SelectedItem: [],
             searchQuery: "",
             Queue: [],
             Queueinfo: [],
@@ -28,16 +29,16 @@ export default {
                 }
             });
         },
-        sortedQueueinfo() {
-            // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
-            return this.Queueinfo.slice().sort((a, b) => {
-                if (a.status === b.status) {
-                    return new Date(a.dataQueueinfo) - new Date(b.dataQueueinfo);
-                } else {
-                    return a.status ? 1 : -1;
-                }
-            });
-        },
+        // sortedQueueinfo() {
+        //     // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
+        //     return this.Queueinfo.slice().sort((a, b) => {
+        //         if (a.status === b.status) {
+        //             return new Date(a.dataQueueinfo) - new Date(b.dataQueueinfo);
+        //         } else {
+        //             return a.status ? 1 : -1;
+        //         }
+        //     });
+        // },
     },
     created() {
         this.getAlluser();
@@ -119,7 +120,8 @@ export default {
             this.infoModel = false;
             
         },
-        UpdateModal() {
+        UpdateModal(item) {
+            this.SelectedItem = item;
             this.UpdateModel = true;
         },
         UpdateQueue_Btn() {
@@ -258,12 +260,8 @@ export default {
                                                             </tr>
                                                         </thead>
                                                         <!-- body -->
-                                                        <tbody v-if="Queueinfo.length > 0">
-                                                            <tr v-for="(item, index) in sortedQueueinfo" :key="item._id"
-                                                                :class="{
-                                                                    'bg-white': index % 2 === 0,
-                                                                    'bg-[#F6F6F6]': index % 2 !== 0
-                                                                }" class="border-b text-center  text-[#303030]">
+                                                        <tbody>
+                                                            <tr  class="border-b text-center  text-[#303030]">
                                                                 <th scope="row"
                                                                     class="px-4 py-3 font-medium  whitespace-nowrap ">
                                                                     {{ item.topic }}
@@ -273,7 +271,7 @@ export default {
                                                                 <td class="px-4 py-3">{{ item.status ? 'ตรวจเเล้ว' : 'ไม่ตรวจเเล้ว' }}</td>
                                                                 <td class="px-4 py-3 flex  text-[#303030] justify-center ">
                                                                     <!-- Queueinfo_Btn -->
-                                                                    <button @click="trueQueueModal()"
+                                                                    <button @click="trueQueueModal(item)"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
                                                                         type="button">
                                                                         <svg class="w-[16px] h-[16px] text-[#303030] "
@@ -287,7 +285,7 @@ export default {
                                                                         </svg>
                                                                     </button>
                                                                     <!-- Add_Btn -->
-                                                                    <button @click="UpdateModal()"
+                                                                    <button @click="UpdateModal(item)"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none "
                                                                         type="button">
                                                                         <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white"
@@ -354,7 +352,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                HN1703572305</p>
+                                                                                                {{ item._id }}</p>
 
                                                                                         </div>
                                                                                         <!-- idCard -->
@@ -363,7 +361,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                1809901075727</p>
+                                                                                                {{ (item.idCard) }}</p>
                                                                                         </div>
                                                                                         <!-- firstname -->
                                                                                         <div>
@@ -371,7 +369,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                ภาคิน</p>
+                                                                                                {{ (item.firstname) }}</p>
                                                                                         </div>
                                                                                         <!-- lastname -->
                                                                                         <div>
@@ -379,7 +377,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                จิ้นจ้าย</p>
+                                                                                                {{ (item.lastname) }}</p>
                                                                                         </div>
                                                                                         <!-- topic -->
                                                                                         <div>

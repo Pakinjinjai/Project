@@ -185,7 +185,7 @@ export default {
         })
         .then((res) => {
           this.profileName = res.data.user;
-          console.log(this.profileName);
+          // console.log(this.profileName);
         })
         .catch((error) => {
           console.log(error);
