@@ -18,7 +18,7 @@
           <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
             {{ item.topic }}
           </th>
-          <td class="px-6 py-4 text-center">{{ formatDate(item.dateQueue) }}</td>
+          <td class="px-6 py-4 text-center">{{ formatDate(item.startDate) }}</td>
           <td class="px-6 py-4 text-center"
             :class="{ 'text-red-500': item.status === false, 'text-green-500': item.status === true }">
             {{ item.status === false ? "กำลังรอการตรวจ" : "ได้รับการตรวจ" }}
@@ -64,7 +64,7 @@
                       <div>
                         <label for="dateQueue"
                           class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
-                        <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ formatDate(infoqueues.dateQueue) }}
+                        <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ formatDate(infoqueues.startDate) }}
                         </p>
                       </div>
                       <!-- endDate -->

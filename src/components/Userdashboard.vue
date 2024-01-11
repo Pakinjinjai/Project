@@ -65,7 +65,7 @@ export default {
       try {
         const res = await axios.get("http://localhost:3000/api/v1/users/getallusers");
         this.users = res.data;
-        // console.log(this.users);
+        console.log(this.users);
       } catch (error) {
         console.error("Error fetching all users:", error);
       }
