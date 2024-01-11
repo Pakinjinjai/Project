@@ -46,14 +46,17 @@ export default {
     },
     async delUser(_id) {
       try {
-        const accessToken = localStorage.getItem("accessToken");
-        const res = await axios.delete(`http://localhost:3000/api/v1/users/${_id}`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-        this.getAllUser();
-        console.log("User deleted successfully:", res);
+        const confirmResult = window.confirm('คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน');
+        if(confirmResult){
+          const accessToken = localStorage.getItem("accessToken");
+          const res = await axios.delete(`http://localhost:3000/api/v1/users/${_id}`, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          this.getAllUser();
+          console.log("User deleted successfully:", res);
+        }
       } catch (error) {
         console.error("Error deleting user:", error);
       }
@@ -74,8 +77,8 @@ export default {
       this.isModalVisible = true;
     },
     showinfoModal(user) {
-      this.selectedUser = user;
-      this.infoModel = true;
+        this.selectedUser = user;
+        this.infoModel = true;
     },
     AddressModal(user) {
       this.selectedAddress = user.address;
