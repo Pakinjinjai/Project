@@ -93,7 +93,18 @@
           </td>
         </tr>
       </tbody>
+      <tbody v-if="Queue.length > 0">
 
+</tbody>
+<tbody v-else>
+  <tr class="bg-white border-b justify-center items-center ">
+    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center"></th>
+    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center"></td>
+    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">ยังไม่เคยได้รับการเข้าตรวจ</td>
+    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center"></td>
+    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center"></td>
+  </tr>
+</tbody>
     </table>
   </div>
 </template>
