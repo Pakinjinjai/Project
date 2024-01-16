@@ -9,7 +9,7 @@ export default {
   },
   created() {
     this.showInfo();
-    this.Interval = setInterval(this.checkForUpdates, 60000);
+    // this.Interval = setInterval(this.checkForUpdates, 60000);
   },
   destroyed() {
     clearInterval(this.Interval);
@@ -29,15 +29,15 @@ export default {
             this.healthupdate = res.data[0].updatedAt;
 
             // เช็คเวลาการอัปเดต
-            const lastUpdateTime = new Date(this.healthupdate).getTime();
-            console.log(lastUpdateTime);
-            const currentTime = new Date().getTime();
-            const elapsedTime = currentTime - lastUpdateTime;
+            // const lastUpdateTime = new Date(this.healthupdate).getTime();
+            // console.log(lastUpdateTime);
+            // const currentTime = new Date().getTime();
+            // const elapsedTime = currentTime - lastUpdateTime;
 
-            // ถ้าเวลาที่ผ่านไปมากกว่า 1 นาทีให้แสดงเตือน
-            if (elapsedTime > 60000) {
-              window.alert("ข้อมูลไม่ได้รับการอัปเดตมากกว่า 1 นาที");
-            }
+            // // ถ้าเวลาที่ผ่านไปมากกว่า 1 นาทีให้แสดงเตือน
+            // if (elapsedTime > 60000) {
+            //   window.alert("กรุณาอัพเดทข้อมูล");
+            // }
           }
         })
         .catch((error) => {
