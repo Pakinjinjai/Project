@@ -5,8 +5,9 @@
         <tr>
           <th scope="col" class="px-6 py-3 text-center">หัวข้อ</th>
           <th scope="col" class="px-6 py-3 text-center">วันที่นัดหมาย</th>
-          <th scope="col" class="px-6 py-3 text-center">สถานะการตรวจสอบ</th>
+          <th scope="col" class="px-6 py-3 text-center">สถานะการตรวจ</th>
           <th scope="col" class="px-6 py-3 text-center">วันที่เข้าตรวจ</th>
+          <th scope="col" class="px-6 py-3 text-center">ประเภทการตรวจ</th>
           <th scope="col" class="px-6 py-3 text-center">คำแนะนำ</th>
         </tr>
       </thead>
@@ -24,6 +25,10 @@
             {{ item.status === false ? "กำลังรอการตรวจ" : "ได้รับการตรวจ" }}
           </td>
           <td class="px-6 text-center ">{{ item.endDate == null ? "ยังไม่ได้เข้าตรวจ" : formatDate(item.endDate) }}</td>
+          <td class="px-6 text-center "
+          :class="{ 'text-red-500': item.locations === false, 'text-green-500': item.locations === true }">
+          {{ item.locations === false ? "ออนไลน์" : "ออนไซต์" }}
+          </td>
           <td class="px-6 py-4  text-center">
             <!-- QueueInfo -->
             <button @click="QueueModal(item)"
