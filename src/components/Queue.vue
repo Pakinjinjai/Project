@@ -99,15 +99,12 @@
           </td>
         </tr>
       </tbody>
-      <tbody v-if="Queue.length > 0">
-
-</tbody>
 <tbody v-else>
   <tr class="bg-white border-b justify-center items-center text-center text-gray-900 ">
-    <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></th>
+    <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap ">ยังไม่เคยได้รับการเข้าตรวจ</th>
     <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
     <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
-    <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap ">ยังไม่เคยได้รับการเข้าตรวจ</td>
+    <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
     <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
     <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
   </tr>
