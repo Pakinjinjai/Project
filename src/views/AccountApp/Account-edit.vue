@@ -28,43 +28,39 @@ export default {
           console.log("ใส่ชื่อจริงสำเร็จแล้ว");
           if (this.formData.lastname != "" && this.formData.lastname != null) {
             console.log("ใส่นามสกุลสำเร็จแล้ว");
-            if (this.formData.gender != "" && this.formData.gender != null) {
-              console.log("ใส่เพศสำเร็จแล้ว");
-              {
-                console.log("ใส่ประวัติแพ้ยาสำเร็จแล้ว");
-                if (
-                  this.birthdateUpgrade != "" &&
-                  this.birthdateUpgrade != "Invalid Date"
-                ) {
-                  this.formData.birthdate = this.birthdateUpgrade;
-                  console.log(this.formData);
-                  axios({
-                    method: "patch",
-                    url: "http://localhost:3000/api/v1/users/update",
-                    headers: {
-                      Authorization:
-                        "Bearer " + localStorage.getItem("accessToken"),
-                    },
-                    data: this.formData,
+            // เงื่อนไขเพศถูกลบออก
+            {
+              console.log("ใส่ประวัติแพ้ยาสำเร็จแล้ว");
+              if (
+                this.birthdateUpgrade != "" &&
+                this.birthdateUpgrade != "Invalid Date"
+              ) {
+                this.formData.birthdate = this.birthdateUpgrade;
+                console.log(this.formData);
+                axios({
+                  method: "patch",
+                  url: "http://localhost:3000/api/v1/users/update",
+                  headers: {
+                    Authorization:
+                      "Bearer " + localStorage.getItem("accessToken"),
+                  },
+                  data: this.formData,
+                })
+                  .then((res) => {
+                    this.$router.push("/account-info");
+                    this.profileData = res.data.user;
+                    this.birthDate = dayjs(this.profileData.birthdate).format(
+                      "YYYY-MM-DD"
+                    );
+                    console.log(res.data);
                   })
-                    .then((res) => {
-                      this.$router.push("/account-info");
-                      this.profileData = res.data.user;
-                      this.birthDate = dayjs(this.profileData.birthdate).format(
-                        "YYYY-MM-DD"
-                      );
-                      console.log(res.data);
-                    })
-                    .catch((error) => {
-                      console.log(error);
-                    });
-                  // console.log(this.formData);
-                } else {
-                  alert("กรุณาใส่วันเดือนปีเกิดของท่าน");
-                }
+                  .catch((error) => {
+                    console.log(error);
+                  });
+                // console.log(this.formData);
+              } else {
+                alert("กรุณาใส่วันเดือนปีเกิดของท่าน");
               }
-            } else {
-              alert("กรุณใส่เพศของท่าน");
             }
           } else {
             alert("กรุณาใส่นามสกุลของท่าน");
@@ -78,6 +74,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <template>

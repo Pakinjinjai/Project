@@ -54,6 +54,7 @@ export default {
 
 <template>
   <div class="flex flex-col items-center mx-auto">
+    <h1 class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">บันทึกสุขภาพ</h1>
     <h1 v-if="Object.keys(health).length === 0" class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">ยังไม่มีการจัดเก็บข้อมูลสุขภาพของผู้ใช้งาน</h1>
     <h1 v-if="Object.keys(health).length > 0" class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">ตรวจสุขภาพล่าสุดเมื่อ : {{ formatDate(healthupdate) }}</h1>
    
