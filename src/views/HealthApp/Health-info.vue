@@ -54,10 +54,8 @@ export default {
 
 <template>
   <div class="flex flex-col items-center mx-auto">
-    
-      <p class="text-lg mt-4">อัพเดท :
-        {{ formatDate(healthupdate) }} 
-    </p>
+    <h1 v-if="Object.keys(health).length === 0" class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">ยังไม่มีการจัดเก็บข้อมูลสุขภาพของผู้ใช้งาน</h1>
+    <h1 v-if="Object.keys(health).length > 0" class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">มีการอัพเดท : {{ formatDate(healthupdate) }}</h1>
    
     <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2 mt-2">
       <div 
