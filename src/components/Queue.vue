@@ -1,11 +1,12 @@
 <template>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+    <h1 class="flex justify-center text-lg text-[#140A4B]">คิวส่วนตัว</h1>
     <table class="w-full text-lg text-left text-gray-500">
       <thead class="text-xl text-[#FDFDFD] uppercase bg-[#140A4B]">
         <tr>
           <th scope="col" class="px-6 py-3 text-center">หัวข้อ</th>
           <th scope="col" class="px-6 py-3 text-center">วันที่นัดหมาย</th>
-          <th scope="col" class="px-6 py-3 text-center">สถานะการตรวจสอบ</th>
+          <th scope="col" class="px-6 py-3 text-center">สถานะการตรวจ</th>
           <th scope="col" class="px-6 py-3 text-center">วันที่เข้าตรวจ</th>
           <th scope="col" class="px-6 py-3 text-center">คำแนะนำ</th>
         </tr>

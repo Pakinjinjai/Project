@@ -7,7 +7,7 @@
           <!-- Profile Card -->
           <div class="bg-white p-3 hover:shadow mb-4 rounded-xl">
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              Hospital Number
+              ID
             </h1>
             <p class="text-gray-900 text-lg leading-8 my-1 ">
               {{ profileData._id }}
