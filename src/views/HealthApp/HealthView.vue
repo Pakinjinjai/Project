@@ -1,5 +1,5 @@
 <template>
- <div class="">
+ 
   <div class="page-container ">
     <HealthEdit ref="healthEdit" v-if="showHealthEdit" />
     <HealthInfo v-else />
@@ -32,7 +32,6 @@
         </button>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
