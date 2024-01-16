@@ -1,6 +1,6 @@
 <template>
-  <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
-    <h1 class="flex justify-center text-lg text-[#140A4B]">คิวส่วนตัว</h1>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <h1 class="flex justify-center font-bold text-lg text-[#140A4B]">คิวส่วนตัว</h1>
     <table class="w-full text-lg text-left text-gray-500">
       <thead class="text-xl text-[#FDFDFD] uppercase bg-[#140A4B]">
         <tr>
