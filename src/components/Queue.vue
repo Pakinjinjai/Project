@@ -1,6 +1,6 @@
 <template>
-  <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
-    <h1 class="flex justify-center text-lg text-[#140A4B]">คิวส่วนตัว</h1>
+  <h1 class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">คิวส่วนตัว</h1>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-lg text-left text-gray-500">
       <thead class="text-xl text-[#FDFDFD] uppercase bg-[#140A4B]">
         <tr>
@@ -8,6 +8,7 @@
           <th scope="col" class="px-6 py-3 text-center">วันที่นัดหมาย</th>
           <th scope="col" class="px-6 py-3 text-center">สถานะการตรวจ</th>
           <th scope="col" class="px-6 py-3 text-center">วันที่เข้าตรวจ</th>
+          <th scope="col" class="px-6 py-3 text-center">ประเภทการตรวจ</th>
           <th scope="col" class="px-6 py-3 text-center">คำแนะนำ</th>
         </tr>
       </thead>
@@ -25,6 +26,10 @@
             {{ item.status === false ? "กำลังรอการตรวจ" : "ได้รับการตรวจ" }}
           </td>
           <td class="px-6 text-center ">{{ item.endDate == null ? "ยังไม่ได้เข้าตรวจ" : formatDate(item.endDate) }}</td>
+          <td class="px-6 text-center "
+          :class="{ 'text-red-500': item.locations === false, 'text-green-500': item.locations === true }">
+          {{ item.locations === false ? "ออนไลน์" : "ออนไซต์" }}
+          </td>
           <td class="px-6 py-4  text-center">
             <!-- QueueInfo -->
             <button @click="QueueModal(item)"
@@ -94,16 +99,14 @@
           </td>
         </tr>
       </tbody>
-      <tbody v-if="Queue.length > 0">
-
-</tbody>
 <tbody v-else>
-  <tr class="bg-white border-b justify-center items-center ">
-    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center"></th>
-    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center"></td>
-    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">ยังไม่เคยได้รับการเข้าตรวจ</td>
-    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center"></td>
-    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center"></td>
+  <tr class="bg-white border-b justify-center items-center text-center text-gray-900 ">
+    <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap ">ยังไม่เคยได้รับการเข้าตรวจ</th>
+    <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
+    <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
+    <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
+    <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
+    <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
   </tr>
 </tbody>
     </table>

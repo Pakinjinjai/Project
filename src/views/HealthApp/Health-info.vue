@@ -53,13 +53,12 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-16 mx-auto">
-    
-      <p class="text-lg mt-4">อัพเดท :
-        {{ formatDate(healthupdate) }} 
-    </p>
+  <div class="flex flex-col items-center mx-auto">
+    <h1 class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">บันทึกสุขภาพ</h1>
+    <h1 v-if="Object.keys(health).length === 0" class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">ยังไม่มีการจัดเก็บข้อมูลสุขภาพของผู้ใช้งาน</h1>
+    <h1 v-if="Object.keys(health).length > 0" class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">ตรวจสุขภาพล่าสุดเมื่อ : {{ formatDate(healthupdate) }}</h1>
    
-    <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2 mt-4">
+    <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2 mt-2">
       <div 
       v-if="Object.keys(health).length > 0" class="boxs flex flex-col items-center gap-1 px-8 py-10 bg-[#ffffff] rounded-3xl hover:shadow shadow-main mt-4 border-2 border-[#D9D9D9]">
   <div class="flex  text-xl text-[#303030]  space-x-4 ">ความดันโลหิต

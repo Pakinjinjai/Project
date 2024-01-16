@@ -49,19 +49,19 @@
               <div class="grid md:grid-cols-2 text-lg">
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold ">ชื่อจริง :</div>
-                  <div class="px-2 py-2 text-center">{{ profileData.firstname }}</div>
+                  <div class="px-2 py-2 ">{{ profileData.firstname }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">นามสกุล :</div>
-                  <div class="px-2 py-2 text-center">{{ profileData.lastname }}</div>
+                  <div class="px-2 py-2 ">{{ profileData.lastname }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">รหัสบัตรประชาชน :</div>
-                  <div class="px-2 py-2 text-center">{{ profileData.idCard }}</div>
+                  <div class="px-2 py-2 ">{{ profileData.idCard }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">เพศ :</div>
-                  <div class="px-2 py-2 text-center">
+                  <div class="px-2 py-2 ">
                     {{
                       profileData.gender == null
                       ? ""
@@ -73,17 +73,17 @@
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">เบอร์โทรติดต่อ :</div>
-                  <div class="px-2 py-2 text-center">{{ profileData.phoneNo }}</div>
+                  <div class="px-2 py-2 ">{{ profileData.phoneNo }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">อีเมล์ :</div>
-                  <div class="px-2 py-2 text-center">
+                  <div class="px-2 py-2 ">
                     <a>{{ profileData.email }}</a>
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">วันเกิด :</div>
-                  <div class="px-2 py-2 text-center">{{ birthDate }}</div>
+                  <div class="px-2 py-2 ">{{ birthDate }}</div>
                 </div>
               </div>
             </div>
@@ -100,41 +100,41 @@
               <div class="grid md:grid-cols-2 text-lg">
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">บ้านเลขที่ :</div>
-                  <div class="px-2 py-2 text-center">{{ profileAddress.houseNo || 'กรุณากรอกบ้านเลขที่' }}</div>
+                  <div class="px-2 py-2 ">{{ profileAddress.houseNo || 'กรุณากรอกบ้านเลขที่' }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">หมู่ :</div>
-                  <div class="px-2 py-2 text-center">{{ profileAddress.moo || 'กรุณากรอกหมู่' }}</div>
+                  <div class="px-2 py-2 ">{{ profileAddress.moo || 'กรุณากรอกหมู่' }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">ซอย :</div>
-                  <div class="px-2 py-2 text-center">{{ profileAddress.soi || 'กรุณากรอกซอย' }}</div>
+                  <div class="px-2 py-2 ">{{ profileAddress.soi || 'กรุณากรอกซอย' }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">ถนน :</div> 
-                  <div class="px-2 py-2 text-center">{{ profileAddress.road || 'กรุณากรอกถนน' }}</div>
+                  <div class="px-2 py-2 ">{{ profileAddress.road || 'กรุณากรอกถนน' }}</div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">ตำบล :</div>
-                  <div class="px-2 py-2 text-center">
+                  <div class="px-2 py-2 ">
                     {{ profileAddress.subDistrict || 'กรุณากรอกตำบล' }}
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">อำเภอ :</div>
-                  <div class="px-2 py-2 text-center">
+                  <div class="px-2 py-2 ">
                     {{ profileAddress.district || 'กรุณากรอกอำเภอ' }}
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">จังหวัด :</div>
-                  <div class="px-2 py-2 text-center">
+                  <div class="px-2 py-2 ">
                     {{ profileAddress.province || 'กรุณากรอกจังหวัด' }}
                   </div>
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-2 py-2 font-semibold">รหัสไปรษณีย์ :</div>
-                  <div class="px-2 py-2 text-center">
+                  <div class="px-2 py-2 ">
                     {{ profileAddress.postalCode || 'กรุณากรอกรหัสไปรษณีย์' }}
                   </div>
                 </div>
