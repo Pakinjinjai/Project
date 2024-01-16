@@ -47,7 +47,7 @@ export default {
     async delUser(_id) {
       try {
         const confirmResult = window.confirm('คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน');
-        if(confirmResult){
+        if (confirmResult) {
           const accessToken = localStorage.getItem("accessToken");
           const res = await axios.delete(`http://localhost:3000/api/v1/users/${_id}`, {
             headers: {
@@ -77,8 +77,8 @@ export default {
       this.isModalVisible = true;
     },
     showinfoModal(user) {
-        this.selectedUser = user;
-        this.infoModel = true;
+      this.selectedUser = user;
+      this.infoModel = true;
     },
     AddressModal(user) {
       this.selectedAddress = user.address;
@@ -394,7 +394,16 @@ export default {
                         <!-- Modal header -->
                         <div class="flex justify-between items-center  rounded-t border-b sm:mb-5 ">
                           <h3 class="text-lg font-semibold text-[#303030] ">
-                            สุขภาพล่าสุดของคุณ {{ selectedUser.firstname }}
+
+                            <!-- เช็คว่า selectedHealth ไม่เป็น null และ selectedHealth.createdAt มีค่า -->
+                            {{ selectedHealth && selectedHealth.createdAt ?
+                            
+                              // ถ้าเงื่อนไขเป็นจริง ให้แสดงข้อมูลสุขภาพ -->
+                              `สุขภาพ ${formatDate(selectedHealth.createdAt)} ของคุณ ${selectedUser.firstname}`
+
+                              // ถ้าเงื่อนไขเป็นเท็จ ให้แสดงข้อความ 'ไม่มีการเพิ่มข้อมูลสุขภาพ' -->
+                              : 'ไม่มีการเพิ่มข้อมูลสุขภาพ' }}
+
                           </h3>
                           <button @click="HealthModel = false" type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-[#303030] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
