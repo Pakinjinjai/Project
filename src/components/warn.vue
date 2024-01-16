@@ -70,6 +70,7 @@ export default {
                         this.formData.subDistrict === ""
                     ) {
                         this.showDiv = true;
+                        window.alert("กรุณากรอกข้อมูลประวัติส่วนตัวให้ครบ");
                     } else {
                         this.showDiv = false;
                     }
