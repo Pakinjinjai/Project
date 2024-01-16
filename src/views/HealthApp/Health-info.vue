@@ -4,10 +4,15 @@ export default {
   data() {
     return {
       health: {},
+      healthupdate: [],
     };
   },
   created() {
     this.showInfo();
+    this.Interval = setInterval(this.checkForUpdates, 60000);
+  },
+  destroyed() {
+    clearInterval(this.Interval);
   },
   methods: {
     showInfo() {
@@ -18,22 +23,42 @@ export default {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
       })
-        .then((res) => {
+      .then((res) => {
           if (res.data.length > 0) {
-            this.health = res.data[0]; // ให้ health รับค่าจาก response
+            this.health = res.data[0];
+            this.healthupdate = res.data[0].updatedAt;
+
+            // เช็คเวลาการอัปเดต
+            const lastUpdateTime = new Date(this.healthupdate).getTime();
+            console.log(lastUpdateTime);
+            const currentTime = new Date().getTime();
+            const elapsedTime = currentTime - lastUpdateTime;
+
+            // ถ้าเวลาที่ผ่านไปมากกว่า 1 นาทีให้แสดงเตือน
+            if (elapsedTime > 60000) {
+              window.alert("ข้อมูลไม่ได้รับการอัปเดตมากกว่า 1 นาที");
+            }
           }
-          console.log(this.health);
         })
         .catch((error) => {
           console.log(error);
         });
     },
+    formatDate(date) {
+      return new Date(date).toLocaleDateString();
+    },   
+   
   },
 };
 </script>
 
 <template>
   <div class="flex flex-col items-center gap-16 mx-auto">
+    
+      <p class="text-lg mt-4">อัพเดท :
+        {{ formatDate(healthupdate) }} 
+    </p>
+   
     <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2 mt-4">
       <div 
       v-if="Object.keys(health).length > 0" class="boxs flex flex-col items-center gap-1 px-8 py-10 bg-[#ffffff] rounded-3xl hover:shadow shadow-main mt-4 border-2 border-[#D9D9D9]">

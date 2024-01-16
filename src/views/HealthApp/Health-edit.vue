@@ -9,6 +9,7 @@ export default {
       health: {},
     };
   },
+  
   methods: {
     editHealth() {
       if (
