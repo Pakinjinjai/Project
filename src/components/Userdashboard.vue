@@ -62,6 +62,9 @@ export default {
       try {
         const res = await axios.get(`http://localhost:3000/api/v1/users/?Search=${searchQuery}`);
         this.users = res.data.Search;
+
+    // รีเซ็ตค่าดั้งเดิมของ pagination เมื่อมีการค้นหา
+    this.resetPagination();
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -119,6 +122,10 @@ export default {
       this.startIndex = (page - 1) * 10;
       this.endIndex = page * 10 - 1;
     },
+    resetPagination() {
+    this.startIndex = 0;
+    this.endIndex = 9;
+  },
   },
 };
 </script>
