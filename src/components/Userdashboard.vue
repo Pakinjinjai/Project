@@ -158,7 +158,7 @@ export default {
           <table class="w-full text-sm text-left text-gray-500 ">
             <thead class="text-xs text-[#FDFDFD] uppercase bg-[#140A4B] ">
               <tr class="text-center">
-                <th scope="col" class="px-4 py-3">ไอดี</th>
+                <th scope="col" class="px-4 py-3">ID</th>
                 <th scope="col" class="px-4 py-3">รหัสบัตรประชาชน</th>
                 <th scope="col" class="px-4 py-3">ชื่อ</th>
                 <th scope="col" class="px-4 py-3">นามสกุล</th>
@@ -253,7 +253,7 @@ export default {
                           <div class="grid gap-4 mb-4 sm:grid-cols-2 ">
                             <!-- _id -->
                             <div>
-                              <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
+                              <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ID</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser._id }}</p>
                             </div>
                             <!-- idCard -->
@@ -494,6 +494,7 @@ export default {
               </tr>
             </tbody>
           </table>
+
           <!--Navunder Table-->
           <nav v-if="!searchQuery"
             class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
