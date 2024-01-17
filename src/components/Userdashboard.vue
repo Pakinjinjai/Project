@@ -225,7 +225,6 @@ export default {
                         d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z" />
                     </svg>
                   </button>
-
                   <!-- Main modal Layout info -->
                   <div id="infoUserModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !infoModel, flex: infoModel }"
@@ -495,36 +494,48 @@ export default {
               </tr>
             </tbody>
           </table>
-         <!--Navunder Table-->
-          <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-    <span class="text-sm font-normal text-gray-500 ">
-      Showing
-      <span class="font-semibold text-gray-900 ">{{ startIndex + 1 }}-{{ endIndex + 1 }}</span>
-      of
-      <span class="font-semibold text-gray-900 ">{{ users.length }}</span>
-    </span>
-    <ul class="inline-flex items-stretch -space-x-px">
-      <li>
-        <button @click="movePage(-1)" :disabled="startIndex <= 0" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">
-          <span class="sr-only">Previous</span>
-          <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-          </svg>
-        </button>
-      </li>
-      <li v-for="page in displayedPages" :key="page">
-        <a @click="goToPage(page)" :class="{ 'aria-current': page === currentPage }" class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">{{ page }}</a>
-      </li>
-      <li>
-        <button @click="movePage(1)" :disabled="endIndex >= users.length" class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">
-          <span class="sr-only">Next</span>
-          <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-          </svg>
-        </button>
-      </li>
-    </ul>
-  </nav>
+          <!--Navunder Table-->
+          <nav v-if="!searchQuery"
+            class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
+            aria-label="Table navigation">
+            <span class="text-sm font-normal text-gray-500 ">
+              Showing
+              <span class="font-semibold text-gray-900 ">{{ startIndex + 1 }}-{{ endIndex + 1 }}</span>
+              of
+              <span class="font-semibold text-gray-900 ">{{ users.length }}</span>
+            </span>
+            <ul class="inline-flex items-stretch -space-x-px">
+              <li>
+                <button @click="movePage(-1)" :disabled="startIndex <= 0"
+                  class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">
+                  <span class="sr-only">Previous</span>
+                  <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </li>
+              <li v-for="page in displayedPages" :key="page">
+                <a @click="goToPage(page)" :class="{ 'aria-current': page === currentPage }"
+                  class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">{{
+                    page }}</a>
+              </li>
+              <li>
+                <button @click="movePage(1)" :disabled="endIndex >= users.length"
+                  class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">
+                  <span class="sr-only">Next</span>
+                  <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
