@@ -140,8 +140,12 @@ export default {
         formatDate(date) {
             return new Date(date).toLocaleDateString();
         },
-        async AddModal(user) {
-            try {
+        AddModal(user) {
+            this.SelectAddModal = user;
+            console.log("แอดคิว", this.SelectAddModal);
+            this.AddModel = true;
+        },
+        async AddNewQueue(user){ try {
                     // สร้าง postData จาก inputData
                     const postData = {
                         topic: this.inputData.topic,
@@ -158,9 +162,6 @@ export default {
                 }
             this.SelectAddModal = user;
             console.log("แอดคิว", this.SelectAddModal);
-            this.AddModel = true;
-        },
-        AddNewQueue(){
             this.AddModel = false
         },
         showinfoModal(user) {
