@@ -62,6 +62,9 @@ export default {
       try {
         const res = await axios.get(`http://localhost:3000/api/v1/users/?Search=${searchQuery}`);
         this.users = res.data.Search;
+
+    // รีเซ็ตค่าดั้งเดิมของ pagination เมื่อมีการค้นหา
+    this.resetPagination();
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -119,6 +122,10 @@ export default {
       this.startIndex = (page - 1) * 10;
       this.endIndex = page * 10 - 1;
     },
+    resetPagination() {
+    this.startIndex = 0;
+    this.endIndex = 9;
+  },
   },
 };
 </script>
@@ -158,7 +165,7 @@ export default {
           <table class="w-full text-sm text-left text-gray-500 ">
             <thead class="text-xs text-[#FDFDFD] uppercase bg-[#140A4B] ">
               <tr class="text-center">
-                <th scope="col" class="px-4 py-3">ไอดี</th>
+                <th scope="col" class="px-4 py-3">ID</th>
                 <th scope="col" class="px-4 py-3">รหัสบัตรประชาชน</th>
                 <th scope="col" class="px-4 py-3">ชื่อ</th>
                 <th scope="col" class="px-4 py-3">นามสกุล</th>
@@ -228,7 +235,7 @@ export default {
                   <!-- Main modal Layout info -->
                   <div id="infoUserModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !infoModel, flex: infoModel }"
-                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/30  ">
+                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5  ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                       <!-- Modal content -->
                       <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
@@ -253,7 +260,7 @@ export default {
                           <div class="grid gap-4 mb-4 sm:grid-cols-2 ">
                             <!-- _id -->
                             <div>
-                              <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
+                              <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ID</label>
                               <p class="text-left p-2.5 bg-gray-50 border rounded-lg">{{ selectedUser._id }}</p>
                             </div>
                             <!-- idCard -->
@@ -315,7 +322,7 @@ export default {
                   <!-- Main modal Layout info Address -->
                   <div id="infoUserModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !AddressModel, flex: AddressModel }"
-                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/30 ">
+                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5 ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                       <!-- Modal content -->
                       <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
@@ -417,7 +424,7 @@ export default {
                   <!-- Main modal Layout info Health -->
                   <div id="infoHealthModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !HealthModel, flex: HealthModel }"
-                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/30 ">
+                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5 ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                       <!-- Modal content -->
                       <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
@@ -494,6 +501,7 @@ export default {
               </tr>
             </tbody>
           </table>
+
           <!--Navunder Table-->
           <nav v-if="!searchQuery"
             class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
