@@ -14,6 +14,7 @@ export default {
                 locations: false,
                 userId: '',
             },
+            SelectAddQueues: {},
             SelectQueue: {},
             SelectedaddQueue: {},
             SelectedUpdateQueue: {},
@@ -160,8 +161,8 @@ export default {
                 } catch (error) {
                     console.error('Error during POST request:', error);
                 }
-            this.SelectAddModal = user;
-            console.log("แอดคิว", this.SelectAddModal);
+            this.SelectAddQueues = user;
+            console.log("แอดคิว", this.SelectAddQueues);
             this.AddModel = false
         },
         showinfoModal(user) {
@@ -691,28 +692,28 @@ export default {
                                                     <div>
                                                         <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
                                                         <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                            {{ SelectAddModal._id }}
+                                                            {{ SelectAddQueues._id }}
                                                         </p>
                                                     </div>
                                                     <!-- idCard -->
                                                     <div>
                                                         <label for="idCard" class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
                                                         <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                            {{ SelectAddModal.idCard }}
+                                                            {{ SelectAddQueues.idCard }}
                                                         </p>
                                                     </div>
                                                     <!-- firstname -->
                                                     <div>
                                                         <label for="firstname" class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
                                                         <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                            {{ SelectAddModal.firstname }}
+                                                            {{ SelectAddQueues.firstname }}
                                                         </p>
                                                     </div>
                                                     <!-- lastname -->
                                                     <div>
                                                         <label for="lastname" class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
                                                         <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                            {{ SelectAddModal.lastname }}
+                                                            {{ SelectAddQueues.lastname }}
                                                         </p>
                                                     </div>
                                                     <!-- topic -->
@@ -727,11 +728,11 @@ export default {
                                                         <div class=" ml-4 text-start  " >
 
                                                             <label class="">
-                                                                <input type="radio" class="" name="accountType" value="false" />
+                                                                <input type="radio" class="" name="accountType" value="false"  v-model="inputData.locations"/>
                                                                 <span class="ml-2">ออนไลน์</span>
                                                             </label>
                                                             <label class=" ml-6  ">
-                                                                <input type="radio" class="" name="accountType" value="true" />
+                                                                <input type="radio" class="" name="accountType" value="true"  v-model="inputData.locations"/>
                                                                 <span class="ml-2">ออนไซต์</span>
                                                             </label>
                                                         </div>
