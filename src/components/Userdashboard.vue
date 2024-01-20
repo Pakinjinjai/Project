@@ -320,7 +320,7 @@ export default {
                     </div>
                   </div>
                   <!-- Main modal Layout info Address -->
-                  <div id="infoUserModal" tabindex="-1" aria-hidden="true"
+                  <div id="AddressUserModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !AddressModel, flex: AddressModel }"
                     class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5 ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
@@ -421,8 +421,8 @@ export default {
                       </div>
                     </div>
                   </div>
-                  <!-- Main modal Layout info Health -->
-                  <div id="infoHealthModal" tabindex="-1" aria-hidden="true"
+                  <!-- Main modal Layout Health -->
+                  <div id="HealthModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !HealthModel, flex: HealthModel }"
                     class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5 ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
