@@ -692,34 +692,34 @@ export default {
                                                     <div>
                                                         <label for="_id" class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
                                                         <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                            {{ SelectAddQueues._id }}
+                                                            {{ SelectAddModal._id }}
                                                         </p>
                                                     </div>
                                                     <!-- idCard -->
                                                     <div>
                                                         <label for="idCard" class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
                                                         <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                            {{ SelectAddQueues.idCard }}
+                                                            {{ SelectAddModal.idCard }}
                                                         </p>
                                                     </div>
                                                     <!-- firstname -->
                                                     <div>
                                                         <label for="firstname" class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
                                                         <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                            {{ SelectAddQueues.firstname }}
+                                                            {{ SelectAddModal.firstname }}
                                                         </p>
                                                     </div>
                                                     <!-- lastname -->
                                                     <div>
                                                         <label for="lastname" class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
                                                         <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                            {{ SelectAddQueues.lastname }}
+                                                            {{SelectAddModal.lastname }}
                                                         </p>
                                                     </div>
                                                     <!-- topic -->
                                                     <div>
                                                         <label for="topic" class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
-                                                        <input type="text" name="topic" id="topic" value="" class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="หัวข้อ" />
+                                                        <input  v-model="inputData.title" type="text" name="topic" id="topic" value="" class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="หัวข้อ" />
                                                     </div>
                                                     <br>
                                                     <!-- dateQueue -->
