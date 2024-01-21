@@ -335,7 +335,7 @@ export default {
                                                                     }}
                                                             </td>
                                                             <td class="px-4 py-3 flex text-[#303030] justify-center">
-                                                                Queueinfo_Btn
+                                                               
                                                                 <button @click="trueQueueModal(item)" class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none" type="button">
                                                                     <svg class="w-[16px] h-[16px] text-[#303030]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
