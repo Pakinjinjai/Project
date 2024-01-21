@@ -192,17 +192,16 @@ export default {
             this.infotrueModel = true;
             this.infoModel = false;
         },
-        falseInfoModal() {
-            this.infotrueModel = false
-            this.infoModel = true;
-        },
         UpdateModal(user) {
             this.SelectedItem = user;
             this.UpdateModel = true;
         },
-        UpdateQueue_Btn(user) {
-            this.SelectedUpdateQueue = user;
+        UpdateQueue_Btn() {
             this.UpdateModel = false;
+        },
+        falseInfoModal() {
+            this.infotrueModel = false
+            this.infoModel = true;
         },
     },
 };
@@ -436,42 +435,6 @@ export default {
                                                                                 <form action="#">
                                                                                     <div
                                                                                         class="grid gap-4 mb-4 sm:grid-cols-2">
-                                                                                        <!-- _id -->
-                                                                                        <div>
-                                                                                            <label for="_id"
-                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
-                                                                                            <p
-                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ item._id }}
-                                                                                            </p>
-                                                                                        </div>
-                                                                                        <!-- idCard -->
-                                                                                        <div>
-                                                                                            <label for="idCard"
-                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
-                                                                                            <p
-                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ item.idCard }}
-                                                                                            </p>
-                                                                                        </div>
-                                                                                        <!-- firstname -->
-                                                                                        <div>
-                                                                                            <label for="firstname"
-                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
-                                                                                            <p
-                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ item.firstname }}
-                                                                                            </p>
-                                                                                        </div>
-                                                                                        <!-- lastname -->
-                                                                                        <div>
-                                                                                            <label for="lastname"
-                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
-                                                                                            <p
-                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ item.lastname }}
-                                                                                            </p>
-                                                                                        </div>
                                                                                         <!-- topic -->
                                                                                         <div>
                                                                                             <label for="topic"
@@ -481,6 +444,7 @@ export default {
                                                                                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                                                                                 placeholder="หัวข้อ" />
                                                                                         </div>
+                                                                                        <br>
                                                                                         <!-- status -->
                                                                                         <div>
                                                                                             <label for="status"
@@ -507,7 +471,33 @@ export default {
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <!-- dateQueue -->
+                                                                                        <!-- locations -->
+                                                                                        <div>
+                                                                                            <label for="locations"
+                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจสอบ</label>
+                                                                                            <div
+                                                                                                class="flex justify-center mb-4 ml-auto mr-12">
+                                                                                                <label
+                                                                                                    class="inline-flex items-center ml-6">
+                                                                                                    <input type="radio"
+                                                                                                        class="form-radio"
+                                                                                                        name="accountType"
+                                                                                                        value="false" />
+                                                                                                    <span
+                                                                                                        class="ml-2">ออนไลน์</span>
+                                                                                                </label>
+                                                                                                <label
+                                                                                                    class="inline-flex items-center ml-4">
+                                                                                                    <input type="radio"
+                                                                                                        class="form-radio"
+                                                                                                        name="accountType"
+                                                                                                        value="true" />
+                                                                                                    <span
+                                                                                                        class="ml-2">ออนไซต์</span>
+                                                                                                </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!-- startDate -->
                                                                                         <div>
                                                                                             <label for="dateQueue"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
@@ -517,7 +507,7 @@ export default {
                                                                                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                                                                                 placeholder="วัน/เดือน/ปี เกิด" />
                                                                                         </div>
-                                                                                        <!-- updatedAt -->
+                                                                                        <!-- endDate -->
                                                                                         <div>
                                                                                             <label for="updatedAt"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
@@ -539,7 +529,7 @@ export default {
                                                                                     <div
                                                                                         class="flex items-center content-center space-x-4">
                                                                                         <button
-                                                                                            @click="UpdateQueue_Btn(item)"
+                                                                                            @click="UpdateQueue_Btn()"
                                                                                             type="button"
                                                                                             class="text-[#140A4B] inline-flex items-center hover:text-white border border-[#140A4B] hover:bg-[#140A4B] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                                                             <svg class="mr-1 -ml-1 w-5 h-5"
