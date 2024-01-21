@@ -881,7 +881,7 @@ export default {
                                                     <div>
                                                         <label for="_id"
                                                             class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
-                                                        <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                        <p class="text-left p-2.5  text-base ">
                                                             {{ SelectAddModal._id }}
                                                         </p>
                                                     </div>
@@ -889,7 +889,7 @@ export default {
                                                     <div>
                                                         <label for="idCard"
                                                             class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
-                                                        <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                        <p class="text-left p-2.5  text-base">
                                                             {{ SelectAddModal.idCard }}
                                                         </p>
                                                     </div>
@@ -897,7 +897,7 @@ export default {
                                                     <div>
                                                         <label for="firstname"
                                                             class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
-                                                        <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                        <p class="text-left p-2.5  text-base">
                                                             {{ SelectAddModal.firstname }}
                                                         </p>
                                                     </div>
@@ -905,10 +905,11 @@ export default {
                                                     <div>
                                                         <label for="lastname"
                                                             class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
-                                                        <p class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                        <p class="text-left p-2.5 text-base">
                                                             {{ SelectAddModal.lastname }}
                                                         </p>
                                                     </div>
+                                                    
                                                     <!-- topic -->
                                                     <div>
                                                         <label for="topic"
