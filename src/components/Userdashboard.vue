@@ -232,8 +232,8 @@ export default {
                         d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z" />
                     </svg>
                   </button>
-                  <!-- Main modal Layout info -->
-                  <div id="infoUserModal" tabindex="-1" aria-hidden="true"
+                  <!-- Main modal Layout info User -->
+                  <div id="UserModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !infoModel, flex: infoModel }"
                     class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5  ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
@@ -320,7 +320,7 @@ export default {
                     </div>
                   </div>
                   <!-- Main modal Layout info Address -->
-                  <div id="AddressUserModal" tabindex="-1" aria-hidden="true"
+                  <div id="AddressModal" tabindex="-1" aria-hidden="true"
                     :class="{ hidden: !AddressModel, flex: AddressModel }"
                     class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5 ">
                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
