@@ -184,7 +184,9 @@ export default {
         trueQueueModal(user) {
             // this.SelecttrueQueue = user.queues.filter(queue => queue.status === false);
             // console.log("ข้อมูล false", this.SelecttrueQueue)
+            
             this.trueQueueModel = true;
+            
         },
         // ปุ๋มตรวจสอบเเล้ว
         trueInfoModal(user) {
@@ -397,7 +399,7 @@ export default {
                                                                                 d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z" />
                                                                         </svg>
                                                                     </button>
-                                                                    <!-- Main modal Layout Queue UpdateModel -->
+                                                                    <!-- Main modal Layout แก้ไขคิว -->
                                                                     <div id="UpdateModel" tabindex="-1" aria-hidden="true"
                                                                         :class="{
                                                                             hidden: !UpdateModel,
@@ -475,27 +477,28 @@ export default {
                                                                                         <div>
                                                                                             <label for="locations"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจสอบ</label>
-                                                                                            <div
-                                                                                                class="flex justify-center mb-4 ml-auto mr-12">
-                                                                                                <label
-                                                                                                    class="inline-flex items-center ml-6">
-                                                                                                    <input type="radio"
-                                                                                                        class="form-radio"
-                                                                                                        name="accountType"
-                                                                                                        value="false" />
-                                                                                                    <span
-                                                                                                        class="ml-2">ออนไลน์</span>
-                                                                                                </label>
-                                                                                                <label
-                                                                                                    class="inline-flex items-center ml-4">
-                                                                                                    <input type="radio"
-                                                                                                        class="form-radio"
-                                                                                                        name="accountType"
-                                                                                                        value="true" />
-                                                                                                    <span
-                                                                                                        class="ml-2">ออนไซต์</span>
-                                                                                                </label>
-                                                                                            </div>
+                                                                                            
+                                                                                                <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" >
+                                                                                                    <label
+                                                                                                        class="inline-flex items-center ml-6">
+                                                                                                        <input type="radio"
+                                                                                                            class="form-radio"
+                                                                                                            name="accountType"
+                                                                                                            value="false" />
+                                                                                                        <span
+                                                                                                            class="ml-2">ออนไลน์</span>
+                                                                                                    </label>
+                                                                                                    <label
+                                                                                                        class="inline-flex items-center ml-4">
+                                                                                                        <input type="radio"
+                                                                                                            class="form-radio"
+                                                                                                            name="accountType"
+                                                                                                            value="true" />
+                                                                                                        <span
+                                                                                                            class="ml-2">ออนไซต์</span>
+                                                                                                    </label>
+                                                                                                </div>                                                                            
+                                                                                            
                                                                                         </div>
                                                                                         <!-- startDate -->
                                                                                         <div>
@@ -548,12 +551,12 @@ export default {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Main modal Layout Queue trueQueueModel -->
+                                                                    <!-- Main modal Layout ดูข้อมูลคิว -->
                                                                     <div id="trueQueueModel" tabindex="-1"
                                                                         aria-hidden="true" :class="{
                                                                             hidden: !trueQueueModel,
                                                                             flex: trueQueueModel,
-                                                                        }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5">
+                                                                        }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25">
                                                                         <div
                                                                             class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                                                                             <!-- Modal content -->
@@ -595,16 +598,26 @@ export default {
                                                                                                 หัวข้อ
                                                                                             </p>
                                                                                         </div>
+                                                                                        <br>
                                                                                         <!-- status -->
                                                                                         <div>
                                                                                             <label for="status"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                ตรวจสอบแล้ว
+                                                                                                ยังไม่ได้รับการตรวจ
                                                                                             </p>
                                                                                         </div>
-                                                                                        <!-- dateQueue -->
+                                                                                        <!-- locations -->
+                                                                                        <div>
+                                                                                            <label for="status"
+                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจ</label>
+                                                                                            <p
+                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                                                                ออนไลน์/ออนไซต์
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <!-- startDate -->
                                                                                         <div>
                                                                                             <label for="dateQueue"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
@@ -613,15 +626,16 @@ export default {
                                                                                                 xx-xx-xx
                                                                                             </p>
                                                                                         </div>
-                                                                                        <!-- updatedAt -->
+                                                                                        <!-- endDate -->
                                                                                         <div>
                                                                                             <label for="updatedAt"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                xx-xx-xx
+                                                                                                xx-xx-xx / ยังไม่ได้รับการตรวจ
                                                                                             </p>
                                                                                         </div>
+                                                                                        <!-- note -->
                                                                                         <div class="sm:col-span-2">
                                                                                             <label for="description"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
