@@ -6,6 +6,7 @@ export default {
 
     data() {
         return {
+            truequeue: {},
             inputData: this.resetInputData(),
             SelectAddQueues: {},
             SelectQueue: {},
@@ -182,11 +183,9 @@ export default {
             this.infoModel = true;
         },
         trueQueueModal(user) {
-            // this.SelecttrueQueue = user.queues.filter(queue => queue.status === false);
-            // console.log("ข้อมูล false", this.SelecttrueQueue)
-            
+            this.truequeue = user;
+            console.log("ข้อมูล info ตรวจเเล้ว", this.truequeue);
             this.trueQueueModel = true;
-            
         },
         // ปุ๋มตรวจสอบเเล้ว
         trueInfoModal(user) {
@@ -595,7 +594,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                หัวข้อ
+                                                                                                {{ truequeue.topic }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <br>
@@ -605,7 +604,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                ยังไม่ได้รับการตรวจ
+                                                                                               {{ truequeue.status ? "ตรวจสอบเเล้ว":"ยังไม่ตรวจ" }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- locations -->
@@ -614,7 +613,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                ออนไลน์/ออนไซต์
+                                                                                                {{ truequeue.locations ? "ออนไลน์":"ออนไซร์" }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- startDate -->
@@ -623,7 +622,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                xx-xx-xx
+                                                                                                {{ formatDate(truequeue.startDate) }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- endDate -->
@@ -632,7 +631,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                xx-xx-xx / ยังไม่ได้รับการตรวจ
+                                                                                                {{ formatDate(truequeue.endDate) ? formatDate(truequeue.endDate):"ยังไม่ได้รับการตรวจ" }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- note -->
@@ -641,7 +640,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
                                                                                             <p
                                                                                                 class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-left">
-                                                                                                คำแนะนำ
+                                                                                                {{ truequeue.note }}
                                                                                             </p>
                                                                                         </div>
                                                                                     </div>
