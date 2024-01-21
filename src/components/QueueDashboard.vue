@@ -450,25 +450,25 @@ export default {
                                                                                         <div>
                                                                                             <label for="status"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
-                                                                                            <div
-                                                                                                class="flex justify-center mb-4 ml-auto mr-12">
+                                                                                                <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 text-start" >
+
                                                                                                 <label
-                                                                                                    class="inline-flex items-center ml-6">
+                                                                                                    class="inline-flex">
                                                                                                     <input type="radio"
                                                                                                         class="form-radio"
                                                                                                         name="accountType"
                                                                                                         value="false" />
                                                                                                     <span
-                                                                                                        class="ml-2">ยังไม่ได้รับ<br />การตรวจสอบ</span>
+                                                                                                        class="ml-2">ยังไม่ได้ตรวจ</span>
                                                                                                 </label>
                                                                                                 <label
-                                                                                                    class="inline-flex items-center">
+                                                                                                    class="inline-flex ml-4">
                                                                                                     <input type="radio"
                                                                                                         class="form-radio"
                                                                                                         name="accountType"
                                                                                                         value="true" />
                                                                                                     <span
-                                                                                                        class="ml-2">ตรวจสอบแล้ว</span>
+                                                                                                        class="ml-2">ตรวจแล้ว</span>
                                                                                                 </label>
                                                                                             </div>
                                                                                         </div>
@@ -477,9 +477,9 @@ export default {
                                                                                             <label for="locations"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจสอบ</label>
                                                                                             
-                                                                                                <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" >
+                                                                                                <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 text-start" >
                                                                                                     <label
-                                                                                                        class="inline-flex items-center ml-6">
+                                                                                                        class="inline-flex">
                                                                                                         <input type="radio"
                                                                                                             class="form-radio"
                                                                                                             name="accountType"
@@ -488,7 +488,7 @@ export default {
                                                                                                             class="ml-2">ออนไลน์</span>
                                                                                                     </label>
                                                                                                     <label
-                                                                                                        class="inline-flex items-center ml-4">
+                                                                                                        class="inline-flex ml-4">
                                                                                                         <input type="radio"
                                                                                                             class="form-radio"
                                                                                                             name="accountType"
@@ -790,56 +790,67 @@ export default {
                                                                                         modal</span>
                                                                                 </button>
                                                                             </div>
-                                                                            <!-- Modal body -->
-                                                                            <form action="#">
-                                                                                <div
-                                                                                    class="grid gap-4 mb-4 sm:grid-cols-2">
-                                                                                    <!-- topic -->
-                                                                                    <div>
-                                                                                        <label for="topic"
-                                                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
-                                                                                        <p
-                                                                                            class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                            หัวข้อ
-                                                                                        </p>
+                                                                                <!-- Modal body -->
+                                                                                <form action="#">
+                                                                                    <div
+                                                                                        class="grid gap-4 mb-4 sm:grid-cols-2">
+                                                                                        <!-- topic -->
+                                                                                        <div>
+                                                                                            <label for="topic"
+                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
+                                                                                            <p
+                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                                                                หัวข้อ
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <!-- status -->
+                                                                                        <div>
+                                                                                            <label for="status"
+                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
+                                                                                            <p
+                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                                                                ยังไม่ได้รับการตรวจ
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <!-- locations -->
+                                                                                        <div>
+                                                                                            <label for="status"
+                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจ</label>
+                                                                                            <p
+                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                                                                ออนไลน์/ออนไซต์
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <!-- startDate -->
+                                                                                        <div>
+                                                                                            <label for="dateQueue"
+                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
+                                                                                            <p
+                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                                                                xx-xx-xx
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <!-- endDate -->
+                                                                                        <div>
+                                                                                            <label for="updatedAt"
+                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
+                                                                                            <p
+                                                                                                class="text-left p-2.5 bg-gray-50 border rounded-lg">
+                                                                                                xx-xx-xx / ยังไม่ได้รับการตรวจ
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <!-- note -->
+                                                                                        <div class="sm:col-span-2">
+                                                                                            <label for="description"
+                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
+                                                                                            <p
+                                                                                                class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-left">
+                                                                                                คำแนะนำ
+                                                                                            </p>
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <!-- status -->
-                                                                                    <div>
-                                                                                        <label for="status"
-                                                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
-                                                                                        <p
-                                                                                            class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                            ตรวจสอบแล้ว
-                                                                                        </p>
-                                                                                    </div>
-                                                                                    <!-- dateQueue -->
-                                                                                    <div>
-                                                                                        <label for="dateQueue"
-                                                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
-                                                                                        <p
-                                                                                            class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                            xx-xx-xx
-                                                                                        </p>
-                                                                                    </div>
-                                                                                    <!-- updatedAt -->
-                                                                                    <div>
-                                                                                        <label for="updatedAt"
-                                                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
-                                                                                        <p
-                                                                                            class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                            xx-xx-xx
-                                                                                        </p>
-                                                                                    </div>
-                                                                                    <div class="sm:col-span-2">
-                                                                                        <label for="description"
-                                                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
-                                                                                        <p
-                                                                                            class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-left">
-                                                                                            คำแนะนำ
-                                                                                        </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
+                                                                                </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
