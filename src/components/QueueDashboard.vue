@@ -796,18 +796,6 @@ async UpdateQueue_Btn() {
                                                                                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                                                         </svg>
                                                                     </button>
-                                                                    <!-- delete_Btn -->
-                                                                    <button
-                                                                        class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none"
-                                                                        type="button">
-                                                                        <svg class="w-[16px] h-[16px] text-[#303030]"
-                                                                            aria-hidden="true" style="color: #eb1851"
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            fill="currentColor" viewBox="0 0 18 20">
-                                                                            <path
-                                                                                d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z" />
-                                                                        </svg>
-                                                                    </button>
                                                                     <!-- Main modal Layout QueueInfo -->
                                                                     <div id="trueQueueModel" tabindex="-1"
                                                                         aria-hidden="true" :class="{
