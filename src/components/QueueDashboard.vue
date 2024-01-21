@@ -402,7 +402,7 @@ export default {
                                                                         :class="{
                                                                             hidden: !UpdateModel,
                                                                             flex: UpdateModel,
-                                                                        }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-50">
+                                                                        }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full ">
                                                                         <div
                                                                             class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                                                                             <!-- Modal content -->
@@ -553,7 +553,7 @@ export default {
                                                                         aria-hidden="true" :class="{
                                                                             hidden: !trueQueueModel,
                                                                             flex: trueQueueModel,
-                                                                        }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full bg-black bg-opacity-50">
+                                                                        }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5">
                                                                         <div
                                                                             class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                                                                             <!-- Modal content -->
