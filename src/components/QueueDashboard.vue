@@ -192,14 +192,64 @@ export default {
             this.SelecttrueInfo = user.queues;
             this.infotrueModel = true;
             this.infoModel = false;
-        },
+        },updateStartDate(event) {
+        // ทำการอัปเดตค่าของ SelectedItem.startDate เมื่อผู้ใช้กรอกข้อมูล
+        this.SelectedItem.startDate = event.target.value;
+    },
+    updateEndDate(event) {
+        // ทำการอัปเดตค่าของ SelectedItem.endDate เมื่อผู้ใช้กรอกข้อมูล
+        this.SelectedItem.endDate = event.target.value;
+    },
         UpdateModal(user) {
-            this.SelectedItem = user;
-            this.UpdateModel = true;
-        },
-        UpdateQueue_Btn() {
-            this.UpdateModel = false;
-        },
+    this.SelectedItem = user;
+    // ตัดเวลาออก (เพื่อให้ input type date ใน HTML รับค่าได้)
+    this.SelectedItem.startDate = this.SelectedItem.startDate.split('T')[0];
+    if (this.SelectedItem.endDate) {
+        this.SelectedItem.endDate = this.SelectedItem.endDate.split('T')[0];
+    }
+    console.log("ค่า status ที่ได้จาก API response:", this.SelectedItem.status);
+    console.log("ข้อมูล info ยังไม่ตรวจ", this.SelectedItem);
+    this.UpdateModel = true;
+},
+async UpdateQueue_Btn() {
+    try {
+        // ดึง Access Token จาก Local Storage
+        const accessToken = localStorage.getItem("accessToken");
+        
+        // ทำการส่งข้อมูลไปยัง API ของเซิร์ฟเวอร์
+        const res = await axios.patch(
+            `http://localhost:3000/api/v1/queues/${this.SelectedItem._id}`,
+            {
+                topic: this.SelectedItem.topic,
+                startDate: this.SelectedItem.startDate,
+                endDate: this.SelectedItem.endDate,
+                locations: this.SelectedItem.locations,
+                note: this.SelectedItem.note,
+                status: this.SelectedItem.status
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }
+        );
+
+        // กรณีอัปเดตคิวสำเร็จ
+        console.log("อัปเดตคิวสำเร็จ:", res);
+
+        // ปิด Modal เพื่อเตรียมสำหรับการแก้ไขคิวถัดไป
+        this.UpdateModel = false;
+
+
+
+        // ทำการดึงข้อมูลทั้งหมดใหม่
+        this.getAllUser();
+    } catch (error) {
+        // กรณีเกิดข้อผิดพลาดในการอัปเดตคิว
+        console.error("Error updating queue:", error);
+    }
+},
+
         falseInfoModal() {
             this.infotrueModel = false
             this.infoModel = true;
@@ -443,35 +493,25 @@ export default {
                                                                                             <input type="text" name="topic"
                                                                                                 id="topic" value=""
                                                                                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                                                                                                placeholder="หัวข้อ" />
+                                                                                                placeholder="หัวข้อ"
+                                                                                                v-model="SelectedItem.topic"
+                                                                                                />
                                                                                         </div>
                                                                                         <br>
                                                                                         <!-- status -->
-                                                                                        <div>
-                                                                                            <label for="status"
-                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
-                                                                                                <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 text-start" >
-
-                                                                                                <label
-                                                                                                    class="inline-flex">
-                                                                                                    <input type="radio"
-                                                                                                        class="form-radio"
-                                                                                                        name="accountType"
-                                                                                                        value="false" />
-                                                                                                    <span
-                                                                                                        class="ml-2">ยังไม่ได้ตรวจ</span>
-                                                                                                </label>
-                                                                                                <label
-                                                                                                    class="inline-flex ml-4">
-                                                                                                    <input type="radio"
-                                                                                                        class="form-radio"
-                                                                                                        name="accountType"
-                                                                                                        value="true" />
-                                                                                                    <span
-                                                                                                        class="ml-2">ตรวจแล้ว</span>
-                                                                                                </label>
-                                                                                            </div>
-                                                                                        </div>
+<div>
+    <label for="status" class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
+    <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 text-start">
+        <label class="inline-flex">
+            <input type="radio" class="form-radio" name="status" value="true" v-model="SelectedItem.status" />
+            <span class="ml-2">ตรวจแล้ว</span>
+        </label>
+        <label class="inline-flex ml-4">
+            <input type="radio" class="form-radio" name="status" value="false" v-model="SelectedItem.status" />
+            <span class="ml-2">ยังไม่ได้ตรวจ</span>
+        </label>
+    </div>
+</div>
                                                                                         <!-- locations -->
                                                                                         <div>
                                                                                             <label for="locations"
@@ -483,7 +523,9 @@ export default {
                                                                                                         <input type="radio"
                                                                                                             class="form-radio"
                                                                                                             name="accountType"
-                                                                                                            value="false" />
+                                                                                                            value="false"
+                                                                                                            v-model="SelectedItem.locations"
+                                                                                                            />
                                                                                                         <span
                                                                                                             class="ml-2">ออนไลน์</span>
                                                                                                     </label>
@@ -492,7 +534,9 @@ export default {
                                                                                                         <input type="radio"
                                                                                                             class="form-radio"
                                                                                                             name="accountType"
-                                                                                                            value="true" />
+                                                                                                            value="true"
+                                                                                                            v-model="SelectedItem.locations"
+                                                                                                            />
                                                                                                         <span
                                                                                                             class="ml-2">ออนไซต์</span>
                                                                                                     </label>
@@ -501,31 +545,39 @@ export default {
                                                                                         </div>
                                                                                         <!-- startDate -->
                                                                                         <div>
-                                                                                            <label for="dateQueue"
+                                                                                            <label for="startDate"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
                                                                                             <input type="date"
-                                                                                                name="dateQueue"
-                                                                                                id="dateQueue" value=""
+                                                                                                name="startDate"
+                                                                                                id="startDate"                                                                                                
                                                                                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                                                                                                placeholder="วัน/เดือน/ปี เกิด" />
+                                                                                                :value="SelectedItem.startDate"
+                                                                                                @input="updateStartDate($event)"
+                                                                                                />
                                                                                         </div>
                                                                                         <!-- endDate -->
                                                                                         <div>
                                                                                             <label for="updatedAt"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
                                                                                             <input type="date"
-                                                                                                name="updatedAt"
-                                                                                                id="updatedAt" value=""
+                                                                                                name="endDate"
+                                                                                                id="endDate" 
                                                                                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                                                                                                placeholder="วัน/เดือน/ปี เกิด" />
+                                                                                                :value="SelectedItem.endDate"
+                                                                                                placeholder="SelectedItem.endDate ? '' : 'ยังไม่ได้รับการเข้าตรวจ'"
+                                                                                                @input="updateEndDate($event)"
+                                                                                                 />
                                                                                         </div>
+                                                                                        <!--note-->
                                                                                         <div class="sm:col-span-2">
                                                                                             <label for="description"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
                                                                                             <textarea id="description"
                                                                                                 rows="5"
                                                                                                 class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-                                                                                                placeholder="Write a description..."></textarea>
+                                                                                                
+                                                                                                v-model="SelectedItem.note"
+                                                                                                ></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div
