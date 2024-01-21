@@ -192,10 +192,9 @@ export default {
             this.infotrueModel = true;
             this.infoModel = false;
         },
-        falseInfoModal(user) {
-            this.SelectfalseInfo = user.queues;
-            this.infotrueModel = true;
-            this.infoModel = false;
+        falseInfoModal() {
+            this.infotrueModel = false
+            this.infoModel = true;
         },
         UpdateModal(user) {
             this.SelectedItem = user;
@@ -330,7 +329,7 @@ export default {
                                                                     วันนัดหมาย
                                                                 </th>
                                                                 <th scope="col" class="px-4 py-3">
-                                                                    วันที่เข้าตรวจ
+                                                                    ประเภทการตรวจ
                                                                 </th>
                                                                 <th scope="col" class="px-4 py-3">สถานะ</th>
                                                                 <th scope="col" class="px-4 py-3">จัดการ</th>
@@ -351,14 +350,15 @@ export default {
                                                                     {{ formatDate(item.startDate) }}
                                                                 </td>
                                                                 <td class="px-4 py-3">
-                                                                    {{ formatDate(item.updatedAt) }}
+                                                                    {{ item.locations ? "ออนไซต์" : "ออนไลน์" }}
                                                                 </td>
                                                                 <td class="px-4 py-3">
                                                                     {{
-                                                                        item.status ? "ตรวจเเล้ว" : "ไม่ตรวจเเล้ว"
+                                                                        item.status ? "ตรวจเเล้ว" : "ยังไม่ตรวจ"
                                                                     }}
                                                                 </td>
                                                                 <td class="px-4 py-3 flex text-[#303030] justify-center">
+                                                                    <!--Info_Btn-->
                                                                     <button @click="trueQueueModal(item)"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none"
                                                                         type="button">
@@ -666,7 +666,7 @@ export default {
                                                         <h3 class="text-lg text-center font-semibold text-[#303030]">
                                                             รายการคิวรายบุคคลไม่ตรวจ
                                                         </h3>
-                                                        <button @click="infotrueModel = false" type="button"
+                                                        <button @click="falseInfoModal()" type="button"
                                                             class="text-[#EB1851] mb-2 inline-flex items-center hover:text-white border border-[#EB1851] hover:bg-[#EB1851] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                             <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor"
                                                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -695,7 +695,7 @@ export default {
                                                             <tr class="text-center">
                                                                 <th scope="col" class="px-4 py-3">หัวข้อ</th>
                                                                 <th scope="col" class="px-4 py-3">
-                                                                    วันนัดหมาย
+                                                                    ประเภทการตรวจ
                                                                 </th>
                                                                 <th scope="col" class="px-4 py-3">
                                                                     วันที่เข้าตรวจ
@@ -716,10 +716,10 @@ export default {
                                                                     {{ item.topic }}
                                                                 </th>
                                                                 <td class="px-4 py-3">
-                                                                    {{ formatDate(item.startDate) }}
+                                                                    {{ item.locations ? "ออนไซต์":"ออนไลน์" }}
                                                                 </td>
                                                                 <td class="px-4 py-3">
-                                                                    {{ formatDate(item.updatedAt) }}
+                                                                    {{ formatDate(item.endDate) }}
                                                                 </td>
                                                                 <td class="px-4 py-3">
                                                                     {{
@@ -727,21 +727,7 @@ export default {
                                                                     }}
                                                                 </td>
                                                                 <td class="px-4 py-3 flex text-[#303030] justify-center">
-                                                                    <!-- Queueinfo_Btn -->
-                                                                    <!-- <button @click="trueQueueModal(item)"
-                                                                        class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none"
-                                                                        type="button">
-                                                                        <svg class="w-[16px] h-[16px] text-[#303030]"
-                                                                            aria-hidden="true"
-                                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                            viewBox="0 0 20 20">
-                                                                            <path stroke="currentColor"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round" stroke-width="1"
-                                                                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                                                        </svg>
-                                                                    </button> -->
-                                                                    <!-- เครื่องมือหน้ายังไม่ได้รับการตรวจสอบ -->
+                                                                    <!-- ดูข้อมูลของแต่ละคิว -->
                                                                     <button @click="trueQueueModal(item)"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none"
                                                                         type="button">
@@ -753,19 +739,6 @@ export default {
                                                                                 stroke-linecap="round"
                                                                                 stroke-linejoin="round" stroke-width="1"
                                                                                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                                                        </svg>
-                                                                    </button>
-                                                                    <button @click="UpdateModal(item)"
-                                                                        class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none"
-                                                                        type="button">
-                                                                        <svg class="w-[16px] h-[16px] text-gray-800 dark:text-white"
-                                                                            aria-hidden="true"
-                                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                            viewBox="0 0 21 21">
-                                                                            <path stroke="currentColor"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round" stroke-width="1"
-                                                                                d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279" />
                                                                         </svg>
                                                                     </button>
                                                                     <!-- delete_Btn -->
@@ -780,7 +753,7 @@ export default {
                                                                                 d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z" />
                                                                         </svg>
                                                                     </button>
-                                                                    <!-- Main modal Layout Queue trueQueueModel -->
+                                                                    <!-- Main modal Layout QueueInfo -->
                                                                     <div id="trueQueueModel" tabindex="-1"
                                                                         aria-hidden="true" :class="{
                                                                                 hidden: !trueQueueModel,
