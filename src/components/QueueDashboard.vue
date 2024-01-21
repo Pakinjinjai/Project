@@ -451,7 +451,7 @@ export default {
                                                                                         <div>
                                                                                             <label for="status"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
-                                                                                                <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" >
+                                                                                                <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 text-start" >
 
                                                                                                 <label
                                                                                                     class="inline-flex">
