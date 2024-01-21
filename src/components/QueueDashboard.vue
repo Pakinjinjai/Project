@@ -677,8 +677,10 @@ export default {
                                 <!-- Main modal Layout Queue Add -->
                                 <div id="AddModel" tabindex="-1" aria-hidden="true" :class="{ hidden: !AddModel, flex: AddModel }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5">
                                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                                        
                                         <!-- Modal content -->
                                         <div class="relative p-4 bg-white rounded-lg shadow sm:p-5">
+
                                             <!-- Modal header -->
                                             <div class="flex justify-between items-center rounded-t border-b sm:mb-5">
                                                 <h3 class="text-lg font-semibold text-[#303030]">
