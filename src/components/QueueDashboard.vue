@@ -6,6 +6,8 @@ export default {
 
     data() {
         return {
+            startIndex: 0,
+            endIndex: 9,
             truequeue: {},
             inputData: this.resetInputData(),
             SelectAddQueues: {},
@@ -28,6 +30,26 @@ export default {
     },
 
     computed: {
+        currentPage() {
+            return Math.floor(this.startIndex / 10) + 1;
+        },
+        totalPages() {
+            return Math.ceil(this.Queue.length / 10);
+        },
+        displayedPages() {
+            const maxPages = 5; // Adjust as needed
+            const currentPage = this.currentPage;
+            const totalPages = this.totalPages;
+
+            let startPage = Math.max(1, currentPage - Math.floor(maxPages / 2));
+            let endPage = Math.min(totalPages, startPage + maxPages - 1);
+
+            if (endPage - startPage < maxPages - 1) {
+                startPage = Math.max(1, endPage - maxPages + 1);
+            }
+
+            return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
+        },
         sorteduser() {
             return this.Queue.slice().sort((a, b) => {
                 if (a.status === b.status) {
@@ -67,11 +89,12 @@ export default {
     methods: {
         async fetchDataFromApi(searchQuery) {
             try {
-                const response = await axios.get(
+                const res = await axios.get(
                     `http://localhost:3000/api/v1/users/?Search=${searchQuery}`
                 );
                 this.Queue = res.data.Search;
-                // console.log(this.QueueSearch);
+                // console.log("ข้อมูลที่ค้นหา",this.QueueSearch);
+                this.resetPagination();
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -192,68 +215,80 @@ export default {
             this.SelecttrueInfo = user.queues;
             this.infotrueModel = true;
             this.infoModel = false;
-        },updateStartDate(event) {
-        // ทำการอัปเดตค่าของ SelectedItem.startDate เมื่อผู้ใช้กรอกข้อมูล
-        this.SelectedItem.startDate = event.target.value;
-    },
-    updateEndDate(event) {
-        // ทำการอัปเดตค่าของ SelectedItem.endDate เมื่อผู้ใช้กรอกข้อมูล
-        this.SelectedItem.endDate = event.target.value;
-    },
+        }, updateStartDate(event) {
+            // ทำการอัปเดตค่าของ SelectedItem.startDate เมื่อผู้ใช้กรอกข้อมูล
+            this.SelectedItem.startDate = event.target.value;
+        },
+        updateEndDate(event) {
+            // ทำการอัปเดตค่าของ SelectedItem.endDate เมื่อผู้ใช้กรอกข้อมูล
+            this.SelectedItem.endDate = event.target.value;
+        },
         UpdateModal(user) {
-    this.SelectedItem = user;
-    // ตัดเวลาออก (เพื่อให้ input type date ใน HTML รับค่าได้)
-    this.SelectedItem.startDate = this.SelectedItem.startDate.split('T')[0];
-    if (this.SelectedItem.endDate) {
-        this.SelectedItem.endDate = this.SelectedItem.endDate.split('T')[0];
-    }
-    console.log("ค่า status ที่ได้จาก API response:", this.SelectedItem.status);
-    console.log("ข้อมูล info ยังไม่ตรวจ", this.SelectedItem);
-    this.UpdateModel = true;
-},
-async UpdateQueue_Btn() {
-    try {
-        // ดึง Access Token จาก Local Storage
-        const accessToken = localStorage.getItem("accessToken");
-        
-        // ทำการส่งข้อมูลไปยัง API ของเซิร์ฟเวอร์
-        const res = await axios.patch(
-            `http://localhost:3000/api/v1/queues/${this.SelectedItem._id}`,
-            {
-                topic: this.SelectedItem.topic,
-                startDate: this.SelectedItem.startDate,
-                endDate: this.SelectedItem.endDate,
-                locations: this.SelectedItem.locations,
-                note: this.SelectedItem.note,
-                status: this.SelectedItem.status
-            },
-            {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
+            this.SelectedItem = user;
+            // ตัดเวลาออก (เพื่อให้ input type date ใน HTML รับค่าได้)
+            this.SelectedItem.startDate = this.SelectedItem.startDate.split('T')[0];
+            if (this.SelectedItem.endDate) {
+                this.SelectedItem.endDate = this.SelectedItem.endDate.split('T')[0];
             }
-        );
+            console.log("ค่า status ที่ได้จาก API response:", this.SelectedItem.status);
+            console.log("ข้อมูล info ยังไม่ตรวจ", this.SelectedItem);
+            this.UpdateModel = true;
+        },
+        async UpdateQueue_Btn() {
+            try {
+                // ดึง Access Token จาก Local Storage
+                const accessToken = localStorage.getItem("accessToken");
 
-        // กรณีอัปเดตคิวสำเร็จ
-        console.log("อัปเดตคิวสำเร็จ:", res);
+                // ทำการส่งข้อมูลไปยัง API ของเซิร์ฟเวอร์
+                const res = await axios.patch(
+                    `http://localhost:3000/api/v1/queues/${this.SelectedItem._id}`,
+                    {
+                        topic: this.SelectedItem.topic,
+                        startDate: this.SelectedItem.startDate,
+                        endDate: this.SelectedItem.endDate,
+                        locations: this.SelectedItem.locations,
+                        note: this.SelectedItem.note,
+                        status: this.SelectedItem.status
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    }
+                );
 
-        // ปิด Modal เพื่อเตรียมสำหรับการแก้ไขคิวถัดไป
-        this.UpdateModel = false;
+                // กรณีอัปเดตคิวสำเร็จ
+                console.log("อัปเดตคิวสำเร็จ:", res);
+
+                // ปิด Modal เพื่อเตรียมสำหรับการแก้ไขคิวถัดไป
+                this.UpdateModel = false;
 
 
 
-        // ทำการดึงข้อมูลทั้งหมดใหม่
-        this.getAllUser();
-    } catch (error) {
-        // กรณีเกิดข้อผิดพลาดในการอัปเดตคิว
-        console.error("Error updating queue:", error);
-    }
-},
+                // ทำการดึงข้อมูลทั้งหมดใหม่
+                this.getAllUser();
+            } catch (error) {
+                // กรณีเกิดข้อผิดพลาดในการอัปเดตคิว
+                console.error("Error updating queue:", error);
+            }
+        },
 
         falseInfoModal() {
             this.infotrueModel = false
             this.infoModel = true;
         },
+        movePage(offset) {
+            this.startIndex += offset * 10;
+            this.endIndex += offset * 10;
+        },
+        goToPage(page) {
+            this.startIndex = (page - 1) * 10;
+            this.endIndex = page * 10 - 1;
+        },
+        resetPagination() {
+    this.startIndex = 0;
+    this.endIndex = 9;
+  },
     },
 };
 </script>
@@ -437,9 +472,9 @@ async UpdateQueue_Btn() {
                                                                         </svg>
                                                                     </button>
                                                                     <!-- delete_Btn -->
-                                                                    <button 
+                                                                    <button
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none"
-                                                                        type="button"> 
+                                                                        type="button">
                                                                         <svg class="w-[16px] h-[16px] text-[#303030]"
                                                                             aria-hidden="true" style="color: #eb1851"
                                                                             xmlns="http://www.w3.org/2000/svg"
@@ -453,7 +488,8 @@ async UpdateQueue_Btn() {
                                                                         :class="{
                                                                             hidden: !UpdateModel,
                                                                             flex: UpdateModel,
-                                                                        }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full ">
+                                                                        }"
+                                                                        class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full ">
                                                                         <div
                                                                             class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                                                                             <!-- Modal content -->
@@ -494,54 +530,64 @@ async UpdateQueue_Btn() {
                                                                                                 id="topic" value=""
                                                                                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                                                                                 placeholder="หัวข้อ"
-                                                                                                v-model="SelectedItem.topic"
-                                                                                                />
+                                                                                                v-model="SelectedItem.topic" />
                                                                                         </div>
                                                                                         <br>
                                                                                         <!-- status -->
-<div>
-    <label for="status" class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
-    <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 text-start">
-        <label class="inline-flex">
-            <input type="radio" class="form-radio" name="status" value="true" v-model="SelectedItem.status" />
-            <span class="ml-2">ตรวจแล้ว</span>
-        </label>
-        <label class="inline-flex ml-4">
-            <input type="radio" class="form-radio" name="status" value="false" v-model="SelectedItem.status" />
-            <span class="ml-2">ยังไม่ได้ตรวจ</span>
-        </label>
-    </div>
-</div>
+                                                                                        <div>
+                                                                                            <label for="status"
+                                                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
+                                                                                            <div
+                                                                                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 text-start">
+                                                                                                <label class="inline-flex">
+                                                                                                    <input type="radio"
+                                                                                                        class="form-radio"
+                                                                                                        name="status"
+                                                                                                        value="true"
+                                                                                                        v-model="SelectedItem.status" />
+                                                                                                    <span
+                                                                                                        class="ml-2">ตรวจแล้ว</span>
+                                                                                                </label>
+                                                                                                <label
+                                                                                                    class="inline-flex ml-4">
+                                                                                                    <input type="radio"
+                                                                                                        class="form-radio"
+                                                                                                        name="status"
+                                                                                                        value="false"
+                                                                                                        v-model="SelectedItem.status" />
+                                                                                                    <span
+                                                                                                        class="ml-2">ยังไม่ได้ตรวจ</span>
+                                                                                                </label>
+                                                                                            </div>
+                                                                                        </div>
                                                                                         <!-- locations -->
                                                                                         <div>
                                                                                             <label for="locations"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจสอบ</label>
-                                                                                            
-                                                                                                <div class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 text-start" >
-                                                                                                    <label
-                                                                                                        class="inline-flex">
-                                                                                                        <input type="radio"
-                                                                                                            class="form-radio"
-                                                                                                            name="accountType"
-                                                                                                            value="false"
-                                                                                                            v-model="SelectedItem.locations"
-                                                                                                            />
-                                                                                                        <span
-                                                                                                            class="ml-2">ออนไลน์</span>
-                                                                                                    </label>
-                                                                                                    <label
-                                                                                                        class="inline-flex ml-4">
-                                                                                                        <input type="radio"
-                                                                                                            class="form-radio"
-                                                                                                            name="accountType"
-                                                                                                            value="true"
-                                                                                                            v-model="SelectedItem.locations"
-                                                                                                            />
-                                                                                                        <span
-                                                                                                            class="ml-2">ออนไซต์</span>
-                                                                                                    </label>
-                                                                                                </div>                                                                            
-                                                                                            
+
+                                                                                            <div
+                                                                                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 text-start">
+                                                                                                <label class="inline-flex">
+                                                                                                    <input type="radio"
+                                                                                                        class="form-radio"
+                                                                                                        name="accountType"
+                                                                                                        value="false"
+                                                                                                        v-model="SelectedItem.locations" />
+                                                                                                    <span
+                                                                                                        class="ml-2">ออนไลน์</span>
+                                                                                                </label>
+                                                                                                <label
+                                                                                                    class="inline-flex ml-4">
+                                                                                                    <input type="radio"
+                                                                                                        class="form-radio"
+                                                                                                        name="accountType"
+                                                                                                        value="true"
+                                                                                                        v-model="SelectedItem.locations" />
+                                                                                                    <span
+                                                                                                        class="ml-2">ออนไซต์</span>
+                                                                                                </label>
+                                                                                            </div>
+
                                                                                         </div>
                                                                                         <!-- startDate -->
                                                                                         <div>
@@ -549,24 +595,21 @@ async UpdateQueue_Btn() {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
                                                                                             <input type="date"
                                                                                                 name="startDate"
-                                                                                                id="startDate"                                                                                                
+                                                                                                id="startDate"
                                                                                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                                                                                 :value="SelectedItem.startDate"
-                                                                                                @input="updateStartDate($event)"
-                                                                                                />
+                                                                                                @input="updateStartDate($event)" />
                                                                                         </div>
                                                                                         <!-- endDate -->
                                                                                         <div>
                                                                                             <label for="updatedAt"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
                                                                                             <input type="date"
-                                                                                                name="endDate"
-                                                                                                id="endDate" 
+                                                                                                name="endDate" id="endDate"
                                                                                                 class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                                                                                 :value="SelectedItem.endDate"
                                                                                                 placeholder="SelectedItem.endDate ? '' : 'ยังไม่ได้รับการเข้าตรวจ'"
-                                                                                                @input="updateEndDate($event)"
-                                                                                                 />
+                                                                                                @input="updateEndDate($event)" />
                                                                                         </div>
                                                                                         <!--note-->
                                                                                         <div class="sm:col-span-2">
@@ -575,15 +618,12 @@ async UpdateQueue_Btn() {
                                                                                             <textarea id="description"
                                                                                                 rows="5"
                                                                                                 class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-                                                                                                
-                                                                                                v-model="SelectedItem.note"
-                                                                                                ></textarea>
+                                                                                                v-model="SelectedItem.note"></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div
                                                                                         class="flex items-center content-center space-x-4">
-                                                                                        <button
-                                                                                            @click="UpdateQueue_Btn()"
+                                                                                        <button @click="UpdateQueue_Btn()"
                                                                                             type="button"
                                                                                             class="text-[#140A4B] inline-flex items-center hover:text-white border border-[#140A4B] hover:bg-[#140A4B] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                                                             <svg class="mr-1 -ml-1 w-5 h-5"
@@ -607,7 +647,8 @@ async UpdateQueue_Btn() {
                                                                         aria-hidden="true" :class="{
                                                                             hidden: !trueQueueModel,
                                                                             flex: trueQueueModel,
-                                                                        }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25">
+                                                                        }"
+                                                                        class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25">
                                                                         <div
                                                                             class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                                                                             <!-- Modal content -->
@@ -656,7 +697,10 @@ async UpdateQueue_Btn() {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                               {{ truequeue.status ? "ตรวจสอบเเล้ว":"ยังไม่ตรวจ" }}
+                                                                                                {{ truequeue.status ?
+                                                                                                    "ตรวจสอบเเล้ว" :
+                                                                                                    "ยังไม่ตรวจ"
+                                                                                                }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- locations -->
@@ -665,7 +709,8 @@ async UpdateQueue_Btn() {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ truequeue.locations ? "ออนไลน์":"ออนไซร์" }}
+                                                                                                {{ truequeue.locations ?
+                                                                                                    "ออนไลน์" : "ออนไซร์" }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- startDate -->
@@ -674,7 +719,9 @@ async UpdateQueue_Btn() {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ formatDate(truequeue.startDate) }}
+                                                                                                {{
+                                                                                                    formatDate(truequeue.startDate)
+                                                                                                }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- endDate -->
@@ -683,7 +730,12 @@ async UpdateQueue_Btn() {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ formatDate(truequeue.endDate) ? formatDate(truequeue.endDate):"ยังไม่ได้รับการตรวจ" }}
+                                                                                                {{
+                                                                                                    formatDate(truequeue.endDate)
+                                                                                                    ?
+                                                                                                    formatDate(truequeue.endDate)
+                                                                                                    : "ยังไม่ได้รับการตรวจ"
+                                                                                                }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- note -->
@@ -771,7 +823,7 @@ async UpdateQueue_Btn() {
                                                                     {{ item.topic }}
                                                                 </th>
                                                                 <td class="px-4 py-3">
-                                                                    {{ item.locations ? "ออนไซต์":"ออนไลน์" }}
+                                                                    {{ item.locations ? "ออนไซต์" : "ออนไลน์" }}
                                                                 </td>
                                                                 <td class="px-4 py-3">
                                                                     {{ formatDate(item.endDate) }}
@@ -799,9 +851,10 @@ async UpdateQueue_Btn() {
                                                                     <!-- Main modal Layout QueueInfo -->
                                                                     <div id="trueQueueModel" tabindex="-1"
                                                                         aria-hidden="true" :class="{
-                                                                                hidden: !trueQueueModel,
-                                                                                flex: trueQueueModel,
-                                                                            }" class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full">
+                                                                            hidden: !trueQueueModel,
+                                                                            flex: trueQueueModel,
+                                                                        }"
+                                                                        class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full">
                                                                         <div
                                                                             class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                                                                             <!-- Modal content -->
@@ -827,9 +880,9 @@ async UpdateQueue_Btn() {
                                                                                                 clip-rule="evenodd"></path>
                                                                                         </svg>
                                                                                         <span class="sr-only">Close
-                                                                                        modal</span>
-                                                                                </button>
-                                                                            </div>
+                                                                                            modal</span>
+                                                                                    </button>
+                                                                                </div>
                                                                                 <!-- Modal body -->
                                                                                 <form action="#">
                                                                                     <div
@@ -877,7 +930,8 @@ async UpdateQueue_Btn() {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                xx-xx-xx / ยังไม่ได้รับการตรวจ
+                                                                                                xx-xx-xx /
+                                                                                                ยังไม่ได้รับการตรวจ
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- note -->
@@ -891,43 +945,43 @@ async UpdateQueue_Btn() {
                                                                                         </div>
                                                                                     </div>
                                                                                 </form>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- Main modal Layout Queue Add -->
-                                <div id="AddModel" tabindex="-1" aria-hidden="true"
-                                    :class="{ hidden: !AddModel, flex: AddModel }"
-                                    class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5">
-                                    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
-                                        <!-- Modal content -->
-                                        <div class="relative p-4 bg-white rounded-lg shadow sm:p-5">
-                                            <!-- Modal header -->
-                                            <div class="flex justify-between items-center rounded-t border-b sm:mb-5">
-                                                <h3 class="text-lg font-semibold text-[#303030]">
-                                                    เพิ่มคิว
-                                                </h3>
-                                                <button @click="AddModel = false" type="button"
-                                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-[#303030] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
-                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-                                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span class="sr-only">Close modal</span>
-                                                </button>
-                                            </div>
-                                            <!-- Modal body -->
+                                    <!-- Main modal Layout Queue Add -->
+                                    <div id="AddModel" tabindex="-1" aria-hidden="true"
+                                        :class="{ hidden: !AddModel, flex: AddModel }"
+                                        class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5">
+                                        <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                                            <!-- Modal content -->
+                                            <div class="relative p-4 bg-white rounded-lg shadow sm:p-5">
+                                                <!-- Modal header -->
+                                                <div class="flex justify-between items-center rounded-t border-b sm:mb-5">
+                                                    <h3 class="text-lg font-semibold text-[#303030]">
+                                                        เพิ่มคิว
+                                                    </h3>
+                                                    <button @click="AddModel = false" type="button"
+                                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-[#303030] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
+                                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                clip-rule="evenodd"></path>
+                                                        </svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                </div>
+                                                <!-- Modal body -->
 
-                                            <!--
+                                                <!--
                                                 
                                                 ค่าที่ถูกแก้ไขใน Modal กลับไปสู่ค่าเดิมที่ถูกเก็บไว้ใน state 
                                                 ทำให้เกิดปัญหาค่าที่ค้างอยู่จากการแก้ไขครั้งก่อนหน้า 
@@ -938,109 +992,151 @@ async UpdateQueue_Btn() {
                                                 ทำให้ Vue.js ทำการ render Modal ใหม่ทุกครั้งที่ SelectAddModal._id เปลี่ยนแปลง
                                                 
                                             -->
-                                            <form action="#">
-                                                <div v-if="AddModel" :key="SelectAddModal._id"
-                                                    class="grid gap-4 mb-4 sm:grid-cols-2">
-                                                    <!-- _id -->
-                                                    <div>
-                                                        <label for="_id"
-                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
-                                                        <p class="text-left p-2.5  text-base ">
-                                                            {{ SelectAddModal._id }}
-                                                        </p>
-                                                    </div>
-                                                    <!-- idCard -->
-                                                    <div>
-                                                        <label for="idCard"
-                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
-                                                        <p class="text-left p-2.5  text-base">
-                                                            {{ SelectAddModal.idCard }}
-                                                        </p>
-                                                    </div>
-                                                    <!-- firstname -->
-                                                    <div>
-                                                        <label for="firstname"
-                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
-                                                        <p class="text-left p-2.5  text-base">
-                                                            {{ SelectAddModal.firstname }}
-                                                        </p>
-                                                    </div>
-                                                    <!-- lastname -->
-                                                    <div>
-                                                        <label for="lastname"
-                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
-                                                        <p class="text-left p-2.5 text-base">
-                                                            {{ SelectAddModal.lastname }}
-                                                        </p>
-                                                    </div>
-                                                    
-                                                    <!-- topic -->
-                                                    <div>
-                                                        <label for="topic"
-                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
-                                                        <input type="text" name="topic" id="topic" value=""
-                                                            v-model="inputData.topic"
-                                                            class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                                                            placeholder="หัวข้อ" />
-                                                    </div>
-                                                    <br />
-                                                    <!-- dateQueue -->
-                                                    <div>
-                                                        <label for="dateQueue"
-                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจ</label>
-                                                        <div class="ml-4 text-start">
-                                                            <label class="">
-                                                                <input type="radio" class="" name="online" value="false"
-                                                                    v-model="inputData.locations" />
-                                                                <span class="ml-2">ออนไลน์</span>
-                                                            </label>
-                                                            <label class="ml-6">
-                                                                <input type="radio" class="" name="onsite" value="true"
-                                                                    v-model="inputData.locations" />
-                                                                <span class="ml-2">ออนไซต์</span>
-                                                            </label>
+                                                <form action="#">
+                                                    <div v-if="AddModel" :key="SelectAddModal._id"
+                                                        class="grid gap-4 mb-4 sm:grid-cols-2">
+                                                        <!-- _id -->
+                                                        <div>
+                                                            <label for="_id"
+                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ไอดี</label>
+                                                            <p class="text-left p-2.5  text-base ">
+                                                                {{ SelectAddModal._id }}
+                                                            </p>
+                                                        </div>
+                                                        <!-- idCard -->
+                                                        <div>
+                                                            <label for="idCard"
+                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">รหัสบัตรประชาชน</label>
+                                                            <p class="text-left p-2.5  text-base">
+                                                                {{ SelectAddModal.idCard }}
+                                                            </p>
+                                                        </div>
+                                                        <!-- firstname -->
+                                                        <div>
+                                                            <label for="firstname"
+                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ชื่อจริง</label>
+                                                            <p class="text-left p-2.5  text-base">
+                                                                {{ SelectAddModal.firstname }}
+                                                            </p>
+                                                        </div>
+                                                        <!-- lastname -->
+                                                        <div>
+                                                            <label for="lastname"
+                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">นามสกุล</label>
+                                                            <p class="text-left p-2.5 text-base">
+                                                                {{ SelectAddModal.lastname }}
+                                                            </p>
+                                                        </div>
+
+                                                        <!-- topic -->
+                                                        <div>
+                                                            <label for="topic"
+                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
+                                                            <input type="text" name="topic" id="topic" value=""
+                                                                v-model="inputData.topic"
+                                                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                                                placeholder="หัวข้อ" />
+                                                        </div>
+                                                        <br />
+                                                        <!-- dateQueue -->
+                                                        <div>
+                                                            <label for="dateQueue"
+                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจ</label>
+                                                            <div class="ml-4 text-start">
+                                                                <label class="">
+                                                                    <input type="radio" class="" name="online" value="false"
+                                                                        v-model="inputData.locations" />
+                                                                    <span class="ml-2">ออนไลน์</span>
+                                                                </label>
+                                                                <label class="ml-6">
+                                                                    <input type="radio" class="" name="onsite" value="true"
+                                                                        v-model="inputData.locations" />
+                                                                    <span class="ml-2">ออนไซต์</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <label for="dateQueue"
+                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
+                                                            <input
+                                                                class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                                                type="date" v-model="inputData.startDate"
+                                                                placeholder="วว/ดด/ปปปป" />
+                                                        </div>
+                                                        <div class="sm:col-span-2">
+                                                            <label for="description"
+                                                                class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
+                                                            <textarea id="description" rows="5"
+                                                                class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                                                                placeholder="Write a description..."
+                                                                v-model="inputData.note"></textarea>
                                                         </div>
                                                     </div>
-                                                    <div>
-                                                        <label for="dateQueue"
-                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
-                                                        <input
-                                                            class="bg-gray-50 border border-gray-300 text-[#303030] text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                                                            type="date" v-model="inputData.startDate"
-                                                            placeholder="วว/ดด/ปปปป" />
+                                                    <div class="flex items-center content-center space-x-4">
+                                                        <button @click="addQueue_Btn(SelectAddModal)" type="button"
+                                                            class="text-[#140A4B] inline-flex items-center hover:text-white border border-[#140A4B] hover:bg-[#140A4B] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                                            <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor"
+                                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                                    clip-rule="evenodd"></path>
+                                                            </svg>
+                                                            เพิ่มคิว
+                                                        </button>
                                                     </div>
-                                                    <div class="sm:col-span-2">
-                                                        <label for="description"
-                                                            class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
-                                                        <textarea id="description" rows="5"
-                                                            class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-                                                            placeholder="Write a description..."
-                                                            v-model="inputData.note"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="flex items-center content-center space-x-4">
-                                                    <button @click="addQueue_Btn(SelectAddModal)" type="button"
-                                                        class="text-[#140A4B] inline-flex items-center hover:text-white border border-[#140A4B] hover:bg-[#140A4B] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                                        <svg class="mr-1 -ml-1 w-5 h-5" fill="currentColor"
-                                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd"
-                                                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                                clip-rule="evenodd"></path>
-                                                        </svg>
-                                                        เพิ่มคิว
-                                                    </button>
-                                                </div>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav v-if="!searchQuery"
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
+                        aria-label="Table navigation">
+                        <span class="text-sm font-normal text-gray-500 ">
+                            Showing
+                            <span class="font-semibold text-gray-900 ">{{ startIndex + 1 }}-{{ endIndex + 1 }}</span>
+                            of
+                            <span class="font-semibold text-gray-900 ">{{ Queue.length }}</span>
+                        </span>
+                        <ul class="inline-flex items-stretch -space-x-px">
+                            <li>
+                                <button @click="movePage(-1)" :disabled="startIndex <= 0"
+                                    class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">
+                                    <span class="sr-only">Previous</span>
+                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </li>
+                            <li v-for="page in displayedPages" :key="page">
+                                <a @click="goToPage(page)" :class="{ 'aria-current': page === currentPage }"
+                                    class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">{{
+                                        page }}</a>
+                            </li>
+                            <li>
+                                <button @click="movePage(1)" :disabled="endIndex >= Queue.length"
+                                    class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">
+                                    <span class="sr-only">Next</span>
+                                    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-</section></template>
+    </section>
+</template>
 
 <style></style>
