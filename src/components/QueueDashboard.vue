@@ -6,6 +6,8 @@ export default {
 
     data() {
         return {
+            falsequeue:{},
+            truequeue:{},
             startIndex: 0,
             endIndex: 9,
             truequeue: {},
@@ -70,6 +72,24 @@ export default {
         },
         sortedQueuemefalse() {
             return this.SelecttrueQueue.slice().sort((a, b) => {
+                if (a.status === b.status) {
+                    return new Date(a.dataQueue) - new Date(b.dataQueue);
+                } else {
+                    return a.status ? 1 : -1;
+                }
+            });
+        },
+        sortedfalsequeue() {
+            return this.falsequeue.slice().sort((a, b) => {
+                if (a.status === b.status) {
+                    return new Date(a.dataQueue) - new Date(b.dataQueue);
+                } else {
+                    return a.status ? 1 : -1;
+                }
+            });
+        },
+        sortedtruequeue() {
+            return this.truequeue.slice().sort((a, b) => {
                 if (a.status === b.status) {
                     return new Date(a.dataQueue) - new Date(b.dataQueue);
                 } else {
@@ -196,6 +216,7 @@ export default {
                 console.error("Error adding queue:", error);
             }
         },
+
         showinfoModal(user) {
             this.SelectQueue = user.queues.filter((queue) => queue.status === true);
             this.SelecttrueQueue = user.queues.filter(
@@ -205,9 +226,10 @@ export default {
             console.log("ข้อมูล false", this.SelecttrueQueue);
             this.infoModel = true;
         },
-        trueQueueModal(user) {
-            this.truequeue = user;
-            console.log("ข้อมูล info ตรวจเเล้ว", this.truequeue);
+        trueQueueModal(item) {
+            this.truequeue = item;
+            this.falsequeue = item;
+            console.log("ข้อมูล info ตรวจเเล้ว", item);
             this.trueQueueModel = true;
         },
         // ปุ๋มตรวจสอบเเล้ว
@@ -216,7 +238,7 @@ export default {
             this.infotrueModel = true;
             this.infoModel = false;
         }, updateStartDate(event) {
-            // ทำการอัปเดตค่าของ SelectedItem.startDate เมื่อผู้ใช้กรอกข้อมูล
+            // ทำการอัปเดตค่าของ SelectedItemSelectedItem.startDate เมื่อผู้ใช้กรอกข้อมูล
             this.SelectedItem.startDate = event.target.value;
         },
         updateEndDate(event) {
@@ -286,9 +308,9 @@ export default {
             this.endIndex = page * 10 - 1;
         },
         resetPagination() {
-    this.startIndex = 0;
-    this.endIndex = 9;
-  },
+            this.startIndex = 0;
+            this.endIndex = 9;
+        },
     },
 };
 </script>
@@ -444,7 +466,7 @@ export default {
                                                                 </td>
                                                                 <td class="px-4 py-3 flex text-[#303030] justify-center">
                                                                     <!--Info_Btn-->
-                                                                    <button @click="trueQueueModal(item)"
+                                                                    <button @click="trueQueueModal(item,index)"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none"
                                                                         type="button">
                                                                         <svg class="w-[16px] h-[16px] text-[#303030]"
@@ -679,15 +701,17 @@ export default {
                                                                                 </div>
                                                                                 <!-- Modal body -->
                                                                                 <form action="#">
-                                                                                    <div
+                                                                                    <div 
                                                                                         class="grid gap-4 mb-4 sm:grid-cols-2">
                                                                                         <!-- topic -->
-                                                                                        <div>
+                                                                                        <div v-if="falsequeue">
                                                                                             <label for="topic"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
-                                                                                            <p
+                                                                                                <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ truequeue.topic }}
+                                                                                                {{
+                                                                                                    falsequeue.topic
+                                                                                                }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <br>
@@ -697,7 +721,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ truequeue.status ?
+                                                                                                {{ falsequeue.status ?
                                                                                                     "ตรวจสอบเเล้ว" :
                                                                                                     "ยังไม่ตรวจ"
                                                                                                 }}
@@ -709,7 +733,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                {{ truequeue.locations ?
+                                                                                                {{ falsequeue.locations ?
                                                                                                     "ออนไลน์" : "ออนไซร์" }}
                                                                                             </p>
                                                                                         </div>
@@ -720,7 +744,7 @@ export default {
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
                                                                                                 {{
-                                                                                                    formatDate(truequeue.startDate)
+                                                                                                    formatDate(falsequeue.startDate)
                                                                                                 }}
                                                                                             </p>
                                                                                         </div>
@@ -731,9 +755,9 @@ export default {
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
                                                                                                 {{
-                                                                                                    formatDate(truequeue.endDate)
+                                                                                                    formatDate(falsequeue.endDate)
                                                                                                     ?
-                                                                                                    formatDate(truequeue.endDate)
+                                                                                                    formatDate(falsequeue.endDate)
                                                                                                     : "ยังไม่ได้รับการตรวจ"
                                                                                                 }}
                                                                                             </p>
@@ -744,9 +768,10 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
                                                                                             <p
                                                                                                 class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-left">
-                                                                                                {{ truequeue.note }}
+                                                                                                {{ falsequeue.note }}
                                                                                             </p>
                                                                                         </div>
+                                                                                       
                                                                                     </div>
                                                                                 </form>
                                                                             </div>
@@ -893,7 +918,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
                                                                                             <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                หัวข้อ
+                                                                                                {{ truequeue.topic }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <br>
