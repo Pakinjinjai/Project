@@ -79,24 +79,6 @@ export default {
                 }
             });
         },
-        sortedfalsequeue() {
-            return this.falsequeue.slice().sort((a, b) => {
-                if (a.status === b.status) {
-                    return new Date(a.dataQueue) - new Date(b.dataQueue);
-                } else {
-                    return a.status ? 1 : -1;
-                }
-            });
-        },
-        sortedtruequeue() {
-            return this.truequeue.slice().sort((a, b) => {
-                if (a.status === b.status) {
-                    return new Date(a.dataQueue) - new Date(b.dataQueue);
-                } else {
-                    return a.status ? 1 : -1;
-                }
-            });
-        },
     },
     created() {
         this.getAllUser();
@@ -704,7 +686,7 @@ export default {
                                                                                     <div 
                                                                                         class="grid gap-4 mb-4 sm:grid-cols-2">
                                                                                         <!-- topic -->
-                                                                                        <div v-if="falsequeue">
+                                                                                        <div >
                                                                                             <label for="topic"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
                                                                                                 <p
@@ -768,7 +750,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
                                                                                             <p
                                                                                                 class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-left">
-                                                                                                {{ falsequeue.note }}
+                                                                                                {{ falsequeue.note ?  falsequeue.note  : "ไม่มี" }}
                                                                                             </p>
                                                                                         </div>
                                                                                        
@@ -926,37 +908,47 @@ export default {
                                                                                         <div>
                                                                                             <label for="status"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
-                                                                                            <p
+                                                                                                <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                ยังไม่ได้รับการตรวจ
+                                                                                                {{ truequeue.status ?
+                                                                                                    "ตรวจสอบเเล้ว" :
+                                                                                                    "ยังไม่ตรวจ"
+                                                                                                }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- locations -->
                                                                                         <div>
                                                                                             <label for="status"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจ</label>
-                                                                                            <p
+                                                                                                <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                ออนไลน์/ออนไซต์
+                                                                                                {{ truequeue.locations ?
+                                                                                                    "ออนไลน์" : "ออนไซร์" }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- startDate -->
                                                                                         <div>
                                                                                             <label for="dateQueue"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
-                                                                                            <p
+                                                                                                <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                xx-xx-xx
+                                                                                                {{
+                                                                                                    formatDate(truequeue.startDate)
+                                                                                                }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- endDate -->
                                                                                         <div>
                                                                                             <label for="updatedAt"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
-                                                                                            <p
+                                                                                                <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
-                                                                                                xx-xx-xx /
-                                                                                                ยังไม่ได้รับการตรวจ
+                                                                                                {{
+                                                                                                    formatDate(truequeue.endDate)
+                                                                                                    ?
+                                                                                                    formatDate(truequeue.endDate)
+                                                                                                    : "ยังไม่ได้รับการตรวจ"
+                                                                                                }}
                                                                                             </p>
                                                                                         </div>
                                                                                         <!-- note -->
@@ -965,7 +957,7 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
                                                                                             <p
                                                                                                 class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-left">
-                                                                                                คำแนะนำ
+                                                                                                {{ truequeue.note ?  truequeue.note  : "ไม่มี" }}
                                                                                             </p>
                                                                                         </div>
                                                                                     </div>
