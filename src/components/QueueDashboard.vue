@@ -6,8 +6,8 @@ export default {
 
     data() {
         return {
-            falsequeue:{},
-            truequeue:{},
+            falsequeue: {},
+            truequeue: {},
             startIndex: 0,
             endIndex: 9,
             truequeue: {},
@@ -103,18 +103,15 @@ export default {
         },
         async delUser(_id) {
             try {
-                const confirmResult = window.confirm(
-                    "คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน"
-                );
+                const confirmResult = window.confirm('คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน');
                 if (confirmResult) {
                     const accessToken = localStorage.getItem("accessToken");
-                    const res = await axios.delete(
-                        `http://localhost:3000/api/v1/users/${_id}`, {
+                    const res = await axios.delete(`http://localhost:3000/api/v1/queues/${_id}`, {
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
                         },
-                    }
-                    );
+                        // console.log("ข้อมูลที่จะลบ",item);
+                    });
                     this.getAllUser();
                     console.log("User deleted successfully:", res);
                 }
@@ -448,7 +445,7 @@ export default {
                                                                 </td>
                                                                 <td class="px-4 py-3 flex text-[#303030] justify-center">
                                                                     <!--Info_Btn-->
-                                                                    <button @click="trueQueueModal(item,index)"
+                                                                    <button @click="trueQueueModal(item)"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none"
                                                                         type="button">
                                                                         <svg class="w-[16px] h-[16px] text-[#303030]"
@@ -476,7 +473,7 @@ export default {
                                                                         </svg>
                                                                     </button>
                                                                     <!-- delete_Btn -->
-                                                                    <button
+                                                                    <button @click="delUser(item._id)"
                                                                         class="inline-flex items-center p-0.5 text-lg font-bold text-center text-[#EB1851] hover:text-gray-800 rounded-lg focus:outline-none"
                                                                         type="button">
                                                                         <svg class="w-[16px] h-[16px] text-[#303030]"
@@ -683,13 +680,13 @@ export default {
                                                                                 </div>
                                                                                 <!-- Modal body -->
                                                                                 <form action="#">
-                                                                                    <div 
+                                                                                    <div
                                                                                         class="grid gap-4 mb-4 sm:grid-cols-2">
                                                                                         <!-- topic -->
-                                                                                        <div >
+                                                                                        <div>
                                                                                             <label for="topic"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">หัวข้อ</label>
-                                                                                                <p
+                                                                                            <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
                                                                                                 {{
                                                                                                     falsequeue.topic
@@ -750,10 +747,11 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
                                                                                             <p
                                                                                                 class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-left">
-                                                                                                {{ falsequeue.note ?  falsequeue.note  : "ไม่มี" }}
+                                                                                                {{ falsequeue.note ?
+                                                                                                    falsequeue.note : "ไม่มี" }}
                                                                                             </p>
                                                                                         </div>
-                                                                                       
+
                                                                                     </div>
                                                                                 </form>
                                                                             </div>
@@ -908,7 +906,7 @@ export default {
                                                                                         <div>
                                                                                             <label for="status"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">สถานะ</label>
-                                                                                                <p
+                                                                                            <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
                                                                                                 {{ truequeue.status ?
                                                                                                     "ตรวจสอบเเล้ว" :
@@ -920,7 +918,7 @@ export default {
                                                                                         <div>
                                                                                             <label for="status"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">ประเภทการตรวจ</label>
-                                                                                                <p
+                                                                                            <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
                                                                                                 {{ truequeue.locations ?
                                                                                                     "ออนไลน์" : "ออนไซร์" }}
@@ -930,7 +928,7 @@ export default {
                                                                                         <div>
                                                                                             <label for="dateQueue"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันนัดหมาย</label>
-                                                                                                <p
+                                                                                            <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
                                                                                                 {{
                                                                                                     formatDate(truequeue.startDate)
@@ -941,7 +939,7 @@ export default {
                                                                                         <div>
                                                                                             <label for="updatedAt"
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">วันที่เข้าตรวจ</label>
-                                                                                                <p
+                                                                                            <p
                                                                                                 class="text-left p-2.5 bg-gray-50 border rounded-lg">
                                                                                                 {{
                                                                                                     formatDate(truequeue.endDate)
@@ -957,7 +955,8 @@ export default {
                                                                                                 class="block mb-2 text-lg font-bold text-[#303030] text-left">คำแนะนำ</label>
                                                                                             <p
                                                                                                 class="block p-2.5 w-full text-sm text-[#303030] bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 text-left">
-                                                                                                {{ truequeue.note ?  truequeue.note  : "ไม่มี" }}
+                                                                                                {{ truequeue.note ?
+                                                                                                    truequeue.note : "ไม่มี" }}
                                                                                             </p>
                                                                                         </div>
                                                                                     </div>
