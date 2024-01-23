@@ -6,6 +6,7 @@ export default {
 
     data() {
         return {
+            reload: {},
             falsequeue: {},
             truequeue: {},
             startIndex: 0,
@@ -83,12 +84,30 @@ export default {
     created() {
         this.getAllUser();
     },
+    mounted() {
+  this.reload = this.fetchUsers();
+},
     watch: {
         searchQuery(newVal, oldVal) {
             this.fetchDataFromApi(newVal);
         },
     },
     methods: {
+        async fetchUsers() {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const response = await axios.get("http://localhost:3000/api/v1/queues", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      return response.data; // สมมติว่า API ของคุณส่งข้อมูลผู้ใช้งานในรูปแบบ JSON
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      return []; // หรือให้ return array เปล่าๆ หรือข้อมูลเดิมในกรณี error
+    }
+  },
         async fetchDataFromApi(searchQuery) {
             try {
                 const res = await axios.get(
@@ -112,7 +131,12 @@ export default {
                         },
                         // console.log("ข้อมูลที่จะลบ",item);
                     });
+                    // this.$router.go();
+                    // window.location.reload();
                     this.getAllUser();
+                    // หลังจากลบข้อมูลผู้ใช้งานเสร็จสิ้น โหลดข้อมูลใหม่และอัปเดต users
+                    const updatedUsers = await this.fetchUsers();
+                    this.reload = updatedUsers;
                     console.log("User deleted successfully:", res);
                 }
             } catch (error) {
