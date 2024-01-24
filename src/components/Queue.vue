@@ -1,5 +1,19 @@
 <template>
   <h1 class="flex justify-center font-bold text-lg text-[#140A4B] mt-4">คิวส่วนตัว</h1>
+  <div class="flex items-start">
+  <!-- เพิ่ม Toggle Switch -->
+  <label class="relative inline-flex items-center cursor-pointer">
+    <input type="checkbox" v-model="toggleStatus" @change="showInfo" class="sr-only peer">
+    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all  peer-checked:bg-blue-600"></div>
+  </label>
+
+  <!-- ข้อความต่อมา -->
+  <p class="ms-3 text-ls font-medium text-[#303030]">
+    {{ toggleStatus ? 'คิว : กำลังรอตรวจ' : 'คิว : ได้รับการตรวจ' }}
+  </p>
+</div>
+
+
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-lg text-left text-gray-500">
       <thead class="text-xl text-[#FDFDFD] uppercase bg-[#140A4B]">
@@ -17,7 +31,7 @@
           'bg-white': index % 2 === 0,
           'bg-[#F6F6F6]': index % 2 !== 0
         }" class="border-b">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
+          <th scope="row" class="px-6 py-4 font-medium text-[#303030] whitespace-nowrap text-center">
             {{ item.topic }}
           </th>
           <td class="px-6 py-4 text-center">{{ formatDate(item.startDate) }}</td>
@@ -43,7 +57,7 @@
             </button>
             <!-- Main modal Layout info Queue -->
             <div id="infoQueueModal" tabindex="-1" aria-hidden="true" :class="{ hidden: !QueueModel, flex: QueueModel }"
-              class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/30 ">
+              class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full backdrop-contrast-25 bg-black/5 ">
               <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                 <!-- Modal content -->
                 <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
@@ -100,7 +114,7 @@
         </tr>
       </tbody>
 <tbody v-else>
-  <tr class="bg-white border-b justify-center items-center text-center text-gray-900 ">
+  <tr class="bg-white border-b justify-center items-center text-center text-[#303030] ">
     <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap ">ยังไม่เคยได้รับการเข้าตรวจ</th>
     <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
     <td scope="row" class="px-6 py-4 font-medium  whitespace-nowrap "></td>
@@ -123,42 +137,52 @@ export default {
       activeItem: null, // เตรียมใช้งาน activeItem เป็น null
       QueueModel: false,
       infoqueues: {},
+      toggleStatus: false,
     };
   },
   computed: {
     sortedQueue() {
-      // เรียงลำดับคิวตามสถานะแล้วตาม dateQueue
-      return this.Queue.slice().sort((a, b) => {
-        if (a.status === b.status) {
-          return new Date(a.dateQueue) - new Date(b.dateQueue);
-        } else {
-          return a.status ? 1 : -1;
-        }
-      });
-    },
+    // เรียงลำดับคิวตามวันที่เริ่มต้น (startDate)
+    const sortedByStartDate = this.Queue.slice().sort((a, b) => {
+      return new Date(a.startDate) - new Date(b.startDate);
+    });
+
+    // แบ่งข้อมูลเป็นสองกลุ่ม: กลุ่มที่มี status === false และกลุ่มที่มี status === true
+    const groupFalse = sortedByStartDate.filter(item => item.status === false);
+    const groupTrue = sortedByStartDate.filter(item => item.status === true);
+
+    // รวมกลุ่มทั้งสองโดยให้กลุ่มที่มี status === false มีการเรียงลำดับตามวันที่เริ่มต้น (startDate)
+    // และกลุ่มที่มี status === true มีการเรียงลำดับตามวันที่สิ้นสุด (endDate)
+    const mergedGroups = [...groupFalse, ...groupTrue.sort((a, b) => {
+      return new Date(b.endDate) - new Date(a.endDate);
+    })];
+
+    return mergedGroups;
+  },
   },
   created() {
     this.showInfo();
   },
   methods: {
     showInfo() {
-      try {
-        axios({
-          method: "get",
-          url: "http://localhost:3000/api/v1/queues/me",
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("accessToken"),
-          },
+    try {
+      axios({
+        method: "get",
+        url: "http://localhost:3000/api/v1/queues/me",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        },
+      })
+        .then((res) => {
+          // กรองข้อมูลตามสถานะที่ต้องการ
+          this.Queue = res.data.filter(item => item.status === this.toggleStatus);
+          console.log(this.Queue);
         })
-          .then((res) => {
-            this.Queue = res.data; // อัพเดตข้อมูลคิวด้วยข้อมูลการตอบกลับ
-            console.log(this.Queue);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } catch (error) { }
-    },
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) { }
+  },
     formatDate(date) {
       // ฟังก์ชั่นจัดรูปแบบวันที่ (ปรับแต่งได้ตามต้องการ)
       return new Date(date).toLocaleDateString();
