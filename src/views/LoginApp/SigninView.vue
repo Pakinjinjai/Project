@@ -18,7 +18,7 @@ export default {
       try {
         var res = await axios({
           method: "post",
-          url: "http://localhost:3000/api/v1/users/login",
+          url: "http://161.246.127.114/api/v1/users/login",
           data: {
             email: this.formData.email,
             password: this.formData.password,

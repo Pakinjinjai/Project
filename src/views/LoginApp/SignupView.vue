@@ -164,7 +164,7 @@ export default {
     SIGN_UP() {
       axios({
         method: "post",
-        url: "http://localhost:3000/api/v1/users/register",
+        url: "http://161.246.127.114/api/v1/users/register",
         data: {
           email: this.formData.email,
           password: this.formData.password,
