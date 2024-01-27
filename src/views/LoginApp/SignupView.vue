@@ -141,6 +141,7 @@
 </template>
 
 <script>
+import { baseURL } from "@/APIGate";
 import axios from "axios";
 export default {
   name: "SingupView",
@@ -164,7 +165,7 @@ export default {
     SIGN_UP() {
       axios({
         method: "post",
-        url: "http://161.246.127.114/api/v1/users/register",
+        url: `${ baseURL }/api/v1/users/register`,
         data: {
           email: this.formData.email,
           password: this.formData.password,

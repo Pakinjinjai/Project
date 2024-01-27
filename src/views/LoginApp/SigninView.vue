@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import { baseURL,signin } from "@/APIGate";
 export default {
   name: "SinginView",
   data() {
@@ -18,7 +19,7 @@ export default {
       try {
         var res = await axios({
           method: "post",
-          url: "http://161.246.127.114/api/v1/users/login",
+          url: `${baseURL}${signin}`,
           data: {
             email: this.formData.email,
             password: this.formData.password,
