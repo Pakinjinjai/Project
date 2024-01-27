@@ -1,10 +1,10 @@
 <template>
- <div class="">
+ 
   <div class="page-container ">
     <HealthEdit ref="healthEdit" v-if="showHealthEdit" />
     <HealthInfo v-else />
 
-      <div class="flex justify-center mt-2">
+      <div class="flex justify-center mt-4">
         <button
           v-if="!showDoneButton"
           type="button"
@@ -32,7 +32,6 @@
         </button>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

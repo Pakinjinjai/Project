@@ -15,7 +15,6 @@
 						adipiscing nunc adipiscing. Condimentum turpis massa.
 					</p>
 				</header>
-				<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
 			</section>
 
 			<section class="box special features">
@@ -112,17 +111,10 @@
 					</section>
 				</div>
 			</section>
-			<section class="box special features bg-gray-100 p-8 text-center">
-				<h1>Map</h1>
-				<div class="container mx-auto">
-					<div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-						<Map />
-					</div>
-				</div>
-			</section>
+			
 
 			<h1 class="text-center mt-12 mb-12">Medical personnel</h1>
-			<ul class="cards ">
+			<ul class="cards mb-12 ">
 				
 				<li>
 					<a href="" class="card">
@@ -182,7 +174,16 @@
 					</a>
 				</li>
 			</ul>
+			<section class="box special features bg-gray-100 p-8 text-center">
+				<h1>Map</h1>
+				<div class="container mx-auto">
+					<div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+						<Map />
+					</div>
+				</div>
+			</section>
 		</section>
+		
 	</div>
 </template>
 
