@@ -1,12 +1,15 @@
 <script>
 import { baseURL } from "@/APIGate";
 import axios from "axios";
+import html2pdf from 'html2pdf.js';
+
 
 export default {
     name: "user-component",
 
     data() {
         return {
+            pdfExported: false,
             reload: {},
             falsequeue: {},
             truequeue: {},
@@ -86,8 +89,8 @@ export default {
         this.getAllUser();
     },
     mounted() {
-  this.reload = this.fetchUsers();
-},
+        this.reload = this.fetchUsers();
+    },
     watch: {
         searchQuery(newVal, oldVal) {
             this.fetchDataFromApi(newVal);
@@ -95,24 +98,24 @@ export default {
     },
     methods: {
         async fetchUsers() {
-    try {
-      const accessToken = localStorage.getItem("accessToken");
-      const response = await axios.get(` ${ baseURL }/api/v1/queues`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
+            try {
+                const accessToken = localStorage.getItem("accessToken");
+                const response = await axios.get(` ${baseURL}/api/v1/queues`, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
 
-      return response.data; // สมมติว่า API ของคุณส่งข้อมูลผู้ใช้งานในรูปแบบ JSON
-    } catch (error) {
-      console.error("Error fetching users:", error);
-      return []; // หรือให้ return array เปล่าๆ หรือข้อมูลเดิมในกรณี error
-    }
-  },
+                return response.data; // สมมติว่า API ของคุณส่งข้อมูลผู้ใช้งานในรูปแบบ JSON
+            } catch (error) {
+                console.error("Error fetching users:", error);
+                return []; // หรือให้ return array เปล่าๆ หรือข้อมูลเดิมในกรณี error
+            }
+        },
         async fetchDataFromApi(searchQuery) {
             try {
                 const res = await axios.get(
-                    `${ baseURL }/api/v1/users/?Search=${searchQuery}`
+                    `${baseURL}/api/v1/users/?Search=${searchQuery}`
                 );
                 this.Queue = res.data.Search;
                 // console.log("ข้อมูลที่ค้นหา",this.QueueSearch);
@@ -126,7 +129,7 @@ export default {
                 const confirmResult = window.confirm('คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน');
                 if (confirmResult) {
                     const accessToken = localStorage.getItem("accessToken");
-                    const res = await axios.delete(`${ baseURL }/api/v1/queues/${_id}`, {
+                    const res = await axios.delete(`${baseURL}/api/v1/queues/${_id}`, {
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
                         },
@@ -149,7 +152,7 @@ export default {
         async getAllUser() {
             try {
                 const res = await axios.get(
-                    `${ baseURL }/api/v1/users/getallusers`
+                    `${baseURL}/api/v1/users/getallusers`
                 );
                 this.Queue = res.data;
                 // this.QueueMe = res.data;
@@ -199,7 +202,7 @@ export default {
                 const accessToken = localStorage.getItem("accessToken");
                 // ทำการส่งข้อมูลไปยัง API ของเซิร์ฟเวอร์
                 const res = await axios.post(
-                    `${ baseURL }/api/v1/queues`, {
+                    `${baseURL}/api/v1/queues`, {
                     topic: this.inputData.topic,
                     startDate: this.inputData.startDate,
                     locations: this.inputData.locations,
@@ -267,7 +270,7 @@ export default {
 
                 // ทำการส่งข้อมูลไปยัง API ของเซิร์ฟเวอร์
                 const res = await axios.patch(
-                    `${ baseURL }/api/v1/queues/${this.SelectedItem._id}`,
+                    `${baseURL}/api/v1/queues/${this.SelectedItem._id}`,
                     {
                         topic: this.SelectedItem.topic,
                         startDate: this.SelectedItem.startDate,
@@ -314,6 +317,16 @@ export default {
         resetPagination() {
             this.startIndex = 0;
             this.endIndex = 9;
+        },
+        exportPDF() {
+            const element = document.getElementById('pdf').cloneNode(true);
+            const button = element.querySelector('.export-pdf-button');
+            button.parentNode.removeChild(button);
+            if (element) {
+                html2pdf(element);
+            } else {
+                console.error('ไม่เจอid"pdf');
+            }
         },
     },
 };
@@ -843,8 +856,8 @@ export default {
                                                         </thead>
                                                         <!-- body -->
                                                         <tbody v-if="SelectQueue.length > 0">
-                                                            <tr v-for="(item, index) in sortedQueueme.slice(0,5)" :key="item._id"
-                                                                :class="{
+                                                            <tr v-for="(item, index) in sortedQueueme.slice(0, 5)"
+                                                                :key="item._id" :class="{
                                                                     'bg-white': index % 2 === 0,
                                                                     'bg-[#F6F6F6]': index % 2 !== 0,
                                                                 }" class="border-b text-center text-[#303030]">
@@ -888,7 +901,7 @@ export default {
                                                                         <div
                                                                             class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                                                                             <!-- Modal content -->
-                                                                            <div
+                                                                            <div id="pdf"
                                                                                 class="relative p-4 bg-white rounded-lg shadow sm:p-5">
                                                                                 <!-- Modal header -->
                                                                                 <div
@@ -897,6 +910,18 @@ export default {
                                                                                         class="text-lg font-semibold text-[#303030]">
                                                                                         ข้อมูลการนัดหมาย
                                                                                     </h3>
+                                                                                    <button @click="exportPDF" type="button"
+                                                                                        class="export-pdf-button text-[#140A4B] mb-2 inline-flex items-center hover:text-white border border-[#303030] hover:bg-[#140A4B] focus:ring-4 focus:outline-none focus:ring-[#140A4B] font-medium rounded-lg text-sm px-5 py-2.5 ml-auto text-center">
+                                                                                        <svg class="mr-1 -ml-1 w-5 h-5"
+                                                                                            fill="currentColor"
+                                                                                            viewBox="0 0 20 20"
+                                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                                            <path fill-rule="evenodd"
+                                                                                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                                                                clip-rule="evenodd"></path>
+                                                                                        </svg>
+                                                                                        Export pdf
+                                                                                    </button>
                                                                                     <button @click="trueQueueModel = false"
                                                                                         type="button"
                                                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-[#303030] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
@@ -914,7 +939,7 @@ export default {
                                                                                     </button>
                                                                                 </div>
                                                                                 <!-- Modal body -->
-                                                                                <form action="#">
+                                                                                <form action="#" id="pdf">
                                                                                     <div
                                                                                         class="grid gap-4 mb-4 sm:grid-cols-2">
                                                                                         <!-- topic -->
@@ -1180,4 +1205,9 @@ export default {
     </section>
 </template>
 
-<style></style>
+<style>
+@media print {
+    .export-pdf-button {
+        display: none;
+    }
+}</style>
