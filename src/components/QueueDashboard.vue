@@ -362,7 +362,7 @@ export default {
                         </thead>
                         <!-- body -->
                         <tbody v-if="Queue.length > 0">
-                            <tr v-for="(item, index) in sorteduser" :key="item._id" :class="{
+                            <tr v-for="(item, index) in sorteduser.slice(startIndex, endIndex)" :key="item._id" :class="{
                                 'bg-white': index % 2 === 0,
                                 'bg-[#F6F6F6]': index % 2 !== 0,
                             }" class="border-b text-center text-[#303030]">
