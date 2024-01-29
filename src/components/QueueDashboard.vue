@@ -1,4 +1,5 @@
 <script>
+import { baseURL } from "@/APIGate";
 import axios from "axios";
 
 export default {
@@ -96,7 +97,7 @@ export default {
         async fetchUsers() {
     try {
       const accessToken = localStorage.getItem("accessToken");
-      const response = await axios.get("http://localhost:3000/api/v1/queues", {
+      const response = await axios.get(` ${ baseURL }/api/v1/queues`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -111,7 +112,7 @@ export default {
         async fetchDataFromApi(searchQuery) {
             try {
                 const res = await axios.get(
-                    `http://localhost:3000/api/v1/users/?Search=${searchQuery}`
+                    `${ baseURL }/api/v1/users/?Search=${searchQuery}`
                 );
                 this.Queue = res.data.Search;
                 // console.log("ข้อมูลที่ค้นหา",this.QueueSearch);
@@ -125,7 +126,7 @@ export default {
                 const confirmResult = window.confirm('คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน');
                 if (confirmResult) {
                     const accessToken = localStorage.getItem("accessToken");
-                    const res = await axios.delete(`http://localhost:3000/api/v1/queues/${_id}`, {
+                    const res = await axios.delete(`${ baseURL }/api/v1/queues/${_id}`, {
                         headers: {
                             Authorization: `Bearer ${accessToken}`,
                         },
@@ -148,7 +149,7 @@ export default {
         async getAllUser() {
             try {
                 const res = await axios.get(
-                    "http://localhost:3000/api/v1/users/getallusers"
+                    `${ baseURL }/api/v1/users/getallusers`
                 );
                 this.Queue = res.data;
                 // this.QueueMe = res.data;
@@ -198,7 +199,7 @@ export default {
                 const accessToken = localStorage.getItem("accessToken");
                 // ทำการส่งข้อมูลไปยัง API ของเซิร์ฟเวอร์
                 const res = await axios.post(
-                    "http://localhost:3000/api/v1/queues", {
+                    `${ baseURL }/api/v1/queues`, {
                     topic: this.inputData.topic,
                     startDate: this.inputData.startDate,
                     locations: this.inputData.locations,
@@ -266,7 +267,7 @@ export default {
 
                 // ทำการส่งข้อมูลไปยัง API ของเซิร์ฟเวอร์
                 const res = await axios.patch(
-                    `http://localhost:3000/api/v1/queues/${this.SelectedItem._id}`,
+                    `${ baseURL }/api/v1/queues/${this.SelectedItem._id}`,
                     {
                         topic: this.SelectedItem.topic,
                         startDate: this.SelectedItem.startDate,

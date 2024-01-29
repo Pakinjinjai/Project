@@ -1,4 +1,5 @@
 <script>
+import { baseURL } from "@/APIGate";
 import axios from "axios";
 export default {
   data() {
@@ -18,7 +19,7 @@ export default {
     showInfo() {
       axios({
         method: "get",
-        url: "http://localhost:3000/api/v1/healths",
+        url: `${ baseURL }/api/v1/healths`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },

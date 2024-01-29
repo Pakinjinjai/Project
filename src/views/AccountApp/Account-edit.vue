@@ -1,4 +1,5 @@
 <script>
+import { baseURL } from "@/APIGate";
 import axios from "axios";
 import dayjs from "dayjs";
 
@@ -39,7 +40,7 @@ export default {
                 console.log(this.formData);
                 axios({
                   method: "patch",
-                  url: "http://localhost:3000/api/v1/users/update",
+                  url: `${ baseURL }/api/v1/users/update`,
                   headers: {
                     Authorization:
                       "Bearer " + localStorage.getItem("accessToken"),
