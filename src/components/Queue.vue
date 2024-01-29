@@ -211,6 +211,7 @@
 </template>
 
 <script>
+import { baseURL } from "@/APIGate";
 import axios from "axios";
 export default {
   data() {
@@ -255,7 +256,7 @@ export default {
       try {
         axios({
           method: "get",
-          url: "http://localhost:3000/api/v1/queues/me",
+          url: `${ baseURL }/api/v1/queues/me`,
           headers: {
             Authorization: "Bearer " + localStorage.getItem("accessToken"),
           },

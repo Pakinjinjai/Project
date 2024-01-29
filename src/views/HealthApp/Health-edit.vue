@@ -1,4 +1,5 @@
 <script>
+import { baseURL } from "@/APIGate";
 import axios from "axios";
 import mqtt from "mqtt";
 
@@ -24,7 +25,7 @@ export default {
 
       return axios({
         method: "post",
-        url: "http://localhost:3000/api/v1/healths",
+        url: `${ baseURL }/api/v1/healths`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },

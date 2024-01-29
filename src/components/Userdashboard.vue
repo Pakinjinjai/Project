@@ -1,4 +1,5 @@
 <script>
+import { baseURL } from '@/APIGate';
 import axios from 'axios';
 
 export default {
@@ -60,7 +61,7 @@ export default {
   methods: {
     async fetchDataFromApi(searchQuery) {
       try {
-        const res = await axios.get(`http://localhost:3000/api/v1/users/?Search=${searchQuery}`);
+        const res = await axios.get(`${ baseURL }/api/v1/users/?Search=${searchQuery}`);
         this.users = res.data.Search;
 
     // รีเซ็ตค่าดั้งเดิมของ pagination เมื่อมีการค้นหา
@@ -88,7 +89,7 @@ export default {
     },
     async getAllUser() {
       try {
-        const res = await axios.get("http://localhost:3000/api/v1/users/getallusers");
+        const res = await axios.get(`${ baseURL }/api/v1/users/getallusers`);
         this.users = res.data;
         console.log(this.users);
       } catch (error) {

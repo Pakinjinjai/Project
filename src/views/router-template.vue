@@ -1,9 +1,11 @@
 <template>
   <Navbar />
   <router-view></router-view>
+  <Bottombar />
 </template>
 
 <script>
+import Bottombar from "@/components/Bottombar.vue";
 import Navbar from "@/components/Navbar.vue";
 
 export default {
@@ -11,7 +13,8 @@ export default {
 
   components: {
     Navbar,
-  },
+    Bottombar
+},
   data() {
     return {};
   },
