@@ -843,7 +843,7 @@ export default {
                                                         </thead>
                                                         <!-- body -->
                                                         <tbody v-if="SelectQueue.length > 0">
-                                                            <tr v-for="(item, index) in sortedQueueme" :key="item._id"
+                                                            <tr v-for="(item, index) in sortedQueueme.slice(0,5)" :key="item._id"
                                                                 :class="{
                                                                     'bg-white': index % 2 === 0,
                                                                     'bg-[#F6F6F6]': index % 2 !== 0,
