@@ -38,7 +38,7 @@ export default {
 
     
     client.on("connect", (topic, message) => {
-      client.subscribe("pulseSenser");
+      client.subscribe("pulseSensor");
       console.log("MQTT Connected");
     });
 
