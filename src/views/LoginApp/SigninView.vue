@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import { baseURL,SIGNIN } from "@/APIGate";
 export default {
   name: "SinginView",
   data() {
@@ -18,7 +19,7 @@ export default {
       try {
         var res = await axios({
           method: "post",
-          url: "http://localhost:3000/api/v1/users/login",
+          url: `${baseURL}${SIGNIN}`,
           data: {
             email: this.formData.email,
             password: this.formData.password,
@@ -45,7 +46,7 @@ export default {
       if (existToken) {
         this.$router.push("/home");
       } else {
-        this.$router.push("/signin");
+        this.$router.push("/SIGNIN");
       }
     },
   },

@@ -1,4 +1,5 @@
 <script>
+import { baseURL,SEARCHUSERS,DELETEUSERS, GETALLUSERS } from '@/APIGate';
 import axios from 'axios';
 
 export default {
@@ -60,7 +61,7 @@ export default {
   methods: {
     async fetchDataFromApi(searchQuery) {
       try {
-        const res = await axios.get(`http://localhost:3000/api/v1/users/?Search=${searchQuery}`);
+        const res = await axios.get(`${ baseURL }${SEARCHUSERS}${searchQuery}`);
         this.users = res.data.Search;
 
     // รีเซ็ตค่าดั้งเดิมของ pagination เมื่อมีการค้นหา
@@ -74,7 +75,7 @@ export default {
         const confirmResult = window.confirm('คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน');
         if (confirmResult) {
           const accessToken = localStorage.getItem("accessToken");
-          const res = await axios.delete(`http://localhost:3000/api/v1/users/${_id}`, {
+          const res = await axios.delete(`${baseURL}${DELETEUSERS}${_id}`, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
@@ -88,7 +89,7 @@ export default {
     },
     async getAllUser() {
       try {
-        const res = await axios.get("http://localhost:3000/api/v1/users/getallusers");
+        const res = await axios.get(`${ baseURL }${GETALLUSERS}`);
         this.users = res.data;
         console.log(this.users);
       } catch (error) {
@@ -132,6 +133,7 @@ export default {
 
 
 <template>
+  
   <section class="p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
       <h3 class="text-2xl text-center font-semibold text-[#140A4B] mb-4">
@@ -548,4 +550,6 @@ export default {
       </div>
     </div>
   </section>
+
+
 </template>

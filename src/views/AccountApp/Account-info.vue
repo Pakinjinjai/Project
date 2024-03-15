@@ -172,6 +172,7 @@
 </template>
 
 <script>
+import { baseURL,GETME } from "@/APIGate";
 import axios from "axios";
 import dayjs from "dayjs";
 export default {
@@ -190,7 +191,7 @@ export default {
     showInfo() {
       axios({
         method: "get",
-        url: "http://localhost:3000/api/v1/users/me",
+        url: `${ baseURL }${GETME}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
@@ -199,7 +200,7 @@ export default {
           this.profileData = res.data.user;
           this.profileAddress = res.data.user.address;
           this.birthDate = dayjs(this.profileData.birthdate).format(
-            "YYYY-MM-DD"
+            "DD-MM-YYYY"
           );
           // console.log(this.profileData);
           // console.log(this.profileData.address);

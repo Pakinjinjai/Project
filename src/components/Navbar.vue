@@ -114,6 +114,7 @@
 </style>
 
 <script>
+import { baseURL } from "@/APIGate";
 import axios from "axios";
 export default {
   name: "Navbar",
@@ -178,7 +179,7 @@ export default {
     },
     getData() {
       axios
-        .get("http://localhost:3000/api/v1/users/me", {
+        .get(`${ baseURL }/users/me`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("accessToken"),
           },
