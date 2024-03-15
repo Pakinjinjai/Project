@@ -172,7 +172,7 @@
 </template>
 
 <script>
-import { baseURL } from "@/APIGate";
+import { baseURL,GETME } from "@/APIGate";
 import axios from "axios";
 import dayjs from "dayjs";
 export default {
@@ -191,7 +191,7 @@ export default {
     showInfo() {
       axios({
         method: "get",
-        url: `${ baseURL }/api/v1/users/me`,
+        url: `${ baseURL }${GETME}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },

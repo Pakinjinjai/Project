@@ -179,7 +179,7 @@ export default {
     },
     getData() {
       axios
-        .get(`${ baseURL }/api/v1/users/me`, {
+        .get(`${ baseURL }/users/me`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("accessToken"),
           },

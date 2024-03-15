@@ -25,7 +25,7 @@ export default {
 
       return axios({
         method: "post",
-        url: `${ baseURL }/api/v1/healths`,
+        url: `${ baseURL }/healths/addme`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
@@ -56,7 +56,7 @@ export default {
       <div
         class="flex flex-col items-center gap-3 px-8 py-10 bg-[#ffffff] mt-4 rounded-3xl hover:shadow shadow-main border-2 border-[#D9D9D9]"
       >
-        <p class="flex text-xl text-[#303030]0">ความดันโลหิต <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" class="tem" id="wave"><path d="M25.031 1008.362c-1.693 0-2.976.841-3.875 2-.899 1.16-1.502 2.649-2.062 4.094-.56 1.446-1.068 2.84-1.719 3.844s-1.333 1.594-2.406 1.594H2.563a.5.5 0 1 0 0 1h12.406c1.452 0 2.502-.878 3.25-2.032.748-1.154 1.257-2.63 1.812-4.062.556-1.433 1.163-2.813 1.938-3.813.775-1 1.681-1.625 3.062-1.625.613 0 1.16.274 1.75.844.59.57 1.194 1.449 1.75 2.5 1.114 2.103 2.107 4.966 3.157 7.844 1.05 2.878 2.145 5.753 3.437 7.969.646 1.107 1.354 2.066 2.156 2.75.802.683 1.73 1.093 2.75 1.093 1.635 0 2.953-.826 4-1.969 1.047-1.142 1.853-2.609 2.563-4.062.71-1.453 1.317-2.87 1.906-3.906.294-.518.579-.96.844-1.219.265-.26.492-.344.687-.344 4.948 0 3.015.031 11.407.031a.5.5 0 1 0 0-1c-8.39 0-6.458-.03-11.407-.03-.527 0-.997.286-1.375.655-.377.37-.712.846-1.031 1.407-.637 1.12-1.244 2.547-1.938 3.968-.693 1.422-1.477 2.83-2.406 3.844-.928 1.014-1.94 1.625-3.25 1.625-.749 0-1.452-.3-2.125-.875-.673-.574-1.295-1.42-1.906-2.469-1.223-2.096-2.327-4.94-3.375-7.812s-2.049-5.759-3.219-7.969c-.585-1.105-1.195-2.062-1.906-2.75-.711-.687-1.544-1.125-2.469-1.125z" color="#000" font-family="Sans" font-weight="400" overflow="visible" transform="translate(0 -988.362)" style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Sans"></path></svg></p>
+        <p class="flex text-xl text-[#303030] ">ความดันโลหิต <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" class="tem" id="wave"><path d="M25.031 1008.362c-1.693 0-2.976.841-3.875 2-.899 1.16-1.502 2.649-2.062 4.094-.56 1.446-1.068 2.84-1.719 3.844s-1.333 1.594-2.406 1.594H2.563a.5.5 0 1 0 0 1h12.406c1.452 0 2.502-.878 3.25-2.032.748-1.154 1.257-2.63 1.812-4.062.556-1.433 1.163-2.813 1.938-3.813.775-1 1.681-1.625 3.062-1.625.613 0 1.16.274 1.75.844.59.57 1.194 1.449 1.75 2.5 1.114 2.103 2.107 4.966 3.157 7.844 1.05 2.878 2.145 5.753 3.437 7.969.646 1.107 1.354 2.066 2.156 2.75.802.683 1.73 1.093 2.75 1.093 1.635 0 2.953-.826 4-1.969 1.047-1.142 1.853-2.609 2.563-4.062.71-1.453 1.317-2.87 1.906-3.906.294-.518.579-.96.844-1.219.265-.26.492-.344.687-.344 4.948 0 3.015.031 11.407.031a.5.5 0 1 0 0-1c-8.39 0-6.458-.03-11.407-.03-.527 0-.997.286-1.375.655-.377.37-.712.846-1.031 1.407-.637 1.12-1.244 2.547-1.938 3.968-.693 1.422-1.477 2.83-2.406 3.844-.928 1.014-1.94 1.625-3.25 1.625-.749 0-1.452-.3-2.125-.875-.673-.574-1.295-1.42-1.906-2.469-1.223-2.096-2.327-4.94-3.375-7.812s-2.049-5.759-3.219-7.969c-.585-1.105-1.195-2.062-1.906-2.75-.711-.687-1.544-1.125-2.469-1.125z" color="#000" font-family="Sans" font-weight="400" overflow="visible" transform="translate(0 -988.362)" style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Sans"></path></svg></p>
         <span
           ><p class="text-base leading-7 text-[#303030] flex items-center">
             <input
@@ -109,9 +109,9 @@ export default {
       >
         <p class="flex text-xl text-[#303030]">อัตราการเต้นของหัวใจ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="svg" id="heart"><g data-name="Layer 26"><path d="M24 27a1 1 0 0 1-.92-.68L19.7 16.26l-2.87 4.29A1 1 0 0 1 16 21H3a1 1 0 0 1 0-2h12.46l3.71-5.55a1 1 0 0 1 1-.44 1 1 0 0 1 .82.67l3.14 9.41 3-7.46A1 1 0 0 1 28 15a1 1 0 0 1 .93.65l1.87 5 .22-.88A1 1 0 0 1 32 19h13a1 1 0 0 1 0 2H32.78L32 24.24a1 1 0 0 1-1.91.11L28 18.77l-3 7.6a1 1 0 0 1-1 .63Z"></path><path d="M4.9 17a1 1 0 0 0 .92-.83 10.18 10.18 0 0 1 2.9-5.8 10.59 10.59 0 0 1 12.8-1.57 7.89 7.89 0 0 1 1.76 1.56 1 1 0 0 0 1.44 0 7.89 7.89 0 0 1 1.76-1.56 10.59 10.59 0 0 1 12.8 1.57 10.18 10.18 0 0 1 2.9 5.8 1 1 0 0 0 .92.83h.15a.93.93 0 0 0 .92-1.07A12.3 12.3 0 0 0 24 8.3a12.3 12.3 0 0 0-20.17 7.63.93.93 0 0 0 .92 1.07zm36.44 6a1 1 0 0 0-.83.45C41 23.45 24.35 39.8 24 40.23c-.39-.47-17-16.74-16.51-16.78a1 1 0 0 0-.83-.45 1 1 0 0 0-.83 1.58c-.65-.09 17 17.28 17.46 17.77a1 1 0 0 0 1.42 0c.46-.54 18-17.8 17.46-17.77a1 1 0 0 0-.83-1.58z"></path></g></svg></p>
         <span
-          ><p class="text-base leading-7 ttext-[#303030] flex items-center">
+          ><p class="text-base leading-7 text-[#303030] flex items-center">
             <input
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2 hover:shadow ml-12 mr-2"
+            class="bg-gray-50 border border-gray-300 text-[#303030] sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2 hover:shadow ml-7 mr-2"
               placeholder=""
               required=""
               id="heartRate"
@@ -123,16 +123,7 @@ export default {
       </div>
     </div>
   </div>
-  <!-- <div class="flex justify-center mt-2">
-    <button
-      type="button"
-      id="Done"
-      v-on:click="gotoInfo()"
-      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5"
-    >
-      Done
-    </button>
-  </div> -->
+
 </template>
 
 <style>
