@@ -1,5 +1,5 @@
 <script>
-import { baseURL } from "@/APIGate";
+import { baseURL,GETALLUSERS,GETALLQUEUES,SEARCHUSERS,ADDQUEUES,UPDATEQUEUES,DELETEQUEUES } from "@/APIGate";
 import axios from "axios";
 import html2pdf from 'html2pdf.js';
 
@@ -7,6 +7,7 @@ import html2pdf from 'html2pdf.js';
 export default {
     name: "user-component",
 
+<<<<<<< Updated upstream
     data() {
         return {
             pdfExported: false,
@@ -47,13 +48,221 @@ export default {
             const maxPages = 5; // Adjust as needed
             const currentPage = this.currentPage;
             const totalPages = this.totalPages;
+=======
+  data() {
+    return {
+      reload: {},
+      falsequeue: {},
+      truequeue: {},
+      startIndex: 0,
+      endIndex: 9,
+      truequeue: {},
+      inputData: this.resetInputData(),
+      SelectAddQueues: {},
+      SelectQueue: {},
+      SelectedaddQueue: {},
+      SelectedUpdateQueue: {},
+      SelecttrueInfo: {},
+      SelecttrueQueue: {},
+      SelectAddModal: {},
+      SelectedItem: {},
+      searchQuery: "",
+      Queue: [],
+      Queueinfo: [],
+      AddModel: false,
+      infoModel: false,
+      infotrueModel: false,
+      UpdateModel: false,
+      trueQueueModel: false,
+    };
+  },
+
+  computed: {
+    currentPage() {
+      return Math.floor(this.startIndex / 10) + 1;
+    },
+    totalPages() {
+      return Math.ceil(this.Queue.length / 10);
+    },
+    displayedPages() {
+      const maxPages = 5; // Adjust as needed
+      const currentPage = this.currentPage;
+      const totalPages = this.totalPages;
+
+      let startPage = Math.max(1, currentPage - Math.floor(maxPages / 2));
+      let endPage = Math.min(totalPages, startPage + maxPages - 1);
+
+      if (endPage - startPage < maxPages - 1) {
+        startPage = Math.max(1, endPage - maxPages + 1);
+      }
+
+      return Array.from(
+        { length: endPage - startPage + 1 },
+        (_, i) => startPage + i
+      );
+    },
+    sorteduser() {
+      return this.Queue.slice().sort((a, b) => {
+        if (a.status === b.status) {
+          return new Date(a.datauser) - new Date(b.datauser);
+        } else {
+          return a.status ? 1 : -1;
+        }
+      });
+    },
+    sortedQueueme() {
+      return this.SelectQueue.slice().sort((a, b) => {
+        if (a.status === b.status) {
+          return new Date(a.dataQueue) - new Date(b.dataQueue);
+        } else {
+          return a.status ? 1 : -1;
+        }
+      });
+    },
+    sortedQueuemefalse() {
+      return this.SelecttrueQueue.slice().sort((a, b) => {
+        if (a.status === b.status) {
+          return new Date(a.dataQueue) - new Date(b.dataQueue);
+        } else {
+          return a.status ? 1 : -1;
+        }
+      });
+    },
+  },
+  created() {
+    this.getAllUser();
+  },
+  mounted() {
+    this.reload = this.fetchUsers();
+  },
+  watch: {
+    searchQuery(newVal, oldVal) {
+      this.fetchDataFromApi(newVal);
+    },
+  },
+  methods: {
+    async fetchUsers() {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await axios.get(` ${baseURL}${GETALLQUEUES}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        return response.data; // สมมติว่า API ของคุณส่งข้อมูลผู้ใช้งานในรูปแบบ JSON
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        return []; // หรือให้ return array เปล่าๆ หรือข้อมูลเดิมในกรณี error
+      }
+    },
+    async fetchDataFromApi(searchQuery) {
+      try {
+        const res = await axios.get(`${baseURL}${SEARCHUSERS}${searchQuery}`);
+        this.Queue = res.data.Search;
+        // console.log("ข้อมูลที่ค้นหา",this.QueueSearch);
+        this.resetPagination();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+    async delUser(_id) {
+      try {
+        const confirmResult = window.confirm(
+          "คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน"
+        );
+        if (confirmResult) {
+          const accessToken = localStorage.getItem("accessToken");
+          const res = await axios.delete(`${baseURL}${DELETEQUEUES}${_id}`, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+            // console.log("ข้อมูลที่จะลบ",item);
+          });
+          // this.$router.go();
+          // window.location.reload();
+          this.getAllUser();
+          // หลังจากลบข้อมูลผู้ใช้งานเสร็จสิ้น โหลดข้อมูลใหม่และอัปเดต users
+          const updatedUsers = await this.fetchUsers();
+          this.reload = updatedUsers;
+          console.log("User deleted successfully:", res);
+        }
+      } catch (error) {
+        console.error("Error deleting user:", error);
+      }
+    },
+
+    //ทำงานตัวแรก
+    async getAllUser() {
+      try {
+        const res = await axios.get(`${baseURL}${GETALLUSERS}`);
+        this.Queue = res.data;
+        // this.QueueMe = res.data;
+        // console.log("ข้อมูลทั้งหมด",this.Queue);
+      } catch (error) {
+        console.error("Error fetching all users:", error);
+      }
+    },
+    formatDate(date) {
+      return new Date(date).toLocaleDateString();
+    },
+    resetInputData() {
+      return {
+        topic: "",
+        note: "",
+        startDate: null,
+        locations: false,
+        userId: "",
+      };
+    },
+    resetModalData() {
+      // ให้ทำการ reset ค่า inputData ให้เป็นค่า default
+      this.inputData = this.resetInputData();
+    },
+    AddModal(user) {
+      this.SelectAddModal = user;
+      console.log("แอดคิวของ :", user.firstname, this.SelectAddModal);
+      this.resetModalData();
+      this.AddModel = true;
+    },
+>>>>>>> Stashed changes
 
             let startPage = Math.max(1, currentPage - Math.floor(maxPages / 2));
             let endPage = Math.min(totalPages, startPage + maxPages - 1);
 
+<<<<<<< Updated upstream
             if (endPage - startPage < maxPages - 1) {
                 startPage = Math.max(1, endPage - maxPages + 1);
             }
+=======
+        if (this.inputData.locations === null) {
+          alert("คุณไม่ได้กำหนดประเภทการเข้าตรวจ");
+          this.inputData = this.resetInputData();
+          return;
+        }
+        // ดึง Access Token จาก Local Storage
+        const accessToken = localStorage.getItem("accessToken");
+        // ทำการส่งข้อมูลไปยัง API ของเซิร์ฟเวอร์
+        const res = await axios.post(
+          `${baseURL}${ADDQUEUES}`,
+          {
+            topic: this.inputData.topic,
+            startDate: this.inputData.startDate,
+            locations: this.inputData.locations,
+            note: this.inputData.note,
+            userId: user._id, // รหัสผู้ใช้ที่เลือก
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+        // กรณีเพิ่มคิวสำเร็จ
+        console.log("เพิ่มคิวสำเร็จ:", res);
+        // ปิด Modal เพื่อเตรียมสำหรับการเพิ่มคิวถัดไป
+        this.AddModel = false;
+>>>>>>> Stashed changes
 
             return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
         },
@@ -148,6 +357,7 @@ export default {
             }
         },
 
+<<<<<<< Updated upstream
         //ทำงานตัวแรก
         async getAllUser() {
             try {
@@ -183,6 +393,25 @@ export default {
             this.resetModalData();
             this.AddModel = true;
         },
+=======
+        // ทำการส่งข้อมูลไปยัง API ของเซิร์ฟเวอร์
+        const res = await axios.patch(
+          `${baseURL}${UPDATEQUEUES}${this.SelectedItem._id}`,
+          {
+            topic: this.SelectedItem.topic,
+            startDate: this.SelectedItem.startDate,
+            endDate: this.SelectedItem.endDate,
+            locations: this.SelectedItem.locations,
+            note: this.SelectedItem.note,
+            status: this.SelectedItem.status,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+>>>>>>> Stashed changes
 
         async addQueue_Btn(user) {
             try {
