@@ -12,7 +12,7 @@
 </template>
   
 <script>
-import { baseURL,GETME } from '@/APIGate';
+import { GETME } from '@/APIGate';
 import axios from 'axios';
 export default {
     data() {
@@ -28,7 +28,7 @@ export default {
         check() {
             axios({
                 method: "get",
-                url: `${ baseURL }${GETME}`,
+                url: `${GETME}`,
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("accessToken"),
                 },

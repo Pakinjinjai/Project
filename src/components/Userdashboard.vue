@@ -1,5 +1,5 @@
 <script>
-import { baseURL,SEARCHUSERS,DELETEUSERS, GETALLUSERS } from '@/APIGate';
+import {SEARCHUSERS,DELETEUSERS, GETALLUSERS } from '@/APIGate';
 import axios from 'axios';
 
 export default {
@@ -61,7 +61,7 @@ export default {
   methods: {
     async fetchDataFromApi(searchQuery) {
       try {
-        const res = await axios.get(`${ baseURL }${SEARCHUSERS}${searchQuery}`);
+        const res = await axios.get(`${SEARCHUSERS}${searchQuery}`);
         this.users = res.data.Search;
 
     // รีเซ็ตค่าดั้งเดิมของ pagination เมื่อมีการค้นหา
@@ -75,7 +75,7 @@ export default {
         const confirmResult = window.confirm('คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน');
         if (confirmResult) {
           const accessToken = localStorage.getItem("accessToken");
-          const res = await axios.delete(`${baseURL}${DELETEUSERS}${_id}`, {
+          const res = await axios.delete(`${DELETEUSERS}${_id}`, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
@@ -89,7 +89,7 @@ export default {
     },
     async getAllUser() {
       try {
-        const res = await axios.get(`${ baseURL }${GETALLUSERS}`);
+        const res = await axios.get(`${GETALLUSERS}`);
         this.users = res.data;
         console.log(this.users);
       } catch (error) {

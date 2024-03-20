@@ -1,5 +1,5 @@
 <script>
-import { baseURL,GETALLUSERS,GETALLQUEUES,SEARCHUSERS,ADDQUEUES,UPDATEQUEUES,DELETEQUEUES } from "@/APIGate";
+import { GETALLUSERS,GETALLQUEUES,SEARCHUSERS,ADDQUEUES,UPDATEQUEUES,DELETEQUEUES } from "@/APIGate";
 import axios from "axios";
 import html2pdf from 'html2pdf.js';
 
