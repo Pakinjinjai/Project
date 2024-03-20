@@ -19,7 +19,7 @@ export default {
       try {
         var res = await axios({
           method: "post",
-          url: `${baseURL}${SIGNIN}`,
+          url: `${SIGNIN}`,
           data: {
             email: this.formData.email,
             password: this.formData.password,
