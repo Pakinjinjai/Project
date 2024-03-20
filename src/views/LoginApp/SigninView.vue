@@ -1,6 +1,6 @@
 <script>
 import axios from "axios";
-import { baseURL,SIGNIN } from "@/APIGate";
+import { SIGNIN } from "@/APIGate";
 export default {
   name: "SinginView",
   data() {
