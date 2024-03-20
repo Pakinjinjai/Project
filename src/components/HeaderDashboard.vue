@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import { baseURL,GETALLUSERS } from '@/APIGate';
+import { GETALLUSERS } from '@/APIGate';
 import axios from 'axios';
 export default {
     name:"header-component",
@@ -82,7 +82,7 @@ export default {
     };
   },
     mounted() {
-    axios.get(`${ baseURL }${GETALLUSERS}`)
+    axios.get(`${GETALLUSERS}`)
     .then(response => {
         this.user = response.data;
         console.log(this.user);
