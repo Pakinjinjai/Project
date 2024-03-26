@@ -1,5 +1,5 @@
 <script>
-import { baseURL } from "@/APIGate";
+import { GETMEHEALTH } from "@/APIGate";
 import axios from "axios";
 export default {
   data() {
@@ -19,7 +19,7 @@ export default {
     showInfo() {
       axios({
         method: "get",
-        url: `${baseURL}/healths/me`,
+        url: `${GETMEHEALTH}`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },

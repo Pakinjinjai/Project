@@ -1,5 +1,5 @@
 <script>
-import { baseURL } from "@/APIGate";
+import { ADDMEHEALTH } from "@/APIGate";
 import axios from "axios";
 import mqtt from "mqtt";
 
@@ -25,7 +25,7 @@ export default {
 
       return axios({
         method: "post",
-        url: `${ baseURL }/healths/addme`,
+        url: `${ADDMEHEALTH }`,
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
@@ -38,7 +38,7 @@ export default {
 
     
     client.on("connect", (topic, message) => {
-      client.subscribe("pulseSenser");
+      client.subscribe("pulseSensor");
       console.log("MQTT Connected");
     });
 
