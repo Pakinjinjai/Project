@@ -181,8 +181,8 @@
                 </svg>
                 <img class="card__thumb" src="../assets/doctorwo.jpeg" alt="" />
                 <div class="card__header-text">
-                  <h3 class="card__title">Satapat Jumpa</h3>
-                  <span class="card__status">ความดันโลหิต</span>
+                  <h3 class="card__title">นาย ประเสริฐ ศรีภัคดี</h3>
+                  <span class="card__status">เจ้าพนักงานสารธารณะสุขชำนาญการ</span>
                 </div>
               </div>
               <p class="card__description">
@@ -202,8 +202,8 @@
                 </svg>
                 <img class="card__thumb" src="../assets/doctorwo.jpeg" alt="" />
                 <div class="card__header-text">
-                  <h3 class="card__title">Satapat Jumpa</h3>
-                  <span class="card__status">ปริมาณออกซิเจนในเลือด</span>
+                  <h3 class="card__title">นาย ธีรเดช สินทอง</h3>
+                  <span class="card__status">เจ้าพนักงานสารธารณะสุขชำนาญการ</span>
                 </div>
               </div>
               <p class="card__description">
@@ -223,8 +223,8 @@
                 </svg>
                 <img class="card__thumb" src="../assets/doctorwo.jpeg" alt="" />
                 <div class="card__header-text">
-                  <h3 class="card__title">Satapat Jumpa</h3>
-                  <span class="card__status">ค่าอุณหภูมิร่างกาย</span>
+                  <h3 class="card__title">นาย ลิขิต ขยายเเย้ม</h3>
+                  <span class="card__status">เจ้าพนักงานสารธารณสุข</span>
                 </div>
               </div>
               <p class="card__description">
@@ -355,7 +355,7 @@ export default {
 }
 
 .card__status {
-  font-size: 0.8em;
+  font-size: 0.6em;
   color: #d7bdca;
 }
 
