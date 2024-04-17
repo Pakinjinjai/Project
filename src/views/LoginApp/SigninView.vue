@@ -12,12 +12,12 @@ export default {
     };
   },
   created() {
-    this.checkToken();
+    // this.checkToken();
   },
   methods: {
     async SIGN_IN() {
       try {
-        var res = await axios({
+        const res = await axios({
           method: "post",
           url: `${SIGNIN}`,
           data: {
@@ -36,9 +36,7 @@ export default {
         }
       } catch (error) {
         console.log(error);
-      } finally {
-        window.location.reload();
-      }
+      } 
     },
     checkToken() {
       const existToken = localStorage.getItem("accessToken");
@@ -62,7 +60,8 @@ export default {
         class="flex m-2 items-center mb-2 text-3xl font-semibold text-gray-900"
       >
         <img class="w-auto h-10 mr-2" src="/KMITL_PCC.png" />
-        | Sign in
+        | 
+        Sign in
       </a>
       <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -71,7 +70,9 @@ export default {
           >
             Account
           </h1>
-          <form class="space-y-4 md:space-y-6" action="#">
+          <form class="space-y-4 md:space-y-6" 
+          @submit.prevent="SIGN_IN"
+          >
             <div>
               <label
                 for="email"
@@ -108,7 +109,7 @@ export default {
             </div>
 
             <button
-              v-on:click="SIGN_IN()"
+              @click="submit"
               class="w-full text-white bg-black hover:bg-indigo-950 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
               Sign in

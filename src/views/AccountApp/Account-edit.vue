@@ -228,7 +228,7 @@ export default {
                   </div>
                   <div class="px-4 py-2">
                     <input
-                      type="phone"
+                      type="text"
                       name="Phone"
                       id="Phone"
                       class="block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 px-4 py-2.5"
