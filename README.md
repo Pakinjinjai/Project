@@ -1,4 +1,4 @@
-# Client Project Structure
+# Client side Project Structure
 
     ├── public
     │   └── fonts
