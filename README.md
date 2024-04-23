@@ -1,5 +1,5 @@
 # Client Project Structure
-[GitHub Gist](link-to-gist)
+
     ├── public
     │   └── fonts
     ├── src
