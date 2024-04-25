@@ -1,6 +1,8 @@
 <script>
 import {SEARCHUSERS,DELETEUSERS, GETALLUSERS } from '@/APIGate';
 import axios from 'axios';
+import Swal from "sweetalert2";
+
 
 export default {
   name: 'user-component',
@@ -71,22 +73,54 @@ export default {
       }
     },
     async delUser(_id) {
-      try {
-        const confirmResult = window.confirm('คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน');
-        if (confirmResult) {
-          const accessToken = localStorage.getItem("accessToken");
-          const res = await axios.delete(`${DELETEUSERS}${_id}`, {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          });
-          this.getAllUser();
-          console.log("User deleted successfully:", res);
-        }
-      } catch (error) {
-        console.error("Error deleting user:", error);
+  try {
+    const alertResult = await Swal.fire({
+      title: 'คุณแน่ใจใช่ไหม?',
+      text: 'คุณจะไม่สามารถย้อนกลับได้!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ใช่, ลบ!',
+    });
+
+    if (alertResult.isConfirmed) {
+      const confirmResult = await Swal.fire({
+        title: 'ยืนยันการลบ',
+        text: 'คุณแน่ใจหรือไม่ที่ต้องการลบผู้ใช้งาน?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ใช่, ลบ!',
+      });
+
+      if (confirmResult.isConfirmed) {
+        const accessToken = localStorage.getItem('accessToken');
+        const res = await axios.delete(`${DELETEUSERS}/${_id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        this.getAllUser();
+        console.log('ลบผู้ใช้งานเรียบร้อยแล้ว:', res);
+        await Swal.fire({
+          title: 'ลบแล้ว!',
+          text: 'ไฟล์ของคุณถูกลบแล้ว',
+          icon: 'success',
+        });
       }
-    },
+    }
+  } catch (error) {
+    console.error('เกิดข้อผิดพลาดในการลบผู้ใช้:', error);
+    await Swal.fire({
+      title: 'เกิดข้อผิดพลาด!',
+      text: 'เกิดข้อผิดพลาดในการลบผู้ใช้',
+      icon: 'error',
+    });
+  }
+},
+
     async getAllUser() {
       try {
         const res = await axios.get(`${GETALLUSERS}`);
