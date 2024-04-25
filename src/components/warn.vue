@@ -14,6 +14,8 @@
 <script>
 import { GETME } from '@/APIGate';
 import axios from 'axios';
+import Swal from "sweetalert2";
+
 export default {
     data() {
         return {
@@ -71,7 +73,12 @@ export default {
                         this.formData.subDistrict === ""
                     ) {
                         this.showDiv = true;
-                        window.alert("กรุณากรอกข้อมูลประวัติส่วนตัวให้ครบ");
+                        Swal.fire({
+          icon: "warning",
+          title: "ขออภัย...",
+          text: "กรุณากรอกข้อมูลประวัติส่วนตัวให้ครบ",
+        });
+                        // window.alert("กรุณากรอกข้อมูลประวัติส่วนตัวให้ครบ");
                     } else {
                         this.showDiv = false;
                     }

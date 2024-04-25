@@ -2,6 +2,8 @@
 import { GETALLUSERS,GETALLQUEUES,SEARCHUSERS,ADDQUEUES,UPDATEQUEUES,DELETEQUEUES } from "@/APIGate";
 import axios from "axios";
 import html2pdf from 'html2pdf.js';
+import Swal from "sweetalert2";
+
 
 
 export default {
@@ -125,28 +127,39 @@ export default {
             }
         },
         async delUser(_id) {
-            try {
-                const confirmResult = window.confirm('คุณแน่ใจใช่ไหมที่ต้องการจะลบข้อมูลผู้ใช้งาน');
-                if (confirmResult) {
-                    const accessToken = localStorage.getItem("accessToken");
-                    const res = await axios.delete(`${DELETEQUEUES}${_id}`, {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`,
-                        },
-                        // console.log("ข้อมูลที่จะลบ",item);
-                    });
-                    // this.$router.go();
-                    // window.location.reload();
-                    this.getAllUser();
-                    // หลังจากลบข้อมูลผู้ใช้งานเสร็จสิ้น โหลดข้อมูลใหม่และอัปเดต users
-                    const updatedUsers = await this.fetchUsers();
-                    this.reload = updatedUsers;
-                    console.log("User deleted successfully:", res);
-                }
-            } catch (error) {
-                console.error("Error deleting user:", error);
-            }
-        },
+    try {
+        // แสดง Alert และรอผู้ใช้ยืนยันก่อนที่จะดำเนินการต่อ
+        const confirmResult = await Swal.fire({
+            title: 'คุณแน่ใจใช่ไหม?',
+            text: 'คุณจะไม่สามารถย้อนกลับได้!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่, ลบ!'
+        });
+
+        // หากผู้ใช้ยืนยันการลบ
+        if (confirmResult.isConfirmed) {
+            // ดำเนินการลบผู้ใช้งานโดยใช้ API
+            const accessToken = localStorage.getItem('accessToken');
+            const res = await axios.delete(`${DELETEQUEUES}${_id}`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+
+            // หลังจากลบสำเร็จ
+            this.getAllUser(); // โหลดข้อมูลผู้ใช้งานใหม่
+            console.log('ลบผู้ใช้งานเรียบร้อยแล้ว:', res);
+            this.infoModel = false;
+
+        }
+    } catch (error) {
+        // หากมีข้อผิดพลาดในกระบวนการลบ
+        console.error('เกิดข้อผิดพลาดในการลบผู้ใช้:', error);
+    }
+},
 
         //ทำงานตัวแรก
         async getAllUser() {
@@ -216,6 +229,7 @@ export default {
                 );
                 // กรณีเพิ่มคิวสำเร็จ
                 console.log("เพิ่มคิวสำเร็จ:", res);
+                this.getAllUser();
                 // ปิด Modal เพื่อเตรียมสำหรับการเพิ่มคิวถัดไป
                 this.AddModel = false;
             } catch (error) {
