@@ -1,12 +1,14 @@
 <template>
   <div class="page-container">
-    <div class="mt-4"><warn /></div>
     <LandingPage />
   </div>
 </template>
 
 <script>
-import warn from  "../components/warn.vue";
+import Swal from "sweetalert2";
+import { GETME } from '@/APIGate';
+import axios from "axios";
+
 
 // import Map from "@/components/Map.vue"
 import LandingPage from "@/components/LandingPage.vue";
@@ -14,11 +16,61 @@ import LandingPage from "@/components/LandingPage.vue";
 
 export default {
   name: "homePage",
-  components: {LandingPage,warn},
+  components: {LandingPage},
   data() {
     return {
       profileData: {},
+      formData: {},
     };
+  },
+  created(){
+    this.check();
+  },
+  methods: {
+    check() {
+  axios({
+    method: "get",
+    url: `${GETME}`,
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("accessToken"),
+    },
+  })
+  .then(async (res) => {
+    this.formData.district = res.data.user.address.district;
+    this.formData.houseNo = res.data.user.address.houseNo;
+    this.formData.postalCode = res.data.user.address.postalCode;
+    this.formData.moo = res.data.user.address.moo;
+    this.formData.province = res.data.user.address.province;
+    this.formData.road = res.data.user.address.road;
+    this.formData.soi = res.data.user.address.soi;
+    this.formData.subDistrict = res.data.user.address.subDistrict;
+
+    if (
+      !this.formData.district ||
+      !this.formData.houseNo ||
+      !this.formData.postalCode ||
+      !this.formData.moo ||
+      !this.formData.province ||
+      !this.formData.road ||
+      !this.formData.soi ||
+      !this.formData.subDistrict
+    ) {
+      this.showDiv = true;
+      await Swal.fire({
+        icon: "warning",
+        title: "ขออภัย...",
+        text: "กรุณากรอกข้อมูลประวัติส่วนตัวให้ครบ",
+      });
+      this.$router.push("/account-info");
+    } else {
+      this.showDiv = false;
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+},
+
   },
 };
 </script>
