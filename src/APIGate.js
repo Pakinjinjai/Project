@@ -6,8 +6,6 @@ const baseURL = `http://161.246.127.114/api/v1`
 /***** Deploy_railway.app_SERVERS *****/
 // const baseURL = `https://ppsp-projectbackend-production-5099.up.railway.app/api/v1` 
 
-
-
 ///Development///
 // const baseURL = `http://localhost:3000/api/v1` 
 
